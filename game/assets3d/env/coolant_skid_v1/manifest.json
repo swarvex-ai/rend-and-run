@@ -1,0 +1,45 @@
+{
+  "assetId": "rendrun_coolant_skid",
+  "category": "environment_prop",
+  "description": "Original twin-vessel cooling skid for recessed laboratory machinery bay. Godot Y-up +Z front, bottom origin, 1.95 x 2.165 x 1.1725m. Copper manifold/return pipes, clamps, gauges, drains, pump and access panels. One PBR atlas material with embedded 1K basecolor and roughness; uniform metallic .55, no normal or emissive map. No collider.",
+  "displayName": "rendrun-coolant-skid",
+  "files": [
+    {
+      "bytes": 1178684,
+      "kind": "model",
+      "path": "model.glb",
+      "sha256": "b0b65de10f4262cb2c42bf44477a92398bd1e29efb784b0295b118cd795b01c9"
+    },
+    {
+      "bytes": 1988,
+      "kind": "metadata",
+      "path": "metadata.json",
+      "sha256": "dfaac9450d2b93055245e68384f662ea0e63cd9597917136dc2b8891df377ded"
+    },
+    {
+      "bytes": 427,
+      "kind": "provenance",
+      "path": "provenance.json",
+      "sha256": "3b8c4b76fcb490d171d676e76dc1885e379a224facb4a9f099be27fdbf7a685d"
+    },
+    {
+      "bytes": 3627,
+      "kind": "validation",
+      "path": "validation.json",
+      "sha256": "0c5560ffe83a199f61b09dc8ede59ff5368baa67f08a8965750aefb0a445ef73"
+    }
+  ],
+  "license": "LicenseRef-RendRun-ProjectOwned",
+  "model": "model.glb",
+  "packageId": "pkg_e7e3d57fe4aaca0cd3a544bb",
+  "provenance": {
+    "origin": "authored"
+  },
+  "schema": "game_dev.asset_package.v1",
+  "validation": {
+    "errorCount": 0,
+    "passed": true,
+    "warningCount": 0
+  },
+  "version": "1.0.0"
+}

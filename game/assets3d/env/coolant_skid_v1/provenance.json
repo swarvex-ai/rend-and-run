@@ -1,0 +1,10 @@
+{
+  "notes": "Original Blender geometry and locally baked procedural color variation/roughness. No external or paid input. Generator SHA256 a026aeb31fa4264f3efbc7e92844763d893340ac0e77d55cffa8e33e7f143549",
+  "origin": "authored",
+  "schema": "game_dev.asset_provenance.v1",
+  "source": {
+    "bytes": 1178684,
+    "fileName": "model.glb",
+    "sha256": "b0b65de10f4262cb2c42bf44477a92398bd1e29efb784b0295b118cd795b01c9"
+  }
+}

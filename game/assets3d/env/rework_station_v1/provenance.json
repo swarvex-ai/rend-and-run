@@ -1,0 +1,9 @@
+{
+  "origin": "imported",
+  "schema": "game_dev.asset_provenance.v1",
+  "source": {
+    "bytes": 1079328,
+    "fileName": "rework_station.glb",
+    "sha256": "83e45a75bb1eef61bbf1b72d7998998d000f35b679b4b8e2f4f4a7edea5ae0e8"
+  }
+}

@@ -1,0 +1,51 @@
+extends SceneTree
+const LEDGER := preload("res://modules/equipment/equipment_ledger.gd")
+const PREFIX := preload("res://modules/equipment/prefix_ledger.gd")
+var failures := 0
+var checks := 0
+func check(label: String, ok: bool) -> void:
+	checks += 1
+	if not ok: failures += 1
+	print("PREFIX %s %s" % ["PASS" if ok else "FAIL", label])
+func _initialize() -> void:
+	var g := LEDGER.new()
+	g.credit(18);g.prefixes.credit_servo(2)
+	var before := g.export_state()
+	check("requires owned base", g.craft_module("servo_i").reason == "missing_base" and g.export_state() == before)
+	g.grant("robot_arm");g.equip_weapon("robot_arm");g.purchase("reinforced_arm")
+	check("tutorial purchase preserved", g.shards == 12 and g.owns("reinforced_arm") and not g.prefixes.owns_module("servo_i"))
+	check("unknown recipe cannot spend", not g.craft_module("servo_ii").ok and g.shards == 12 and g.prefixes.servo == 2)
+	check("exact two-resource price", g.craft_module("servo_i").ok and g.shards == 0 and g.prefixes.servo == 0)
+	before = g.export_state()
+	check("retry cannot charge twice", g.craft_module("servo_i").reason == "already_owned" and g.export_state() == before)
+	check("craft does not auto install", g.prefixes.installed("reinforced_arm").is_empty())
+	check("wrong base rejected", not g.install_module("robot_arm", "servo_i"))
+	check("unknown module rejected", not g.install_module("reinforced_arm", "impulse_i"))
+	check("install known module", g.install_module("reinforced_arm", "servo_i") and is_equal_approx(g.prefixes.recovery_multiplier("reinforced_arm"), .8))
+	check("unrelated base unchanged", g.prefixes.recovery_multiplier("robot_arm") == 1.0)
+	var h := LEDGER.new();h.import_state(g.export_state())
+	check("round trip preserves module", h.export_state() == g.export_state())
+	var saved := h.export_state();h.import_state(saved);h.import_state(h.export_state())
+	check("migration idempotent", saved == h.export_state())
+	var copy := h.export_state();copy.prefixes.modules.clear();copy.prefixes.installed.clear()
+	check("export is independent", h.prefixes.owns_module("servo_i") and h.prefixes.installed("reinforced_arm") == "servo_i")
+	check("uninstall retains module", h.install_module("reinforced_arm", "") and h.prefixes.owns_module("servo_i") and h.prefixes.recovery_multiplier("reinforced_arm") == 1.0)
+	check("reinstall free", h.install_module("reinforced_arm", "servo_i") and h.shards == 0 and h.prefixes.servo == 0)
+	var old := {"loadout_version":2,"shards":17,"owned":["robot_arm","reinforced_arm"],"equipped_weapon":"reinforced_arm"}
+	h.import_state(old)
+	check("old save preserves equipment and currency", h.shards == 17 and h.equipped_weapon() == "reinforced_arm" and h.prefixes.servo == 0)
+	before=h.export_state()
+	check("missing servo changes nothing", h.craft_module("servo_i").reason == "insufficient_servo" and before == h.export_state())
+	h.prefixes.credit_servo(2);h.shards=11;before=h.export_state()
+	check("missing shards changes nothing", h.craft_module("servo_i").reason == "insufficient_shards" and before == h.export_state())
+	for bad in [-1, 0.5, NAN, INF, "4", null, [], {}]:
+		check("invalid material "+str(bad), PREFIX.bounded_count(bad) == 0)
+	check("cap integer", PREFIX.bounded_count(999999999999) == PREFIX.CAP)
+	check("cap float before conversion", PREFIX.bounded_count(1e100) == PREFIX.CAP)
+	h.prefixes.import_state({"materials":{"servo":2.0},"modules":["future_prefix","servo_i","servo_i",12],"installed":{"reinforced_arm":"future_prefix"}})
+	check("future module preserved but inactive", h.prefixes.export_state().modules.size() == 2 and h.prefixes.recovery_multiplier("reinforced_arm") == 1.0)
+	h.import_state({"loadout_version":3,"owned":[],"prefixes":{"modules":["servo_i"],"installed":{"reinforced_arm":"servo_i"}}})
+	check("absent base cannot activate prefix", h.prefixes.owns_module("servo_i") and h.prefixes.installed("reinforced_arm").is_empty())
+	h.reset();check("reset removes prefix state", h.prefixes.servo == 0 and h.prefixes.export_state().modules.is_empty())
+	print("PREFIX SUMMARY checks=%d failures=%d" % [checks, failures])
+	quit(1 if failures else 0)

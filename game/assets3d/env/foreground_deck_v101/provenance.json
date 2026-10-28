@@ -1,0 +1,9 @@
+{
+  "origin": "imported",
+  "schema": "game_dev.asset_provenance.v1",
+  "source": {
+    "bytes": 717552,
+    "fileName": "foreground_deck.glb",
+    "sha256": "73692b921e15459856f4fc90248d612a1a9f4cbf3c3a4affbceca41fbc6d76d7"
+  }
+}

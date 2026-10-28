@@ -1,0 +1,26 @@
+P02 Art-Bible und technische Asset-Budgets — Lieferung v01
+Board gamedev / t_d10b056e
+
+Arbeitsgrundlage fertig; Nutzer-Designhoheit und spätere Ingame-Reviews bleiben bestehen.
+P02s zehn Kinder sind nachfolgende Produktionen und müssen nicht vor P02 fertig sein.
+
+Enthalten: ART_BIBLE.txt, budgets.json, reference_board.svg/png, FOLLOWUP_BRIEFS.txt,
+PROVENANCE.txt, Manifest und QA. Kein Spielcode, keine neuen 3D-Assets, keine Kosten.
+
+Hermie: per bestehendem SSH aus outputs/art_bible_p02_v01 abholen. Dokumente unter
+Repo docs/art/ versionieren, Referenztafel dort belassen; kein Runtime-Import notwendig.
+Alle zehn Folge-Briefs bei den jeweiligen Karten verwenden. Bestehende Abhängigkeiten
+beibehalten. Einzelne Kinder haben weitere Eltern und bleiben dann korrekt Todo.
+Budgets sind Review-Startwerte, keine sofortigen Import-Blocker und keine garantierten
+FPS-Werte. Kein vorhandenes Modell aufgrund der neuen Richtwerte blind verändern.
+Für echte Bild-/Spielgefühl-Abnahme bleibt neVs zuständig. Falls P02 selbst eine neue
+visuelle Zustimmung verlangt, Review statt eigenmächtig persönlicher Freigabe.
+
+QA: Rend-Identitätsrender geprüft, Referenztafel gerendert, Bestandstriangles und
+Texturgrößen direkt aus beiden GLBs gelesen. Vollständigkeit aller zehn Folge-Briefs
+und maschinenlesbarer Budgets geprüft. Keine Performance-Messung behauptet.
+
+Referenztafel neu rendern: rsvg-convert reference_board.svg -o reference_board.png
+Die SVG ist selbstständig, der bestehende Rend-Render ist eingebettet.
+Optionaler Build-Quelltext build_reference.py benötigt die ursprüngliche Desktop-
+Workspace-Struktur und den vorhandenen Hero-Render; SVG selbst ist portabel.

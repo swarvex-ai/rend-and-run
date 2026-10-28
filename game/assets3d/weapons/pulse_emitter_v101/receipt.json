@@ -1,0 +1,23 @@
+{
+  "completedAt": "2026-10-07T08:27:36.513Z",
+  "destination": {
+    "assetId": "rendrun_pulse_emitter",
+    "version": "1.0.1"
+  },
+  "evidence": {
+    "blenderNormalizationPerformed": false,
+    "gpuImportTestPerformed": false,
+    "humanVisualReviewPerformed": false,
+    "modelBytesCopiedAndHashed": true,
+    "policyValidationCompleted": true,
+    "staticInspectionCompleted": true
+  },
+  "manifestSha256": "568eda45c71c6e72a1120f01e21345c7efc21b10519c4c804416fecaaae03923",
+  "packageId": "pkg_018406a2acad05d6a1e293c4",
+  "schema": "game_dev.package_receipt.v1",
+  "source": {
+    "bytes": 32004,
+    "fileName": "model.glb",
+    "sha256": "72a1d938e80c65c03196a257e1d5de92e1c344e6a86ded45910371aa12440476"
+  }
+}

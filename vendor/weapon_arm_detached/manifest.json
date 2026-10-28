@@ -1,0 +1,45 @@
+{
+  "assetId": "weapon_arm_detached",
+  "category": "weapon",
+  "description": "Original procedural Blender mechanical humanoid forearm; Vision 2.0, no flesh/blood. Static held prop, 0 provider credits. Four constant PBR materials, no texture maps. Source and geometry report in delivery directory.",
+  "displayName": "weapon_arm_detached",
+  "files": [
+    {
+      "bytes": 383860,
+      "kind": "model",
+      "path": "model.glb",
+      "sha256": "0afdeb10fdf39d75f4c404235192aec7b4a2608b06e403c88b304f212c3ccace"
+    },
+    {
+      "bytes": 1666,
+      "kind": "metadata",
+      "path": "metadata.json",
+      "sha256": "4515355d463e3196c3e83ef3a825f09b882b17d8d8e5aa2225c643cb0929a65e"
+    },
+    {
+      "bytes": 235,
+      "kind": "provenance",
+      "path": "provenance.json",
+      "sha256": "05cb0884880ad29b497a801e02c031eb3af1833f0b1d4a74c3e949a30c046823"
+    },
+    {
+      "bytes": 2619,
+      "kind": "validation",
+      "path": "validation.json",
+      "sha256": "961527439c138053eeacdbaf49d8fea3a17f8c0882cb841b914542d18723177e"
+    }
+  ],
+  "license": "CC0-1.0",
+  "model": "model.glb",
+  "packageId": "pkg_4ee150d55a0cabd00deb81eb",
+  "provenance": {
+    "origin": "imported"
+  },
+  "schema": "game_dev.asset_package.v1",
+  "validation": {
+    "errorCount": 0,
+    "passed": true,
+    "warningCount": 0
+  },
+  "version": "1.0.0"
+}

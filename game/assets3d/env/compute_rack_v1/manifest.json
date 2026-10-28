@@ -1,0 +1,45 @@
+{
+  "assetId": "compute_rack",
+  "category": "environment_prop",
+  "description": "Original Blender populated clean-factory server rack: extruded uprights, cabinet panels, storage hot-swap trays, compute blades, recessed vents, captive screws, network switch ports and patch loops. Floor origin, +Z front, .85x2.7x1m. Seven shared material meshes, no collider. CC0-1.0 original geometry; no Meshy or third-party inputs. Replaces rejected UV-less rack delivery and runtime primitive rack.",
+  "displayName": "compute_rack",
+  "files": [
+    {
+      "bytes": 1843208,
+      "kind": "model",
+      "path": "model.glb",
+      "sha256": "f52be374004567e706f7b6a129e467ff42253411575963f2594af1b43c8661d8"
+    },
+    {
+      "bytes": 1912,
+      "kind": "metadata",
+      "path": "metadata.json",
+      "sha256": "c5ee982793aec5906d7ab525aaa9fc81447a2fe7df2212e107c70b6f560ccfe0"
+    },
+    {
+      "bytes": 229,
+      "kind": "provenance",
+      "path": "provenance.json",
+      "sha256": "07b5484e52e957f361e9e41b7017cfd4630bd432131e26e2ed2cb77475acd824"
+    },
+    {
+      "bytes": 2706,
+      "kind": "validation",
+      "path": "validation.json",
+      "sha256": "4cf5ddfe15b8ff673378c8cdf20f42a489eb8a441bd5da803b94589f8aec9d06"
+    }
+  ],
+  "license": "CC0-1.0",
+  "model": "model.glb",
+  "packageId": "pkg_274c7e182df80cdb356633b6",
+  "provenance": {
+    "origin": "imported"
+  },
+  "schema": "game_dev.asset_package.v1",
+  "validation": {
+    "errorCount": 0,
+    "passed": true,
+    "warningCount": 0
+  },
+  "version": "1.0.0"
+}

@@ -1,0 +1,45 @@
+{
+  "assetId": "rendrun_damaged_cable",
+  "category": "environment_prop",
+  "description": "Original project-owned damaged power junction with hanging cable. Y-up, front +Z, mount-center origin and spark_origin at cut end. Solid PBR materials, no UVs or textures; no collider or effects.",
+  "displayName": "rendrun-damaged-cable",
+  "files": [
+    {
+      "bytes": 41468,
+      "kind": "model",
+      "path": "model.glb",
+      "sha256": "864c79b9487bd9757d7d2ac6b2e2c7a2b946b434f2d407cac57a8427d93c292a"
+    },
+    {
+      "bytes": 1883,
+      "kind": "metadata",
+      "path": "metadata.json",
+      "sha256": "0740e36de943ad250e06810a832daf9e23fb5e208328b158dc5369b7c6d63b29"
+    },
+    {
+      "bytes": 468,
+      "kind": "provenance",
+      "path": "provenance.json",
+      "sha256": "70839ecc444877a9a0891dea32cfb93c641ffb4a926dee3e6d59e8db03e5f2aa"
+    },
+    {
+      "bytes": 2696,
+      "kind": "validation",
+      "path": "validation.json",
+      "sha256": "9d5e54d0580e852821f0f0434a61039137281c2c8902e45c40164a1af929b54e"
+    }
+  ],
+  "license": "LicenseRef-RendRun-ProjectOwned",
+  "model": "model.glb",
+  "packageId": "pkg_a2d4b375d0928c739bbf6832",
+  "provenance": {
+    "origin": "authored"
+  },
+  "schema": "game_dev.asset_package.v1",
+  "validation": {
+    "errorCount": 0,
+    "passed": true,
+    "warningCount": 0
+  },
+  "version": "1.0.0"
+}

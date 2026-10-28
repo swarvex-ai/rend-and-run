@@ -1,0 +1,34 @@
+{
+  "profile": "SkeletonProfileHumanoid",
+  "godot_bone_names": {
+    "Hips": "mixamorig_Hips",
+    "Spine": "mixamorig_Spine",
+    "Chest": "mixamorig_Spine1",
+    "UpperChest": "mixamorig_Spine2",
+    "Neck": "mixamorig_Neck",
+    "Head": "mixamorig_Head",
+    "LeftShoulder": "mixamorig_LeftShoulder",
+    "LeftUpperArm": "mixamorig_LeftArm",
+    "LeftLowerArm": "mixamorig_LeftForeArm",
+    "LeftHand": "mixamorig_LeftHand",
+    "RightShoulder": "mixamorig_RightShoulder",
+    "RightUpperArm": "mixamorig_RightArm",
+    "RightLowerArm": "mixamorig_RightForeArm",
+    "RightHand": "mixamorig_RightHand",
+    "LeftUpperLeg": "mixamorig_LeftUpLeg",
+    "LeftLowerLeg": "mixamorig_LeftLeg",
+    "LeftFoot": "mixamorig_LeftFoot",
+    "LeftToes": "mixamorig_LeftToeBase",
+    "RightUpperLeg": "mixamorig_RightUpLeg",
+    "RightLowerLeg": "mixamorig_RightLeg",
+    "RightFoot": "mixamorig_RightFoot",
+    "RightToes": "mixamorig_RightToeBase"
+  },
+  "unmapped_optional": [
+    "Root",
+    "eyes",
+    "jaw",
+    "fingers"
+  ],
+  "socket": "hand_r"
+}

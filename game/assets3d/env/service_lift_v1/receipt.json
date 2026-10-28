@@ -1,0 +1,23 @@
+{
+  "completedAt": "2026-10-08T01:31:18.718Z",
+  "destination": {
+    "assetId": "rendrun_service_lift_deck",
+    "version": "1.0.0"
+  },
+  "evidence": {
+    "blenderNormalizationPerformed": false,
+    "gpuImportTestPerformed": false,
+    "humanVisualReviewPerformed": false,
+    "modelBytesCopiedAndHashed": true,
+    "policyValidationCompleted": true,
+    "staticInspectionCompleted": true
+  },
+  "manifestSha256": "09a0ac16a53c5e17e3cd68e356fa6e42acf420b6ccc1f51f7dc6de08f6c7319e",
+  "packageId": "pkg_12825064d641c59b4593f756",
+  "schema": "game_dev.package_receipt.v1",
+  "source": {
+    "bytes": 107036,
+    "fileName": "model.glb",
+    "sha256": "23e9d7ae31098bd1a6398858ece8354251b11007e8f79dc0241b7b19a7793c54"
+  }
+}

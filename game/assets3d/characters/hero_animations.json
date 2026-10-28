@@ -1,0 +1,119 @@
+[
+  {
+    "name": "death",
+    "duration_s": 3.0,
+    "loop_recommended": false,
+    "horizontal_root_motion": false,
+    "purpose": "gameplay",
+    "source_frames": null,
+    "scale_constant_one": true
+  },
+  {
+    "name": "fall",
+    "duration_s": 0.333333343267441,
+    "loop_recommended": false,
+    "horizontal_root_motion": false,
+    "purpose": "gameplay",
+    "source_frames": [
+      62,
+      72
+    ],
+    "scale_constant_one": true
+  },
+  {
+    "name": "hit_react",
+    "duration_s": 1.66666662693024,
+    "loop_recommended": false,
+    "horizontal_root_motion": false,
+    "purpose": "gameplay",
+    "source_frames": null,
+    "scale_constant_one": true
+  },
+  {
+    "name": "idle",
+    "duration_s": 4.03333330154419,
+    "loop_recommended": true,
+    "horizontal_root_motion": false,
+    "purpose": "gameplay",
+    "source_frames": null,
+    "scale_constant_one": true
+  },
+  {
+    "name": "jump",
+    "duration_s": 0.533333361148834,
+    "loop_recommended": false,
+    "horizontal_root_motion": false,
+    "purpose": "gameplay",
+    "source_frames": [
+      40,
+      61
+    ],
+    "scale_constant_one": true
+  },
+  {
+    "name": "jump_full",
+    "duration_s": 5.93333339691162,
+    "loop_recommended": false,
+    "horizontal_root_motion": false,
+    "purpose": "untrimmed visual reference with vertical jump travel; do not combine with controller jump",
+    "source_frames": null,
+    "scale_constant_one": true
+  },
+  {
+    "name": "land",
+    "duration_s": 0.633333325386047,
+    "loop_recommended": false,
+    "horizontal_root_motion": false,
+    "purpose": "gameplay",
+    "source_frames": [
+      73,
+      109
+    ],
+    "scale_constant_one": true
+  },
+  {
+    "name": "parry",
+    "duration_s": 1.89999997615814,
+    "loop_recommended": false,
+    "horizontal_root_motion": false,
+    "purpose": "gameplay",
+    "source_frames": null,
+    "scale_constant_one": true
+  },
+  {
+    "name": "run",
+    "duration_s": 0.666666686534882,
+    "loop_recommended": true,
+    "horizontal_root_motion": false,
+    "purpose": "gameplay",
+    "source_frames": null,
+    "scale_constant_one": true
+  },
+  {
+    "name": "slash_heavy",
+    "duration_s": 3.23333334922791,
+    "loop_recommended": false,
+    "horizontal_root_motion": false,
+    "purpose": "gameplay",
+    "source_frames": null,
+    "scale_constant_one": true
+  },
+  {
+    "name": "slash_light",
+    "duration_s": 1.53333330154419,
+    "loop_recommended": false,
+    "horizontal_root_motion": false,
+    "purpose": "gameplay",
+    "source_frames": null,
+    "scale_constant_one": true
+  },
+  {
+    "name": "walk",
+    "duration_s": 1.06666672229767,
+    "loop_recommended": true,
+    "horizontal_root_motion": false,
+    "purpose": "gameplay",
+    "source_frames": null,
+    "scale_constant_one": true
+  }
+]

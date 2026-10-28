@@ -1,0 +1,18 @@
+# Godot 4 (.import and .uid files are versioned, per Godot docs)
+game/.godot/
+*.translation
+
+# Build-Artefakte (bewusst NICHT versioniert)
+builds/
+
+# Sonstiges
+*.tmp
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# Zwischenstände der Asset-Pipeline (reproduzierbar)
+asset_library/work/
+tools/.venv-tts/

@@ -1,0 +1,45 @@
+{
+  "assetId": "factory_rework_station",
+  "category": "environment_prop",
+  "description": "Original Blender repair station for first factory upgrade. 1.4m wide, 0.9m deep, worktop1.039m, front+Z and feetY0. Beveled folded alloy top, rubber working pad, three powder-coated drawers and recessed pulls, power-unit cooling fins, adjustment clamp, diagnostics tablet, contained actuator tray, cable. Decorative only, no collision, no paid provider jobs; original CC0-1.0 geometry.",
+  "displayName": "factory_rework_station",
+  "files": [
+    {
+      "bytes": 1079328,
+      "kind": "model",
+      "path": "model.glb",
+      "sha256": "83e45a75bb1eef61bbf1b72d7998998d000f35b679b4b8e2f4f4a7edea5ae0e8"
+    },
+    {
+      "bytes": 1913,
+      "kind": "metadata",
+      "path": "metadata.json",
+      "sha256": "78c75c291a5ff5047631ecb746538181b4082777ba54acc20a97349f57d127cb"
+    },
+    {
+      "bytes": 231,
+      "kind": "provenance",
+      "path": "provenance.json",
+      "sha256": "a8353e2885a7575dc626e0cae849c475783d860328a46575230527b3ee406acc"
+    },
+    {
+      "bytes": 2706,
+      "kind": "validation",
+      "path": "validation.json",
+      "sha256": "dd4db665f5ada9e5c7f707cb223dc0eb80453ce88f13894b7155fbd8fa76906c"
+    }
+  ],
+  "license": "CC0-1.0",
+  "model": "model.glb",
+  "packageId": "pkg_848f72bd6d03431a5bb5ed0c",
+  "provenance": {
+    "origin": "imported"
+  },
+  "schema": "game_dev.asset_package.v1",
+  "validation": {
+    "errorCount": 0,
+    "passed": true,
+    "warningCount": 0
+  },
+  "version": "1.0.0"
+}

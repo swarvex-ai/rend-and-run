@@ -1,0 +1,9 @@
+{
+  "origin": "imported",
+  "schema": "game_dev.asset_provenance.v1",
+  "source": {
+    "bytes": 734352,
+    "fileName": "factory_wall_finish.glb",
+    "sha256": "8038faf8203add7078cb837c4d62c8ed18d6deff2fb701fa4bf25f8ab59404bc"
+  }
+}

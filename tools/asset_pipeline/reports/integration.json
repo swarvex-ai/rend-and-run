@@ -1,0 +1,165 @@
+{
+  "result": "PASS",
+  "tests": [
+    {
+      "test": "hero_v05 real import",
+      "result": "PASS",
+      "qa": [
+        {
+          "path": "hero_rendrun.glb",
+          "checks": {
+            "bones": [
+              "mixamorig_Hips",
+              "mixamorig_LeftUpLeg",
+              "mixamorig_LeftLeg",
+              "mixamorig_LeftFoot",
+              "mixamorig_LeftToeBase",
+              "mixamorig_RightUpLeg",
+              "mixamorig_RightLeg",
+              "mixamorig_RightFoot",
+              "mixamorig_RightToeBase",
+              "mixamorig_Spine",
+              "mixamorig_Spine1",
+              "mixamorig_Spine2",
+              "mixamorig_LeftShoulder",
+              "mixamorig_LeftArm",
+              "mixamorig_LeftForeArm",
+              "mixamorig_LeftHand",
+              "mixamorig_RightShoulder",
+              "mixamorig_RightArm",
+              "mixamorig_RightForeArm",
+              "mixamorig_RightHand",
+              "hand_r",
+              "mixamorig_Neck",
+              "mixamorig_Head",
+              "mixamorig_head_end",
+              "mixamorig_headfront"
+            ],
+            "clips": [
+              "death",
+              "fall",
+              "hit_react",
+              "idle",
+              "jump",
+              "jump_full",
+              "land",
+              "parry",
+              "run",
+              "slash_combo_2",
+              "slash_heavy",
+              "slash_light",
+              "walk"
+            ],
+            "engine": "4.7.2-stable (arch_linux)",
+            "errors": [],
+            "front": [
+              1.0,
+              -2.57982833318238e-06,
+              3.30322045272169e-08
+            ],
+            "height_m": 1.69997406005859,
+            "manual_review": [
+              "Art quality and motion feel",
+              "Caps/severance in gameplay",
+              "Front direction for assets without front markers"
+            ],
+            "meshes": [
+              "hero_body"
+            ],
+            "result": "PASS",
+            "soles_y": 4.60475575891905e-07
+          }
+        }
+      ]
+    },
+    {
+      "test": "chaser_v01 real import",
+      "result": "PASS",
+      "qa": [
+        {
+          "path": "enemy_chaser.glb",
+          "checks": {
+            "bones": [
+              "mixamorig_Hips",
+              "mixamorig_LeftUpLeg",
+              "mixamorig_LeftLeg",
+              "mixamorig_LeftFoot",
+              "mixamorig_LeftToeBase",
+              "mixamorig_RightUpLeg",
+              "mixamorig_RightLeg",
+              "mixamorig_RightFoot",
+              "mixamorig_RightToeBase",
+              "mixamorig_Spine",
+              "mixamorig_Spine1",
+              "mixamorig_Spine2",
+              "mixamorig_LeftShoulder",
+              "mixamorig_LeftArm",
+              "mixamorig_LeftForeArm",
+              "mixamorig_LeftHand",
+              "sev_arm_left",
+              "mixamorig_RightShoulder",
+              "mixamorig_RightArm",
+              "mixamorig_RightForeArm",
+              "mixamorig_RightHand",
+              "mixamorig_Neck",
+              "mixamorig_Head",
+              "mixamorig_head_end",
+              "mixamorig_headfront"
+            ],
+            "clips": [
+              "run",
+              "walk"
+            ],
+            "engine": "4.7.2-stable (arch_linux)",
+            "errors": [],
+            "front": [
+              1.0,
+              5.70236920793832e-07,
+              1.21119656526503e-08
+            ],
+            "height_m": 0.899999678134918,
+            "manual_review": [
+              "Art quality and motion feel",
+              "Caps/severance in gameplay",
+              "Front direction for assets without front markers"
+            ],
+            "meshes": [
+              "arm_left_severable",
+              "body",
+              "cap_shoulder_left"
+            ],
+            "result": "PASS",
+            "soles_y": -2.42976796016592e-07
+          }
+        }
+      ]
+    },
+    {
+      "test": "Reject required_meshes",
+      "result": "PASS",
+      "rejection": "Godot validation failed: [\"Missing mesh: missing_mesh\"]"
+    },
+    {
+      "test": "Reject sockets",
+      "result": "PASS",
+      "rejection": "Godot validation failed: [\"Missing socket: missing_socket\"]"
+    },
+    {
+      "test": "Reject clips",
+      "result": "PASS",
+      "rejection": "Godot validation failed: [\"Missing clip: missing_clip\"]"
+    },
+    {
+      "test": "Reject height_m",
+      "result": "PASS",
+      "rejection": "Godot validation failed: [\"Height out of tolerance\"]"
+    },
+    {
+      "test": "Reject front_bones",
+      "result": "PASS",
+      "rejection": "Godot validation failed: [\"Front must point +X\"]"
+    }
+  ],
+  "ssh_transport": "Not tested here; gufo owns existing desktop SSH connection",
+  "game_integration": "Pending Hermie pull, repo commit and live project import"
+}

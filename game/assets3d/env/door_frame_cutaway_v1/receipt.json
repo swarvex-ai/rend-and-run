@@ -1,0 +1,23 @@
+{
+  "completedAt": "2026-10-08T18:22:15.955Z",
+  "destination": {
+    "assetId": "rendrun_door_frame_cutaway",
+    "version": "1.0.0"
+  },
+  "evidence": {
+    "blenderNormalizationPerformed": false,
+    "gpuImportTestPerformed": false,
+    "humanVisualReviewPerformed": false,
+    "modelBytesCopiedAndHashed": true,
+    "policyValidationCompleted": true,
+    "staticInspectionCompleted": true
+  },
+  "manifestSha256": "10de5a60ae5e84c75f0d49b97e57afe7280a6547d49670027fd2f4b2f781d875",
+  "packageId": "pkg_4925b826205e7e5f1b92caf5",
+  "schema": "game_dev.package_receipt.v1",
+  "source": {
+    "bytes": 109008,
+    "fileName": "model.glb",
+    "sha256": "ebb9d20c565615bdc7e96d88cd454a3bfd277d9a6dcf81b66c36e1f99b4dd976"
+  }
+}

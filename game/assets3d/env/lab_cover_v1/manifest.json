@@ -1,0 +1,45 @@
+{
+  "assetId": "rendrun_lab_cover",
+  "category": "environment_prop",
+  "description": "Original project-owned laboratory cover visual, all rights retained. Y-up floor origin,1.6x1.25x0.5m. Non-emissive PBR panels and safety top-edge locator. No collision; engine owns fixed existing collider.",
+  "displayName": "rendrun-lab-cover",
+  "files": [
+    {
+      "bytes": 21384,
+      "kind": "model",
+      "path": "model.glb",
+      "sha256": "8e0ceb21f1f4395ab4adc55ee4eeb0e62739799f53a08dc2011c3a1bd2095261"
+    },
+    {
+      "bytes": 1695,
+      "kind": "metadata",
+      "path": "metadata.json",
+      "sha256": "a0f59e210ec86b20345b1a4c6e54c9f02d53903eb4479af4e9739e14c4b79ba5"
+    },
+    {
+      "bytes": 386,
+      "kind": "provenance",
+      "path": "provenance.json",
+      "sha256": "bd483e80e134c7b8065f7fdf8d5361bd3fbc0d7ce7e678e562b099307a4109e7"
+    },
+    {
+      "bytes": 2578,
+      "kind": "validation",
+      "path": "validation.json",
+      "sha256": "e84e8ae5d94230319d9019af754820bdc4482428d3b9c002779c18aec1963e4b"
+    }
+  ],
+  "license": "LicenseRef-RendRun-ProjectOwned",
+  "model": "model.glb",
+  "packageId": "pkg_7c9501b97a8f9fe5c4c2c811",
+  "provenance": {
+    "origin": "authored"
+  },
+  "schema": "game_dev.asset_package.v1",
+  "validation": {
+    "errorCount": 0,
+    "passed": true,
+    "warningCount": 0
+  },
+  "version": "1.0.0"
+}

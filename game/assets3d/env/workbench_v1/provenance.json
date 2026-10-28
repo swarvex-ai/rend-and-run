@@ -1,0 +1,10 @@
+{
+  "notes": "Original Hermie H64 primitive generator corrected by Codex: scene cleanup, explicit selection, material gate, edge bevels. No external inputs. Generator SHA256 59bbc9f3a42d864eb45a82db34a4f7bddb1d6a2c32839ad3da315963296ca6ef",
+  "origin": "authored",
+  "schema": "game_dev.asset_provenance.v1",
+  "source": {
+    "bytes": 59136,
+    "fileName": "model.glb",
+    "sha256": "29f2024a6313295ba319498d466de56c7cf876031426c067e8ac148bf1985618"
+  }
+}

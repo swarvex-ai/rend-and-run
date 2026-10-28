@@ -1,0 +1,75 @@
+{
+  "assetId": "enemy_humanoid_light_rig",
+  "displayName": "enemy_humanoid_light_rig",
+  "inspection": {
+    "animationCount": 1,
+    "boundingBox": {
+      "max": [
+        0.007310154438018799,
+        0.0175,
+        0.002448418289422989
+      ],
+      "min": [
+        -0.007310154438018799,
+        0,
+        -0.002448418289422989
+      ],
+      "sizeMeters": [
+        0.014620308876037599,
+        0.0175,
+        0.004896836578845978
+      ]
+    },
+    "boundingBoxEmpty": false,
+    "fileBytes": 10771144,
+    "filePath": "model.glb",
+    "generator": "glTF-Transform v4.5.1",
+    "hasNormals": true,
+    "hasSkin": true,
+    "hasTangents": true,
+    "hasUVs": true,
+    "materialCount": 1,
+    "meshCount": 1,
+    "pbr": {
+      "hasBaseColorTexture": true,
+      "hasEmissiveTexture": false,
+      "hasMetallicRoughnessTexture": true,
+      "hasNormalTexture": true,
+      "hasOcclusionTexture": false
+    },
+    "primitiveCount": 1,
+    "sceneGraphFallback": false,
+    "textureCount": 3,
+    "textureResolutions": [
+      {
+        "bytes": 2553615,
+        "height": 2048,
+        "mimeType": "image/jpeg",
+        "name": "Image_2",
+        "width": 2048
+      },
+      {
+        "bytes": 3209871,
+        "height": 2048,
+        "mimeType": "image/jpeg",
+        "name": "Image_0",
+        "width": 2048
+      },
+      {
+        "bytes": 1944104,
+        "height": 2048,
+        "mimeType": "image/jpeg",
+        "name": "Image_1",
+        "width": 2048
+      }
+    ],
+    "triangleCount": 35000,
+    "undrawnMeshCount": 0,
+    "undrawnPrimitiveCount": 0,
+    "undrawnTriangleCount": 0,
+    "vertexCount": 40770,
+    "warnings": []
+  },
+  "license": "LicenseRef-Meshy-Paid",
+  "schema": "game_dev.asset_metadata.v1"
+}

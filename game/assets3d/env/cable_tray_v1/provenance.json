@@ -1,0 +1,10 @@
+{
+  "notes": "Original generator SHA256 652e9e2b0cd024876fa7af242c0ab3bbd933dadac99d91c6017925fda665630c; no paid provider assets.",
+  "origin": "authored",
+  "schema": "game_dev.asset_provenance.v1",
+  "source": {
+    "bytes": 106484,
+    "fileName": "model.glb",
+    "sha256": "92f17030664476202e813773b4a52ace2485c4df2e7943909c5161cd669c25fa"
+  }
+}

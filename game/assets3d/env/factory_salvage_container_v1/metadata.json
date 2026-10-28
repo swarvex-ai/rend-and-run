@@ -1,0 +1,57 @@
+{
+  "assetId": "factory_salvage_container",
+  "category": "environment_prop",
+  "description": "Original Blender clean-factory component transit case, intact and collapsed states. White enamel shell, graphite isolators/gasket, satin metal tray/recessed handles and amber compression latches.1872triangles,4sharedPBRmaterials,8meshes. BaseY0/front+Z,0.84x0.72x0.7165m. No collision, scripts, textures from providers, lights, timers or paid generation. Original CC0-1.0 geometry; builder tools/assets/build_factory_salvage_container.py. Existing gameplay adapter scales to0.65m crate footprint.",
+  "displayName": "factory_salvage_container",
+  "inspection": {
+    "animationCount": 0,
+    "boundingBox": {
+      "max": [
+        0.41999995708465576,
+        0.7199999690055847,
+        0.37049999833106995
+      ],
+      "min": [
+        -0.42000001668930054,
+        0,
+        -0.3460000157356262
+      ],
+      "sizeMeters": [
+        0.8399999737739563,
+        0.7199999690055847,
+        0.7165000140666962
+      ]
+    },
+    "boundingBoxEmpty": false,
+    "fileBytes": 145804,
+    "filePath": "model.glb",
+    "generator": "glTF-Transform v4.5.1",
+    "hasNormals": true,
+    "hasSkin": false,
+    "hasTangents": false,
+    "hasUVs": true,
+    "materialCount": 4,
+    "meshCount": 8,
+    "pbr": {
+      "hasBaseColorTexture": false,
+      "hasEmissiveTexture": false,
+      "hasMetallicRoughnessTexture": false,
+      "hasNormalTexture": false,
+      "hasOcclusionTexture": false
+    },
+    "primitiveCount": 8,
+    "sceneGraphFallback": false,
+    "textureCount": 0,
+    "textureResolutions": [],
+    "triangleCount": 1872,
+    "undrawnMeshCount": 0,
+    "undrawnPrimitiveCount": 0,
+    "undrawnTriangleCount": 0,
+    "vertexCount": 4032,
+    "warnings": [
+      "no base colour texture on any material: the asset is untextured and will read as flat colour"
+    ]
+  },
+  "license": "CC0-1.0",
+  "schema": "game_dev.asset_metadata.v1"
+}

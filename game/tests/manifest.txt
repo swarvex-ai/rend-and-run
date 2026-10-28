@@ -1,0 +1,142 @@
+# Test manifest — one line per script in game/tests/: <kind> <name> [ENV_FLAG] [VAR=value ...]
+# VAR=value pins a variant; otherwise *_OUTPUT/*_CAPTURE get paths and other read flags "1".
+# headless  SceneTree script, runs with --headless
+# window    SceneTree script that renders or captures; needs a display
+# hook      Node script started by the game when ENV_FLAG=1 (main/lab_route/start)
+# probe     measurement tool without pass/fail; run by hand
+# fixture   helper scene/script used by other tests
+# quarantine  failed on 2026-10-22 already before Vision 2.0 changes; re-baseline or retire
+# tools/run_tests.sh runs headless, window and hook entries; --quarantine adds the rest.
+quarantine arena_gate_integration
+fixture arm_contact_fixture
+headless arm_contact_runner
+headless arm_first_fight
+window arm_visual_capture
+quarantine attack_cadence_integration
+headless attack_cadence_smoke
+quarantine attack_cue_integration V41_TEST
+headless blood_spray_test
+window blood_visual_test
+headless brute_cleaver_check
+quarantine brute_commitment_test
+headless calibration_cycle
+hook checkpoint_feedback_test V35_TEST
+hook cleaver_integration_test V26_TEST
+fixture combat_hud_preview
+headless combat_hud_test
+probe combat_policy_probe
+hook completion_integration_test V30_TEST
+quarantine coolant_test V47_TEST
+quarantine crouch_combat_integration
+headless crouch_gait_integration
+headless damaged_cable_integration
+quarantine dash_visual_test
+headless death_cache_integration
+headless death_cache_smoke
+window death_grounding
+headless debris_pause_test
+quarantine duelist_footwork_test V44_TEST
+quarantine edge_warning_test V46_TEST
+probe encounter_probe
+headless energy_bolt_test
+quarantine equipment_integration_test V15_TEST
+headless expanded_world_integration
+headless factory_ambience_test
+window factory_visual_capture
+headless farming_guidance_test
+headless farming_input_playthrough
+headless feedback_layout_test
+quarantine feedback_priority_integration
+hook finisher_fallback_test V31_TEST
+headless first_room_loop
+headless first_room_playthrough
+quarantine guard_integration_test V14_TEST
+quarantine guard_spacing_test V48_TEST
+headless guard_state_test
+headless h39_atomic_writer_check
+hook hud_integration_test V24_TEST
+headless humanoid_finish_test
+headless interrupted_recovery_test
+headless jump_timing_probe
+window lab_visual_capture
+headless landing_dust_test
+hook landing_integration_test H19_TEST
+window light_humanoid_visual_capture
+headless light_severance
+quarantine loot_integration_test V13_TEST
+window loot_persistence_test
+quarantine machinery_chamber_integration
+headless metal_sparks_test
+headless mission_art_integration
+headless mission_extent_integration
+headless mission_teaching_integration
+probe mixed_combat_policy_probe
+hook movement_audio_test V33_TEST
+headless movement_quality_integration
+headless notstrom_migration_test
+headless notstrom_sequence_integration
+headless overseer_brace_integration
+quarantine overseer_integration
+hook pause_integration_test V28_TEST
+headless pause_menu_test
+quarantine persistence_v12_test
+headless prefix_ledger_test
+headless prefix_persistence_test
+headless prefix_save_guard_test
+headless prefix_transaction_test
+quarantine pressure_step_test
+quarantine projectile_lifetime_test V49_TEST
+headless pulse_emitter_check
+hook pulse_pack_test V50_TEST
+quarantine ranged_integration_test V17_TEST
+headless recovery_step_test
+headless relay_checkpoint_integration
+window robot_roster_visual_capture
+headless route_rewards_integration
+quarantine route_v12_test V12_TEST
+headless sector_complete_test
+quarantine security_pair_test V45_TEST
+quarantine service_lamp_integration
+quarantine service_return_integration
+headless servo_harvest_test
+headless servo_resume_test
+headless servo_run_ledger_test
+headless servo_trial_test
+headless servo_upgrade_test
+quarantine shard_pickup_integration
+headless shortcut_door_test
+quarantine shortcut_integration_test H16_TEST
+probe shortcut_traversal_probe
+headless slash_trail_test
+hook start_integration_test V29_TEST
+headless start_menu_test
+headless supply_crate_test
+headless supply_crate_visual_test
+headless vibroblade_visual_test
+headless vision_arm_integration
+quarantine workbench_integration
+headless workbench_prerequisite
+quarantine world_service_details_integration
+window impact_review_capture
+probe motion_review_capture
+headless depth_strip_test
+headless hound_test
+headless dog_arm_test
+headless depth_test
+headless prop_collision_test
+probe hit_pose_review
+window strike_review
+headless combat_spacing_test
+headless door_approach_test
+headless throwable_crate_test
+headless drone_kamikaze_test
+headless sentinel_test
+headless gun_test
+headless squad_test
+headless shield_test
+headless nav_test
+headless loadout_test
+headless ammo_test
+headless voice_test
+headless escape_events_test
+window rend_death_review

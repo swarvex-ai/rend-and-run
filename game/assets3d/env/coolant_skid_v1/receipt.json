@@ -1,0 +1,23 @@
+{
+  "completedAt": "2026-10-08T04:23:10.307Z",
+  "destination": {
+    "assetId": "rendrun_coolant_skid",
+    "version": "1.0.0"
+  },
+  "evidence": {
+    "blenderNormalizationPerformed": false,
+    "gpuImportTestPerformed": false,
+    "humanVisualReviewPerformed": false,
+    "modelBytesCopiedAndHashed": true,
+    "policyValidationCompleted": true,
+    "staticInspectionCompleted": true
+  },
+  "manifestSha256": "c6809036c0ea3290f401aab5e3af602e2bbf31d4043e06d7bd3fea032762b9e0",
+  "packageId": "pkg_e7e3d57fe4aaca0cd3a544bb",
+  "schema": "game_dev.package_receipt.v1",
+  "source": {
+    "bytes": 1178684,
+    "fileName": "model.glb",
+    "sha256": "b0b65de10f4262cb2c42bf44477a92398bd1e29efb784b0295b118cd795b01c9"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "assetId": "light_humanoid_normal_baked",
+  "category": "character",
+  "description": "Original Meshy rig with local Blender high-to-low tangent normal repair only; geometry,UVs,bones,weights,clips unchanged. Source719270 triangles to existing35000 target,2K+Y normal bake. No provider jobs. Full provenance bake-report.json and embedding-report.json retained in delivery.",
+  "displayName": "light_humanoid_normal_baked",
+  "files": [
+    {
+      "bytes": 16704924,
+      "kind": "model",
+      "path": "model.glb",
+      "sha256": "d4c405843c126077089325791f521666683152ca7d2ef44e45b7cf4587e0510e"
+    },
+    {
+      "bytes": 2095,
+      "kind": "metadata",
+      "path": "metadata.json",
+      "sha256": "7e002fcde733c3560859a4791ca02b49f109f88510655ae4a8e499fd223c0a3e"
+    },
+    {
+      "bytes": 227,
+      "kind": "provenance",
+      "path": "provenance.json",
+      "sha256": "b223314f24459f026d0bbe112bb879609b2bc49225770cb6c230167846f12526"
+    },
+    {
+      "bytes": 3579,
+      "kind": "validation",
+      "path": "validation.json",
+      "sha256": "9a4879b0bd4634cc47f821fef9dbf443a38e1fadd470633f42a193d242112918"
+    }
+  ],
+  "license": "LicenseRef-Meshy-Paid",
+  "model": "model.glb",
+  "packageId": "pkg_b8d001dea2bf0e4da808eda1",
+  "provenance": {
+    "origin": "imported"
+  },
+  "schema": "game_dev.asset_package.v1",
+  "validation": {
+    "errorCount": 0,
+    "passed": true,
+    "warningCount": 0
+  },
+  "version": "1.0.0"
+}

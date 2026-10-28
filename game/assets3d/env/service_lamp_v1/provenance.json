@@ -1,0 +1,10 @@
+{
+  "notes": "Original Blender geometry, no paid/provider assets. Source a32bccc8b6a7ec8e77b748b5964fb8056a764cd7a8c5bb199c64168156535c93",
+  "origin": "authored",
+  "schema": "game_dev.asset_provenance.v1",
+  "source": {
+    "bytes": 147840,
+    "fileName": "model.glb",
+    "sha256": "c64680df4b6dee996092df955d972e8babff3d21d28943a964e889f74818cc0b"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "origin": "imported",
+  "schema": "game_dev.asset_provenance.v1",
+  "source": {
+    "bytes": 383860,
+    "fileName": "weapon_arm_detached.glb",
+    "sha256": "0afdeb10fdf39d75f4c404235192aec7b4a2608b06e403c88b304f212c3ccace"
+  }
+}

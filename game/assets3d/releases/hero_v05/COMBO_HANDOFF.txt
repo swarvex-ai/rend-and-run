@@ -1,0 +1,10 @@
+REND KOMBO V05 – Gegenschnitt
+
+Ersetzt V04. Gleicher Clipname slash_combo_2, neue Bewegung und Zeiten.
+Erster Hieb slash_light bleibt unverändert. Zweiter Hieb verwendet die freigegebenen Körperposen des ersten Hiebs, mit entgegengesetzter Schlagrichtung im Trefferbereich. Kurzes Ausschwingen vor Richtungswechsel; kein Überkopf-Hieb aus slash_heavy.
+
+Frischen zweiten Tastendruck während 0–0,45s puffern. Bei 0,45s in slash_combo_2 wechseln, beginnend bei 0. Die Einstiegspose stimmt exakt überein. Kein zusätzlicher Crossfade an dieser Stelle. Delta-Zeit-Überhang übertragen.
+Ohne zweiten Tastendruck slash_light normal bis 0,85s fertigspielen.
+Anschlussdauer 0,75s, beide bei 1x, Gesamtkombo 1,20s. Vorgeschlagenes Trefferfenster zweiter Hieb 0,16–0,38s relativ zum Anschlussclip. Neue Trefferliste pro Hieb. Gedrückthalten zählt nicht als zweiter Druck.
+
+Wichtig: V04-Umschaltzeit 0,60s durch 0,45s ersetzen. Spielcode wurde hier nicht geändert; Hermie integriert Input-Puffer und Übergang. Vorschau zeigt die durchgehende Folge in Echtzeit.

@@ -1,0 +1,15 @@
+Herkunft / Rechte / Referenzen
+- ART_BIBLE.txt, FOLLOWUP_BRIEFS.txt, budgets.json und reference_board.svg:
+  hier neu erstellte Projekttexte und eigene geometrische Formstudien von Codex.
+  Keine extern heruntergeladenen Illustrationen, Markenlogos oder Texturen.
+- Rend-Bild in der Tafel: vorhandener Projektrender aus
+  outputs/hero_v01/previews/hero_portrait.jpg, unverändert eingebettet.
+  Modell-/Generierungshistorie gehört zur bestehenden Hero-Lieferung; diese Datei
+  erteilt keine neue Lizenz und behauptet keine rechtlich geprüfte Rechtekette.
+  Bestehende Meshy-/Quellenbelege bei späterer Veröffentlichung mitführen.
+- Referenztitel Shadow Complex, Dead Cells und Hollow Knight stammen aus Nutzer-
+  brief/GDD. Nur verbale Gestaltungsreferenzen, keine kopierten Inhalte enthalten.
+- Schrift in der SVG als Systemfont sans-serif referenziert, keine Fontdatei verteilt.
+- Neue gebührenpflichtige KI-Generierungen: keine. Neue Drittanbieter-Assets: keine.
+- Inputs: lokale docs/gdd.md, docs/scope-first-route.md, docs/assets-handoff.md,
+  outputs/production_plan_v01/roadmap.json und bestehende Hero-/Chaser-GLBs.

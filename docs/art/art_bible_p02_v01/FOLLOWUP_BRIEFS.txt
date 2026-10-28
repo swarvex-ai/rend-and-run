@@ -1,0 +1,30 @@
+P02 → Folgeproduktionen: konkrete Inputs, keine Erledigt-Meldungen
+Reihenfolge nach ALLEN Eltern laut Board; P02 allein entsperrt nicht jede Karte.
+
+P08 Labor-Kit: P07-Greybox abwarten; zuerst Boden 2/4 m, Plattform, Wand, Türrahmen,
+Schacht. 0,5-m-Raster, Kantenlesbarkeit, gemeinsame Trim-Palette. Abnahme: zwei
+Module nahtlos nebeneinander, Sprung-/Türmaße in Testszene, Material-/Trianglebericht.
+P10 Hintergründe: drei getrennte Tiefenschichten mit ruhigem Zentrum; Variation für
+R0–R6. P07-Kameraräume berücksichtigen. Abnahme: Held und Landekante bei 720p lesbar.
+P12 Props: acht priorisierte Labor-Familien aus Art-Bible §5; interaktiv vs dekorativ
+unterscheidbar. Abnahme: Inventarliste, Pivot-/Maßtabelle, intakt/Bruch paarweise geprüft.
+P15 Chaser: Bestand erhalten, natürliche Bewegung und Trennstelle schärfen. Vier
+Texturen 2048×2176 als Optimierungsbefund aufnehmen. Abnahme: Schulter geschlossen,
+Arm getrennt exportiert, Walk/Run + verlangte Kampfclips mit 1×-Vorschau.
+P20 schwere Klinge: Waffenkontrakt P19/P06 abwarten; breite Silhouette, eigener
+Gewichtswechsel. Abnahme: klare Unterscheidung vom Startschwert, definierter Griff,
+zugehörige leichte/schwere Hiebe ohne Speed-up-Trick. Nicht Meilenstein-1-Pflicht.
+P22 VFX: P06/P15 berücksichtigen; Blut-/Metall-Treffer, Schulter-Ausstoß, sparsame
+Decals. Abnahme: Telegraph trotz VFX sichtbar, Partikel/Decal-Zahlen protokolliert.
+P24 Audio: Ereignisliste für Schritte/Schwert/Materialtreffer/Verlust/Tod/Kiosk,
+Laborbett und Kampfloop, Varianten und Loudness-Review. Abnahme: lizenzierter Ursprung
+pro Datei, Loop ohne Klick, hörbare Angriffswarnung im Mischkampf. Budget vor Kauf.
+P29 Boss: P28-Moveset vor Modellverfeinerung; Schulter-Asymmetrie, Raum für zwei
+Phasen ohne Silhouettenverlust. Abnahme: Sideview je Telegraph, Rig-/Clipvertrag,
+45k-Ziel plus Abweichungsbericht, keine nicht benötigten Detailbewegungen produzieren.
+P34 Außenkit: P33-Gebietsplan abwarten; Felsgrößen und Anschlüsse aus Greybox,
+Petrol/Kupfer-Laboreinbauten als verbindendes Motiv. Abnahme: Übergang zum Labor
+visuell plausibel; begehbare Felskanten unterscheiden sich von Hintergrundfelsen.
+P40 Traversal: P37-/P06-Kontaktverträge abwarten; Hände/Füße, Dauer, Loop/Exit und
+in-place/root-motion pro Clip deklarieren. Abnahme: Contact-Sheet + 1×-Video und
+Integrationstest mit tatsächlichem Ledge-/Wall-Abstand. Kein spekulatives Bewegungsset.

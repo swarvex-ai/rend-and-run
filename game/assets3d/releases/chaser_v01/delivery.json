@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "delivery_id": "chaser_v01",
+  "provenance": "Explicit new baseline from local files; not historic verification",
+  "assets": [
+    {
+      "path": "enemy_chaser.glb",
+      "contract": "contracts/0.json"
+    }
+  ],
+  "files": {
+    "contracts/0.json": {
+      "bytes": 1321,
+      "sha256": "7d231b1ab453ff7501840a60b152d21f41ebcf05cf1163c22948d75abcbca42f"
+    },
+    "enemy_chaser.glb": {
+      "bytes": 21689516,
+      "sha256": "3a9c8e89fc54315c9faa728ed13d59d6655b84534e764f7145f010474ad61b5d"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "completedAt": "2026-10-07T07:11:56.977Z",
+  "destination": {
+    "assetId": "rendrun_pulse_guard_pack",
+    "version": "1.0.0"
+  },
+  "evidence": {
+    "blenderNormalizationPerformed": false,
+    "gpuImportTestPerformed": false,
+    "humanVisualReviewPerformed": false,
+    "modelBytesCopiedAndHashed": true,
+    "policyValidationCompleted": true,
+    "staticInspectionCompleted": true
+  },
+  "manifestSha256": "b95c5abc04e7b9b7816f004afb6dd783622f8f84520c1535887d36bef7c1020d",
+  "packageId": "pkg_accaa660c3583efbd221e8a9",
+  "schema": "game_dev.package_receipt.v1",
+  "source": {
+    "bytes": 30648,
+    "fileName": "pulse_guard_pack.glb",
+    "sha256": "11b52dd1063163e413c22953dcad14fbe229e4130ced6a31b7ffbfb2a103ddfa"
+  }
+}

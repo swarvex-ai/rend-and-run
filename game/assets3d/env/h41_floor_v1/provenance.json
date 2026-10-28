@@ -1,0 +1,10 @@
+{
+  "notes": "Hermie original procedural geometry corrected by Codex: actual tread/bolt cutouts, joined mesh, corrected Godot top-plane report. No external samples or paid provider. Source generator SHA256 219edce88e862647cd1e8649d01452fcf3f8f1499debb01bdf0cc615782e4b57",
+  "origin": "authored",
+  "schema": "game_dev.asset_provenance.v1",
+  "source": {
+    "bytes": 34064,
+    "fileName": "H41_floor_tile.glb",
+    "sha256": "76aaed0a8c49302fc8fe85359df3b59875ce335879a790ac23fd9f92184894ea"
+  }
+}

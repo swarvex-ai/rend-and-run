@@ -1,0 +1,9 @@
+{
+  "origin": "imported",
+  "schema": "game_dev.asset_provenance.v1",
+  "source": {
+    "bytes": 2270884,
+    "fileName": "calibration_cell.glb",
+    "sha256": "84013954337c44df68559c1fb9860793386a3d3eb7d983be3182ecaa80042516"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "completedAt": "2026-10-11T10:47:31.370Z",
+  "destination": {
+    "assetId": "weapon_arm_detached",
+    "version": "1.0.0"
+  },
+  "evidence": {
+    "blenderNormalizationPerformed": false,
+    "gpuImportTestPerformed": false,
+    "humanVisualReviewPerformed": false,
+    "modelBytesCopiedAndHashed": true,
+    "policyValidationCompleted": true,
+    "staticInspectionCompleted": true
+  },
+  "manifestSha256": "c8997063f673fc7c4882465984644d5dbf50287e7535d3d38aba47f5abf436be",
+  "packageId": "pkg_4ee150d55a0cabd00deb81eb",
+  "schema": "game_dev.package_receipt.v1",
+  "source": {
+    "bytes": 383860,
+    "fileName": "weapon_arm_detached.glb",
+    "sha256": "0afdeb10fdf39d75f4c404235192aec7b4a2608b06e403c88b304f212c3ccace"
+  }
+}

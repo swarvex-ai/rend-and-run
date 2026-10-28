@@ -1,0 +1,77 @@
+{
+  "assetId": "light_humanoid_normal_baked",
+  "category": "character",
+  "description": "Original Meshy rig with local Blender high-to-low tangent normal repair only; geometry,UVs,bones,weights,clips unchanged. Source719270 triangles to existing35000 target,2K+Y normal bake. No provider jobs. Full provenance bake-report.json and embedding-report.json retained in delivery.",
+  "displayName": "light_humanoid_normal_baked",
+  "inspection": {
+    "animationCount": 1,
+    "boundingBox": {
+      "max": [
+        0.007310154438018799,
+        0.0175,
+        0.002448418289422989
+      ],
+      "min": [
+        -0.007310154438018799,
+        0,
+        -0.002448418289422989
+      ],
+      "sizeMeters": [
+        0.014620308876037599,
+        0.0175,
+        0.004896836578845978
+      ]
+    },
+    "boundingBoxEmpty": false,
+    "fileBytes": 16704924,
+    "filePath": "model.glb",
+    "generator": "glTF-Transform v4.5.1",
+    "hasNormals": true,
+    "hasSkin": true,
+    "hasTangents": true,
+    "hasUVs": true,
+    "materialCount": 1,
+    "meshCount": 1,
+    "pbr": {
+      "hasBaseColorTexture": true,
+      "hasEmissiveTexture": false,
+      "hasMetallicRoughnessTexture": true,
+      "hasNormalTexture": true,
+      "hasOcclusionTexture": false
+    },
+    "primitiveCount": 1,
+    "sceneGraphFallback": false,
+    "textureCount": 3,
+    "textureResolutions": [
+      {
+        "bytes": 5933699,
+        "height": 2048,
+        "mimeType": "image/png",
+        "name": "LightHumanoidHighToLowNormal",
+        "width": 2048
+      },
+      {
+        "bytes": 3209871,
+        "height": 2048,
+        "mimeType": "image/jpeg",
+        "name": "Image_0",
+        "width": 2048
+      },
+      {
+        "bytes": 1944104,
+        "height": 2048,
+        "mimeType": "image/jpeg",
+        "name": "Image_1",
+        "width": 2048
+      }
+    ],
+    "triangleCount": 35000,
+    "undrawnMeshCount": 0,
+    "undrawnPrimitiveCount": 0,
+    "undrawnTriangleCount": 0,
+    "vertexCount": 40770,
+    "warnings": []
+  },
+  "license": "LicenseRef-Meshy-Paid",
+  "schema": "game_dev.asset_metadata.v1"
+}

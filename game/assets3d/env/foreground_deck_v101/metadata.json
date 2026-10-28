@@ -1,0 +1,58 @@
+{
+  "assetId": "factory_foreground_deck",
+  "category": "environment_prop",
+  "description": "Original Blender-authored three-metre foreground service deck for first factory: satin access plates, countersunk fasteners, beveled front frame, recessed amber guide, actual vent louvers and access hatch. Floor top Y0, extends Z1.92 to3.01. Decorative only, unchanged collision. CC0-1.0 original geometry; no external assets/provider jobs.",
+  "displayName": "factory_foreground_deck",
+  "inspection": {
+    "animationCount": 0,
+    "boundingBox": {
+      "max": [
+        1.4900000095367432,
+        0.002499997615814209,
+        3.0350000262260437
+      ],
+      "min": [
+        -1.4900000095367432,
+        -0.7300000078976154,
+        1.9200001060962677
+      ],
+      "sizeMeters": [
+        2.9800000190734863,
+        0.7325000055134296,
+        1.114999920129776
+      ]
+    },
+    "boundingBoxEmpty": false,
+    "fileBytes": 717552,
+    "filePath": "model.glb",
+    "generator": "glTF-Transform v4.5.1",
+    "hasNormals": true,
+    "hasSkin": false,
+    "hasTangents": false,
+    "hasUVs": true,
+    "materialCount": 5,
+    "meshCount": 5,
+    "pbr": {
+      "hasBaseColorTexture": false,
+      "hasEmissiveTexture": false,
+      "hasMetallicRoughnessTexture": false,
+      "hasNormalTexture": false,
+      "hasOcclusionTexture": false
+    },
+    "primitiveCount": 5,
+    "sceneGraphFallback": false,
+    "textureCount": 0,
+    "textureResolutions": [],
+    "triangleCount": 10028,
+    "undrawnMeshCount": 0,
+    "undrawnPrimitiveCount": 0,
+    "undrawnTriangleCount": 0,
+    "vertexCount": 20352,
+    "warnings": [
+      "glTF reader: Missing optional extension, \"KHR_materials_emissive_strength\".",
+      "no base colour texture on any material: the asset is untextured and will read as flat colour"
+    ]
+  },
+  "license": "CC0-1.0",
+  "schema": "game_dev.asset_metadata.v1"
+}

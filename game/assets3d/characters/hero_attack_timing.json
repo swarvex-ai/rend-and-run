@@ -1,0 +1,23 @@
+{
+  "slash_light": {
+    "duration_s": 0.45,
+    "playback_speed": 1.0,
+    "startup_s": 0.13,
+    "active_start_s": 0.13,
+    "active_end_s": 0.24,
+    "recovery_start_s": 0.24,
+    "recovery_duration_s": 0.21,
+    "combo_cancel_from_s": 0.27,
+    "impact_reference_s": 0.18
+  },
+  "slash_heavy": {
+    "duration_s": 0.75,
+    "playback_speed": 1.0,
+    "startup_s": 0.3,
+    "active_start_s": 0.3,
+    "active_end_s": 0.43,
+    "recovery_start_s": 0.43,
+    "recovery_duration_s": 0.32,
+    "impact_reference_s": 0.36
+  }
+}

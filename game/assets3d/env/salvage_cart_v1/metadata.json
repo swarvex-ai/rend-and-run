@@ -1,0 +1,57 @@
+{
+  "assetId": "salvage_cart",
+  "category": "environment_prop",
+  "description": "Original Blender mobile clean-lab salvage cart. Stainless folded trays, rubber inserts, enamel drawer, captive fasteners, caster wheels and push handle. Metres, bottomY0, top tray .81m, front+Z. 8920tri/5material meshes. CC0-1.0 original geometry, no third-party inputs, no paid jobs. Replaces primitive first-arm pickup display; no collider.",
+  "displayName": "salvage_cart",
+  "inspection": {
+    "animationCount": 0,
+    "boundingBox": {
+      "max": [
+        0.5149999856948853,
+        0.9650001370427896,
+        0.2920000679025667
+      ],
+      "min": [
+        -0.4749999940395355,
+        -9.550380521833324e-8,
+        -0.29199995857222394
+      ],
+      "sizeMeters": [
+        0.9899999797344208,
+        0.9650002325465948,
+        0.5840000264747907
+      ]
+    },
+    "boundingBoxEmpty": false,
+    "fileBytes": 628056,
+    "filePath": "model.glb",
+    "generator": "glTF-Transform v4.5.1",
+    "hasNormals": true,
+    "hasSkin": false,
+    "hasTangents": false,
+    "hasUVs": true,
+    "materialCount": 5,
+    "meshCount": 5,
+    "pbr": {
+      "hasBaseColorTexture": false,
+      "hasEmissiveTexture": false,
+      "hasMetallicRoughnessTexture": false,
+      "hasNormalTexture": false,
+      "hasOcclusionTexture": false
+    },
+    "primitiveCount": 5,
+    "sceneGraphFallback": false,
+    "textureCount": 0,
+    "textureResolutions": [],
+    "triangleCount": 8920,
+    "undrawnMeshCount": 0,
+    "undrawnPrimitiveCount": 0,
+    "undrawnTriangleCount": 0,
+    "vertexCount": 17808,
+    "warnings": [
+      "no base colour texture on any material: the asset is untextured and will read as flat colour"
+    ]
+  },
+  "license": "CC0-1.0",
+  "schema": "game_dev.asset_metadata.v1"
+}

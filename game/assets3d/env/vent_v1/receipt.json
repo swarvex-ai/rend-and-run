@@ -1,0 +1,23 @@
+{
+  "completedAt": "2026-10-08T18:18:15.804Z",
+  "destination": {
+    "assetId": "rendrun_vent",
+    "version": "1.0.0"
+  },
+  "evidence": {
+    "blenderNormalizationPerformed": false,
+    "gpuImportTestPerformed": false,
+    "humanVisualReviewPerformed": false,
+    "modelBytesCopiedAndHashed": true,
+    "policyValidationCompleted": true,
+    "staticInspectionCompleted": true
+  },
+  "manifestSha256": "65be35f606d0ce92b990732cff962a059c0ab0c75a29c0ccffa928a8450c287b",
+  "packageId": "pkg_cdf32a369f036649399fe055",
+  "schema": "game_dev.package_receipt.v1",
+  "source": {
+    "bytes": 110004,
+    "fileName": "model.glb",
+    "sha256": "a2e5cc368a347e323a54a8127f63efa30741761c7f2be788f1ebdddfacb2c723"
+  }
+}

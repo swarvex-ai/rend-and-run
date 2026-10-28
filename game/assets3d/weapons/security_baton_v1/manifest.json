@@ -1,0 +1,45 @@
+{
+  "assetId": "security_baton",
+  "category": "weapon",
+  "description": "Original local Blender security baton for existing light guard.1784tri4materials.Grip origin,+Y,old sword bounds; runtime0.58scale. Visual replacement only, no new player weapon/damage/timing/range. CC0 original geometry, no provider assets.",
+  "displayName": "security_baton",
+  "files": [
+    {
+      "bytes": 118336,
+      "kind": "model",
+      "path": "model.glb",
+      "sha256": "a26287bb3bbe88cca645538d7cc3dd8c95663be52a5f8ec5fce6fd5e0e9d9fbf"
+    },
+    {
+      "bytes": 1677,
+      "kind": "metadata",
+      "path": "metadata.json",
+      "sha256": "0f6cc837751d5ef7bea8e1df68db5d44787de61fe83caf070f0ddeee5eaa6c94"
+    },
+    {
+      "bytes": 221,
+      "kind": "provenance",
+      "path": "provenance.json",
+      "sha256": "0f5ce9a9b306f27656e7b9ef6166d4656b12372ac8d1eca602ecadee35059b83"
+    },
+    {
+      "bytes": 2617,
+      "kind": "validation",
+      "path": "validation.json",
+      "sha256": "677291d07fde76002d3608d9376d51c3ffe0c41710998358fbbdb8eccfef86d5"
+    }
+  ],
+  "license": "CC0-1.0",
+  "model": "model.glb",
+  "packageId": "pkg_b7cba5eb7e1add558c619d4d",
+  "provenance": {
+    "origin": "imported"
+  },
+  "schema": "game_dev.asset_package.v1",
+  "validation": {
+    "errorCount": 0,
+    "passed": true,
+    "warningCount": 0
+  },
+  "version": "1.0.0"
+}

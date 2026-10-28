@@ -1,0 +1,23 @@
+{
+  "completedAt": "2026-10-11T17:12:32.430Z",
+  "destination": {
+    "assetId": "factory_wall_finish",
+    "version": "1.0.0"
+  },
+  "evidence": {
+    "blenderNormalizationPerformed": false,
+    "gpuImportTestPerformed": false,
+    "humanVisualReviewPerformed": false,
+    "modelBytesCopiedAndHashed": true,
+    "policyValidationCompleted": true,
+    "staticInspectionCompleted": true
+  },
+  "manifestSha256": "d536d567bbea8781cf9582ec34290a41952f279339ee03fcd42a8ec4174b152b",
+  "packageId": "pkg_3bf0e27228b913576c707f07",
+  "schema": "game_dev.package_receipt.v1",
+  "source": {
+    "bytes": 734352,
+    "fileName": "factory_wall_finish.glb",
+    "sha256": "8038faf8203add7078cb837c4d62c8ed18d6deff2fb701fa4bf25f8ab59404bc"
+  }
+}

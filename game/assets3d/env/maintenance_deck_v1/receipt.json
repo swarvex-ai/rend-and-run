@@ -1,0 +1,23 @@
+{
+  "completedAt": "2026-10-11T16:55:11.508Z",
+  "destination": {
+    "assetId": "maintenance_deck",
+    "version": "1.0.0"
+  },
+  "evidence": {
+    "blenderNormalizationPerformed": false,
+    "gpuImportTestPerformed": false,
+    "humanVisualReviewPerformed": false,
+    "modelBytesCopiedAndHashed": true,
+    "policyValidationCompleted": true,
+    "staticInspectionCompleted": true
+  },
+  "manifestSha256": "b732d3bfb89159b27aedb4f6ea1efe9f367b67c222c889c059dd782138f4ca19",
+  "packageId": "pkg_ac8b72e8b712cca637714f3b",
+  "schema": "game_dev.package_receipt.v1",
+  "source": {
+    "bytes": 424404,
+    "fileName": "maintenance_deck.glb",
+    "sha256": "b4b7d76dde49b4bd1da8296a2aac50d18836afdb178fd3767170e960f206cb80"
+  }
+}

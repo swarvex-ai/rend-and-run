@@ -1,0 +1,23 @@
+{
+  "completedAt": "2026-10-07T09:06:53.020Z",
+  "destination": {
+    "assetId": "rendrun_lab_cover",
+    "version": "1.0.0"
+  },
+  "evidence": {
+    "blenderNormalizationPerformed": false,
+    "gpuImportTestPerformed": false,
+    "humanVisualReviewPerformed": false,
+    "modelBytesCopiedAndHashed": true,
+    "policyValidationCompleted": true,
+    "staticInspectionCompleted": true
+  },
+  "manifestSha256": "305a9d1918febe3939cd50672ce497e9db8b4e3060ff8257876cf41b4cd2f5fd",
+  "packageId": "pkg_7c9501b97a8f9fe5c4c2c811",
+  "schema": "game_dev.package_receipt.v1",
+  "source": {
+    "bytes": 21384,
+    "fileName": "model.glb",
+    "sha256": "8e0ceb21f1f4395ab4adc55ee4eeb0e62739799f53a08dc2011c3a1bd2095261"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "completedAt": "2026-10-11T16:07:47.379Z",
+  "destination": {
+    "assetId": "factory_calibration_cell",
+    "version": "1.0.0"
+  },
+  "evidence": {
+    "blenderNormalizationPerformed": false,
+    "gpuImportTestPerformed": false,
+    "humanVisualReviewPerformed": false,
+    "modelBytesCopiedAndHashed": true,
+    "policyValidationCompleted": true,
+    "staticInspectionCompleted": true
+  },
+  "manifestSha256": "21d062032876e57ab585b72719e76a529c7f6d80f1b094cee9e3d9e4f2af1521",
+  "packageId": "pkg_04a97e7bb4d42324f6114fc0",
+  "schema": "game_dev.package_receipt.v1",
+  "source": {
+    "bytes": 2270884,
+    "fileName": "calibration_cell.glb",
+    "sha256": "84013954337c44df68559c1fb9860793386a3d3eb7d983be3182ecaa80042516"
+  }
+}

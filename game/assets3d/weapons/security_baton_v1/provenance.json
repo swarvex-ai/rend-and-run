@@ -1,0 +1,9 @@
+{
+  "origin": "imported",
+  "schema": "game_dev.asset_provenance.v1",
+  "source": {
+    "bytes": 118336,
+    "fileName": "model.glb",
+    "sha256": "a26287bb3bbe88cca645538d7cc3dd8c95663be52a5f8ec5fce6fd5e0e9d9fbf"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "assetId": "rendrun_first_room_floor",
+  "category": "architecture",
+  "description": "Original project-owned procedural floor. All rights retained; no public license granted. Three material surfaces, actual recessed tread strips and bolt pockets.",
+  "displayName": "rendrun-first-room-floor",
+  "files": [
+    {
+      "bytes": 34064,
+      "kind": "model",
+      "path": "model.glb",
+      "sha256": "76aaed0a8c49302fc8fe85359df3b59875ce335879a790ac23fd9f92184894ea"
+    },
+    {
+      "bytes": 1572,
+      "kind": "metadata",
+      "path": "metadata.json",
+      "sha256": "631b7d8ccf1dc6e466b0078856a41a8c3a1ad110003a6897b273ee5ce1710a84"
+    },
+    {
+      "bytes": 500,
+      "kind": "provenance",
+      "path": "provenance.json",
+      "sha256": "4f1c58c827aefd231a473f6c028ac09121dc0b9215a676708351a49b3911d159"
+    },
+    {
+      "bytes": 2779,
+      "kind": "validation",
+      "path": "validation.json",
+      "sha256": "a04e875c506ccbfc4e20465fe49007cbc61a0d78f36e7a2329670a2f2a13eb08"
+    }
+  ],
+  "license": "LicenseRef-RendRun-ProjectOwned",
+  "model": "model.glb",
+  "packageId": "pkg_a40d4ebf3d8eb504efd36bc1",
+  "provenance": {
+    "origin": "authored"
+  },
+  "schema": "game_dev.asset_package.v1",
+  "validation": {
+    "errorCount": 0,
+    "passed": true,
+    "warningCount": 0
+  },
+  "version": "1.0.0"
+}

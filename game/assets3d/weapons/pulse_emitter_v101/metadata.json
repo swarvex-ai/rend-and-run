@@ -1,0 +1,58 @@
+{
+  "assetId": "rendrun_pulse_emitter",
+  "category": "weapon",
+  "description": "Original project-owned pulse emitter. All rights retained. Grip origin, barrel +Y, side +Z; Muzzle (0,.700,0). Flat PBR materials, separately named charge_cyan.",
+  "displayName": "rendrun-pulse-emitter",
+  "inspection": {
+    "animationCount": 0,
+    "boundingBox": {
+      "max": [
+        0.08799999952316284,
+        0.699999988079071,
+        0.052000001072883606
+      ],
+      "min": [
+        -0.06599999964237213,
+        -0.10000000149011612,
+        -0.052000001072883606
+      ],
+      "sizeMeters": [
+        0.15399999916553497,
+        0.7999999895691872,
+        0.10400000214576721
+      ]
+    },
+    "boundingBoxEmpty": false,
+    "fileBytes": 32004,
+    "filePath": "model.glb",
+    "generator": "glTF-Transform v4.5.1",
+    "hasNormals": true,
+    "hasSkin": false,
+    "hasTangents": false,
+    "hasUVs": false,
+    "materialCount": 4,
+    "meshCount": 1,
+    "pbr": {
+      "hasBaseColorTexture": false,
+      "hasEmissiveTexture": false,
+      "hasMetallicRoughnessTexture": false,
+      "hasNormalTexture": false,
+      "hasOcclusionTexture": false
+    },
+    "primitiveCount": 4,
+    "sceneGraphFallback": false,
+    "textureCount": 0,
+    "textureResolutions": [],
+    "triangleCount": 612,
+    "undrawnMeshCount": 0,
+    "undrawnPrimitiveCount": 0,
+    "undrawnTriangleCount": 0,
+    "vertexCount": 1032,
+    "warnings": [
+      "4 of 4 primitives have no TEXCOORD_0: the mesh cannot be textured or retextured until it is UV unwrapped",
+      "no base colour texture on any material: the asset is untextured and will read as flat colour"
+    ]
+  },
+  "license": "LicenseRef-RendRun-ProjectOwned",
+  "schema": "game_dev.asset_metadata.v1"
+}

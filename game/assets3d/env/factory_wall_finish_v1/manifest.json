@@ -1,0 +1,45 @@
+{
+  "assetId": "factory_wall_finish",
+  "category": "environment_prop",
+  "description": "Original local Blender cladding for existing calibration bays. Pearl powdercoat panels, narrow expansion seams, service hatch, recessed captive fasteners, sill cap and right pier. 5.9m bay pitch /4.3m height/front+Z, no collision. Authored CC0-1.0 geometry; no provider jobs or external textures.",
+  "displayName": "factory_wall_finish",
+  "files": [
+    {
+      "bytes": 734352,
+      "kind": "model",
+      "path": "model.glb",
+      "sha256": "8038faf8203add7078cb837c4d62c8ed18d6deff2fb701fa4bf25f8ab59404bc"
+    },
+    {
+      "bytes": 1835,
+      "kind": "metadata",
+      "path": "metadata.json",
+      "sha256": "a28e2c77b4a4a873ee81df5db79e489ec91e5bfee544e17fc465649a178dc412"
+    },
+    {
+      "bytes": 235,
+      "kind": "provenance",
+      "path": "provenance.json",
+      "sha256": "24ea7a3f39b68cab08e343841e40756fac4b7faf7e1483f0ee6e5edd83475d95"
+    },
+    {
+      "bytes": 2706,
+      "kind": "validation",
+      "path": "validation.json",
+      "sha256": "4582f0bb56e806cbfdea9a70136901871fcaf7cd871ea1ec0ff27310b657cb21"
+    }
+  ],
+  "license": "CC0-1.0",
+  "model": "model.glb",
+  "packageId": "pkg_3bf0e27228b913576c707f07",
+  "provenance": {
+    "origin": "imported"
+  },
+  "schema": "game_dev.asset_package.v1",
+  "validation": {
+    "errorCount": 0,
+    "passed": true,
+    "warningCount": 0
+  },
+  "version": "1.0.0"
+}

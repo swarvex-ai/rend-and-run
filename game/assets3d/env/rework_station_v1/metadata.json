@@ -1,0 +1,58 @@
+{
+  "assetId": "factory_rework_station",
+  "category": "environment_prop",
+  "description": "Original Blender repair station for first factory upgrade. 1.4m wide, 0.9m deep, worktop1.039m, front+Z and feetY0. Beveled folded alloy top, rubber working pad, three powder-coated drawers and recessed pulls, power-unit cooling fins, adjustment clamp, diagnostics tablet, contained actuator tray, cable. Decorative only, no collision, no paid provider jobs; original CC0-1.0 geometry.",
+  "displayName": "factory_rework_station",
+  "inspection": {
+    "animationCount": 0,
+    "boundingBox": {
+      "max": [
+        0.700000048365125,
+        1.2999999970197678,
+        0.46150000439956784
+      ],
+      "min": [
+        -0.6999999992527606,
+        0,
+        -0.45000000616366626
+      ],
+      "sizeMeters": [
+        1.4000000476178855,
+        1.2999999970197678,
+        0.911500010563234
+      ]
+    },
+    "boundingBoxEmpty": false,
+    "fileBytes": 1079328,
+    "filePath": "model.glb",
+    "generator": "glTF-Transform v4.5.1",
+    "hasNormals": true,
+    "hasSkin": false,
+    "hasTangents": false,
+    "hasUVs": true,
+    "materialCount": 8,
+    "meshCount": 8,
+    "pbr": {
+      "hasBaseColorTexture": false,
+      "hasEmissiveTexture": false,
+      "hasMetallicRoughnessTexture": false,
+      "hasNormalTexture": false,
+      "hasOcclusionTexture": false
+    },
+    "primitiveCount": 8,
+    "sceneGraphFallback": false,
+    "textureCount": 0,
+    "textureResolutions": [],
+    "triangleCount": 15604,
+    "undrawnMeshCount": 0,
+    "undrawnPrimitiveCount": 0,
+    "undrawnTriangleCount": 0,
+    "vertexCount": 30503,
+    "warnings": [
+      "glTF reader: Missing optional extension, \"KHR_materials_emissive_strength\".",
+      "no base colour texture on any material: the asset is untextured and will read as flat colour"
+    ]
+  },
+  "license": "CC0-1.0",
+  "schema": "game_dev.asset_metadata.v1"
+}

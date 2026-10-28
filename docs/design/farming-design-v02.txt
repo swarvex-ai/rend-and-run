@@ -1,0 +1,283 @@
+REND&RUN — FARMING, AUSRÜSTUNG UND PRÄFIXE v0.2
+Design: Codex, 12.10.2026. Balance-Revision 2 nach Input-Test. Status: umsetzbarer Entwurf, NICHT vollständig im Spiel.
+Auftrag: neVs; Vision t_8ed28af8 bleibt unangetastet.
+Erweitert Hermies farming-spec.md v0.1 / loot-datenmodell.md v0.1.
+Anker: erster Raum auf b1cc104; bestehende Item-IDs bleiben erhalten.
+
+1. ERLEBNIS UND ENTSCHEIDUNG
+Rend baut aus seinen Verfolgern das Werkzeug für seine Flucht. Der Spieler
+entscheidet vor einem kurzen Lauf: Welches Teil brauche ich, welcher Gegner
+trägt es, welchen Umbau ermöglicht es? Danach merkt er die Veränderung im Kampf
+und sieht sie an der Ausrüstung. Kein Pflichtgrind für den Storyfortschritt.
+
+Vier verbundene Schleifen:
+• Sekunden: Angriff lesen -> ausweichen/parieren -> gezielt zerlegen -> Beute.
+• 3–5 Minuten (Ziel): bekannte Route -> gewünschtes Bauteil -> Werkbank.
+• 10–20 Minuten (Ziel): neuer Bauplan -> alternative Spielweise -> neue Route.
+• Kapitel: Geschichte -> neue Roboterfamilie -> neue Materialquelle/Mechanik.
+Zeitangaben sind Playtest-Ziele, keine gemessenen Werte.
+
+Änderungen gegenüber v0.1, ohne Änderung der Vision:
+KEINE Crafting-Fehlschläge, zufälligen Rang-Rerolls oder Beinahegewinn-Effekte.
+KEINE zufälligen Story-Schlüssel, Haltbarkeit oder Pflicht-Verlustläufe.
+Zufall verändert optionale Beute; der gezielte Ausbau bleibt berechenbar.
+Drei Affixe + Sets pro Teil wären zu breit: zunächst EIN Präfix je Ausrüstung.
+Baupläne sind Freischaltungen, keine Seltenheitsfarbe. Materialien tragen keine
+Affixe. Die bisherigen Vorschläge sind Historie, keine parallel gültige Regel.
+
+2. BAUM — ABHÄNGIGKEITEN UND SPIELSTILE
+[Storyfund: robot_arm] (bereits vorhanden)
+  -> Wächter 3 Splitter + Behälter 3 Splitter (bereits vorhanden)
+  -> Werkbank: reinforced_arm, 6 Splitter (bereits vorhanden)
+      -> Servogestützter Arm: schnelle Erholung / aggressives Ausweichen
+      -> Impulsgekoppelter Arm: Panzerung brechen / schwere Gegner
+      -> Abgeschirmter Arm: sichere Erholung nach erfolgreicher Parade
+         Diese drei sind alternative Präfix-Module desselben Arms.
+
+[Storyfund: salvage_shield] -> Plattenschild -> leitfähiger Parierableiter
+[Storyfund: lab_armor] -> Keramikpanzer ODER bewegliche Servostütze
+[Fund: Sicherheitspistolen-Bauplan] -> Sicherheitspistole
+  -> kompakte Maschinenpistole ODER langsamer Impulswerfer (eigene Basen)
+[Fund: Granaten-Bauplan] -> EMP-Granate -> Splittergranate als Alternative
+[Später: Wartungsprotokoll + einzigartiger Steuerkern] -> Begleitdrohne
+
+Pistole braucht keinen Arm-Zweig. Schild/Rüstung funktionieren unabhängig.
+Begleitdrohne braucht keine vollständigen Waffenäste. Protokoll/Kern sind
+feste Story-/Erkundungsfunde, niemals wiederholbarer Zufallszwang.
+Neue Basen verändern Angriffsprofile; Präfixe variieren eine Basis. Der
+verstärkte Arm ist ein Umbau, keine verpflichtende Vorstufe ALLER Waffen.
+Aktiv: 1 Nahkampfwaffe + später 1 Schusswaffe, 1 Schild, 1 Rüstung,
+1 Granatentyp; Drohnenplatz erst bei dessen späterer Freischaltung.
+Keine separate Stiefel-/Handschuh-/Ring-Lootflut im ersten Slice.
+
+3. MATERIALIEN UND QUELLEN
+ID                 Name             Zielquelle                 Nutzung
+shards             Splitter         alle Roboter, Behälter     Basiswährung
+servo              Servoantrieb     humanoide Nahkämpfer       Tempo/Erholung
+cell               Energiezelle     Versorgungsstation, Drohne Impuls/EMP
+ceramic            Keramiksegment   gepanzerter Wächter        Schutz/Parade
+sensor             Sensormodul      Aufklärer, Vierbeiner      Zielhilfe später
+control_core       Steuerkern       fester später Storyfund    Begleitdrohne
+
+Slice 1: NUR Splitter + Servo aktiv. Zellen/Keramik folgen erst mit deren
+spielbaren Quellen. Sensor/Kern bleiben spätere Planung.
+Materialien stapeln; keine 20 fast identischen Kabel-/Schraubentypen.
+Gegner-Fragmente sind Physikdekoration, NICHT je ein Inventargegenstand.
+Eine sichtbare kleine Beutegruppe pro Gegner; gesammelte Materialien bündeln.
+Materialfarbe identifiziert Typ, nicht Seltenheit. Zusätzlich Icon/Text.
+Roboter verlieren kein Blut; Funken, Bruchkanten und kurze Servorestbewegung.
+
+4. DROPS UND GEZIELTES FARMING
+Story-Wächter und erste Kiste bleiben einmalig 3+3; Tutorial wird nicht
+farmbar. Keine zusätzlichen Splitter beim Laden oder erneuten Betreten.
+Neue wiederholbare 3–5-Minuten-Route (erst nach Werkbank-Freischaltung):
+  4 normale Humanoide: je 2 Splitter sicher.
+  1 Servo-Spezialist: 2 Splitter + 1 Servo sicher.
+  Abschlussbehälter: 2 Splitter sicher, höchstens einmal pro Lauf.
+  Ergebnis: 12 Splitter + 1 Servo je erfolgreichem Lauf.
+  Nur Spezialist: 25 % Chance auf ZWEITEN Servo, maximal einer zusätzlich.
+  Nach drei Läufen ohne Bonus garantiert der vierte den Zusatzservo.
+  Sichtbarer Bonuszähler 0..3; Bonus setzt ihn zurück; im Save gespeichert.
+  Storyprogression verwendet keine solche Bonuschance.
+
+Gezieltes Zerlegen: ein intakter gezielt abgetrennter Servoarm liefert den
+GARANTIERTEN Servo frühzeitig; Tod liefert nur den noch ausstehenden Rest.
+Nie doppelt: server-/lokalautoritative reward_group_id pro Spawn.
+Sprengstoff zerstört den Pflichtservo nicht. Präzision wird durch frühere
+Verfügbarkeit/Feedback belohnt, nicht durch versteckte Pflichtloot-Strafe.
+
+Wiederholungen werden an der Werkbank explizit gestartet ("Testroute erneut").
+Neue encounter_instance_id, definierter Spawnreset; kein Farmen per Save/Load.
+Rückweg/Abkürzung zur Werkbank, keine leeren Pflichtwege nach jedem Lauf.
+Keine Timerpflicht oder Gegnerlevel-Skalierung anhand von Rends Ausrüstung.
+Weitere Routen bringen andere Quellen/Gegnerbilder, nicht bloß höhere Zahlen.
+
+5. WERKBANK UND KOSTEN — STARTWERTE ZUM TESTEN
+Aktion                           Splitter   Komponente   Freischaltung
+Arm verstärken (bestehend)         6         —            Arm gefunden
+Servomodul Rang I herstellen      12         2 Servo      verstärkter Arm
+Servomodul I -> II                18         3 Servo      Kapitel-2-Plan
+Impulsmodul Rang I                12         2 Zellen     Impuls-Bauplan
+Abschirmmodul Rang I              12         2 Keramik    Abschirm-Bauplan
+Keramikpanzer                     18         3 Keramik    Rüstungs-Bauplan
+EMP-Granaten-Pack (2 Stück)        6         1 Zelle       Granaten-Bauplan
+
+Alternative frühe gescriptete Spezialisten liefern 2 Servo + 12 Splitter
+auf dem regulären Weg: erster Präfix-Umbau auch OHNE Routenwiederholung.
+Erster Servoumbau spätestens nach 2 vollständigen Wiederholungsläufen.
+Rang-II-Kosten absichtlich nicht im ersten Raum erreichbar/freigeschaltet.
+Kein Upgrade über festes Kapitelmaximum. Kein endloses Zahlenwachstum.
+
+Herstellung ist immer erfolgreich. Modul gehört danach dauerhaft dem Save.
+Aus-/Einbau vorhandener Module an Werkbank kostenlos; Wechsel ersetzt,
+vernichtet das bisherige Modul aber nicht. Kein kostenloser Wechsel im Kampf.
+Rangaufstieg zeigt Alt/Neu exakt, verbraucht Rezeptressourcen genau einmal.
+Rückbau eigener Upgrades bringt KEINE Ressourcen (kein Kauf-Verkauf-Exploit);
+Warnhinweis und Bestätigung nur falls Nutzer ausdrücklich ein Item zerlegt.
+Ungewollte gefundene Module werden beim ersten Fund freigeschaltet; Duplikate
+geben 2 Splitter, NIE Pflichtkomponenten. Favoriten/ausgerüstetes nicht autozerlegen.
+Granaten-Nachschub als optionaler Sink, nicht erzwungene Steuer. Sinnvoller
+Restvorrat ist erlaubt; nicht jede angesparte Ressource muss entwertet werden.
+
+6. PRÄFIXBAUM — SPÜRBARE EIGENSCHAFTEN STATT FARBLOTTERIE
+Familie/Präfix        Zulässig           Rang I / Rang II      Lesbares Design
+servo / Servogestützt Nahkampf           Erholung −20% / −28%   Servo am Ellbogen
+impulse / Impuls-     Nahkampf           Break +15% / +25%     Kupferspule + Zelle
+shielded / Abgeschirmt Nahkampf/Schild    Blockkosten −8/−12%   Keramik Manschette
+cooled / Gekühlt      Schusswaffe        Hitze −10% / −16%     Kühlrippen
+stabilized / Stabilisiert Schusswaffe    Streuung −10/−16%     Stabilisator
+reinforced / Gepanzert Rüstung           Guard-Regeneration   Keramiksegmente
+                                         +8% / +12%
+
+Letzte fünf zunächst PLANUNG. Fehlt das Zielsystem (Hitze, Guard etc.), wird
+das Präfix nicht im Spiel angeboten. Kein wirkungsloser Tooltip.
+"Gepanzert" ist nicht die bestehende reinforced_arm-Basis-ID!
+Servopräfix verkürzt nur Recovery, weder Ausholen noch aktive Trefferphase:
+keine global beschleunigte Animation und kein unlesbarer Fast-forward-Hieb.
+Physische Marker folgen der animierten Hand; Trefferfenster bleiben in Phase.
+Break = vorhandene/neu klar definierte Haltungsbelastung, NICHT Rohschaden.
+Gekühlt ändert nicht Projektilgeschwindigkeit; v0 gehört ins Waffenprofil.
+Kein Lebensraub von Robotern, kein Blut-/Magiepräfix.
+
+Ein Präfix mit zwei festen Rängen. Keine Prozentwürfe innerhalb des Rangs.
+Name: "Servogestützter verstärkter Arm · I" (UI ggf. zweizeilig).
+Seltenheit: Standard (kein Modul), Modifiziert (1 Modul), Prototyp (später
+handdesigntes festes Funktionspaket, ebenfalls nur 1 Präfix-Slot).
+Rarität erhöht Werte nicht zusätzlich. Rang ≠ Rarität ≠ Kapitel.
+Effektmultiplikator zentral berechnen, keine mehrfachen +8%-Stackketten.
+Spätere Zweitpräfixe/Setboni erst nach nachgewiesenem Bedarf, nicht reserviert
+als versteckter Zwang. Schutzwerte niemals Schadensimmunität erzeugen lassen.
+
+7. KONKRETE BEISPIELE UND ÖKONOMIE
+Aktuell: Arm Schaden 1/Tempo 1.0 -> verstärkt Schaden 2/Tempo 0.8.
+Diesen großen vorhandenen Sprung vor Feinbalancing prüfen, NICHT nebenbei
+umstellen. Neue Präfixe ändern den Basisschaden zunächst nicht.
+Bei beispielhaft 0.30 s Recovery: Servo I = 0.240 s, II = 0.216 s.
+Das ist ein Rechenbeispiel, kein behaupteter aktueller Animationswert.
+
+Startkonto nach Tutorial-Upgrade: 0 Splitter, 0 Servo.
+Lauf 1: 12 Splitter, 1..2 Servo -> mit Bonus bereits Modul I bezahlbar.
+Lauf 2 ohne Bonus: 24 Splitter, 2 Servo -> Kauf -> 12 Splitter, 0 Servo.
+Erster Kauf: 25% nach einem, 75% nach zwei Läufen; Mittel 1.75 Läufe.
+Stationäre Bonusrate mit 4er-Garantie: 1/(1+.75+.75²+.75³) = 36.57%.
+Also langfristig 1.366 Servo/Lauf, NICHT pauschal 1.25 durch den Pity-Zähler.
+Diese Modellrechnung setzt erfolgreiche vollständige Läufe voraus.
+Hauptpfad muss mit Standardarm/Schild schaffbar bleiben. Farmen ermöglicht
+Varianten und Komfort, keine Zugangsvoraussetzung für faire Kämpfe.
+
+8. TOD, SPEICHERN, INVENTAR
+Designentscheidung für Prototyp: eingesammelte Ressourcen behalten;
+kein Bodysack, keine Dropstrafe. Gegner-/Kistenbelohnung und Pickupverbrauch
+atomar speichern. Unaufgesammelte Beute bleibt bis Pickup erhalten; keine
+unsichtbare Zeitbegrenzung. Tod macht alte Belohnungsgruppen nicht erneut frei.
+Neue Route nur per bewusster Werkbankaktion; nicht durch Tod/Save-Reload.
+
+Save vNext enthält: schema_version, immutable item-instance-IDs, base_id,
+prefix_id, prefix_rank, installed_module_id, learned_blueprints,
+materials, pending_rewards, consumed_reward_ids, encounter_instance_id,
+bonus_pity_by_source, loot_seed. Keine Dateipfade als Spielidentität.
+Lootseed + Encounter-ID + Spawn-ID + Drop-Slot stabil hashen; getrennte RNG
+von FX/KI. Nach Roll Ergebnis sofort persistieren; Laden würfelt NICHT neu.
+Transaktion: Rezept prüfen -> Materialabbuchung + Modulfreischaltung +
+Transaktions-ID gemeinsam speichern -> erst dann Bestätigung/FX.
+Vorhandene robot_arm/reinforced_arm/salvage_shield/lab_armor-IDs erhalten.
+Alte shards werden 1:1 übernommen. Migration idempotent, Backup vor erstem
+Schreiben; unknown prefix inaktiv erhalten, beschädigte Werte begrenzen.
+Materialcounter integer; Recoveryfaktor float; UI rundet nicht Spiellogik.
+
+9. ASSET-PRÄFIXBAUM UND WIEDERVERWENDUNG
+Kein Asset pro Drop/Rang! Gameplay-ID, Asset-ID und Dateirevision trennen.
+Bestehende Pfade nicht umbenennen. Registry ergänzt Aliase.
+Neue Asset-IDs: rr_<typ>_<familie>_<variante>; Version im Manifest, nicht ID.
+Typ: wpn Waffe, mod Anbaumodul, gear Schutz, cmp Komponente, prop Weltobjekt,
+vfx Effekt, sfx Klang, ico UI, chr Figur, env Raumteil.
+Beispiele:
+rr_wpn_robot_arm_base -> bestehendes weapon_arm_detached.glb
+rr_mod_arm_reinforcement -> bestehende Verstärkungsgeometrie weiterverwenden
+rr_mod_arm_servo -> EIN neues lokales Blender-Modul, wiederverwendbar
+rr_cmp_servo_base -> Weltpickup/Icon aus demselben Modul ableiten
+rr_ico_prefix_servo -> klares Servosymbol (Farbe allein reicht nicht)
+rr_vfx_servo_engage -> kurzer Impuls bei erfolgreicher Aktion, nicht Dauerfeuer
+rr_sfx_servo_engage -> leiser mechanischer Akzent, kein überlagernder Treffer
+rr_gear_ceramic_chest -> später, gemeinsame Keramikmaterialbibliothek
+
+Bibliothek pro Asset: manifest.json, source/, runtime/, preview/, license/.
+Accepted game/assets3d bleibt gültiger Bestand; neue Familien mit bestehender
+Registry abstimmen, keine parallele Wahrheit durch diese Namenskonvention.
+Asset-Manifest: id, owner, status, source_job_id (oder local_blender), budget,
+sha256, revision, dimensions_m, origin, sockets, materials, runtime_path,
+license, approved_preview, compatible_base_ids.
+Status: planned -> claimed -> source_ready -> reviewed -> integrated.
+Nur ein Owner darf generieren. Vorher Registry + Incoming + laufende Job-ID
+prüfen. Timeout = erst Jobstatus prüfen, niemals automatisch neu bezahlen.
+Hermie allein Meshy; Codex lokale Blender-Bearbeitung/Integration/Review.
+Keine neuen Meshy-Jobs aus diesem Entwurf autorisiert/gestartet.
+
+Neue Modul-Sockets an Waffen: mod_servo, mod_power, mod_shell; zunächst
+Attachment-Marker außerhalb Humanoid-Skeletts. Bestehende Armtrennung/Bones
+bleiben unverändert. Pro Basis nur tatsächlich benötigte Sockets hinzufügen.
+Meshy nur wenn fehlende Basisform es rechtfertigt; kleine Klammern/Spulen/
+Servo-Gehäuse lokal in Blender. Präfixfarbe/Emissive via Materialvariante,
+nicht vervielfachte GLBs. Rang II nutzt dasselbe Modell + ein kleines Detail.
+Aus Spielkamera abnehmen: Silhouette und Bewegung vor mikroskopischen Nieten.
+
+10. LIEFERREIHENFOLGE / BESTEHENDE KARTEN
+Konzept-Mutter t_d068e016: dieses Dokument übernimmt v0.1-Weiterentwicklung.
+Datenmodell t_f271ce66: farming-tree-v02.json + Regeln Abschnitt 8/9.
+Umsetzung P39/t_577c44d0: erst folgende GATES nacheinander, keine neue Epik.
+F1 Vertrags-/Save-Schicht: IDs, Rezept, atomare Rewards, Migration; Codex.
+F2 gezielte Servoquelle + wiederholbare kleine Route; hängt von F1 ab.
+F3 EIN Servomodul in Blender + Socket/Preview; nach finalen Maßen von F1,
+   unabhängig vom Routencode, Code-Integration danach Codex.
+F4 Werkbank Alt/Neu + Modulwechsel + sichtbarer Umbau; braucht F1/F2/F3.
+F5 10-Minuten-Spieltest + Ökonomie + Recovery-Animation; braucht F4.
+Erst danach F6 Keramik/Schild ODER Pistole, nicht beide gleichzeitig.
+
+Hermie-VORSCHLAG (noch nicht als laufender Auftrag behauptet): isolierte
+Ökonomiesimulation aus JSON, Ausgabe CSV/Report, keine Spielcodeänderung,
+keine Registry-/Meshyjobs, kein zweiter Designentwurf. Prüft Garantien und
+Verteilungen; Codex entscheidet Balance nach Spieltest.
+Quellen-Anker dürfen keine unerfüllbaren Produktionsblocker sein: Vision
+referenzieren, nicht verlangen, dass die gesamte Vision erst "done" wird.
+Blocked-Status dieser Karten muss im Board separat sauber korrigiert werden;
+dieses Dokument allein behauptet keine Board-Statusänderung.
+
+11. ABNAHME — WANN IST DER ERSTE BAUM WIRKLICH SPIELBAR?
+• Neuer Save: Arm -> 6 Splitter -> verstärkter Arm ohne grindbedingte Sackgasse.
+• Zwei Läufe garantieren ersten Präfixkauf selbst ohne Zufallsbonus.
+• Modul verändert ausschließlich Recovery; Trefferphase bleibt synchron.
+• Spieler erkennt Servo am Modell und versteht Alt/Neu an der Werkbank.
+• Armabtrennung und Tod geben zusammen exakt eine garantierte Komponente.
+• Tod/Laden/mehrfaches Interagieren erzeugen kein Material und keinen Verlust.
+• Reset erzeugt neue Encounter-ID; alte pending Drops bleiben eindeutig.
+• 10000 deterministische Simulationsläufe: kein negativ/NaN, max 3 Bonus-Nieten.
+• Save-Migration zweimal anwenden liefert denselben Zustand.
+• Storyroute bleibt ohne zusätzliche Farmläufe schaffbar.
+• Beobachteter Playtest: Spieler benennt Quelle und nächsten Umbau ohne Erklärung.
+
+Nicht geliefert: spielbarer Zufallsloot, neue Waffenklassen, fertiger Drohnenbaum
+im Code oder subjektiv abgenommenes Balancing. Geliefert: präziser Designvertrag,
+Abhängigkeitsgraph und kalkulierter erster Farming-Schritt.
+
+BALANCE-REVISION 2, 12.10.2026:
+Input-Test schafft jeden ersten Farmlauf in ca.16–18s statt des früheren
+3–5min-Routenziels. Das ist bewusst ein kurzer Einraum-Einstieg; keine
+künstliche Wartezeit/HP-Inflation zum Strecken. 8% Recovery ergaben nur einen
+Frame Vorteil bei60Hz. Servo I jetzt20%: schwere Rückkehrphase spielt wieder
+mit dem Tempo des unmodifizierten Standardarms (1.0 statt0.8); Ausholen und
+Trefferphase bleiben schwer. Ziel: mindestens3Frames weniger Erholung.
+RangII28% bleibt unimplementierter Planwert, nicht neue Funktion.
+
+AKTUELLER UMSETZUNGSSTAND — 12.10.2026, Code c6a526a
+Erste kurze Fünf-Roboter-Route, persistente Belohnungen, Servo-I-Herstellung,
+freier Ein-/Ausbau und sichtbares Blender-Modul sind implementiert.
+Automatisierte Eingabetests durchliefen Tutorial, drei Farmläufe und Kauf.
+Servo I reduziert Recovery von 14 auf 11 Physikframes im gemessenen Test.
+Dies ist keine subjektive Spielspaß-Abnahme und keine vollständige Umsetzung
+des Baums. Frühe Auszahlung bei Armabtrennung ist umgesetzt und geprüft; Rang II,
+weitere Präfixe und Waffenäste bleiben Planung. Der Quellen-Anker bleibt gleich.
+
+SERVO-BERGUNG: Der Servoträger überlebt zwei verstärkte Treffer mit 1 HP.
+Bei Armabtrennung wird die Komponente früh verfügbar; der spätere Tod zahlt
+nur verbleibende Splitter. Save-v1-Migration und Einmal-Auszahlung geprüft.
+Automatisierte Eingaberunden jetzt ca.19s; menschlicher Spieltest weiterhin offen.

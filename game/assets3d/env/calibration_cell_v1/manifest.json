@@ -1,0 +1,45 @@
+{
+  "assetId": "factory_calibration_cell",
+  "category": "environment_prop",
+  "description": "Original Blender-built calibration cell, 5.2m wide x3.1m tall x2.7m deep. Seven PBR materials, physical bevels, ring, manipulators, cable loops, instrument panels. Authoring source calibration_cell.blend and build.py in outputs/calibration_cell_blender_v01. CC0 original construction, no external asset sources or paid generation.",
+  "displayName": "factory_calibration_cell",
+  "files": [
+    {
+      "bytes": 2270884,
+      "kind": "model",
+      "path": "model.glb",
+      "sha256": "84013954337c44df68559c1fb9860793386a3d3eb7d983be3182ecaa80042516"
+    },
+    {
+      "bytes": 1877,
+      "kind": "metadata",
+      "path": "metadata.json",
+      "sha256": "88b5c3d950064f8c975d8c22c68e630548502cf48923fa8dd47b9fe2d9b4e484"
+    },
+    {
+      "bytes": 233,
+      "kind": "provenance",
+      "path": "provenance.json",
+      "sha256": "b47ea29f4d57b81ecb2790f24815f62956193d68c999bbf6a3171ade51aab77c"
+    },
+    {
+      "bytes": 2706,
+      "kind": "validation",
+      "path": "validation.json",
+      "sha256": "11457f907765d56bccb6456a497110f46a3878fe5c6bf60fdcbe3d1e785aaa2e"
+    }
+  ],
+  "license": "CC0-1.0",
+  "model": "model.glb",
+  "packageId": "pkg_04a97e7bb4d42324f6114fc0",
+  "provenance": {
+    "origin": "imported"
+  },
+  "schema": "game_dev.asset_package.v1",
+  "validation": {
+    "errorCount": 0,
+    "passed": true,
+    "warningCount": 0
+  },
+  "version": "1.0.0"
+}

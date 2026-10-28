@@ -1,0 +1,9 @@
+{
+  "origin": "imported",
+  "schema": "game_dev.asset_provenance.v1",
+  "source": {
+    "bytes": 16704924,
+    "fileName": "rig-baked.glb",
+    "sha256": "d4c405843c126077089325791f521666683152ca7d2ef44e45b7cf4587e0510e"
+  }
+}

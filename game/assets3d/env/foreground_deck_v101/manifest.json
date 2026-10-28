@@ -1,0 +1,45 @@
+{
+  "assetId": "factory_foreground_deck",
+  "category": "environment_prop",
+  "description": "Original Blender-authored three-metre foreground service deck for first factory: satin access plates, countersunk fasteners, beveled front frame, recessed amber guide, actual vent louvers and access hatch. Floor top Y0, extends Z1.92 to3.01. Decorative only, unchanged collision. CC0-1.0 original geometry; no external assets/provider jobs.",
+  "displayName": "factory_foreground_deck",
+  "files": [
+    {
+      "bytes": 717552,
+      "kind": "model",
+      "path": "model.glb",
+      "sha256": "73692b921e15459856f4fc90248d612a1a9f4cbf3c3a4affbceca41fbc6d76d7"
+    },
+    {
+      "bytes": 1887,
+      "kind": "metadata",
+      "path": "metadata.json",
+      "sha256": "568229b0e519360947f449d224315fa1d73c1770a44e84913ecc5ca13a48ebcd"
+    },
+    {
+      "bytes": 231,
+      "kind": "provenance",
+      "path": "provenance.json",
+      "sha256": "1326ec9d15e8883bcbc2aaed6c7c197a40933593aa81b9905b2f2a9888aa2b47"
+    },
+    {
+      "bytes": 2706,
+      "kind": "validation",
+      "path": "validation.json",
+      "sha256": "ed2494d18b62be2e89ea33c9e0b1077710fbef5ef5967e31e4b5b891d4255a79"
+    }
+  ],
+  "license": "CC0-1.0",
+  "model": "model.glb",
+  "packageId": "pkg_7d6c8b9a19d5adc03289537c",
+  "provenance": {
+    "origin": "imported"
+  },
+  "schema": "game_dev.asset_package.v1",
+  "validation": {
+    "errorCount": 0,
+    "passed": true,
+    "warningCount": 0
+  },
+  "version": "1.0.1"
+}

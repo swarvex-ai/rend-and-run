@@ -1,0 +1,45 @@
+{
+  "assetId": "factory_salvage_container",
+  "category": "environment_prop",
+  "description": "Original Blender clean-factory component transit case, intact and collapsed states. White enamel shell, graphite isolators/gasket, satin metal tray/recessed handles and amber compression latches.1872triangles,4sharedPBRmaterials,8meshes. BaseY0/front+Z,0.84x0.72x0.7165m. No collision, scripts, textures from providers, lights, timers or paid generation. Original CC0-1.0 geometry; builder tools/assets/build_factory_salvage_container.py. Existing gameplay adapter scales to0.65m crate footprint.",
+  "displayName": "factory_salvage_container",
+  "files": [
+    {
+      "bytes": 145804,
+      "kind": "model",
+      "path": "model.glb",
+      "sha256": "7f44e2d4e14c128a37d94f48a897936f6acde492172a7c2d154a4ce2fc68c670"
+    },
+    {
+      "bytes": 1943,
+      "kind": "metadata",
+      "path": "metadata.json",
+      "sha256": "0e5ac7434456566c809e93326b34d4700dbf8c6b0ae3e72300830d6ad2887f5d"
+    },
+    {
+      "bytes": 221,
+      "kind": "provenance",
+      "path": "provenance.json",
+      "sha256": "7a8e9e4eb175e5c1165e3b24a211a5881fbc5c99cb399c936db9024cb1ee922d"
+    },
+    {
+      "bytes": 2617,
+      "kind": "validation",
+      "path": "validation.json",
+      "sha256": "3268e7514624250cb61bc5c3531cdcaf81208b91c46a5d2a9938f826425088d6"
+    }
+  ],
+  "license": "CC0-1.0",
+  "model": "model.glb",
+  "packageId": "pkg_9be9e49007e049b4d7478421",
+  "provenance": {
+    "origin": "imported"
+  },
+  "schema": "game_dev.asset_package.v1",
+  "validation": {
+    "errorCount": 0,
+    "passed": true,
+    "warningCount": 0
+  },
+  "version": "1.0.0"
+}

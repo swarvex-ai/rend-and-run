@@ -1,0 +1,9 @@
+{
+  "origin": "imported",
+  "schema": "game_dev.asset_provenance.v1",
+  "source": {
+    "bytes": 10771144,
+    "fileName": "enemy_humanoid_light_rigged.glb",
+    "sha256": "c3fd9a8f787afeb0cb27fd4a8ada2055c79992503a03983e29ea7f57c7edcddc"
+  }
+}

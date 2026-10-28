@@ -1,0 +1,23 @@
+{
+  "completedAt": "2026-10-07T19:56:55.728Z",
+  "destination": {
+    "assetId": "rendrun_industrial_vibroblade",
+    "version": "1.0.0"
+  },
+  "evidence": {
+    "blenderNormalizationPerformed": false,
+    "gpuImportTestPerformed": false,
+    "humanVisualReviewPerformed": false,
+    "modelBytesCopiedAndHashed": true,
+    "policyValidationCompleted": true,
+    "staticInspectionCompleted": true
+  },
+  "manifestSha256": "4fd4cd1de1b716ddd7b17935417d87d2dbd1392097b747f50f584cba334e64f0",
+  "packageId": "pkg_e6cca2f692e23fc2c9b77f59",
+  "schema": "game_dev.package_receipt.v1",
+  "source": {
+    "bytes": 148964,
+    "fileName": "model.glb",
+    "sha256": "9b76b1eb4f8bbf30b905653c49c9e46879e2e7fb5b192593e29e3e72a8d9b359"
+  }
+}

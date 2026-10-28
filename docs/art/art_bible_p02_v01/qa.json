@@ -1,0 +1,30 @@
+{
+  "result": "PASS",
+  "scope": "document completeness and render QA, not gameplay/performance approval",
+  "child_briefs": [
+    "P40",
+    "P24",
+    "P22",
+    "P08",
+    "P34",
+    "P12",
+    "P15",
+    "P10",
+    "P20",
+    "P29"
+  ],
+  "budget_profiles": [
+    "hero",
+    "enemy",
+    "boss",
+    "weapon",
+    "module",
+    "small_prop",
+    "large_prop",
+    "distant_cluster"
+  ],
+  "hero_measured_triangles": 31211,
+  "chaser_measured_triangles": 13204,
+  "reference_render": "inspected; panel overflow and prop labels corrected",
+  "new_paid_generation": false
+}

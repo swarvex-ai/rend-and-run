@@ -1,0 +1,403 @@
+{
+  "schema_version": 2,
+  "status": "design_with_partial_runtime_implementation",
+  "source_vision": "t_8ed28af8",
+  "units": {
+    "shards": "integer",
+    "recovery_duration": "seconds"
+  },
+  "nodes": [
+    {
+      "id": "robot_arm",
+      "label": "Gefundener Roboterarm",
+      "requires": [],
+      "state": "implemented"
+    },
+    {
+      "id": "tutorial_salvage",
+      "label": "Wächter + Behälter: 6 Splitter",
+      "requires": [
+        "robot_arm"
+      ],
+      "state": "implemented"
+    },
+    {
+      "id": "reinforced_arm",
+      "label": "Verstärkter Arm",
+      "requires": [
+        "robot_arm",
+        "tutorial_salvage"
+      ],
+      "state": "implemented",
+      "cost": {
+        "shards": 6
+      }
+    },
+    {
+      "id": "servo_source",
+      "label": "Servo-Spezialist / Wiederholungsroute",
+      "requires": [
+        "reinforced_arm"
+      ],
+      "state": "implemented",
+      "implementation_scope": "Short five-robot room loop with early servo payout on nonlethal arm severance, persisted once."
+    },
+    {
+      "id": "servo_i",
+      "label": "Servogestützter Arm I",
+      "requires": [
+        "reinforced_arm",
+        "servo_source"
+      ],
+      "state": "implemented",
+      "cost": {
+        "shards": 12,
+        "servo": 2
+      },
+      "prefix_id": "servo",
+      "rank": 1,
+      "implementation_scope": "Rank I craft/install/remove, visible module, recovery multiplier 0.8."
+    },
+    {
+      "id": "chapter2_blueprint",
+      "label": "Kapitel-2-Kalibrierplan",
+      "requires": [],
+      "state": "planned"
+    },
+    {
+      "id": "servo_ii",
+      "label": "Servogestützter Arm II",
+      "requires": [
+        "servo_i",
+        "chapter2_blueprint"
+      ],
+      "state": "planned",
+      "cost": {
+        "shards": 18,
+        "servo": 3
+      },
+      "prefix_id": "servo",
+      "rank": 2
+    },
+    {
+      "id": "cell_source",
+      "label": "Zellenquelle + Impuls-Bauplan",
+      "requires": [],
+      "state": "planned"
+    },
+    {
+      "id": "impulse_i",
+      "label": "Impulsgekoppelter Arm I",
+      "requires": [
+        "reinforced_arm",
+        "cell_source"
+      ],
+      "state": "planned",
+      "cost": {
+        "shards": 12,
+        "cell": 2
+      },
+      "prefix_id": "impulse",
+      "rank": 1
+    },
+    {
+      "id": "ceramic_source",
+      "label": "Panzerwächter + Abschirm-Bauplan",
+      "requires": [],
+      "state": "planned"
+    },
+    {
+      "id": "shielded_i",
+      "label": "Abgeschirmter Arm I",
+      "requires": [
+        "reinforced_arm",
+        "ceramic_source"
+      ],
+      "state": "planned",
+      "cost": {
+        "shards": 12,
+        "ceramic": 2
+      },
+      "prefix_id": "shielded",
+      "rank": 1
+    },
+    {
+      "id": "salvage_shield",
+      "label": "Schrottschild-Fund",
+      "requires": [],
+      "state": "implemented"
+    },
+    {
+      "id": "plate_shield",
+      "label": "Plattenschild",
+      "requires": [
+        "salvage_shield",
+        "ceramic_source"
+      ],
+      "state": "planned"
+    },
+    {
+      "id": "parry_shield",
+      "label": "Leitfähiger Parierableiter",
+      "requires": [
+        "plate_shield",
+        "cell_source"
+      ],
+      "state": "planned"
+    },
+    {
+      "id": "lab_armor",
+      "label": "Laborpanzer-Fund",
+      "requires": [],
+      "state": "implemented"
+    },
+    {
+      "id": "ceramic_armor",
+      "label": "Keramikpanzer",
+      "requires": [
+        "lab_armor",
+        "ceramic_source"
+      ],
+      "state": "planned",
+      "cost": {
+        "shards": 18,
+        "ceramic": 3
+      }
+    },
+    {
+      "id": "servo_support",
+      "label": "Bewegliche Servostütze",
+      "requires": [
+        "lab_armor",
+        "servo_source"
+      ],
+      "state": "planned"
+    },
+    {
+      "id": "pistol_plan",
+      "label": "Sicherheitspistolen-Bauplan",
+      "requires": [],
+      "state": "planned"
+    },
+    {
+      "id": "pistol",
+      "label": "Sicherheitspistole",
+      "requires": [
+        "pistol_plan"
+      ],
+      "state": "planned"
+    },
+    {
+      "id": "smg",
+      "label": "Kompakte Maschinenpistole",
+      "requires": [
+        "pistol",
+        "chapter2_blueprint"
+      ],
+      "state": "planned"
+    },
+    {
+      "id": "pulse_launcher",
+      "label": "Langsamer Impulswerfer",
+      "requires": [
+        "pistol",
+        "cell_source",
+        "chapter2_blueprint"
+      ],
+      "state": "planned"
+    },
+    {
+      "id": "grenade_plan",
+      "label": "Granaten-Bauplan",
+      "requires": [],
+      "state": "planned"
+    },
+    {
+      "id": "emp_pack",
+      "label": "EMP-Granaten (2)",
+      "requires": [
+        "grenade_plan",
+        "cell_source"
+      ],
+      "state": "planned",
+      "cost": {
+        "shards": 6,
+        "cell": 1
+      }
+    },
+    {
+      "id": "frag_grenade",
+      "label": "Splittergranate",
+      "requires": [
+        "grenade_plan",
+        "chapter2_blueprint"
+      ],
+      "state": "planned"
+    },
+    {
+      "id": "maintenance_protocol",
+      "label": "Spätes Wartungsprotokoll",
+      "requires": [],
+      "state": "planned"
+    },
+    {
+      "id": "control_core",
+      "label": "Einzigartiger Story-Steuerkern",
+      "requires": [],
+      "state": "planned"
+    },
+    {
+      "id": "companion",
+      "label": "Begleitdrohne",
+      "requires": [
+        "maintenance_protocol",
+        "control_core"
+      ],
+      "state": "planned"
+    }
+  ],
+  "prefixes": [
+    {
+      "id": "servo",
+      "label": "Servogestützt",
+      "slots": [
+        "melee"
+      ],
+      "stat": "recovery_duration_multiplier",
+      "ranks": [
+        0.8,
+        0.72
+      ],
+      "visual_asset": "rr_mod_arm_servo",
+      "stage": "first_slice"
+    },
+    {
+      "id": "impulse",
+      "label": "Impulsgekoppelt",
+      "slots": [
+        "melee"
+      ],
+      "stat": "break_multiplier",
+      "ranks": [
+        1.15,
+        1.25
+      ],
+      "visual_asset": "rr_mod_arm_power",
+      "stage": "later"
+    },
+    {
+      "id": "shielded",
+      "label": "Abgeschirmt",
+      "slots": [
+        "melee",
+        "shield"
+      ],
+      "stat": "block_cost_multiplier",
+      "ranks": [
+        0.92,
+        0.88
+      ],
+      "visual_asset": "rr_mod_arm_shell",
+      "stage": "later"
+    },
+    {
+      "id": "cooled",
+      "label": "Gekühlt",
+      "slots": [
+        "firearm"
+      ],
+      "stat": "heat_per_shot_multiplier",
+      "ranks": [
+        0.9,
+        0.84
+      ],
+      "visual_asset": "rr_mod_firearm_cooling",
+      "stage": "later"
+    },
+    {
+      "id": "stabilized",
+      "label": "Stabilisiert",
+      "slots": [
+        "firearm"
+      ],
+      "stat": "spread_multiplier",
+      "ranks": [
+        0.9,
+        0.84
+      ],
+      "visual_asset": "rr_mod_firearm_stabilizer",
+      "stage": "later"
+    },
+    {
+      "id": "reinforced",
+      "label": "Gepanzert",
+      "slots": [
+        "armor"
+      ],
+      "stat": "guard_regeneration_multiplier",
+      "ranks": [
+        1.08,
+        1.12
+      ],
+      "visual_asset": "rr_mod_armor_ceramic",
+      "stage": "later"
+    }
+  ],
+  "slot_limit": 1,
+  "route": {
+    "id": "servo_route_01",
+    "guaranteed": {
+      "shards": 12,
+      "servo": 1
+    },
+    "bonus": {
+      "material": "servo",
+      "quantity": 1,
+      "probability": 0.25,
+      "guarantee_after_misses": 3
+    },
+    "reset": "explicit_workbench_action",
+    "story_required": false
+  },
+  "asset_naming": "rr_<type>_<family>_<variant>",
+  "stages": [
+    {
+      "id": "F1",
+      "requires": []
+    },
+    {
+      "id": "F2",
+      "requires": [
+        "F1"
+      ]
+    },
+    {
+      "id": "F3",
+      "requires": [
+        "F1"
+      ]
+    },
+    {
+      "id": "F4",
+      "requires": [
+        "F1",
+        "F2",
+        "F3"
+      ]
+    },
+    {
+      "id": "F5",
+      "requires": [
+        "F4"
+      ]
+    },
+    {
+      "id": "F6",
+      "requires": [
+        "F5"
+      ]
+    }
+  ],
+  "balance_revision": 2,
+  "runtime_review": "docs/design/farming-input-review.json; docs/design/servo-harvest-review.json"
+}

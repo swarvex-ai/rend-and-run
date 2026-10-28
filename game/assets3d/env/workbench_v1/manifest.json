@@ -1,0 +1,45 @@
+{
+  "assetId": "rendrun_equipment_workbench",
+  "category": "environment_prop",
+  "description": "Original project-owned equipment workbench. Rights retained. Open knee space, recessed drawers, tabletop vise; Y-up floor origin 1.15x1.12x.6m. Visual only, no collision.",
+  "displayName": "rendrun-equipment-workbench",
+  "files": [
+    {
+      "bytes": 59136,
+      "kind": "model",
+      "path": "model.glb",
+      "sha256": "29f2024a6313295ba319498d466de56c7cf876031426c067e8ac148bf1985618"
+    },
+    {
+      "bytes": 1757,
+      "kind": "metadata",
+      "path": "metadata.json",
+      "sha256": "bb405ad048f875727d01f11330c30b1ba0583c07fd8393e07eb23721cc4eeace"
+    },
+    {
+      "bytes": 459,
+      "kind": "provenance",
+      "path": "provenance.json",
+      "sha256": "ef7c9776b0d51be5ff12056196b0b7762b680461202afdaa054e9a6acf4a4557"
+    },
+    {
+      "bytes": 2578,
+      "kind": "validation",
+      "path": "validation.json",
+      "sha256": "015a63e87f7e6ad2b9f5d8608431fd1ed378411fe8981b0ef12c1926a1df1847"
+    }
+  ],
+  "license": "LicenseRef-RendRun-ProjectOwned",
+  "model": "model.glb",
+  "packageId": "pkg_750ad565d062c049db562752",
+  "provenance": {
+    "origin": "authored"
+  },
+  "schema": "game_dev.asset_package.v1",
+  "validation": {
+    "errorCount": 0,
+    "passed": true,
+    "warningCount": 0
+  },
+  "version": "1.0.0"
+}

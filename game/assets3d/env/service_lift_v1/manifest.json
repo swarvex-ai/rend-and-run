@@ -1,0 +1,45 @@
+{
+  "assetId": "rendrun_service_lift_deck",
+  "category": "environment_prop",
+  "description": "Original Blender steel lift deck, recessed panels, copper entry markings and rear-only rail. Godot Y-up, walking surface Y0, footprint 2.4 x 2m, underside -.2m; visual replacement only, retain existing platform collision. Solid PBR, no texture atlas.",
+  "displayName": "rendrun-service-lift-deck",
+  "files": [
+    {
+      "bytes": 107036,
+      "kind": "model",
+      "path": "model.glb",
+      "sha256": "23e9d7ae31098bd1a6398858ece8354251b11007e8f79dc0241b7b19a7793c54"
+    },
+    {
+      "bytes": 1686,
+      "kind": "metadata",
+      "path": "metadata.json",
+      "sha256": "ea56de3a7ad343b8f61be484a2b9756477b05fbee533b25c2e89176e2ab47ed6"
+    },
+    {
+      "bytes": 332,
+      "kind": "provenance",
+      "path": "provenance.json",
+      "sha256": "5344936d66db15875acf484dd55d716ed791b56f34002be05b54eed547863ca8"
+    },
+    {
+      "bytes": 2464,
+      "kind": "validation",
+      "path": "validation.json",
+      "sha256": "98eea1db4f6fdf2b2beb7076d9cff7a189d86ca717d0bc143f9b72b5e4dc4928"
+    }
+  ],
+  "license": "LicenseRef-RendRun-ProjectOwned",
+  "model": "model.glb",
+  "packageId": "pkg_12825064d641c59b4593f756",
+  "provenance": {
+    "origin": "authored"
+  },
+  "schema": "game_dev.asset_package.v1",
+  "validation": {
+    "errorCount": 0,
+    "passed": true,
+    "warningCount": 0
+  },
+  "version": "1.0.0"
+}

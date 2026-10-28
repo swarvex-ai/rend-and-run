@@ -1,0 +1,70 @@
+{
+  "assetId": "rendrun_coolant_skid",
+  "category": "environment_prop",
+  "description": "Original twin-vessel cooling skid for recessed laboratory machinery bay. Godot Y-up +Z front, bottom origin, 1.95 x 2.165 x 1.1725m. Copper manifold/return pipes, clamps, gauges, drains, pump and access panels. One PBR atlas material with embedded 1K basecolor and roughness; uniform metallic .55, no normal or emissive map. No collider.",
+  "displayName": "rendrun-coolant-skid",
+  "inspection": {
+    "animationCount": 0,
+    "boundingBox": {
+      "max": [
+        0.9750000238418579,
+        2.1649997234344482,
+        0.6024999618530273
+      ],
+      "min": [
+        -0.9750000238418579,
+        0,
+        -0.5699999928474426
+      ],
+      "sizeMeters": [
+        1.9500000476837158,
+        2.1649997234344482,
+        1.17249995470047
+      ]
+    },
+    "boundingBoxEmpty": false,
+    "fileBytes": 1178684,
+    "filePath": "model.glb",
+    "generator": "glTF-Transform v4.5.1",
+    "hasNormals": true,
+    "hasSkin": false,
+    "hasTangents": false,
+    "hasUVs": true,
+    "materialCount": 1,
+    "meshCount": 1,
+    "pbr": {
+      "hasBaseColorTexture": true,
+      "hasEmissiveTexture": false,
+      "hasMetallicRoughnessTexture": true,
+      "hasNormalTexture": false,
+      "hasOcclusionTexture": false
+    },
+    "primitiveCount": 1,
+    "sceneGraphFallback": false,
+    "textureCount": 2,
+    "textureResolutions": [
+      {
+        "bytes": 905551,
+        "height": 1024,
+        "mimeType": "image/png",
+        "name": "diffuse",
+        "width": 1024
+      },
+      {
+        "bytes": 107194,
+        "height": 1024,
+        "mimeType": "image/png",
+        "name": "roughness",
+        "width": 1024
+      }
+    ],
+    "triangleCount": 2564,
+    "undrawnMeshCount": 0,
+    "undrawnPrimitiveCount": 0,
+    "undrawnTriangleCount": 0,
+    "vertexCount": 4656,
+    "warnings": []
+  },
+  "license": "LicenseRef-RendRun-ProjectOwned",
+  "schema": "game_dev.asset_metadata.v1"
+}

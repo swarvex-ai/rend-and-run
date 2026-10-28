@@ -1,0 +1,23 @@
+{
+  "completedAt": "2026-10-12T04:45:32.573Z",
+  "destination": {
+    "assetId": "security_baton",
+    "version": "1.0.0"
+  },
+  "evidence": {
+    "blenderNormalizationPerformed": false,
+    "gpuImportTestPerformed": false,
+    "humanVisualReviewPerformed": false,
+    "modelBytesCopiedAndHashed": true,
+    "policyValidationCompleted": true,
+    "staticInspectionCompleted": true
+  },
+  "manifestSha256": "50e7a5a99b4d52fed8ae3ef57c1b151e20ac081487349e5c033db11b641f685d",
+  "packageId": "pkg_b7cba5eb7e1add558c619d4d",
+  "schema": "game_dev.package_receipt.v1",
+  "source": {
+    "bytes": 118336,
+    "fileName": "model.glb",
+    "sha256": "a26287bb3bbe88cca645538d7cc3dd8c95663be52a5f8ec5fce6fd5e0e9d9fbf"
+  }
+}

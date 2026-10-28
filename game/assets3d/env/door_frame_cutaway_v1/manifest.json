@@ -1,0 +1,45 @@
+{
+  "assetId": "rendrun_door_frame_cutaway",
+  "category": "environment_prop",
+  "description": "Original Blender industrial door_frame_cutaway. Godot Y-up, solid PBR materials, no colliders or built-in lights. Reusable shared static geometry.",
+  "displayName": "rendrun-door_frame_cutaway",
+  "files": [
+    {
+      "bytes": 109008,
+      "kind": "model",
+      "path": "model.glb",
+      "sha256": "ebb9d20c565615bdc7e96d88cd454a3bfd277d9a6dcf81b66c36e1f99b4dd976"
+    },
+    {
+      "bytes": 1617,
+      "kind": "metadata",
+      "path": "metadata.json",
+      "sha256": "61fac574edd9f632097621cd9cc9e7bd365c11c1b5f792610483ae29531c936d"
+    },
+    {
+      "bytes": 352,
+      "kind": "provenance",
+      "path": "provenance.json",
+      "sha256": "2dba6975bba618f3eeb2e8e5793a6e5500012f03f4e6fd9ec96b0386906acc8c"
+    },
+    {
+      "bytes": 2747,
+      "kind": "validation",
+      "path": "validation.json",
+      "sha256": "e89b33048cd210ad47cab694508c4bce0923809fd3c6409f30eb3b48af5fb62b"
+    }
+  ],
+  "license": "LicenseRef-RendRun-ProjectOwned",
+  "model": "model.glb",
+  "packageId": "pkg_4925b826205e7e5f1b92caf5",
+  "provenance": {
+    "origin": "authored"
+  },
+  "schema": "game_dev.asset_package.v1",
+  "validation": {
+    "errorCount": 0,
+    "passed": true,
+    "warningCount": 0
+  },
+  "version": "1.0.0"
+}

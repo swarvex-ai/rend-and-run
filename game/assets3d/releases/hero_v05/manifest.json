@@ -1,0 +1,9 @@
+{
+  "asset": "Rend combat v05",
+  "new_clip": "slash_combo_2",
+  "existing_clips_unchanged": true,
+  "total_animations": 13,
+  "game_code_modified": false,
+  "integration_required": "Fresh second press buffers combo; switch at slash_light 0.45s",
+  "credits_spent": 0
+}

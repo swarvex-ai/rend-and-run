@@ -1,0 +1,23 @@
+{
+  "completedAt": "2026-10-11T20:18:58.161Z",
+  "destination": {
+    "assetId": "light_humanoid_detached_arm",
+    "version": "1.0.1"
+  },
+  "evidence": {
+    "blenderNormalizationPerformed": false,
+    "gpuImportTestPerformed": false,
+    "humanVisualReviewPerformed": false,
+    "modelBytesCopiedAndHashed": true,
+    "policyValidationCompleted": true,
+    "staticInspectionCompleted": true
+  },
+  "manifestSha256": "511ec54634a426ec0215c50cbb2368fd7e4135ac453ffc698f80d065a0e38f25",
+  "packageId": "pkg_e9597331906d17f2a8431344",
+  "schema": "game_dev.package_receipt.v1",
+  "source": {
+    "bytes": 8056284,
+    "fileName": "severed_arm.glb",
+    "sha256": "580c469039f76c257601ed2ce98fcc0d7c7030a2c14ff332367adc47f8d3c3f1"
+  }
+}

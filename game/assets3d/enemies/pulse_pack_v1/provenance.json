@@ -1,0 +1,10 @@
+{
+  "notes": "Hermie H59 procedural source corrected by Codex: outward face normals and Blender 4.5 export enum NONE. No external assets or paid generation. Generator SHA256 38ada73ce42c9e036211d6212a66cc91bd4693284776a197e83eb2bcaab5eb94",
+  "origin": "authored",
+  "schema": "game_dev.asset_provenance.v1",
+  "source": {
+    "bytes": 30648,
+    "fileName": "pulse_guard_pack.glb",
+    "sha256": "11b52dd1063163e413c22953dcad14fbe229e4130ced6a31b7ffbfb2a103ddfa"
+  }
+}

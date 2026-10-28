@@ -1,0 +1,58 @@
+{
+  "package": "asset_pipeline_p03_v01",
+  "status": "local_qa_passed_integration_pending",
+  "files": {
+    "HANDOFF.txt": {
+      "bytes": 5644,
+      "sha256": "baa885db29cc4f58598afc528c614c9e09f9feace0e1aade9f423200eeaac84b"
+    },
+    "contracts/chaser_v01.json": {
+      "bytes": 1321,
+      "sha256": "7d231b1ab453ff7501840a60b152d21f41ebcf05cf1163c22948d75abcbca42f"
+    },
+    "contracts/hero_v05.json": {
+      "bytes": 1479,
+      "sha256": "528348aa21b393dbd19f0f703cbbb508905f535170a2908e729d528d90d2f132"
+    },
+    "godot/preview.gd": {
+      "bytes": 3519,
+      "sha256": "b357517fad32e08d8d6fe5e83eee44ca7f2b1ea9a197ddf7e4934c06641449fe"
+    },
+    "godot/preview.tscn": {
+      "bytes": 159,
+      "sha256": "7115ee5654350e9da2d6ca5a40fc1d578864b4d025d237ff67e49ea8de5c74fb"
+    },
+    "godot/project.godot": {
+      "bytes": 304,
+      "sha256": "1bfcdeee2a3c44b72b09d037c55671ae90d94812a36e81552abb7312f166db93"
+    },
+    "godot/validate.gd": {
+      "bytes": 5951,
+      "sha256": "0e97ebd2d558fc82ae20320a321071ec00ad3927cb22193221a9bfed1f0e7dd0"
+    },
+    "pipeline.py": {
+      "bytes": 10881,
+      "sha256": "8774f7bed18635de7c2eee34ae7e4ac62b5dc3c108d15c9092d3f2d9ded0eaf2"
+    },
+    "reports/integration.json": {
+      "bytes": 4878,
+      "sha256": "2269e028904f812720af4c152c677fa7e971fea0729baf1b09c5b1ce40e9436b"
+    },
+    "reports/preview-smoke.txt": {
+      "bytes": 101,
+      "sha256": "1fb0f12cefe41f881cb436e6731d981084b95f8db9b1d6f3e25ac930f360a32e"
+    },
+    "reports/unit-tests.txt": {
+      "bytes": 1103,
+      "sha256": "266d2dcdb566ca50fd984e2368fe75baf6a6b71cf31b62d3cbb1d1c10c60b4e0"
+    },
+    "tests/integration.py": {
+      "bytes": 2085,
+      "sha256": "be0b4b49b3730f9322633650ea0d04ebb81906e115f4327ed03c0a354c2e6171"
+    },
+    "tests/test_pipeline.py": {
+      "bytes": 3791,
+      "sha256": "65fbfa20cb73afd055054ac4abbc6f02135d18debc7ddc55da42cad335c4ab0c"
+    }
+  }
+}

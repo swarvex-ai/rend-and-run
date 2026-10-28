@@ -1,0 +1,23 @@
+{
+  "completedAt": "2026-10-11T17:43:32.199Z",
+  "destination": {
+    "assetId": "salvage_cart",
+    "version": "1.0.0"
+  },
+  "evidence": {
+    "blenderNormalizationPerformed": false,
+    "gpuImportTestPerformed": false,
+    "humanVisualReviewPerformed": false,
+    "modelBytesCopiedAndHashed": true,
+    "policyValidationCompleted": true,
+    "staticInspectionCompleted": true
+  },
+  "manifestSha256": "79660cd0cd89f3985e09df98ce615aaed45bef3f4a83fd00dda65152db7324e4",
+  "packageId": "pkg_ced2c2c11af2171caf689bfa",
+  "schema": "game_dev.package_receipt.v1",
+  "source": {
+    "bytes": 628056,
+    "fileName": "salvage_cart.glb",
+    "sha256": "4d608e690910a69cbf119b8bc1d70c8a64dedea59e32bdcdd357b89f7cdfdb35"
+  }
+}

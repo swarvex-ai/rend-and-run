@@ -1,0 +1,23 @@
+{
+  "completedAt": "2026-10-08T18:13:02.215Z",
+  "destination": {
+    "assetId": "rendrun_service_lamp",
+    "version": "1.0.0"
+  },
+  "evidence": {
+    "blenderNormalizationPerformed": false,
+    "gpuImportTestPerformed": false,
+    "humanVisualReviewPerformed": false,
+    "modelBytesCopiedAndHashed": true,
+    "policyValidationCompleted": true,
+    "staticInspectionCompleted": true
+  },
+  "manifestSha256": "d40133b2583a3e714f068820657a6468a67b3a085b91849574bc979c98a0447f",
+  "packageId": "pkg_e655fa872adaf4c3e8d02f9b",
+  "schema": "game_dev.package_receipt.v1",
+  "source": {
+    "bytes": 147840,
+    "fileName": "model.glb",
+    "sha256": "c64680df4b6dee996092df955d972e8babff3d21d28943a964e889f74818cc0b"
+  }
+}

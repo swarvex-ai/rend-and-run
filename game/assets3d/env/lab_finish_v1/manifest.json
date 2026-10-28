@@ -1,0 +1,45 @@
+{
+  "assetId": "lab_finish_module",
+  "category": "environment_prop",
+  "description": "Original Blender lab finish module: 3m repeatable satin metal floor and overhead service rails. Floor surface at Y=0, recessed drains/fasteners; authored directional roughness texture embedded. No colliders. CC0 original geometry and texture; no provider calls.",
+  "displayName": "lab_finish_module",
+  "files": [
+    {
+      "bytes": 2145800,
+      "kind": "model",
+      "path": "model.glb",
+      "sha256": "564420cfb93fcdba199b7c4fc9c3e1bbc8f01bc36e7b262a6cec7b6a2b290471"
+    },
+    {
+      "bytes": 2002,
+      "kind": "metadata",
+      "path": "metadata.json",
+      "sha256": "47b993e7cafa4c4f5879710746a0fe23da7b92c48b1fdd47297832aec48aa097"
+    },
+    {
+      "bytes": 227,
+      "kind": "provenance",
+      "path": "provenance.json",
+      "sha256": "3225c9c1c42157c1f63c5a7ce4571f957ad2390880150db06c5bcd85dae44749"
+    },
+    {
+      "bytes": 3477,
+      "kind": "validation",
+      "path": "validation.json",
+      "sha256": "f0a0c569d9eeed2f6a6c3af0554e35f9764b223962badd4c1a81bfe07620a2c4"
+    }
+  ],
+  "license": "CC0-1.0",
+  "model": "model.glb",
+  "packageId": "pkg_91c3050d4cdebaff8442d510",
+  "provenance": {
+    "origin": "imported"
+  },
+  "schema": "game_dev.asset_package.v1",
+  "validation": {
+    "errorCount": 0,
+    "passed": true,
+    "warningCount": 1
+  },
+  "version": "1.0.0"
+}

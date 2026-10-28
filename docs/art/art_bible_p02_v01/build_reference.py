@@ -1,0 +1,48 @@
+import json,pathlib,base64,html,hashlib
+p=pathlib.Path('outputs/art_bible_p02_v01')
+profiles={k:dict(triangles_target=a,triangles_review_above=b,texture_edge_target=c,max_materials_per_mesh_target=1) for k,a,b,c in [('hero',35000,45000,2048),('enemy',15000,22000,2048),('boss',45000,60000,2048),('weapon',5000,8000,1024),('module',3000,6000,1024),('small_prop',1500,3000,512),('large_prop',5000,8000,1024),('distant_cluster',2000,4000,1024)]}
+(p/'budgets.json').write_text(json.dumps(dict(schema=1,status='provisional_review_targets_not_import_gates',units='meters',front='+X',up='+Y',camera='+Z looking -Z',grid_m=.5,fine_grid_m=.25,profiles=profiles,lod_triangle_ratios=[1,.5,.25],max_bone_influences_new_exports=4,stress_scene=dict(hero=1,enemies=6,boss=1,visible_triangles_target=600000,draw_calls_target=350,resident_asset_textures_mib_target=512,target_frame_ms=16.67,reference_hardware='not yet established; requires profiling'),vfx=dict(particles_per_normal_hit=256,particles_visible=2048,active_blood_decals=64),audio=dict(source_sample_rate_hz=48000,sfx_voice_target=24),palette=dict(shadow='#11151E',petrol='#23525B',copper='#B77850',violet='#51436E',edge='#CAD5CF',interaction='#62D6CC',blood='#992D3C',telegraph='#F2B05E')),indent=2)+'\n')
+s=['<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="1120" viewBox="0 0 1600 1120"><rect width="1600" height="1120" fill="#11151e"/><style>text{font-family:sans-serif;fill:#CAD5CF}.h{font-size:23px;font-weight:bold}.small{font-size:17px}.muted{fill:#94a2aa;font-size:17px}</style>']
+def text(x,y,t,cl='small'):s.append(f'<text x="{x}" y="{y}" class="{cl}">{html.escape(t)}</text>')
+def rect(x,y,w,h,c,stroke=None):s.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="{c}"'+(f' stroke="{stroke}" stroke-width="3"' if stroke else '')+'/>')
+def path(d,c,stroke=None):s.append(f'<path d="{d}" fill="{c}"'+(f' stroke="{stroke}" stroke-width="4"' if stroke else '')+'/>')
+text(40,48,'REND&RUN / ART DIRECTION 01','h');text(40,80,'Menschlich. Technisch. Brutaler Nahkampf. Klare Seitenansicht.','muted')
+text(1160,48,'P02 • PRODUKTIONSENTWURF','small')
+rect(40,110,440,770,'#1b202a');text(62,147,'REND — IDENTITÄT ERHALTEN','h')
+b64=base64.b64encode(pathlib.Path('outputs/hero_v01/previews/hero_portrait.jpg').read_bytes()).decode()
+s.append(f'<image x="56" y="166" width="408" height="555" preserveAspectRatio="xMidYMid meet" xlink:href="data:image/jpeg;base64,{b64}"/>')
+for i,t in enumerate(['Brille / Haare / kurze Jacke','Kräftige Unterarme / Technikdetails','Bestehender Projektrender','Kein neuer Charakterentwurf']):text(62,754+i*28,t)
+rect(500,110,1060,355,'#1b202a');text(522,147,'LABOR / SPIELEBENE VOR KULISSE','h')
+# self drawn schematic
+rect(522,165,1016,245,'#191c2b')
+for x in range(560,1450,155):rect(x,188,95,145,'#353044');rect(x+15,202,64,8,'#51436e')
+for x in range(530,1400,220):rect(x,170,12,237,'#324149');rect(x,286,180,8,'#324149')
+rect(522,356,1016,54,'#23525b');rect(522,350,1016,6,'#cad5cf')
+for x in range(530,1520,100):rect(x,375,75,8,'#183b42')
+rect(1005,288,215,17,'#23525b');rect(1005,284,215,4,'#cad5cf')
+rect(1305,240,105,110,'#17262c','#b77850');rect(1320,253,74,8,'#62d6cc')
+# person simple marker
+s.append('<circle cx="830" cy="261" r="15" fill="#CAD5CF"/>');path('M819 278 L846 278 L854 316 L841 350 L830 350 L835 312 L818 350 L807 350 L817 307 Z','#b77850');path('M850 285 L879 316 L920 293','none','#cad5cf')
+text(522,441,'Helle Landekante • ruhige Körperzone • violette Distanz • Kupfer an Funktion','small')
+rect(500,485,520,395,'#1b202a');text(522,524,'BÖDEN / PROPS / ANSCHLÜSSE','h')
+rect(530,553,210,48,'#23525b','#b77850');rect(530,550,210,5,'#cad5cf')
+for x in range(543,720,24):rect(x,567,12,20,'#11151e')
+text(760,577,'2 / 4 m Module');text(760,604,'0,50 m Raster')
+rect(542,651,104,90,'#23525b','#b77850');path('M547 656 L640 735 M640 656 L547 735','none','#b77850')
+rect(683,650,60,92,'#324149','#b77850');rect(679,666,68,8,'#b77850');rect(679,718,68,8,'#b77850')
+rect(792,663,75,28,'#23525b','#62d6cc');rect(816,695,24,50,'#324149')
+rect(923,648,14,95,'#b77850');rect(905,642,50,18,'#62d6cc')
+text(542,778,'Kiste');text(680,778,'Fass');text(780,778,'Terminal');text(905,778,'Licht')
+text(522,819,'Gleiche Pivots für intakt / zerstört','muted');text(522,850,'Formstudien; noch keine fertigen 3D-Assets','muted')
+rect(1040,485,520,395,'#1b202a');text(1062,524,'HUMANOIDE SILHOUETTEN','h')
+for x,wide,color in [(1120,22,'#b77850'),(1290,44,'#23525b'),(1450,18,'#51436e')]:
+ s.append(f'<circle cx="{x}" cy="590" r="19" fill="{color}"/>')
+ path(f'M{x-wide} 615 L{x+wide} 615 L{x+wide+8} 676 L{x+15} 681 L{x+25} 752 L{x+5} 752 L{x} 690 L{x-14} 752 L{x-35} 752 L{x-20} 679 L{x-wide-10} 668 Z',color)
+rect(1449,610,45,78,'#324149');rect(1459,601,12,18,'#62d6cc')
+text(1079,785,'Chaser');text(1245,785,'Wächter');text(1400,785,'Suppressor')
+text(1062,819,'Haltung + Masse + Rückenform','muted');text(1062,850,'Schema, keine verbindliche Größenrelation','muted')
+colors=[('#11151E','SCHATTEN'),('#23525B','PETROL'),('#B77850','KUPFER'),('#51436E','DISTANZ'),('#CAD5CF','KANTE'),('#62D6CC','INTERAKTION'),('#992D3C','BLUT'),('#F2B05E','TELEGRAPH')]
+for i,(c,n) in enumerate(colors):
+ x=40+i*192;rect(x,913,174,58,c,'#34414a');text(x,998,n);text(x,1025,c,'muted')
+text(40,1080,'Technische Budgets und Folge-Briefs separat • Eigene Formstudien + bestehender Rend-Render • keine neue Nutzerabnahme','small')
+s.append('</svg>');(p/'reference_board.svg').write_text('\n'.join(s))

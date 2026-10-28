@@ -1,0 +1,77 @@
+{
+  "assetId": "light_humanoid_detached_arm",
+  "category": "character",
+  "description": "Derived locally from the accepted paid Meshy light humanoid rig c3fd9a8f787afeb0cb27fd4a8ada2055c79992503a03983e29ea7f57c7edcddc, job 01a12b58-3d08-77cf-a973-2ea9905bffa1. Original textures and 24 rest bones retained. Separate left arm and authored mechanical shoulder cap; socket sev_arm_left. No new provider jobs or spend. See build_light_severance.py and build-report.json. Original paid-Meshy provenance and license retained; local joint geometry original.",
+  "displayName": "light_humanoid_detached_arm",
+  "inspection": {
+    "animationCount": 0,
+    "boundingBox": {
+      "max": [
+        0.5071437954902649,
+        0.08323730528354645,
+        0.3961143493652344
+      ],
+      "min": [
+        0,
+        -0.22361968457698822,
+        -0.07396844774484634
+      ],
+      "sizeMeters": [
+        0.5071437954902649,
+        0.30685698986053467,
+        0.4700827971100807
+      ]
+    },
+    "boundingBoxEmpty": false,
+    "fileBytes": 8056284,
+    "filePath": "model.glb",
+    "generator": "glTF-Transform v4.5.1",
+    "hasNormals": true,
+    "hasSkin": false,
+    "hasTangents": true,
+    "hasUVs": true,
+    "materialCount": 4,
+    "meshCount": 1,
+    "pbr": {
+      "hasBaseColorTexture": true,
+      "hasEmissiveTexture": false,
+      "hasMetallicRoughnessTexture": true,
+      "hasNormalTexture": true,
+      "hasOcclusionTexture": false
+    },
+    "primitiveCount": 4,
+    "sceneGraphFallback": false,
+    "textureCount": 3,
+    "textureResolutions": [
+      {
+        "bytes": 2553615,
+        "height": 2048,
+        "mimeType": "image/jpeg",
+        "name": "Image_2",
+        "width": 2048
+      },
+      {
+        "bytes": 3209871,
+        "height": 2048,
+        "mimeType": "image/jpeg",
+        "name": "Image_0",
+        "width": 2048
+      },
+      {
+        "bytes": 1944104,
+        "height": 2048,
+        "mimeType": "image/jpeg",
+        "name": "Image_1",
+        "width": 2048
+      }
+    ],
+    "triangleCount": 4792,
+    "undrawnMeshCount": 0,
+    "undrawnPrimitiveCount": 0,
+    "undrawnTriangleCount": 0,
+    "vertexCount": 5610,
+    "warnings": []
+  },
+  "license": "LicenseRef-Meshy-Paid",
+  "schema": "game_dev.asset_metadata.v1"
+}

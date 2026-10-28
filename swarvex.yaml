@@ -1,0 +1,18 @@
+# Test contract for Rend&Run on swarvex. Protected path: only the lead and neVs change it.
+# Check locally with: swarvex env
+template: godot
+dir: game
+setup: godot --headless --import >/dev/null 2>&1 || true
+test: |
+  JOBS=3 ../tools/run_tests.sh --headless
+note: Window tests need a display and run only locally; the pipeline runs the headless suite (about 2 minutes).
+protected: |
+  - project.godot
+  - export_presets.cfg
+  - tests/manifest.txt
+  - ../tools/run_tests.sh
+  - ../LICENSE*
+  - ../CREDITS.md
+  - ../AGENTS.md
+  - ../docs/vision.md
+  - ../docs/project-brief.md

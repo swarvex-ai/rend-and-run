@@ -1,0 +1,23 @@
+{
+  "completedAt": "2026-10-12T06:59:56.009Z",
+  "destination": {
+    "assetId": "rr_mod_arm_servo",
+    "version": "1.0.0"
+  },
+  "evidence": {
+    "blenderNormalizationPerformed": false,
+    "gpuImportTestPerformed": false,
+    "humanVisualReviewPerformed": false,
+    "modelBytesCopiedAndHashed": true,
+    "policyValidationCompleted": true,
+    "staticInspectionCompleted": true
+  },
+  "manifestSha256": "993ffb60fa1759bfe50f54f659affd2028e177dea4ad7df9113402b9f4af312c",
+  "packageId": "pkg_0dec7e35c274fe2b7b9e1e47",
+  "schema": "game_dev.package_receipt.v1",
+  "source": {
+    "bytes": 159476,
+    "fileName": "model.glb",
+    "sha256": "a04e8e63d3520f48c79eb0b7a97996fb600e21bb69ca5ffb4436321b97b5aa6e"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "completedAt": "2026-10-11T22:12:56.073Z",
+  "destination": {
+    "assetId": "factory_rework_station",
+    "version": "1.0.0"
+  },
+  "evidence": {
+    "blenderNormalizationPerformed": false,
+    "gpuImportTestPerformed": false,
+    "humanVisualReviewPerformed": false,
+    "modelBytesCopiedAndHashed": true,
+    "policyValidationCompleted": true,
+    "staticInspectionCompleted": true
+  },
+  "manifestSha256": "4b9325098dea09ec33959655d035d0f25216ecd458ffa1118919116d3633981e",
+  "packageId": "pkg_848f72bd6d03431a5bb5ed0c",
+  "schema": "game_dev.package_receipt.v1",
+  "source": {
+    "bytes": 1079328,
+    "fileName": "rework_station.glb",
+    "sha256": "83e45a75bb1eef61bbf1b72d7998998d000f35b679b4b8e2f4f4a7edea5ae0e8"
+  }
+}

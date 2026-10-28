@@ -1,0 +1,10 @@
+{
+  "notes": "Hermie H60 original corrected by Codex: actual annular muzzle; charge strip moved forward onto barrel +Z after left-facing occlusion found in GPU preview. No paid/external assets. Source SHA256 adba37f887bc69f8e0699d822bb0a58a8ad81a354932fc592d2eb80060a1554f",
+  "origin": "authored",
+  "schema": "game_dev.asset_provenance.v1",
+  "source": {
+    "bytes": 32004,
+    "fileName": "model.glb",
+    "sha256": "72a1d938e80c65c03196a257e1d5de92e1c344e6a86ded45910371aa12440476"
+  }
+}

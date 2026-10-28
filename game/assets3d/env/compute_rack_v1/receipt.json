@@ -1,0 +1,23 @@
+{
+  "completedAt": "2026-10-11T17:58:24.685Z",
+  "destination": {
+    "assetId": "compute_rack",
+    "version": "1.0.0"
+  },
+  "evidence": {
+    "blenderNormalizationPerformed": false,
+    "gpuImportTestPerformed": false,
+    "humanVisualReviewPerformed": false,
+    "modelBytesCopiedAndHashed": true,
+    "policyValidationCompleted": true,
+    "staticInspectionCompleted": true
+  },
+  "manifestSha256": "b74c8e5883983b60085a3c80e7be58b693bf4760140c86ad88e9d1407eeca73d",
+  "packageId": "pkg_274c7e182df80cdb356633b6",
+  "schema": "game_dev.package_receipt.v1",
+  "source": {
+    "bytes": 1843208,
+    "fileName": "compute_rack.glb",
+    "sha256": "f52be374004567e706f7b6a129e467ff42253411575963f2594af1b43c8661d8"
+  }
+}

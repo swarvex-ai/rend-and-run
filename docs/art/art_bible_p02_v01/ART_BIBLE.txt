@@ -1,0 +1,144 @@
+REND&RUN — ART BIBLE / P02 v01
+01.10.2026 · Produktionsgrundlage, keine neue Nutzerabnahme
+
+Ziel
+Menschlicher Nerd mit Muskeln und Schwert in einer verlassenen Forschungsanlage.
+Schwere, glaubwürdige Nahkampfbewegungen; brutale Treffer bei klarer Lesbarkeit.
+Rends Brille, Haare, Gesicht, offene kurze petrolfarbene Jacke, kräftige Unterarme,
+Werkzeug-/Technikdetails und bestehende Klinge bleiben erhalten. Kein Redesign.
+Der vorhandene Render ist die Identitätsreferenz; die SVG-Tafel zeigt vereinfachte
+Form- und Farbstudien, keine bereits erzeugten 3D-Assets.
+
+Verbindliche Inputs
+Nutzerwünsche; docs/gdd.md; docs/scope-first-route.md (P01); assets-handoff.md;
+P03-Verträge; bestehender Rend-Look und Mesh-Namen. Bei Konflikten haben Nutzer-
+entscheidungen und der kanonische Spielvertrag Vorrang vor dieser Arbeitsfassung.
+Neue Farbwerte, Budgets und Modulmaße sind ausdrücklich messbare Startwerte.
+Sie werden bei Gameplay- und Performance-Tests überprüft, nicht als gemessene
+Hardwaregrenzen oder bereits persönlich abgenicktes Art-Design ausgegeben.
+
+1. Bildsprache
+- Funktionale Forschungstechnik mit Reparaturen, Kupferleitern und Gebrauchsspuren.
+- Große tragende Formen zuerst, sekundäre Paneele danach, kleine Beschriftung zuletzt.
+- Keine flächige Detailtapete: ruhige Flächen um Körper, Klingen und Landeplätze.
+- Menschen bleiben anatomisch erkennbar; Augmentierung ersetzt keine klare Silhouette.
+- Hintergrund erzählt über Versuchskammern, Rohre, Schächte und stillgelegte Technik.
+- Leitreferenz Shadow Complex betrifft Perspektive/Lesbarkeit und Weltstruktur.
+  Keine kopierten Designs, Screenshots, Logos oder fremden Spielassets im Paket.
+
+2. Palette (sRGB-Hex, unter neutralem Licht bemustern)
+Grundschatten #11151E; Petrol #23525B; oxidiertes Kupfer #B77850;
+fernes Violett #51436E; gebrochene helle Kante #CAD5CF;
+Interaktion/Kontrollpunkt #62D6CC; Gefahr/Blut #992D3C; Telegraph #F2B05E.
+Richtwert sichtbare Umgebung: 60% dunkle Neutrale, 25% Petrol, 10% Violett,
+5% Kupfer/Signal. Kein starres Texturverhältnis. Kupfer in Gebrauchskanten,
+Petrol in tragenden Flächen, Violett vorzugsweise in Distanz/Nebel.
+Farbe allein trägt keine Bedeutung: Interaktion zusätzlich durch Form/Bewegung,
+Gefahr durch Pose/Timing/Kontur, sichere Zone durch ruhige Beleuchtung.
+Blutrot wird nicht als permanentes Ziel-/Interaktionssignal eingesetzt.
+
+3. Bildtiefe und Lesbarkeit
+Kamera +Z nach -Z, Bewegung X, oben Y. Gameplay bleibt nahe Z=0.
+Vordergrund liegt bei +Z und darf Köpfe, Waffenbahn und Landekanten nicht verdecken.
+Ab Z≈-2 m mittlere Kulisse, ab Z≈-6 m ferne Strukturen als Startlayout;
+exakte Werte legt P11 passend zur Kamera fest. Keine Kollisionsannahme aus Z.
+Spielbare Böden haben eine klare helle Oberkante und ruhige Seitenfläche.
+Nicht spielbare ferne Stege: geringerer Kontrast, ohne identische Kantenmarkierung.
+Hintergrund-Emissives schwächer als Kampftelegraphen. Keine hellen Dauerblitze
+hinter Rends Brille oder gegnerischen Händen. Nebel verdeckt keine Sprungziele.
+Review bei tatsächlicher Spielkamera, 1920×1080 und 1280×720, zusätzlich Graustufen:
+Held, drei Klassen und Landezone in einer Sekunde identifizierbar. Dies ist ein
+geplanter Review-Test, noch kein nachgewiesenes Ergebnis.
+
+4. Gegner und Waffen
+Chaser: bestehender 0,90-m-Testgegner bleibt erhalten; vorgelehnter Kopf, schmale
+Schultern, freie Arme. Kleine Größe ist Testkonvention, keine neue Spezies.
+Wächter: breiter Brust-/Schulterblock, tiefer Schwerpunkt, kompakte Klinge;
+Gestalt von der Seite eindeutig breiter als Chaser. Kein Held-Silhouettenklon.
+Suppressor: aufrechte schmale Figur mit hohem Rückenmodul und klarer Distanz-
+Vorbereitung; Waffe nicht mit Rends Schwert verwechseln. Gegner-Fernkampf zulässig,
+Rend erhält dadurch keine Schusswaffe. Endmaße legt P14 vor P16/P17 fest.
+Aufseher: humanoid, asymmetrische Schulter/Unterarmform und großes Rückenaggregat;
+Phasenwechsel durch Haltung und einzelne aktivierte Bauteile statt völlig neuem Rig.
+Zweite Vibroklinge (später): kürzerer breiter Grundkörper oder breitere Schneide,
+Kupfer-Spulen, klar schwerere Anlauf-/Recovery-Pose; keine Skalierung desselben Hiebs.
+Bestehendes Rend-Schwert: hand_r, separates Blatt/Hilt und lösbare Klinge erhalten.
+
+5. Modulares Labor / Props / Hintergründe
+P08 erstes Kit: Boden gerade 2/4 m, Endkappe, Innen-/Außenecke, Plattform 2/4 m,
+Stütze, Wandpaneel 2 m, Türrahmen, Schachtsegment, Rampe nur nach P07-Bedarf.
+Raster X/Z 0,50 m, Feinraster 0,25 m. Wandhöhe 3 m als Startwert; Gameplay-Plattformen
+1,0–1,6 m über Untergrund gemäß P01/P05. Sprungmaße sind keine Modellgrenzen.
+Modulursprung unten-links-vorn an der Rasterkante; Fußpunkt bei Charakteren,
+Bodenkontakt-Mitte bei Props, Drehpunkt bei Türen, Griffpunkt bei Waffen.
+Anschlussflächen liegen exakt auf Raster; keine Zierleisten über begehbarer Kante.
+Bodenfamilien: tragender Stahl, Wartungsgitter, beschädigte Variante mit gleicher
+Anschlussgeometrie. Beschädigung erzeugt ohne P07-Vertrag kein neues Loch.
+P12 zuerst: Versorgungskiste, Werkzeugkiste, Fass, Terminal, Wandleuchte, Rohrbogen,
+Kabeltrasse, Untersuchungstisch. Häuser/Felsen erst bei passendem Gebiet, keine
+ungezielte Sammlung. Je zerstörbarer Familie intakt + Bruchzustand mit gleichem Pivot;
+kein Collider aus DCC erzwingen. Bruchstücke im Profilbudget zählen mit.
+P10 drei Kulissenschichten: nahe Rohr-/Rahmenformen, mittlere Versuchskammern,
+ferne Schacht-/Reaktorsilhouetten. Wiederholungen durch Varianten, nicht wahllose
+Skalierung von Türen/Menschen. P34 führt dieselbe Materialsprache nach außen weiter:
+kalter Fels + Laboreinbauten; keine neue Fantasy-Palette. Gebiet erst nach P33 planen.
+
+6. Bewegung, Gore, VFX und Audio
+Vorhandene akzeptierte Bewegung als Basis erhalten. Rend V05 zweiter Gegenschnitt
+ist Integrations-/Nutzerreview, kein nachträglich erklärtes persönliches Okay.
+1× Wiedergabe: slash_light 0,85 s, slash_heavy 1,35 s, slash_combo_2 0,75 s;
+Branch-Vertrag 0,45 s. Keine globale Beschleunigung. P06 besitzt Gameplay-Zeitfenster.
+P40: Antizipation, Kontakt, Belastungswechsel und Recovery; saubere Hand-/Fußkontakte,
+root-motion/in-place explizit deklarieren. Ledge/Wall-Moves später mit P37-Vertrag.
+P22: kurzer gerichteter Treffer, schwerere Tropfen nachfolgend, sparsame persistente
+Spuren; Lichtfunken für Metall, Blut für Körper. Gegner-Telegraph bleibt trotz Gore
+lesbar. In P23 Intensität skalierbar; mögliche Accessibility-Reduktion ändert nicht
+Hitbox/Timing. Kein wiederholtes Vollbild-Stroboskop als Standardsignal.
+Abtrennung Schulter links: arm_left_severable aus, cap_shoulder_left an,
+sev_arm_left bleibt. Keine Bones löschen. Wurfarm-Pivot Schulter, geschlossener
+Schnitt; exportierte statische Pose ist für Test 1 akzeptiert.
+P24 Audio: trockener Hieb-Ansatz, klarer Kontakt und kurze Material-Nachklänge;
+ruhiges Laborbett, kontrollierter Kampfpuls, sichere Zone hörbar entspannter.
+Audio muss Warnungen vor Distanzangriffen von Treffergeräuschen unterscheiden.
+Keine bezahlten Musik-/SFX-Generierungen durch diese Karte ausgelöst.
+
+7. Technische Startbudgets
+Siehe budgets.json: Ziel und Review-Schwelle, KEINE ungeprüften harten Importlimits.
+Triangles zählen trianguliert pro sichtbarem Asset inkl. getrennter Armteile.
+LOD0: Rend 35k/45k Review, Gegner 15k/22k, Boss 45k/60k, Waffe 5k/8k,
+Modul 3k/6k, kleines Prop 1,5k/3k, großes Prop 5k/8k, ferner Cluster 2k/4k.
+Texturen: Held/Boss 2K Ziel, 4K nur gezielt; Gegner 2K, Prop/Modul 1K,
+kleine Props 512, ferner Cluster 1K. Gemeinsame Atlas-/Trim-Nutzung bevorzugen.
+Ein Material pro Mesh, maximal zwei nach begründetem Review. Glas/Transparenz
+separat und sparsam. Maximal vier Bone-Einflüsse je Vertex als neue Exportvorgabe;
+bestehende Dateien erst messen, nicht pauschal als konform ausgeben.
+LOD1 grob 50%, LOD2 20–25% von LOD0; Hero nicht blind reduzieren. Silhouette,
+Brille, Hände und Trennstellen erhalten. Godot-LOD-Import und Schwellen in P31
+profilieren; kein proprietäres LOD-Extra als GLB-Voraussetzung.
+Sichtbarer Stressraum-Start: 1 Held + 6 Standardgegner + 1 Boss, 600k sichtbare
+Dreiecke, 350 Draw Calls, 512 MiB residenter Asset-Texturbudget-Anteil. Alles
+Profiling-Hypothesen, keine Zusage 60 FPS; Referenzhardware noch festzulegen.
+60 FPS = 16,67 ms Gesamtframe-Ziel; GPU/CPU getrennt messen, P31 entscheidet.
+VFX Startgrenzen: 256 aktive Partikel pro normalem Treffer, 2048 gesamt sichtbar,
+64 aktive Blut-Decals; Pooling und Entfernung in P23. Finale Zahl nach GPU-Profiling.
+Audio Start: 48 kHz Quellen, Mono für räumliche SFX, Stereo für Musik; höchstens
+24 gleichzeitige SFX-Stimmen als Mix-/Profiling-Start, nach Priorität stehlen.
+
+8. Bestand und Abweichungen (GLB am 01.10.26 lokal gemessen)
+Rend V05: 31.211 Dreiecke, 1 Material, eingebettete Bilder 4096², 4096², 2048².
+Chaser V01: 13.204 Dreiecke, 1 Material, vier Bilder je 2048×2176.
+Geometrie passt zum Startziel. Texturen nicht pauschal auf 2K behaupten: Rend
+liegt darüber; Chaser ist nicht quadratisch. Zunächst Bestand unverändert lassen.
+P15/P31 prüfen sichtbaren Qualitätsverlust bei Downsampling und Speicherverbrauch.
+Keine Schätzung aus GLB-Dateigröße mit tatsächlichem GPU-Speicher verwechseln.
+
+9. Lieferung / Abnahme
+GLB 2.0 mit eingebetteten Texturen, PBR Metallic-Roughness, eindeutige Version,
+Maße in Metern, +X Front, Y oben, Sohlen Y0. Keine Collision-Bodies.
+Technischer Vertrag pro Asset, deklarierte Mesh-/Bone-/Clipnamen, Baseline-Hashes,
+Preview aus Spielkamera und Quelle. P03 gate für technische Integrität verwenden;
+budgets.json ist zunächst Review-Konfiguration, noch kein eingebautes P03-Gate.
+Statische Module brauchen geeignete eigene Verträge, keinen Humanoid-Zwang.
+Freigabestatus trennen: technisch geprüft / visuell geprüft / im Spiel abgenommen.
+Diese P02-Lieferung ist eine Produktionsgrundlage, kein neues 3D-Modellpaket;
+deshalb keine leeren GLBs oder erfundene Rig-/Clipabnahmen.

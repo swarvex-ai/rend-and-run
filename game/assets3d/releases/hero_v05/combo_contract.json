@@ -1,0 +1,20 @@
+{
+  "first_clip": "slash_light",
+  "first_duration_s": 0.85,
+  "second_clip": "slash_combo_2",
+  "second_duration_s": 0.75,
+  "playback_speed": 1.0,
+  "input_buffer_window_s": [
+    0,
+    0.45
+  ],
+  "branch_at_s": 0.45,
+  "transition_blend_s": 0,
+  "second_hit_window_s": [
+    0.16,
+    0.38
+  ],
+  "combo_total_duration_s": 1.2,
+  "motion": "Countercut from the opposite side; brief follow-through then reversed strike arc",
+  "integration_required": true
+}

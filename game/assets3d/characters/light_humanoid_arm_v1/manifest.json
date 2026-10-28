@@ -1,0 +1,45 @@
+{
+  "assetId": "light_humanoid_detached_arm",
+  "category": "character",
+  "description": "Derived locally from the accepted paid Meshy light humanoid rig c3fd9a8f787afeb0cb27fd4a8ada2055c79992503a03983e29ea7f57c7edcddc, job 01a12b58-3d08-77cf-a973-2ea9905bffa1. Original textures and 24 rest bones retained. Separate left arm and authored mechanical shoulder cap; socket sev_arm_left. No new provider jobs or spend. See build_light_severance.py and build-report.json. Original paid-Meshy provenance and license retained; local joint geometry original.",
+  "displayName": "light_humanoid_detached_arm",
+  "files": [
+    {
+      "bytes": 8056284,
+      "kind": "model",
+      "path": "model.glb",
+      "sha256": "580c469039f76c257601ed2ce98fcc0d7c7030a2c14ff332367adc47f8d3c3f1"
+    },
+    {
+      "bytes": 2265,
+      "kind": "metadata",
+      "path": "metadata.json",
+      "sha256": "35f6d8dd416b41789ff781fb0c4d95adc90387b9f4eb6492ba823aa517262e26"
+    },
+    {
+      "bytes": 228,
+      "kind": "provenance",
+      "path": "provenance.json",
+      "sha256": "6a5a580a44f94e502b9532dfe296a0491f875ce437c9118a5ffaac8901b211af"
+    },
+    {
+      "bytes": 3577,
+      "kind": "validation",
+      "path": "validation.json",
+      "sha256": "feac69ffd65781132655f5e55e639a716904f93d12aa9c22064db1d9d87bc61f"
+    }
+  ],
+  "license": "LicenseRef-Meshy-Paid",
+  "model": "model.glb",
+  "packageId": "pkg_e9597331906d17f2a8431344",
+  "provenance": {
+    "origin": "imported"
+  },
+  "schema": "game_dev.asset_package.v1",
+  "validation": {
+    "errorCount": 0,
+    "passed": true,
+    "warningCount": 0
+  },
+  "version": "1.0.1"
+}

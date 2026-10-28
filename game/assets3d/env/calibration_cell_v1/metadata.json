@@ -1,0 +1,58 @@
+{
+  "assetId": "factory_calibration_cell",
+  "category": "environment_prop",
+  "description": "Original Blender-built calibration cell, 5.2m wide x3.1m tall x2.7m deep. Seven PBR materials, physical bevels, ring, manipulators, cable loops, instrument panels. Authoring source calibration_cell.blend and build.py in outputs/calibration_cell_blender_v01. CC0 original construction, no external asset sources or paid generation.",
+  "displayName": "factory_calibration_cell",
+  "inspection": {
+    "animationCount": 0,
+    "boundingBox": {
+      "max": [
+        2.5999999046325684,
+        3.0999999046325684,
+        0.03500000014901161
+      ],
+      "min": [
+        -2.5999999046325684,
+        -0.0549999475479126,
+        -2.66999988630414
+      ],
+      "sizeMeters": [
+        5.199999809265137,
+        3.154999852180481,
+        2.7049998864531517
+      ]
+    },
+    "boundingBoxEmpty": false,
+    "fileBytes": 2270884,
+    "filePath": "model.glb",
+    "generator": "glTF-Transform v4.5.1",
+    "hasNormals": true,
+    "hasSkin": false,
+    "hasTangents": false,
+    "hasUVs": true,
+    "materialCount": 7,
+    "meshCount": 7,
+    "pbr": {
+      "hasBaseColorTexture": false,
+      "hasEmissiveTexture": false,
+      "hasMetallicRoughnessTexture": false,
+      "hasNormalTexture": false,
+      "hasOcclusionTexture": false
+    },
+    "primitiveCount": 7,
+    "sceneGraphFallback": false,
+    "textureCount": 0,
+    "textureResolutions": [],
+    "triangleCount": 35428,
+    "undrawnMeshCount": 0,
+    "undrawnPrimitiveCount": 0,
+    "undrawnTriangleCount": 0,
+    "vertexCount": 64062,
+    "warnings": [
+      "glTF reader: Missing optional extension, \"KHR_materials_emissive_strength\".",
+      "no base colour texture on any material: the asset is untextured and will read as flat colour"
+    ]
+  },
+  "license": "CC0-1.0",
+  "schema": "game_dev.asset_metadata.v1"
+}

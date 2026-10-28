@@ -1,0 +1,23 @@
+{
+  "completedAt": "2026-10-06T20:06:47.495Z",
+  "destination": {
+    "assetId": "rendrun_first_room_floor",
+    "version": "1.0.0"
+  },
+  "evidence": {
+    "blenderNormalizationPerformed": false,
+    "gpuImportTestPerformed": false,
+    "humanVisualReviewPerformed": false,
+    "modelBytesCopiedAndHashed": true,
+    "policyValidationCompleted": true,
+    "staticInspectionCompleted": true
+  },
+  "manifestSha256": "6cb612c99852965788b4cc4f069e139c6c5586e8f298f4cf16c60e24d447cf86",
+  "packageId": "pkg_a40d4ebf3d8eb504efd36bc1",
+  "schema": "game_dev.package_receipt.v1",
+  "source": {
+    "bytes": 34064,
+    "fileName": "H41_floor_tile.glb",
+    "sha256": "76aaed0a8c49302fc8fe85359df3b59875ce335879a790ac23fd9f92184894ea"
+  }
+}

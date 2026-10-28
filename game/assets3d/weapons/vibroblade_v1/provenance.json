@@ -1,0 +1,10 @@
+{
+  "notes": "Codex original geometry from existing project weapon profile; no paid inputs. GeneratorSHA256 565e0c8ca64ec7e1650202197007323f0f5121d3e1dbb7bcc9d0c753b1181462",
+  "origin": "authored",
+  "schema": "game_dev.asset_provenance.v1",
+  "source": {
+    "bytes": 148964,
+    "fileName": "model.glb",
+    "sha256": "9b76b1eb4f8bbf30b905653c49c9e46879e2e7fb5b192593e29e3e72a8d9b359"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "assetId": "rendrun_damaged_cable",
+  "category": "environment_prop",
+  "description": "Original project-owned damaged power junction with hanging cable. Y-up, front +Z, mount-center origin and spark_origin at cut end. Solid PBR materials, no UVs or textures; no collider or effects.",
+  "displayName": "rendrun-damaged-cable",
+  "inspection": {
+    "animationCount": 0,
+    "boundingBox": {
+      "max": [
+        0.24523785710334778,
+        0.17000000178813934,
+        0.12678486108779907
+      ],
+      "min": [
+        -0.20999999344348907,
+        -0.9106910824775696,
+        -0.05999999865889549
+      ],
+      "sizeMeters": [
+        0.45523785054683685,
+        1.080691084265709,
+        0.18678485974669456
+      ]
+    },
+    "boundingBoxEmpty": false,
+    "fileBytes": 41468,
+    "filePath": "model.glb",
+    "generator": "glTF-Transform v4.5.1",
+    "hasNormals": true,
+    "hasSkin": false,
+    "hasTangents": false,
+    "hasUVs": false,
+    "materialCount": 4,
+    "meshCount": 15,
+    "pbr": {
+      "hasBaseColorTexture": false,
+      "hasEmissiveTexture": false,
+      "hasMetallicRoughnessTexture": false,
+      "hasNormalTexture": false,
+      "hasOcclusionTexture": false
+    },
+    "primitiveCount": 15,
+    "sceneGraphFallback": false,
+    "textureCount": 0,
+    "textureResolutions": [],
+    "triangleCount": 820,
+    "undrawnMeshCount": 0,
+    "undrawnPrimitiveCount": 0,
+    "undrawnTriangleCount": 0,
+    "vertexCount": 1037,
+    "warnings": [
+      "glTF reader: Missing optional extension, \"KHR_materials_emissive_strength\".",
+      "14 of 15 primitives have no TEXCOORD_0: the mesh cannot be textured or retextured until it is UV unwrapped",
+      "no base colour texture on any material: the asset is untextured and will read as flat colour"
+    ]
+  },
+  "license": "LicenseRef-RendRun-ProjectOwned",
+  "schema": "game_dev.asset_metadata.v1"
+}

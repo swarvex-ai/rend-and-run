@@ -1,0 +1,239 @@
+[gd_scene load_steps=20 format=3 uid="uid://crrmain0001"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_main"]
+[ext_resource type="Script" path="res://player.gd" id="2_player"]
+[ext_resource type="Script" path="res://enemy.gd" id="3_enemy"]
+
+[sub_resource type="Environment" id="env1"]
+background_mode = 1
+background_color = Color(0.06, 0.04, 0.07, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.55, 0.64, 0.73, 1)
+ambient_light_energy = 0.4
+tonemap_mode = 4
+tonemap_exposure = 1.2
+ssao_enabled = true
+ssao_radius = 1.0
+ssao_intensity = 1.4
+ssil_enabled = true
+ssr_enabled = true
+adjustment_enabled = true
+adjustment_contrast = 1.08
+adjustment_saturation = 0.88
+glow_enabled = true
+glow_intensity = 0.55
+glow_strength = 0.9
+glow_bloom = 0.03
+glow_blend_mode = 1
+glow_hdr_threshold = 1.15
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.008
+volumetric_fog_albedo = Color(0.72, 0.78, 0.85, 1)
+volumetric_fog_anisotropy = 0.45
+volumetric_fog_length = 24.0
+volumetric_fog_ambient_inject = 0.15
+
+[sub_resource type="StandardMaterial3D" id="mat_floor"]
+albedo_color = Color(0.16, 0.13, 0.19, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="mat_plat"]
+albedo_color = Color(0.34, 0.2, 0.26, 1)
+roughness = 0.8
+
+[sub_resource type="StandardMaterial3D" id="mat_player"]
+albedo_color = Color(0.85, 0.75, 0.9, 1)
+roughness = 0.4
+metallic = 0.1
+
+[sub_resource type="BoxMesh" id="mesh_ground"]
+size = Vector3(40, 1, 8)
+
+[sub_resource type="BoxShape3D" id="shape_ground"]
+size = Vector3(40, 1, 8)
+
+[sub_resource type="BoxMesh" id="mesh_plat"]
+size = Vector3(3, 0.5, 3)
+
+[sub_resource type="BoxShape3D" id="shape_plat"]
+size = Vector3(3, 0.5, 3)
+
+[sub_resource type="CapsuleShape3D" id="shape_player"]
+radius = 0.35
+height = 1.3
+
+[sub_resource type="CapsuleMesh" id="mesh_player"]
+radius = 0.35
+height = 1.3
+
+[sub_resource type="StandardMaterial3D" id="mat_enemy"]
+albedo_color = Color(0.75, 0.12, 0.1, 1)
+roughness = 0.6
+
+[sub_resource type="BoxMesh" id="mesh_enemy"]
+size = Vector3(0.7, 0.9, 0.7)
+
+[sub_resource type="BoxShape3D" id="shape_enemy"]
+size = Vector3(0.7, 0.9, 0.7)
+
+[sub_resource type="StandardMaterial3D" id="mat_blade"]
+albedo_color = Color(0.9, 0.92, 0.98, 1)
+metallic = 0.9
+roughness = 0.15
+emission_enabled = true
+emission = Color(0.5, 0.55, 0.7, 1)
+emission_energy_multiplier = 0.6
+
+[sub_resource type="BoxMesh" id="mesh_blade"]
+size = Vector3(1.5, 0.09, 0.05)
+
+[sub_resource type="SphereShape3D" id="shape_hit"]
+radius = 0.85
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_main")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("env1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866, -0.35, 0.35, 0, 0.71, 0.71, -0.5, -0.61, 0.61, 0, 6, 3)
+light_energy = 1.1
+shadow_enabled = true
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="GroundMesh" type="MeshInstance3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.5, 0)
+mesh = SubResource("mesh_ground")
+surface_material_override/0 = SubResource("mat_floor")
+
+[node name="GroundShape" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.5, 0)
+shape = SubResource("shape_ground")
+
+[node name="Plat1" type="StaticBody3D" parent="."]
+
+[node name="PlatMesh" type="MeshInstance3D" parent="Plat1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.75, 0)
+mesh = SubResource("mesh_plat")
+surface_material_override/0 = SubResource("mat_plat")
+
+[node name="PlatShape" type="CollisionShape3D" parent="Plat1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.75, 0)
+shape = SubResource("shape_plat")
+
+[node name="Plat2" type="StaticBody3D" parent="."]
+
+[node name="PlatMesh" type="MeshInstance3D" parent="Plat2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.75, 0)
+mesh = SubResource("mesh_plat")
+surface_material_override/0 = SubResource("mat_plat")
+
+[node name="PlatShape" type="CollisionShape3D" parent="Plat2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.75, 0)
+shape = SubResource("shape_plat")
+
+[node name="Plat3" type="StaticBody3D" parent="."]
+
+[node name="PlatMesh" type="MeshInstance3D" parent="Plat3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1.0, 0)
+mesh = SubResource("mesh_plat")
+surface_material_override/0 = SubResource("mat_plat")
+
+[node name="PlatShape" type="CollisionShape3D" parent="Plat3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 1.0, 0)
+shape = SubResource("shape_plat")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 9.57596096)
+fov = 35.0
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+script = ExtResource("2_player")
+
+[node name="Collision" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
+shape = SubResource("shape_player")
+
+[node name="VisualPivot" type="Node3D" parent="Player"]
+
+[node name="Visual" type="MeshInstance3D" parent="Player/VisualPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
+mesh = SubResource("mesh_player")
+surface_material_override/0 = SubResource("mat_player")
+
+[node name="Arm" type="Node3D" parent="Player/VisualPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0.85, 0)
+
+[node name="Blade" type="MeshInstance3D" parent="Player/VisualPivot/Arm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.75, 0, 0)
+mesh = SubResource("mesh_blade")
+surface_material_override/0 = SubResource("mat_blade")
+
+[node name="HitPivot" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
+[node name="HitArea" type="Area3D" parent="Player/HitPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0, 0, 0)
+monitorable = false
+
+[node name="HitShape" type="CollisionShape3D" parent="Player/HitPivot/HitArea"]
+shape = SubResource("shape_hit")
+
+[node name="Enemy1" type="CharacterBody3D" parent="." groups=["enemies"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.75, 0)
+script = ExtResource("3_enemy")
+
+[node name="Collision" type="CollisionShape3D" parent="Enemy1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+shape = SubResource("shape_enemy")
+
+[node name="VisualPivot" type="Node3D" parent="Enemy1"]
+
+[node name="Visual" type="MeshInstance3D" parent="Enemy1/VisualPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+mesh = SubResource("mesh_enemy")
+surface_material_override/0 = SubResource("mat_enemy")
+
+[node name="Enemy2" type="CharacterBody3D" parent="." groups=["enemies"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0.75, 0)
+script = ExtResource("3_enemy")
+role = 1
+
+[node name="Collision" type="CollisionShape3D" parent="Enemy2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+shape = SubResource("shape_enemy")
+
+[node name="VisualPivot" type="Node3D" parent="Enemy2"]
+
+[node name="Visual" type="MeshInstance3D" parent="Enemy2/VisualPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+mesh = SubResource("mesh_enemy")
+surface_material_override/0 = SubResource("mat_enemy")
+
+[node name="Enemy3" type="CharacterBody3D" parent="." groups=["enemies"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.75, 0)
+script = ExtResource("3_enemy")
+role = 2
+
+[node name="Collision" type="CollisionShape3D" parent="Enemy3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+shape = SubResource("shape_enemy")
+
+[node name="VisualPivot" type="Node3D" parent="Enemy3"]
+
+[node name="Visual" type="MeshInstance3D" parent="Enemy3/VisualPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+mesh = SubResource("mesh_enemy")
+surface_material_override/0 = SubResource("mat_enemy")
+
+[node name="HUD" type="Label" parent="."]
+offset_left = 20.0
+offset_top = 16.0
+offset_right = 700.0
+offset_bottom = 48.0
+text = "A/D oder Stick = Laufen · Space/Cross = Sprung"
+theme_override_font_sizes/font_size = 18
+modulate = Color(1, 1, 1, 0.6)

@@ -1,0 +1,45 @@
+{
+  "assetId": "salvage_cart",
+  "category": "environment_prop",
+  "description": "Original Blender mobile clean-lab salvage cart. Stainless folded trays, rubber inserts, enamel drawer, captive fasteners, caster wheels and push handle. Metres, bottomY0, top tray .81m, front+Z. 8920tri/5material meshes. CC0-1.0 original geometry, no third-party inputs, no paid jobs. Replaces primitive first-arm pickup display; no collider.",
+  "displayName": "salvage_cart",
+  "files": [
+    {
+      "bytes": 628056,
+      "kind": "model",
+      "path": "model.glb",
+      "sha256": "4d608e690910a69cbf119b8bc1d70c8a64dedea59e32bdcdd357b89f7cdfdb35"
+    },
+    {
+      "bytes": 1782,
+      "kind": "metadata",
+      "path": "metadata.json",
+      "sha256": "556621aa678d7ebd194498c6c3bea43811c11d2c7745ab2cd06e5d1fbaaafc93"
+    },
+    {
+      "bytes": 228,
+      "kind": "provenance",
+      "path": "provenance.json",
+      "sha256": "20568bd94e9f29115734aed0cb11e27b92cd55439f4b571fead4f2e3f1f93bae"
+    },
+    {
+      "bytes": 2617,
+      "kind": "validation",
+      "path": "validation.json",
+      "sha256": "a4c992f8664db9a16610d1dbbe8bfd35f2ab296421ea7e9789148c427e682471"
+    }
+  ],
+  "license": "CC0-1.0",
+  "model": "model.glb",
+  "packageId": "pkg_ced2c2c11af2171caf689bfa",
+  "provenance": {
+    "origin": "imported"
+  },
+  "schema": "game_dev.asset_package.v1",
+  "validation": {
+    "errorCount": 0,
+    "passed": true,
+    "warningCount": 0
+  },
+  "version": "1.0.0"
+}

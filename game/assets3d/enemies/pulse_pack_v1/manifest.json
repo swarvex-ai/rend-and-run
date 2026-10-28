@@ -1,0 +1,45 @@
+{
+  "assetId": "rendrun_pulse_guard_pack",
+  "category": "other",
+  "description": "Original project-owned capacitor backpack; all rights retained. Flat PBR materials intentionally require no UVs. Front +X, up +Y; body mount origin at X=0.",
+  "displayName": "rendrun-pulse-guard-pack",
+  "files": [
+    {
+      "bytes": 30648,
+      "kind": "model",
+      "path": "model.glb",
+      "sha256": "11b52dd1063163e413c22953dcad14fbe229e4130ced6a31b7ffbfb2a103ddfa"
+    },
+    {
+      "bytes": 1816,
+      "kind": "metadata",
+      "path": "metadata.json",
+      "sha256": "dfff392de9cf05312a4a72d26cc349a53933a4193ecf0f4e5e8bc598facb4db2"
+    },
+    {
+      "bytes": 470,
+      "kind": "provenance",
+      "path": "provenance.json",
+      "sha256": "5cfaa7b1ff42f0fb483c95222a9a0b45c770aaf53de081ea516bfc8fab44059a"
+    },
+    {
+      "bytes": 2663,
+      "kind": "validation",
+      "path": "validation.json",
+      "sha256": "9dc6825dce7f694e92faf9e304015a523a2e207eca4936d2ab5299340b553761"
+    }
+  ],
+  "license": "LicenseRef-RendRun-ProjectOwned",
+  "model": "model.glb",
+  "packageId": "pkg_accaa660c3583efbd221e8a9",
+  "provenance": {
+    "origin": "authored"
+  },
+  "schema": "game_dev.asset_package.v1",
+  "validation": {
+    "errorCount": 0,
+    "passed": true,
+    "warningCount": 0
+  },
+  "version": "1.0.0"
+}

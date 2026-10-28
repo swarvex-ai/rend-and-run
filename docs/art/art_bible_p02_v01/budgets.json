@@ -1,0 +1,95 @@
+{
+  "schema": 1,
+  "status": "provisional_review_targets_not_import_gates",
+  "units": "meters",
+  "front": "+X",
+  "up": "+Y",
+  "camera": "+Z looking -Z",
+  "grid_m": 0.5,
+  "fine_grid_m": 0.25,
+  "profiles": {
+    "hero": {
+      "triangles_target": 35000,
+      "triangles_review_above": 45000,
+      "texture_edge_target": 2048,
+      "max_materials_per_mesh_target": 1
+    },
+    "enemy": {
+      "triangles_target": 15000,
+      "triangles_review_above": 22000,
+      "texture_edge_target": 2048,
+      "max_materials_per_mesh_target": 1
+    },
+    "boss": {
+      "triangles_target": 45000,
+      "triangles_review_above": 60000,
+      "texture_edge_target": 2048,
+      "max_materials_per_mesh_target": 1
+    },
+    "weapon": {
+      "triangles_target": 5000,
+      "triangles_review_above": 8000,
+      "texture_edge_target": 1024,
+      "max_materials_per_mesh_target": 1
+    },
+    "module": {
+      "triangles_target": 3000,
+      "triangles_review_above": 6000,
+      "texture_edge_target": 1024,
+      "max_materials_per_mesh_target": 1
+    },
+    "small_prop": {
+      "triangles_target": 1500,
+      "triangles_review_above": 3000,
+      "texture_edge_target": 512,
+      "max_materials_per_mesh_target": 1
+    },
+    "large_prop": {
+      "triangles_target": 5000,
+      "triangles_review_above": 8000,
+      "texture_edge_target": 1024,
+      "max_materials_per_mesh_target": 1
+    },
+    "distant_cluster": {
+      "triangles_target": 2000,
+      "triangles_review_above": 4000,
+      "texture_edge_target": 1024,
+      "max_materials_per_mesh_target": 1
+    }
+  },
+  "lod_triangle_ratios": [
+    1,
+    0.5,
+    0.25
+  ],
+  "max_bone_influences_new_exports": 4,
+  "stress_scene": {
+    "hero": 1,
+    "enemies": 6,
+    "boss": 1,
+    "visible_triangles_target": 600000,
+    "draw_calls_target": 350,
+    "resident_asset_textures_mib_target": 512,
+    "target_frame_ms": 16.67,
+    "reference_hardware": "not yet established; requires profiling"
+  },
+  "vfx": {
+    "particles_per_normal_hit": 256,
+    "particles_visible": 2048,
+    "active_blood_decals": 64
+  },
+  "audio": {
+    "source_sample_rate_hz": 48000,
+    "sfx_voice_target": 24
+  },
+  "palette": {
+    "shadow": "#11151E",
+    "petrol": "#23525B",
+    "copper": "#B77850",
+    "violet": "#51436E",
+    "edge": "#CAD5CF",
+    "interaction": "#62D6CC",
+    "blood": "#992D3C",
+    "telegraph": "#F2B05E"
+  }
+}

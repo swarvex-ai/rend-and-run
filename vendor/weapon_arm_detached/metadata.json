@@ -1,0 +1,57 @@
+{
+  "assetId": "weapon_arm_detached",
+  "category": "weapon",
+  "description": "Original procedural Blender mechanical humanoid forearm; Vision 2.0, no flesh/blood. Static held prop, 0 provider credits. Four constant PBR materials, no texture maps. Source and geometry report in delivery directory.",
+  "displayName": "weapon_arm_detached",
+  "inspection": {
+    "animationCount": 0,
+    "boundingBox": {
+      "max": [
+        0.05300000309944153,
+        0.44761914014816284,
+        0.0560000017285347
+      ],
+      "min": [
+        -0.08884389698505402,
+        -0.12032085657119751,
+        -0.05608329176902771
+      ],
+      "sizeMeters": [
+        0.14184390008449554,
+        0.5679399967193604,
+        0.11208329349756241
+      ]
+    },
+    "boundingBoxEmpty": false,
+    "fileBytes": 383860,
+    "filePath": "model.glb",
+    "generator": "glTF-Transform v4.5.1",
+    "hasNormals": true,
+    "hasSkin": false,
+    "hasTangents": false,
+    "hasUVs": true,
+    "materialCount": 4,
+    "meshCount": 1,
+    "pbr": {
+      "hasBaseColorTexture": false,
+      "hasEmissiveTexture": false,
+      "hasMetallicRoughnessTexture": false,
+      "hasNormalTexture": false,
+      "hasOcclusionTexture": false
+    },
+    "primitiveCount": 4,
+    "sceneGraphFallback": false,
+    "textureCount": 0,
+    "textureResolutions": [],
+    "triangleCount": 13772,
+    "undrawnMeshCount": 0,
+    "undrawnPrimitiveCount": 0,
+    "undrawnTriangleCount": 0,
+    "vertexCount": 9281,
+    "warnings": [
+      "no base colour texture on any material: the asset is untextured and will read as flat colour"
+    ]
+  },
+  "license": "CC0-1.0",
+  "schema": "game_dev.asset_metadata.v1"
+}

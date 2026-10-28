@@ -1,0 +1,23 @@
+{
+  "completedAt": "2026-10-07T11:07:08.593Z",
+  "destination": {
+    "assetId": "rendrun_equipment_workbench",
+    "version": "1.0.0"
+  },
+  "evidence": {
+    "blenderNormalizationPerformed": false,
+    "gpuImportTestPerformed": false,
+    "humanVisualReviewPerformed": false,
+    "modelBytesCopiedAndHashed": true,
+    "policyValidationCompleted": true,
+    "staticInspectionCompleted": true
+  },
+  "manifestSha256": "a2a7d8ef7aa56ceadc3da4d877b20edde82576877b8dc21970b1ef5e578fff79",
+  "packageId": "pkg_750ad565d062c049db562752",
+  "schema": "game_dev.package_receipt.v1",
+  "source": {
+    "bytes": 59136,
+    "fileName": "model.glb",
+    "sha256": "29f2024a6313295ba319498d466de56c7cf876031426c067e8ac148bf1985618"
+  }
+}

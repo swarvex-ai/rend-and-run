@@ -1,0 +1,71 @@
+; Engine configuration file.
+config_version=5
+
+[application]
+
+config/name="Rend&Run"
+config/version="0.0.12"
+run/main_scene="res://start.tscn"
+config/features=PackedStringArray("4.7", "Forward Plus")
+
+[autoload]
+
+FX="*res://fx.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+
+[editor_plugins]
+
+enabled=PackedStringArray()
+
+[input]
+
+move_left={
+"deadzone": 0.3,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"physical_keycode":4194319), Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"physical_keycode":65,"unicode":97), Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":0,"axis_value":-1.0), Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":13)]
+}
+move_right={
+"deadzone": 0.3,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"physical_keycode":4194321), Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"physical_keycode":68,"unicode":100), Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":0,"axis_value":1.0), Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":14)]
+}
+jump={
+"deadzone": 0.3,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"physical_keycode":32), Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":0)]
+}
+attack={
+"deadzone": 0.3,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"keycode":74,"unicode":106), Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"physical_keycode":88,"unicode":120), Object(InputEventJoypadButton,"resource_local_to_scene":false,"device":-1,"button_index":2)]
+}
+
+dodge={
+"deadzone": 0.3,
+"events": [Object(InputEventKey,"physical_keycode":4194325), Object(InputEventKey,"physical_keycode":75), Object(InputEventJoypadButton,"button_index":1)]
+}
+crouch={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"physical_keycode":67), Object(InputEventKey,"physical_keycode":4194326), Object(InputEventJoypadButton,"button_index":10)]
+}
+move_up={
+"deadzone": 0.3,
+"events": [Object(InputEventKey,"physical_keycode":87), Object(InputEventKey,"physical_keycode":4194320), Object(InputEventJoypadMotion,"axis":1,"axis_value":-1.0), Object(InputEventJoypadButton,"button_index":11)]
+}
+move_down={
+"deadzone": 0.3,
+"events": [Object(InputEventKey,"physical_keycode":83), Object(InputEventKey,"physical_keycode":4194322), Object(InputEventJoypadMotion,"axis":1,"axis_value":1.0), Object(InputEventJoypadButton,"button_index":12)]
+}
+restart={
+"deadzone": 0.3,
+"events": [Object(InputEventKey,"physical_keycode":82)]
+}
+
+[rendering]
+
+anti_aliasing/quality/msaa_3d=1
+anti_aliasing/quality/use_taa=true
+
+[physics]
+
+3d/physics_engine="Jolt Physics"

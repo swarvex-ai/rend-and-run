@@ -1,0 +1,45 @@
+{
+  "assetId": "rr_mod_arm_servo",
+  "category": "weapon",
+  "description": "Original local Blender twin-actuator servo attachment. CC0 geometry, four PBR materials, +Y axis, origin clamp centre, attach at local arm y0.13. Source tools/assets/build_arm_servo.py; no paid provider.",
+  "displayName": "rr_mod_arm_servo",
+  "files": [
+    {
+      "bytes": 159476,
+      "kind": "model",
+      "path": "model.glb",
+      "sha256": "a04e8e63d3520f48c79eb0b7a97996fb600e21bb69ca5ffb4436321b97b5aa6e"
+    },
+    {
+      "bytes": 1645,
+      "kind": "metadata",
+      "path": "metadata.json",
+      "sha256": "728aaa6932a054cb27242f656c8b4a01359da676b3581659215ed538e67ef6b3"
+    },
+    {
+      "bytes": 221,
+      "kind": "provenance",
+      "path": "provenance.json",
+      "sha256": "535853369569825e4664aabea23afadb86df382278607d31fdf209a60782c438"
+    },
+    {
+      "bytes": 2617,
+      "kind": "validation",
+      "path": "validation.json",
+      "sha256": "165a1e1fcc61eb07ccbdc359bcce5dcd0df183e3e54a3ab7d63d48d19965f79b"
+    }
+  ],
+  "license": "CC0-1.0",
+  "model": "model.glb",
+  "packageId": "pkg_0dec7e35c274fe2b7b9e1e47",
+  "provenance": {
+    "origin": "imported"
+  },
+  "schema": "game_dev.asset_package.v1",
+  "validation": {
+    "errorCount": 0,
+    "passed": true,
+    "warningCount": 0
+  },
+  "version": "1.0.0"
+}

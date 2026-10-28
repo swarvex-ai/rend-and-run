@@ -1,0 +1,57 @@
+{
+  "assetId": "maintenance_deck",
+  "category": "environment_prop",
+  "description": "Original Blender maintenance platform skin, 2m wide x2.4m deep, topY0. Beveled metal panels, recessed fascia, structural ribs and captive fasteners. No collision. CC0 original local construction, no provider calls.",
+  "displayName": "maintenance_deck",
+  "inspection": {
+    "animationCount": 0,
+    "boundingBox": {
+      "max": [
+        1.0099999904632568,
+        0,
+        1.2614500522613525
+      ],
+      "min": [
+        -1.0099999904632568,
+        -0.3200000077486038,
+        -1.2614500103518367
+      ],
+      "sizeMeters": [
+        2.0199999809265137,
+        0.3200000077486038,
+        2.522900062613189
+      ]
+    },
+    "boundingBoxEmpty": false,
+    "fileBytes": 424404,
+    "filePath": "model.glb",
+    "generator": "glTF-Transform v4.5.1",
+    "hasNormals": true,
+    "hasSkin": false,
+    "hasTangents": false,
+    "hasUVs": true,
+    "materialCount": 4,
+    "meshCount": 4,
+    "pbr": {
+      "hasBaseColorTexture": false,
+      "hasEmissiveTexture": false,
+      "hasMetallicRoughnessTexture": false,
+      "hasNormalTexture": false,
+      "hasOcclusionTexture": false
+    },
+    "primitiveCount": 4,
+    "sceneGraphFallback": false,
+    "textureCount": 0,
+    "textureResolutions": [],
+    "triangleCount": 6040,
+    "undrawnMeshCount": 0,
+    "undrawnPrimitiveCount": 0,
+    "undrawnTriangleCount": 0,
+    "vertexCount": 11984,
+    "warnings": [
+      "no base colour texture on any material: the asset is untextured and will read as flat colour"
+    ]
+  },
+  "license": "CC0-1.0",
+  "schema": "game_dev.asset_metadata.v1"
+}

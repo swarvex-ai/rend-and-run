@@ -1,0 +1,45 @@
+{
+  "assetId": "maintenance_deck",
+  "category": "environment_prop",
+  "description": "Original Blender maintenance platform skin, 2m wide x2.4m deep, topY0. Beveled metal panels, recessed fascia, structural ribs and captive fasteners. No collision. CC0 original local construction, no provider calls.",
+  "displayName": "maintenance_deck",
+  "files": [
+    {
+      "bytes": 424404,
+      "kind": "model",
+      "path": "model.glb",
+      "sha256": "b4b7d76dde49b4bd1da8296a2aac50d18836afdb178fd3767170e960f206cb80"
+    },
+    {
+      "bytes": 1641,
+      "kind": "metadata",
+      "path": "metadata.json",
+      "sha256": "4a45a66e7d7f7720a9659620e9d44843152e3a9bcccc506aa413e11406d3c27c"
+    },
+    {
+      "bytes": 232,
+      "kind": "provenance",
+      "path": "provenance.json",
+      "sha256": "09e1dca12184cd7fac091c7abe836e3287b303a65c196e762f849a3e3c140f17"
+    },
+    {
+      "bytes": 2617,
+      "kind": "validation",
+      "path": "validation.json",
+      "sha256": "e64ebc43c66727fe3295dd56b350f0c851408e1845c5b65eb09386653adb30e6"
+    }
+  ],
+  "license": "CC0-1.0",
+  "model": "model.glb",
+  "packageId": "pkg_ac8b72e8b712cca637714f3b",
+  "provenance": {
+    "origin": "imported"
+  },
+  "schema": "game_dev.asset_package.v1",
+  "validation": {
+    "errorCount": 0,
+    "passed": true,
+    "warningCount": 0
+  },
+  "version": "1.0.0"
+}

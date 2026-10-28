@@ -1,0 +1,23 @@
+{
+  "completedAt": "2026-10-11T15:13:35.695Z",
+  "destination": {
+    "assetId": "enemy_humanoid_light_rig",
+    "version": "1.0.0"
+  },
+  "evidence": {
+    "blenderNormalizationPerformed": false,
+    "gpuImportTestPerformed": false,
+    "humanVisualReviewPerformed": false,
+    "modelBytesCopiedAndHashed": true,
+    "policyValidationCompleted": true,
+    "staticInspectionCompleted": true
+  },
+  "manifestSha256": "57c239899ce1d9ffb3a7ccbe8fb5be70f18ef013f27c7b15b849cf3d3ddb4cfa",
+  "packageId": "pkg_3666a79e6b6321b8797d12e9",
+  "schema": "game_dev.package_receipt.v1",
+  "source": {
+    "bytes": 10771144,
+    "fileName": "enemy_humanoid_light_rigged.glb",
+    "sha256": "c3fd9a8f787afeb0cb27fd4a8ada2055c79992503a03983e29ea7f57c7edcddc"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "completedAt": "2026-10-07T18:14:18.032Z",
+  "destination": {
+    "assetId": "rendrun_damaged_cable",
+    "version": "1.0.0"
+  },
+  "evidence": {
+    "blenderNormalizationPerformed": false,
+    "gpuImportTestPerformed": false,
+    "humanVisualReviewPerformed": false,
+    "modelBytesCopiedAndHashed": true,
+    "policyValidationCompleted": true,
+    "staticInspectionCompleted": true
+  },
+  "manifestSha256": "9e9f359d882cbd37929168ba5b4bd70f107dfa6b7195e7de4b9937d06945dbcd",
+  "packageId": "pkg_a2d4b375d0928c739bbf6832",
+  "schema": "game_dev.package_receipt.v1",
+  "source": {
+    "bytes": 41468,
+    "fileName": "model.glb",
+    "sha256": "864c79b9487bd9757d7d2ac6b2e2c7a2b946b434f2d407cac57a8427d93c292a"
+  }
+}

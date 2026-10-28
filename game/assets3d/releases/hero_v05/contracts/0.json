@@ -1,0 +1,61 @@
+{
+  "humanoid": true,
+  "bone_map": {
+    "Hips": "mixamorig_Hips",
+    "Spine": "mixamorig_Spine",
+    "Chest": "mixamorig_Spine1",
+    "UpperChest": "mixamorig_Spine2",
+    "Neck": "mixamorig_Neck",
+    "Head": "mixamorig_Head",
+    "LeftShoulder": "mixamorig_LeftShoulder",
+    "LeftUpperArm": "mixamorig_LeftArm",
+    "LeftLowerArm": "mixamorig_LeftForeArm",
+    "LeftHand": "mixamorig_LeftHand",
+    "RightShoulder": "mixamorig_RightShoulder",
+    "RightUpperArm": "mixamorig_RightArm",
+    "RightLowerArm": "mixamorig_RightForeArm",
+    "RightHand": "mixamorig_RightHand",
+    "LeftUpperLeg": "mixamorig_LeftUpLeg",
+    "LeftLowerLeg": "mixamorig_LeftLeg",
+    "LeftFoot": "mixamorig_LeftFoot",
+    "LeftToes": "mixamorig_LeftToeBase",
+    "RightUpperLeg": "mixamorig_RightUpLeg",
+    "RightLowerLeg": "mixamorig_RightLeg",
+    "RightFoot": "mixamorig_RightFoot",
+    "RightToes": "mixamorig_RightToeBase"
+  },
+  "front_bones": [
+    "mixamorig_Head",
+    "mixamorig_headfront"
+  ],
+  "max_materials_per_mesh": 1,
+  "tolerance_m": 0.01,
+  "bounds_mesh": "hero_body",
+  "height_m": 1.7,
+  "required_meshes": [
+    "hero_body"
+  ],
+  "skinned_meshes": [
+    "hero_body"
+  ],
+  "sockets": [
+    "hand_r"
+  ],
+  "clips": [
+    "idle",
+    "run",
+    "jump",
+    "fall",
+    "land",
+    "slash_light",
+    "slash_heavy",
+    "slash_combo_2",
+    "hit_react",
+    "death"
+  ],
+  "clip_lengths": {
+    "slash_light": 0.85,
+    "slash_heavy": 1.35,
+    "slash_combo_2": 0.75
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "completedAt": "2026-10-08T18:18:16.547Z",
+  "destination": {
+    "assetId": "rendrun_cable_tray",
+    "version": "1.0.0"
+  },
+  "evidence": {
+    "blenderNormalizationPerformed": false,
+    "gpuImportTestPerformed": false,
+    "humanVisualReviewPerformed": false,
+    "modelBytesCopiedAndHashed": true,
+    "policyValidationCompleted": true,
+    "staticInspectionCompleted": true
+  },
+  "manifestSha256": "4c504a2da156bfd615aebebce7e154cac4b6c3da10bb1317ffe69b078373ed25",
+  "packageId": "pkg_78858333163fc3b9f56c56ff",
+  "schema": "game_dev.package_receipt.v1",
+  "source": {
+    "bytes": 106484,
+    "fileName": "model.glb",
+    "sha256": "92f17030664476202e813773b4a52ace2485c4df2e7943909c5161cd669c25fa"
+  }
+}

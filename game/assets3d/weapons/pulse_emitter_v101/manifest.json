@@ -1,0 +1,45 @@
+{
+  "assetId": "rendrun_pulse_emitter",
+  "category": "weapon",
+  "description": "Original project-owned pulse emitter. All rights retained. Grip origin, barrel +Y, side +Z; Muzzle (0,.700,0). Flat PBR materials, separately named charge_cyan.",
+  "displayName": "rendrun-pulse-emitter",
+  "files": [
+    {
+      "bytes": 32004,
+      "kind": "model",
+      "path": "model.glb",
+      "sha256": "72a1d938e80c65c03196a257e1d5de92e1c344e6a86ded45910371aa12440476"
+    },
+    {
+      "bytes": 1749,
+      "kind": "metadata",
+      "path": "metadata.json",
+      "sha256": "2d88ca3f4c16ebd97430fcaf8b963d4501eb2c0f8697c8bd17262f7e01cac56d"
+    },
+    {
+      "bytes": 493,
+      "kind": "provenance",
+      "path": "provenance.json",
+      "sha256": "5e45e6c443f5af984de36f5a5f1e7e3d2a2e9fa05cd0e36bf4f43539ede993ac"
+    },
+    {
+      "bytes": 2578,
+      "kind": "validation",
+      "path": "validation.json",
+      "sha256": "2d43e2b4fb4ad917c13ab4e241774992d9bfff5a6c29d166d29cf6797e69d853"
+    }
+  ],
+  "license": "LicenseRef-RendRun-ProjectOwned",
+  "model": "model.glb",
+  "packageId": "pkg_018406a2acad05d6a1e293c4",
+  "provenance": {
+    "origin": "authored"
+  },
+  "schema": "game_dev.asset_package.v1",
+  "validation": {
+    "errorCount": 0,
+    "passed": true,
+    "warningCount": 0
+  },
+  "version": "1.0.1"
+}

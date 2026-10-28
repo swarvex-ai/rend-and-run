@@ -1,0 +1,45 @@
+{
+  "assetId": "rendrun_industrial_vibroblade",
+  "category": "weapon",
+  "description": "Original Blender-authored replacement visual for existing vibroblade. Grip origin, +Y tip(-.02,1.167,0); continuous grind, copper cartridge and wrapped grip. Solid PBR, no texture atlas. No animations or combat changes.",
+  "displayName": "rendrun-industrial-vibroblade",
+  "files": [
+    {
+      "bytes": 148964,
+      "kind": "model",
+      "path": "model.glb",
+      "sha256": "9b76b1eb4f8bbf30b905653c49c9e46879e2e7fb5b192593e29e3e72a8d9b359"
+    },
+    {
+      "bytes": 1823,
+      "kind": "metadata",
+      "path": "metadata.json",
+      "sha256": "657f81f96af36318b6c530c296973d710243092f224fa836a481cb69ea3e27a9"
+    },
+    {
+      "bytes": 394,
+      "kind": "provenance",
+      "path": "provenance.json",
+      "sha256": "a0427565ee786f5f94e27762ae53318f4bb6e836885d347b1dbb8b55d40d6259"
+    },
+    {
+      "bytes": 2580,
+      "kind": "validation",
+      "path": "validation.json",
+      "sha256": "17161f1c70d3be8d66b8d27beb70048241b84f850cb5521cd9739a16bd544696"
+    }
+  ],
+  "license": "LicenseRef-RendRun-ProjectOwned",
+  "model": "model.glb",
+  "packageId": "pkg_e6cca2f692e23fc2c9b77f59",
+  "provenance": {
+    "origin": "authored"
+  },
+  "schema": "game_dev.asset_package.v1",
+  "validation": {
+    "errorCount": 0,
+    "passed": true,
+    "warningCount": 0
+  },
+  "version": "1.0.0"
+}

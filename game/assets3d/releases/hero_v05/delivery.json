@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "delivery_id": "hero_v05",
+  "provenance": "Explicit new baseline from local files; not historic verification",
+  "assets": [
+    {
+      "path": "characters/hero_rendrun.glb",
+      "contract": "contracts/0.json"
+    }
+  ],
+  "files": {
+    "characters/hero_rendrun.glb": {
+      "bytes": 49697072,
+      "sha256": "6e1a9ce4829a626a58808ca4e582e20720f519fed9375a390e379db68b0615c6"
+    },
+    "contracts/0.json": {
+      "bytes": 1479,
+      "sha256": "528348aa21b393dbd19f0f703cbbb508905f535170a2908e729d528d90d2f132"
+    }
+  }
+}

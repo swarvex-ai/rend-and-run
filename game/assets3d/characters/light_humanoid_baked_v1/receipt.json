@@ -1,0 +1,23 @@
+{
+  "completedAt": "2026-10-12T04:00:58.160Z",
+  "destination": {
+    "assetId": "light_humanoid_normal_baked",
+    "version": "1.0.0"
+  },
+  "evidence": {
+    "blenderNormalizationPerformed": false,
+    "gpuImportTestPerformed": false,
+    "humanVisualReviewPerformed": false,
+    "modelBytesCopiedAndHashed": true,
+    "policyValidationCompleted": true,
+    "staticInspectionCompleted": true
+  },
+  "manifestSha256": "304cfd5c1d8c4ca540699b8b1dcc9dcd89f2576e77f5f8ed3c6fa4cdd29d7419",
+  "packageId": "pkg_b8d001dea2bf0e4da808eda1",
+  "schema": "game_dev.package_receipt.v1",
+  "source": {
+    "bytes": 16704924,
+    "fileName": "rig-baked.glb",
+    "sha256": "d4c405843c126077089325791f521666683152ca7d2ef44e45b7cf4587e0510e"
+  }
+}

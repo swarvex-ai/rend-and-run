@@ -1,0 +1,58 @@
+{
+  "assetId": "rendrun_lab_cover",
+  "category": "environment_prop",
+  "description": "Original project-owned laboratory cover visual, all rights retained. Y-up floor origin,1.6x1.25x0.5m. Non-emissive PBR panels and safety top-edge locator. No collision; engine owns fixed existing collider.",
+  "displayName": "rendrun-lab-cover",
+  "inspection": {
+    "animationCount": 0,
+    "boundingBox": {
+      "max": [
+        0.800000011920929,
+        1.25,
+        0.25
+      ],
+      "min": [
+        -0.800000011920929,
+        0,
+        -0.25
+      ],
+      "sizeMeters": [
+        1.600000023841858,
+        1.25,
+        0.5
+      ]
+    },
+    "boundingBoxEmpty": false,
+    "fileBytes": 21384,
+    "filePath": "model.glb",
+    "generator": "glTF-Transform v4.5.1",
+    "hasNormals": true,
+    "hasSkin": false,
+    "hasTangents": false,
+    "hasUVs": false,
+    "materialCount": 3,
+    "meshCount": 1,
+    "pbr": {
+      "hasBaseColorTexture": false,
+      "hasEmissiveTexture": false,
+      "hasMetallicRoughnessTexture": false,
+      "hasNormalTexture": false,
+      "hasOcclusionTexture": false
+    },
+    "primitiveCount": 3,
+    "sceneGraphFallback": false,
+    "textureCount": 0,
+    "textureResolutions": [],
+    "triangleCount": 356,
+    "undrawnMeshCount": 0,
+    "undrawnPrimitiveCount": 0,
+    "undrawnTriangleCount": 0,
+    "vertexCount": 696,
+    "warnings": [
+      "3 of 3 primitives have no TEXCOORD_0: the mesh cannot be textured or retextured until it is UV unwrapped",
+      "no base colour texture on any material: the asset is untextured and will read as flat colour"
+    ]
+  },
+  "license": "LicenseRef-RendRun-ProjectOwned",
+  "schema": "game_dev.asset_metadata.v1"
+}

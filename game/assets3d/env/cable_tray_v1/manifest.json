@@ -1,0 +1,45 @@
+{
+  "assetId": "rendrun_cable_tray",
+  "category": "environment_prop",
+  "description": "Original Blender industrial cable_tray. Godot Y-up, solid PBR materials, no colliders or built-in lights. Reusable shared static geometry.",
+  "displayName": "rendrun-cable_tray",
+  "files": [
+    {
+      "bytes": 106484,
+      "kind": "model",
+      "path": "model.glb",
+      "sha256": "92f17030664476202e813773b4a52ace2485c4df2e7943909c5161cd669c25fa"
+    },
+    {
+      "bytes": 1567,
+      "kind": "metadata",
+      "path": "metadata.json",
+      "sha256": "1f62d3f66931f3a1873b328894f39a7c5c214dd6ff11abda07b351163cb4e253"
+    },
+    {
+      "bytes": 352,
+      "kind": "provenance",
+      "path": "provenance.json",
+      "sha256": "e965c92a5642fbb8da2980b2b1b3e9009ad85629987c9346e08a97d25ed02463"
+    },
+    {
+      "bytes": 2747,
+      "kind": "validation",
+      "path": "validation.json",
+      "sha256": "bfc807a6d951e1162c6db9287349a022156bd132a0ce853fb741ce1efc2b6281"
+    }
+  ],
+  "license": "LicenseRef-RendRun-ProjectOwned",
+  "model": "model.glb",
+  "packageId": "pkg_78858333163fc3b9f56c56ff",
+  "provenance": {
+    "origin": "authored"
+  },
+  "schema": "game_dev.asset_package.v1",
+  "validation": {
+    "errorCount": 0,
+    "passed": true,
+    "warningCount": 0
+  },
+  "version": "1.0.0"
+}

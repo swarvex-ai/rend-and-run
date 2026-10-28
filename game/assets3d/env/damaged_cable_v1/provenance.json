@@ -1,0 +1,10 @@
+{
+  "notes": "Hermie H70 generator corrected by Codex: Euler API, modifier removal, vertex coordinates, positive X bound, preview camera. No external or paid inputs. Generator SHA256 7563257e36790c82a455861d88b50aa467fb0b0c62932656966cf44d0ca55678",
+  "origin": "authored",
+  "schema": "game_dev.asset_provenance.v1",
+  "source": {
+    "bytes": 41468,
+    "fileName": "model.glb",
+    "sha256": "864c79b9487bd9757d7d2ac6b2e2c7a2b946b434f2d407cac57a8427d93c292a"
+  }
+}

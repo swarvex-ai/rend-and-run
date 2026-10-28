@@ -1,0 +1,30 @@
+{
+  "license": "CC0-1.0",
+  "provenance": "Original deterministic synthesis; no sampled external recording, AI provider or paid call",
+  "sample_rate": 48000,
+  "duration_seconds": 10,
+  "channels": 1,
+  "format": "PCM16",
+  "files": [
+    {
+      "file": "factory_ventilation.wav",
+      "sha256": "51f3ca0edf62958602225f9d184fd26f6ac8563a1f1bbe7e6423fc327fcd307e",
+      "samples": 480000,
+      "peak_dbfs": -11.999946665424783,
+      "rms_dbfs": -23.110975196920016,
+      "seam_step_lsb": 5.0,
+      "adjacent_step_p999_lsb": 283.0,
+      "periodic_construction": true
+    },
+    {
+      "file": "server_fans.wav",
+      "sha256": "ca084b253ce9d922183da731e08ad5e89c4100be29f355e6a53d6cd616343a4d",
+      "samples": 480000,
+      "peak_dbfs": -11.999946665424783,
+      "rms_dbfs": -24.958536920884807,
+      "seam_step_lsb": 19.0,
+      "adjacent_step_p999_lsb": 1131.0,
+      "periodic_construction": true
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "assetId": "factory_wall_finish",
+  "category": "environment_prop",
+  "description": "Original local Blender cladding for existing calibration bays. Pearl powdercoat panels, narrow expansion seams, service hatch, recessed captive fasteners, sill cap and right pier. 5.9m bay pitch /4.3m height/front+Z, no collision. Authored CC0-1.0 geometry; no provider jobs or external textures.",
+  "displayName": "factory_wall_finish",
+  "inspection": {
+    "animationCount": 0,
+    "boundingBox": {
+      "max": [
+        3.2850000858306885,
+        4.3000001311302185,
+        0.09000000357627869
+      ],
+      "min": [
+        -2.615000009536743,
+        -5.960464477539063e-8,
+        -0.3400000035762787
+      ],
+      "sizeMeters": [
+        5.900000095367432,
+        4.300000190734863,
+        0.4300000071525574
+      ]
+    },
+    "boundingBoxEmpty": false,
+    "fileBytes": 734352,
+    "filePath": "model.glb",
+    "generator": "glTF-Transform v4.5.1",
+    "hasNormals": true,
+    "hasSkin": false,
+    "hasTangents": false,
+    "hasUVs": true,
+    "materialCount": 4,
+    "meshCount": 4,
+    "pbr": {
+      "hasBaseColorTexture": false,
+      "hasEmissiveTexture": false,
+      "hasMetallicRoughnessTexture": false,
+      "hasNormalTexture": false,
+      "hasOcclusionTexture": false
+    },
+    "primitiveCount": 4,
+    "sceneGraphFallback": false,
+    "textureCount": 0,
+    "textureResolutions": [],
+    "triangleCount": 10716,
+    "undrawnMeshCount": 0,
+    "undrawnPrimitiveCount": 0,
+    "undrawnTriangleCount": 0,
+    "vertexCount": 20784,
+    "warnings": [
+      "glTF reader: Missing optional extension, \"KHR_materials_emissive_strength\".",
+      "no base colour texture on any material: the asset is untextured and will read as flat colour"
+    ]
+  },
+  "license": "CC0-1.0",
+  "schema": "game_dev.asset_metadata.v1"
+}

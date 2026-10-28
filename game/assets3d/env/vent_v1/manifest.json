@@ -1,0 +1,45 @@
+{
+  "assetId": "rendrun_vent",
+  "category": "environment_prop",
+  "description": "Original Blender industrial vent. Godot Y-up, solid PBR materials, no colliders or built-in lights. Reusable shared static geometry.",
+  "displayName": "rendrun-vent",
+  "files": [
+    {
+      "bytes": 110004,
+      "kind": "model",
+      "path": "model.glb",
+      "sha256": "a2e5cc368a347e323a54a8127f63efa30741761c7f2be788f1ebdddfacb2c723"
+    },
+    {
+      "bytes": 1573,
+      "kind": "metadata",
+      "path": "metadata.json",
+      "sha256": "17d2855a695bc4d6a7eac0ee9db45ae1dd90b91c3ec76d5d98aa35b3168f2d53"
+    },
+    {
+      "bytes": 352,
+      "kind": "provenance",
+      "path": "provenance.json",
+      "sha256": "e9d49e49260e4a2506e5893a6709aeda0f637badeb33e26c19124d1ea81bcd63"
+    },
+    {
+      "bytes": 2747,
+      "kind": "validation",
+      "path": "validation.json",
+      "sha256": "4fa8a67b2bbe81bd7a586bfa2efef786702364032e0046962cac633c8f8f15dd"
+    }
+  ],
+  "license": "LicenseRef-RendRun-ProjectOwned",
+  "model": "model.glb",
+  "packageId": "pkg_cdf32a369f036649399fe055",
+  "provenance": {
+    "origin": "authored"
+  },
+  "schema": "game_dev.asset_package.v1",
+  "validation": {
+    "errorCount": 0,
+    "passed": true,
+    "warningCount": 0
+  },
+  "version": "1.0.0"
+}

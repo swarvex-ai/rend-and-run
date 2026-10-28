@@ -1,0 +1,11 @@
+{
+  "source_package": "codex-archive/outputs/h40_review_asset",
+  "source_manifest_sha256": "6ec0e4ada1d2e75ccb9c4b59f17d4d63ccd9cc714583eeda301a8e895be9dcc3",
+  "file": {
+    "bytes": 102564,
+    "sha256": "e496f3bf8877306f7e6346ebddd75b71e62cc40a7025289afe1bd0179a2953df"
+  },
+  "provenance": "Original locally authored geometry, no external assets",
+  "validation": "1336triangles,3PBRmaterials,noexternalresources; Blender preview inspected; Godot pending",
+  "admission": "User-authorized game development; direct Blender/Godot fallback, game-dev CLI absent"
+}

@@ -1,0 +1,9 @@
+{
+  "origin": "imported",
+  "schema": "game_dev.asset_provenance.v1",
+  "source": {
+    "bytes": 424404,
+    "fileName": "maintenance_deck.glb",
+    "sha256": "b4b7d76dde49b4bd1da8296a2aac50d18836afdb178fd3767170e960f206cb80"
+  }
+}

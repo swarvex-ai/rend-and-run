@@ -1,0 +1,23 @@
+{
+  "completedAt": "2026-10-11T21:01:55.156Z",
+  "destination": {
+    "assetId": "factory_foreground_deck",
+    "version": "1.0.1"
+  },
+  "evidence": {
+    "blenderNormalizationPerformed": false,
+    "gpuImportTestPerformed": false,
+    "humanVisualReviewPerformed": false,
+    "modelBytesCopiedAndHashed": true,
+    "policyValidationCompleted": true,
+    "staticInspectionCompleted": true
+  },
+  "manifestSha256": "6c54774445d788b4851275ff21da9bd5cce79448733022a087317b33ad629728",
+  "packageId": "pkg_7d6c8b9a19d5adc03289537c",
+  "schema": "game_dev.package_receipt.v1",
+  "source": {
+    "bytes": 717552,
+    "fileName": "foreground_deck.glb",
+    "sha256": "73692b921e15459856f4fc90248d612a1a9f4cbf3c3a4affbceca41fbc6d76d7"
+  }
+}

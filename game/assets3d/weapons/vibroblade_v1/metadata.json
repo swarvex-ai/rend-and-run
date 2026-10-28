@@ -1,0 +1,58 @@
+{
+  "assetId": "rendrun_industrial_vibroblade",
+  "category": "weapon",
+  "description": "Original Blender-authored replacement visual for existing vibroblade. Grip origin, +Y tip(-.02,1.167,0); continuous grind, copper cartridge and wrapped grip. Solid PBR, no texture atlas. No animations or combat changes.",
+  "displayName": "rendrun-industrial-vibroblade",
+  "inspection": {
+    "animationCount": 0,
+    "boundingBox": {
+      "max": [
+        0.1300000101327896,
+        1.1670000553131104,
+        0.038999997079372406
+      ],
+      "min": [
+        -0.1899999976158142,
+        -0.1850000023841858,
+        -0.038999997079372406
+      ],
+      "sizeMeters": [
+        0.3200000077486038,
+        1.3520000576972961,
+        0.07799999415874481
+      ]
+    },
+    "boundingBoxEmpty": false,
+    "fileBytes": 148964,
+    "filePath": "model.glb",
+    "generator": "glTF-Transform v4.5.1",
+    "hasNormals": true,
+    "hasSkin": false,
+    "hasTangents": false,
+    "hasUVs": false,
+    "materialCount": 4,
+    "meshCount": 2,
+    "pbr": {
+      "hasBaseColorTexture": false,
+      "hasEmissiveTexture": false,
+      "hasMetallicRoughnessTexture": false,
+      "hasNormalTexture": false,
+      "hasOcclusionTexture": false
+    },
+    "primitiveCount": 6,
+    "sceneGraphFallback": false,
+    "textureCount": 0,
+    "textureResolutions": [],
+    "triangleCount": 2096,
+    "undrawnMeshCount": 0,
+    "undrawnPrimitiveCount": 0,
+    "undrawnTriangleCount": 0,
+    "vertexCount": 4102,
+    "warnings": [
+      "2 of 6 primitives have no TEXCOORD_0: the mesh cannot be textured or retextured until it is UV unwrapped",
+      "no base colour texture on any material: the asset is untextured and will read as flat colour"
+    ]
+  },
+  "license": "LicenseRef-RendRun-ProjectOwned",
+  "schema": "game_dev.asset_metadata.v1"
+}

@@ -1,0 +1,43 @@
+{
+  "assetId": "enemy_humanoid_light_rig",
+  "displayName": "enemy_humanoid_light_rig",
+  "files": [
+    {
+      "bytes": 10771144,
+      "kind": "model",
+      "path": "model.glb",
+      "sha256": "c3fd9a8f787afeb0cb27fd4a8ada2055c79992503a03983e29ea7f57c7edcddc"
+    },
+    {
+      "bytes": 1736,
+      "kind": "metadata",
+      "path": "metadata.json",
+      "sha256": "a490bcaa7354c413d156100f3385f4963c8cd41f578f246fb660606c19ac8b54"
+    },
+    {
+      "bytes": 245,
+      "kind": "provenance",
+      "path": "provenance.json",
+      "sha256": "8e23a3e814b0c9b18d9be79a10b1d412040bbfb4509707e8a4fc5379eab3d217"
+    },
+    {
+      "bytes": 3579,
+      "kind": "validation",
+      "path": "validation.json",
+      "sha256": "9a4879b0bd4634cc47f821fef9dbf443a38e1fadd470633f42a193d242112918"
+    }
+  ],
+  "license": "LicenseRef-Meshy-Paid",
+  "model": "model.glb",
+  "packageId": "pkg_3666a79e6b6321b8797d12e9",
+  "provenance": {
+    "origin": "imported"
+  },
+  "schema": "game_dev.asset_package.v1",
+  "validation": {
+    "errorCount": 0,
+    "passed": true,
+    "warningCount": 0
+  },
+  "version": "1.0.0"
+}

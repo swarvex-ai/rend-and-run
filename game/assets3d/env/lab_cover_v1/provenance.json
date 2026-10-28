@@ -1,0 +1,10 @@
+{
+  "notes": "Hermie H61 procedural original primitives. No external or paid inputs. GeneratorSHA256 4de6274f7cfc75fa3ea5b9bc21bfca0b519adcea2a10c1e6fc1861dec2fca590",
+  "origin": "authored",
+  "schema": "game_dev.asset_provenance.v1",
+  "source": {
+    "bytes": 21384,
+    "fileName": "model.glb",
+    "sha256": "8e0ceb21f1f4395ab4adc55ee4eeb0e62739799f53a08dc2011c3a1bd2095261"
+  }
+}

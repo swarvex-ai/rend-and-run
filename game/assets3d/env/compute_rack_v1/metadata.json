@@ -1,0 +1,58 @@
+{
+  "assetId": "compute_rack",
+  "category": "environment_prop",
+  "description": "Original Blender populated clean-factory server rack: extruded uprights, cabinet panels, storage hot-swap trays, compute blades, recessed vents, captive screws, network switch ports and patch loops. Floor origin, +Z front, .85x2.7x1m. Seven shared material meshes, no collider. CC0-1.0 original geometry; no Meshy or third-party inputs. Replaces rejected UV-less rack delivery and runtime primitive rack.",
+  "displayName": "compute_rack",
+  "inspection": {
+    "animationCount": 0,
+    "boundingBox": {
+      "max": [
+        0.4050000011920929,
+        2.700000047683716,
+        0.5596289038658142
+      ],
+      "min": [
+        -0.42249999940395355,
+        0,
+        -0.44999998807907104
+      ],
+      "sizeMeters": [
+        0.8275000005960464,
+        2.700000047683716,
+        1.0096288919448853
+      ]
+    },
+    "boundingBoxEmpty": false,
+    "fileBytes": 1843208,
+    "filePath": "model.glb",
+    "generator": "glTF-Transform v4.5.1",
+    "hasNormals": true,
+    "hasSkin": false,
+    "hasTangents": false,
+    "hasUVs": true,
+    "materialCount": 7,
+    "meshCount": 7,
+    "pbr": {
+      "hasBaseColorTexture": false,
+      "hasEmissiveTexture": false,
+      "hasMetallicRoughnessTexture": false,
+      "hasNormalTexture": false,
+      "hasOcclusionTexture": false
+    },
+    "primitiveCount": 7,
+    "sceneGraphFallback": false,
+    "textureCount": 0,
+    "textureResolutions": [],
+    "triangleCount": 27636,
+    "undrawnMeshCount": 0,
+    "undrawnPrimitiveCount": 0,
+    "undrawnTriangleCount": 0,
+    "vertexCount": 52157,
+    "warnings": [
+      "glTF reader: Missing optional extension, \"KHR_materials_emissive_strength\".",
+      "no base colour texture on any material: the asset is untextured and will read as flat colour"
+    ]
+  },
+  "license": "CC0-1.0",
+  "schema": "game_dev.asset_metadata.v1"
+}
