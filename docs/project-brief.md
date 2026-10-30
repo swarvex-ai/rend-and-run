@@ -36,7 +36,7 @@ Rend&Run ist kein neues Projekt: Vision, GDD und 24 Tage Entwicklung liegen vor.
 | S5 | Gefühl | Dead Cells als Maß: Eingabe → Reaktion ≤ 100 ms, Treffer mit Hit-Stop, Gefahr vorher lesbar | entschieden | – | Combat-Feel-Richtung |
 | S7 | Umfang v1 | eine Fluchtstrecke, 6 Robotertypen (S13), 6 Waffen (S14), 1 Druck-Task (S16), Comic-Vorspann (S17) | Empfehlung angenommen | 1, 2 | Roast 30.10. |
 | S8 | Inhalte als Daten | Waffen, Gegnerwerte, Durchsagen, Rätsel | Empfehlung angenommen | 1 | Frage 9 |
-| S9 | Asset-Stil | Meshy-3D, glattes modernes Lab, Amber-Akzente | entschieden | – | Vision |
+| S9 | Asset-Stil | Meshy-3D, glattes modernes Lab; Grundfarben Petrol und Kupfer (Art Bible §2), Amber nur als Warn-/Telegraph-Farbe (#F2B05E) | entschieden | 1, 3 | Vision, Art Bible, neVs 30.10. |
 | S12 | Mehrspieler | nein | entschieden | – | GDD §6 |
 | G21 | Referenz-Hardware | Playtest-PC neVs: AMD Ryzen 7 5800X3D, Radeon RX 6800-Klasse (Navi 21), 32 GB RAM, Linux; Grund: fps-Kriterien sind nur auf einer festen Maschine prüfbar; untere Grenze erst nach M1 | entschieden | 3 (Q1) | |
 | S10 | Verbindliche Strecke | `docs/milestone-1.md` (neu, aus Code-Stand V12); `scope-first-route.md` und GDD §2/§6 als historisch markiert | Empfehlung angenommen | 2 (F1) | |

@@ -10,10 +10,10 @@
 - Kernsysteme M1 (Boss, Arena, Speichern, guards) ohne gültige Tests.
 - Pipeline ungeprüft: `swarvex env` braucht rootless Podman.
 - Streckenlänge unbekannt (S23), bis Playtests vorliegen.
-- Art Bible (`docs/art/art_bible_p02_v01`) ist veraltet (Schwert, menschliche Gegner); Brief S9 nennt Amber-Akzente, die Art Bible Petrol/Kupfer/Violett. Klärung vor den ersten Asset-Briefs.
+- Art Bible (`docs/art/art_bible_p02_v01`) ist teils veraltet (Schwert, menschliche Gegner); Palette geklärt (S9: Petrol/Kupfer, Amber nur Warnung).
 
 **Wartet auf neVs**
-- Push der lokalen Commits nach `origin/main`.
+
 - Podman installieren (`sudo pacman -S podman`), danach installiert der Lead die swarvex-CLI.
 
 **Als Nächstes (Lead):** F2 Quarantäne sortieren, F3 Route-Daten und Texttabelle, F4 Durchlauf-Test, F6 Architektur. Danach die ersten B-Aufgaben.
