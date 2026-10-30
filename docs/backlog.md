@@ -90,6 +90,8 @@ Kanonisch: `docs/design/farming-design-v02.txt`, `docs/design/farming-tree-v02.j
 
 ## Technik, HUD, Release
 
+- [ ] v1: spielspezifisches Bug-Formular `.github/ISSUE_TEMPLATE/bug_report.yml` (Version, OS, Eingabegerät, Zone, Spielstand-Datei, Log-Ort `user://logs`); ersetzt dann das allgemeine Formular aus swarvex-ai/.github (Brief B7; Entwurf in geschlossener Aufgabe #42)
+
 - [ ] HUD: Ausrüstung, Munition, Rätsel (P26)
 - [ ] Savegame: Fabrikfortschritt, Ausrüstung, Respawn (P27)
 - [ ] Slice-Regression und gemessene Performance, Ziel 1080p/60 fps (P31)

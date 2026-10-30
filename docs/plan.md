@@ -19,7 +19,7 @@
 
 | Task | Title | State |
 |---|---|---|
-| #1–#6 | bestiary pages: guard, shield bearer, sentinel, dog, drone, overseer | open |
+| #1, #3–#6, #43 | bestiary pages: guard, sentinel, dog, drone, overseer; shield bearer #43 (replaces #2) | open |
 | #7, #8 | comic style guide proposal, variants 1/2 and 2/2 | open |
 | #9, #10 | intro comic script, variants 1/2 and 2/2 | open |
 
@@ -57,7 +57,7 @@ Reference first, then copies. Existing items are mapped, not duplicated: G-5 →
 | E11.8 | input hints follow the last used device; gamepad hot-plug | B | E11.2 |
 | E11.9 | loading indicator at start and reload, no freeze > 1 s | B | E11.2 |
 | E11.10 | CHANGELOG.md (SemVer, entry `0.1.0-prealpha`) — task #40 | A | – |
-| E11.11 | SECURITY.md — task #41 (needs GitHub private vulnerability reporting switched on) | A | – |
-| E11.12 | issue form for bug reports (incl. log location `user://logs`) — task #42 | A | – |
+| E11.11 | ~~SECURITY.md~~ — #41 closed: covered by the organization default in swarvex-ai/.github | – | – |
+| E11.12 | ~~bug issue form~~ — #42 closed: moved to v1 (backlog); generic form from swarvex-ai/.github until then | – | – |
 | E11.13 | app icon + title wordmark (asset brief, preview → neVs → final) | A | style guide |
 | E11.14 | itch.io page text + 3–5 screenshots; README player section | A | E10 |

@@ -9,7 +9,7 @@ One term per thing. Use these terms literally in code, tasks and summaries. Code
 | **guard** | light humanoid with a baton or gun; works in squads |
 | **duelist** | light humanoid with blade footwork |
 | **brute** | heavy humanoid chassis, slow, armoured, cleaver |
-| **shield bearer** | guard with a shield that blocks frontal hits |
+| **shield bearer** | robot with a riot shield that blocks frontal hits; in code `role 1` ("Duelist") with `shield: true` (`docs/milestone-1.md`) |
 | **sentinel** (`sentinel`) | humanoid that waits in a wall alcove, wakes when Rend runs past; head ring lights up, red before a strike |
 | **dog** (`enemy_dog`) | four-legged robot |
 | **drone** (`maintenance_drone`) | flying robot; kamikaze drones dive and explode |

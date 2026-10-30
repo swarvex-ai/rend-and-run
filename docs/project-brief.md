@@ -51,7 +51,7 @@ Rend&Run ist kein neues Projekt: Vision, GDD und 24 Tage Entwicklung liegen vor.
 | S22 | Comic-Herstellung | erst Comic-Stilguide (Level A), dann Asset-Brief zweistufig (Vorschau → Freigabe neVs → Final); Werkzeug frei mit Herkunftsnachweis; ≤ 60 der 100 M1-Credits | Empfehlung angenommen | 3 (Q7) | |
 | S23 | Streckenlänge | vor dem Inhaltsschnitt misst neVs einen Durchlauf (Zeit, Tode); < 9 min → Strecke verlängern ist erster Inhaltsblock, > 11 min → kürzen | Empfehlung angenommen, **Messung ausstehend** | 3 (Q9) | |
 | S18 | Festnahme | nicht in v1; Roboter töten nur; kommt mit dem Twist | Empfehlung angenommen | 2 (F9) | Vision |
-| S24 | Grundpaket (LEAD 1.4) | B1–B9 und G-1–G-20 eingeordnet, siehe Abschnitt „Grundpaket“; Menügefühl (G-11) in M1 über einen Referenz-Menübildschirm; Release-Pflichten in M1, weil M1 auf itch.io erscheint | Empfehlung angenommen | 4 (Q1–Q4) | `baseline-packages.md` |
+| S24 | Grundpaket (LEAD 1.4) | B1–B9 und G-1–G-20 eingeordnet, siehe Abschnitt „Grundpaket“; Menügefühl (G-11) in M1 über einen Referenz-Menübildschirm; Release-Pflichten in M1, weil M1 auf itch.io erscheint; B6/B7 über swarvex-ai/.github (neVs 30.10.) | Empfehlung angenommen | 4 (Q1–Q4) | `baseline-packages.md` |
 
 Die folgenden Abschnitte fassen die Tabelle lesbar zusammen; bei Widerspruch gilt die Tabelle.
 
@@ -131,8 +131,8 @@ Q1 Einordnung aller 29 Bausteine wie unten · Q2 Menügefühl (G-11) in M1, ohne
 | B3 | Version, About | M1 | `0.0.12` in `project.godot`; Version im Hauptmenü, Lizenz und Projektseite im Credits-Screen |
 | B4 | Changelog | M1 | fehlt; erster Eintrag `0.1.0-prealpha`, SemVer |
 | B5 | Release-Build | M1 | nur Preset `Linux-X11`; Windows = G7/E8 |
-| B6 | SECURITY.md | M1 | fehlt; wenige Zeilen |
-| B7 | Bug-Report-Weg | M1 | fehlt; Issue-Template mit Log-Ort (G-17) |
+| B6 | SECURITY.md | erfüllt durch swarvex-ai/.github | Organisations-Standard gilt für alle swarvex-ai-Repos (neVs 30.10.); Aufgabe #41 geschlossen |
+| B7 | Bug-Report-Weg | v1 (spielspezifisches Formular); bis dahin swarvex-ai/.github | allgemeines Bug-Formular der Organisation reicht, bis es echte Spieler gibt (neVs 30.10.); v1-Formular: Version, OS, Eingabegerät, Spielstand, Log-Ort (G-17); Aufgabe #42 geschlossen |
 | B8 | Name, Logo, Icon | M1: Icon + Text-Schriftzug; Logo M2 | Exporte brauchen ein Icon; Logo ist Designentscheidung |
 | B9 | Projektseiten-Material | M1 schlank | Kurztext + 3–5 Screenshots für itch.io und swarvex.ai |
 | G-1 | Start und Titel | M1 | Titel mit Schriftzug, < 5 s bis Titel; kein Splash |
@@ -151,7 +151,7 @@ Q1 Einordnung aller 29 Bausteine wie unten · Q2 Menügefühl (G-11) in M1, ohne
 | G-14 | Übersetzbar | M1 = G10 (F3, E5) | Texttabelle |
 | G-15 | Qualitätsstufen | später (M2) | Messung in M1 (E9), Presets bei Bedarf |
 | G-16 | Fensterverhalten | M1 | Fokusverlust pausiert; Fenstermodus ohne Neustart |
-| G-17 | Logs, Abstürze | M1 schlank | Godot schreibt nach `user://logs`; Ort in README und Issue-Template |
+| G-17 | Logs, Abstürze | M1 schlank | Godot schreibt nach `user://logs`; Ort in der README (M1), im Bug-Formular ab v1 |
 | G-18 | Audio-Mix | später (M2) | Busse Master und Combat vorhanden; Musik- und Stimmen-Bus kommen mit G-4; Mix nach Playtests |
 | G-19 | Release-Material | M1 schlank = B9; Rest später | Trailer, Key Art, Pressemappe beim größeren Release |
 | G-20 | Plattformdienste | nicht nötig | itch.io ohne Erfolge und Cloud-Saves; steht in den Nicht-Zielen |
