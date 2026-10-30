@@ -1,7 +1,7 @@
 # Projektbrief: Rend&Run
 
 > Ergebnis des Projekt-Interviews (swarvex LEAD.md, Phase 0). Aufgaben für den Schwarm entstehen erst, wenn neVs den Brief bestätigt.
-> Stand 30.10.2026 · Interview-Runden: 3 (Runde 1 am 28.10., Runden 2–3 „Roast“ am 30.10.2026) · Runde 1 bestätigt von neVs am 28.10.2026 („alles ja“) · **Runde 3 am 30.10.2026 · **Brief neu zu bestätigen****
+> Stand 30.10.2026 · Interview-Runden: 4 (Runde 1 am 28.10., Runden 2–3 „Roast“ und Runde 4 „Grundpaket“ am 30.10.2026) · Runde 1 bestätigt von neVs am 28.10.2026 („alles ja“) · **Runde 3 am 30.10.2026 · **Brief neu zu bestätigen****
 
 Rend&Run ist kein neues Projekt: Vision, GDD und 24 Tage Entwicklung liegen vor. Der Lead hat deshalb nur Lücken abgefragt (G13) und alles andere aus dem Bestand vorgeschlagen.
 
@@ -51,6 +51,7 @@ Rend&Run ist kein neues Projekt: Vision, GDD und 24 Tage Entwicklung liegen vor.
 | S22 | Comic-Herstellung | erst Comic-Stilguide (Level A), dann Asset-Brief zweistufig (Vorschau → Freigabe neVs → Final); Werkzeug frei mit Herkunftsnachweis; ≤ 60 der 100 M1-Credits | Empfehlung angenommen | 3 (Q7) | |
 | S23 | Streckenlänge | vor dem Inhaltsschnitt misst neVs einen Durchlauf (Zeit, Tode); < 9 min → Strecke verlängern ist erster Inhaltsblock, > 11 min → kürzen | Empfehlung angenommen, **Messung ausstehend** | 3 (Q9) | |
 | S18 | Festnahme | nicht in v1; Roboter töten nur; kommt mit dem Twist | Empfehlung angenommen | 2 (F9) | Vision |
+| S24 | Grundpaket (LEAD 1.4) | B1–B9 und G-1–G-20 eingeordnet, siehe Abschnitt „Grundpaket“; Menügefühl (G-11) in M1 über einen Referenz-Menübildschirm; Release-Pflichten in M1, weil M1 auf itch.io erscheint | Empfehlung angenommen | 4 (Q1–Q4) | `baseline-packages.md` |
 
 Die folgenden Abschnitte fassen die Tabelle lesbar zusammen; bei Widerspruch gilt die Tabelle.
 
@@ -73,6 +74,7 @@ Rend, ein KI-Forscher, wacht in einer Fabrik der Humanoiden auf und muss sich mi
 - kein Crafting-Menü, kein Dialogsystem (Erzählung über Comic-Einblendungen, Durchsagen, Umgebung)
 - kein Permadeath
 - kein Gore an Robotern (Roboter zerfallen, bluten nicht)
+- keine Plattformdienste (Erfolge, Cloud-Saves, Bestenlisten) im itch.io-Slice (Grundpaket G-20)
 
 GDD §6 „keine Schusswaffe für Rend“ ist überholt: neVs hat am 23.10. Schusswaffen eingeführt.
 
@@ -113,3 +115,43 @@ Korrekturen durch den Lead: G13 Testzahl präzisiert. Offen: Verweis in G9 auf `
 ## Interview Runde 3 (30.10.2026: Q1 entschieden, Q2–Q9 Empfehlungen angenommen)
 
 Q1 Referenz-Hardware (G21) · Q2 Kontrollpunkte (S19) · Q3 Schwierigkeit (S20) · Q4 Boss (S21) · Q5 Barrierefreiheit (G16) · Q6 Windows (G7) · Q7 Comic-Herstellung (S22) · Q8 Veröffentlichung (G18) · Q9 Streckenlänge (S23, Messung durch neVs ausstehend).
+
+## Interview Runde 4 „Grundpaket“ (30.10.2026: Q1–Q4 Empfehlungen angenommen)
+
+Q1 Einordnung aller 29 Bausteine wie unten · Q2 Menügefühl (G-11) in M1, ohne Menümusik · Q3 Menü-Stilguide erst als zwei Entwürfe, neVs wählt · Q4 Release-Pflichten (B4, B6–B9, G-19 schlank) in M1.
+
+## Grundpaket
+
+> Durchgang nach `lead/templates/baseline-packages.md` (Handbuch 1.4). M1 erscheint als Pre-Alpha-Slice auf itch.io (G18), deshalb gelten „v1/release“-Punkte schlank schon für M1. Bestand geprüft am 30.10.2026. Epic: E11 in `docs/plan.md`.
+
+| ID | Baustein | Einordnung | Begründung, Bestand, Zuordnung |
+|---|---|---|---|
+| B1 | README | M1 | vorhanden; Screenshot und Start-Anleitung für Spieler fehlen |
+| B2 | Lizenzen, Credits | M1 | vorhanden; CREDITS.md je Meilenstein ergänzen |
+| B3 | Version, About | M1 | `0.0.12` in `project.godot`; Version im Hauptmenü, Lizenz und Projektseite im Credits-Screen |
+| B4 | Changelog | M1 | fehlt; erster Eintrag `0.1.0-prealpha`, SemVer |
+| B5 | Release-Build | M1 | nur Preset `Linux-X11`; Windows = G7/E8 |
+| B6 | SECURITY.md | M1 | fehlt; wenige Zeilen |
+| B7 | Bug-Report-Weg | M1 | fehlt; Issue-Template mit Log-Ort (G-17) |
+| B8 | Name, Logo, Icon | M1: Icon + Text-Schriftzug; Logo M2 | Exporte brauchen ein Icon; Logo ist Designentscheidung |
+| B9 | Projektseiten-Material | M1 schlank | Kurztext + 3–5 Screenshots für itch.io und swarvex.ai |
+| G-1 | Start und Titel | M1 | Titel mit Schriftzug, < 5 s bis Titel; kein Splash |
+| G-2 | Hauptmenü | M1 | `start_menu.gd` vorhanden (Fortsetzen, Neue Runde, Beenden); Optionen und Credits fehlen |
+| G-3 | Pausemenü | M1 | `pause_menu.gd` vorhanden; Optionen, „Hauptmenü“ fehlen; Fokusverlust = G-16 |
+| G-4 | Optionen | M1 ohne Tastenbelegung | Audio (Master, Musik, Effekte, Stimmen), Fenstermodus, VSync, Barrierefreiheit (G16); gespeichert; Belegung nach M1 (G16) |
+| G-5 | Barrierefreiheit | M1 = G16 (E6) | neu: Gefahr nie nur über Farbe; Textgröße später |
+| G-6 | Eingabe | M1 | Tastenhinweise folgen dem zuletzt benutzten Gerät; Gamepad-Hot-Plug |
+| G-7 | Speichern | M1 | Fortschritt vorhanden (`modules/persistence`); Einstellungen getrennt; kaputte Datei stürzt nicht ab (Diagnose #22) |
+| G-8 | Onboarding | M1 | teilweise vorhanden (Kampf-Hinweise, Zone 01); im Playtest prüfen (E10) |
+| G-9 | HUD | M1 | vorhanden; Lesbarkeit 1080p im Playtest prüfen (E10) |
+| G-10 | Tod, Retry, Ende | M1 | weitgehend vorhanden (`sector_complete.gd`); Endkarte führt zu den Credits; Retry < 10 s = Kriterium c (F4) |
+| G-11 | Menügefühl | M1 ohne Menümusik | Übergänge, Fokus-Animation, UI-Sounds; Referenz-Menübildschirm als Vorlage |
+| G-12 | Laden | M1 | Ladeanzeige bei Start und Neuladen, kein Freeze > 1 s |
+| G-13 | Credits im Spiel | M1 | aus Hauptmenü und nach der Endkarte |
+| G-14 | Übersetzbar | M1 = G10 (F3, E5) | Texttabelle |
+| G-15 | Qualitätsstufen | später (M2) | Messung in M1 (E9), Presets bei Bedarf |
+| G-16 | Fensterverhalten | M1 | Fokusverlust pausiert; Fenstermodus ohne Neustart |
+| G-17 | Logs, Abstürze | M1 schlank | Godot schreibt nach `user://logs`; Ort in README und Issue-Template |
+| G-18 | Audio-Mix | später (M2) | Busse Master und Combat vorhanden; Musik- und Stimmen-Bus kommen mit G-4; Mix nach Playtests |
+| G-19 | Release-Material | M1 schlank = B9; Rest später | Trailer, Key Art, Pressemappe beim größeren Release |
+| G-20 | Plattformdienste | nicht nötig | itch.io ohne Erfolge und Cloud-Saves; steht in den Nicht-Zielen |
