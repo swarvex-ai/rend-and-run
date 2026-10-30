@@ -15,6 +15,10 @@
 
 - Push der Commits vom 30.10. nachmittags (Runner, Triage, Klarstellungen).
 
-**Als Nächstes (Lead):** nach dem Push Aufgaben für Klasse S/H (B, nur Tests) und D (A, Diagnose) anlegen; dann F3 Route-Daten und Texttabelle, F4 Durchlauf-Test, F6 Architektur.
+**Aufgaben offen:** #1–#10 (Bestiarium, Comic), #11–#19 (B: veraltete Tests/Harness), #20–#37 (A: Diagnosen).
+
+**Vision:** neVs hat `docs/vision.md` am 30.10. bereinigt. AGENTS.md und Brief G14: Änderungen nur durch den Visionär.
+
+**Als Nächstes (Lead):** Einreichungen prüfen; F3 Route-Daten und Texttabelle, F4 Durchlauf-Test, F6 Architektur.
 
 **Korrekturen des Leads:** duelist/brute sind Bausteine von shield bearer/overseer (Code bleibt M1); item catalog ist M1-Ausrüstung, eingefroren sind nur servo trial und prefix ledger.

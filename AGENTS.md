@@ -27,7 +27,7 @@ game/                Godot project (project.godot, start scene res://start.tscn)
   audio/             sounds and voice lines
 tools/               test runner, asset and voice scripts
 asset_library/       asset sources with provenance (PROVENANCE.md per batch)
-docs/                vision (unchangeable), brief, GDD, backlog, design, glossary
+docs/                vision (changes only by the visionary), brief, GDD, backlog, design, glossary
 ```
 
 ## Engine knowledge

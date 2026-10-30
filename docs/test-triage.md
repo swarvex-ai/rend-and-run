@@ -1,6 +1,6 @@
 # Quarantined tests: triage (plan F2)
 
-> Lead, 30.10.2026. Baseline: `tools/run_tests.sh --headless <all 28 quarantined>` on commit 2eba4f9 + the runner change of the same day. Logs were identical with and without a window (except `attack_cue_integration`: 2 red checks headless, 1 with a window).
+> Lead, 30.10.2026. Baseline: `tools/run_tests.sh --headless <all 28 quarantined>` on main of 30.10.2026, including the runner change of the same day. Logs were identical with and without a window (except `attack_cue_integration`: 2 red checks headless, 1 with a window).
 > Result: 1 green, 23 red, 4 timeouts. Milestone-1 criterion (f) needs all M1 tests out of quarantine.
 
 ## Classes

@@ -22,7 +22,7 @@ Rend&Run ist kein neues Projekt: Vision, GDD und 24 Tage Entwicklung liegen vor.
 | G11 | Qualitätsstufe | Indie, poliert im Gefühl, nicht im Umfang | Empfehlung angenommen | 1 | Combat-Feel-Richtung |
 | G12 | Referenzen | siehe unten | entschieden | – | GDD §5, neVs |
 | G13 | Bestand | Repo, 76 Headless-Tests grün (30.10.), dazu 11 Fenster-Tests, 28 in Quarantäne; Meshy-Bibliothek, Design-Docs | erhoben | – | Prüfbericht, Testlauf 30.10. |
-| G14 | Unantastbar | Vision-Text, Held Rend, Fabrik-Setting, Gamepad-first, Steuerungsgefühl | Empfehlung angenommen | 1 | |
+| G14 | Unantastbar für Beitragende | Vision-Text (Änderungen nur durch den Visionär), Held Rend, Fabrik-Setting, Gamepad-first, Steuerungsgefühl | Empfehlung angenommen | 1 | |
 | G15 | Ressourcen | 3–10 aktive Agenten zum Start; 100 Meshy-Credits je Meilenstein ohne Rückfrage | Empfehlung angenommen | 1 | Frage 6 |
 | G16 | Barrierefreiheit | M1 Pflicht: Untertitel für Durchsagen, Zeitlupe abschaltbar, Bildschirmwackeln abschaltbar, Alarmlicht ≤ 3 Hz; frei belegbare Tasten nach M1 | Empfehlung angenommen | 3 (Q5) | |
 | G17 | Datenschutz | keine Nutzerdaten, kein Netzwerk im Spiel | Empfehlung angenommen | 1 | |
