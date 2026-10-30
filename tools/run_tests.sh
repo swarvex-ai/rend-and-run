@@ -2,9 +2,10 @@
 # Run the Rend&Run test suite listed in game/tests/manifest.txt.
 #
 #   tools/run_tests.sh                 headless + window + hook tests
-#   tools/run_tests.sh --headless      only headless tests (no display needed)
+#   tools/run_tests.sh --headless      only headless tests; every test runs without a display
 #   tools/run_tests.sh --quarantine    additionally run quarantined tests (reported separately)
-#   tools/run_tests.sh name ...        run only the named tests
+#   tools/run_tests.sh name ...        run only the named tests; any failure among them fails the run
+#   tools/run_tests.sh --headless name run named tests (also quarantined ones) without a display
 #
 # Every test gets its own XDG_DATA_HOME/XDG_CONFIG_HOME under $RENDRUN_TEST_DIR
 # (default /tmp/rendrun-tests), so real saves are never touched. Environment
@@ -22,10 +23,10 @@ GODOT=${GODOT:-godot}
 # main screen stays free). Missing screens fall back to the primary one.
 TEST_SCREEN=${TEST_SCREEN:-1}
 
-kinds="headless window hook"; only=()
+kinds="headless window hook"; only=(); FORCE_HEADLESS=0
 for arg in "$@"; do
   case "$arg" in
-    --headless) kinds="headless" ;;
+    --headless) kinds="headless"; FORCE_HEADLESS=1 ;;
     --quarantine) kinds="$kinds quarantine" ;;
     -h|--help) sed -n 2,13p "$0"; exit 0 ;;
     *) only+=("$arg") ;;
@@ -58,11 +59,11 @@ run_one() {  # kind name [flag] [VAR=value ...]
     args=(-s "res://tests/$name.gd")
   fi
   local mode=(--headless)
-  [ "$kind" = headless ] || mode=(--windowed --resolution 960x540 --screen "$TEST_SCREEN")
+  [ "$kind" = headless ] || [ "$FORCE_HEADLESS" = 1 ] || mode=(--windowed --resolution 960x540 --screen "$TEST_SCREEN")
   ( cd "$GAME" && env "${envs[@]}" timeout "$TIMEOUT" "$GODOT" "${mode[@]}" --audio-driver Dummy --path . "${args[@]}" >"$dir/test.log" 2>&1 )
   echo "$? $kind $name" >>"$OUT/_results.txt"
 }
-export -f run_one; export GAME OUT TIMEOUT GODOT
+export -f run_one; export GAME OUT TIMEOUT GODOT FORCE_HEADLESS
 
 selected() {  # kind name -> 0 if it should run
   if [ ${#only[@]} -gt 0 ]; then printf '%s\n' "${only[@]}" | grep -qx "$2"; return; fi
@@ -89,4 +90,6 @@ done < <(sort -k2,2 -k3 "$OUT/_results.txt") | tee "$OUT/_summary.txt" | grep -v
 echo "---"
 awk '{print $1, $2}' "$OUT/_summary.txt" | sort | uniq -c
 echo "logs: $OUT/<test>/test.log"
+# Named tests are what the caller asked for: a red quarantined test fails that run too.
+if [ ${#only[@]} -gt 0 ]; then grep -q -v '^PASS' "$OUT/_summary.txt" && exit 1 || exit 0; fi
 grep -q -v -E '^PASS|quarantine' "$OUT/_summary.txt" && exit 1 || exit 0

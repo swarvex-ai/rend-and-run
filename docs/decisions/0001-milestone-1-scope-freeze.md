@@ -7,7 +7,7 @@
 
 1. `docs/milestone-1.md` is the binding specification for M1. `docs/scope-first-route.md` and GDD §2/§6 are historical.
 2. M1 content: 6 robot types, 6 weapons + throwable crates, one pressure task, intro comic, English text, four accessibility options (brief S13–S17, G10, G16).
-3. Frozen until M1 is accepted: servo trial, prefix ledger, item catalog (farming), duelist and brute (no new tasks), grenades, capture, puzzles, in-game comic inserts. Frozen code stays and its tests must stay green.
+3. Frozen until M1 is accepted: servo trial and prefix ledger (farming; the item catalog is M1 equipment), duelist and brute as standalone robot types (their code stays in M1: shield bearer = duelist + shield, overseer builds on brute), grenades, capture, puzzles, in-game comic inserts. Frozen code stays and its tests must stay green.
 
 ## Consequences
 

@@ -30,7 +30,7 @@ quarantine coolant_test V47_TEST
 quarantine crouch_combat_integration
 headless crouch_gait_integration
 headless damaged_cable_integration
-quarantine dash_visual_test
+headless dash_visual_test
 headless death_cache_integration
 headless death_cache_smoke
 window death_grounding

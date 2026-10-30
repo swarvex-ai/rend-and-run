@@ -9,10 +9,10 @@
 | ID | Work | State | Unblocks |
 |---|---|---|---|
 | F1 | milestone-1.md, plan, status, ADR 0001 | done 30.10. | everything |
-| F2 | triage the 28 quarantined tests: rewrite / repair task / retire (ADR) | next | E1 |
+| F2 | triage the 28 quarantined tests (`docs/test-triage.md`); dash_visual_test promoted to headless | done 30.10. | E1 |
 | F3 | split `lab_route.gd`: route data (encounters, props, PA cues, checkpoints) and a text table as extension points | open | E3, E5, E6, E7 |
 | F4 | headless test `route_playthrough`: start → airlock (criterion a) and retry < 10 s (c) | open | E2, E9 |
-| F5 | `swarvex env` green without network; add `.agents/**` to protected paths | blocked: rootless Podman (needs neVs, sudo) | first code task |
+| F5 | `swarvex env` green without network (77/77, 3 min); `.agents/**` protected; runner: `--headless` for named/quarantined tests, named runs fail on red | done 30.10. | first code task |
 | F6 | `docs/architecture.md` (module map, extension points), style-guide stub | open | B tasks |
 
 ### Running now (level A, no code dependency)

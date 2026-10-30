@@ -16,3 +16,4 @@ protected: |
   - ../AGENTS.md
   - ../docs/vision.md
   - ../docs/project-brief.md
+  - ../.agents/**

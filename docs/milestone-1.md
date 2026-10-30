@@ -35,9 +35,9 @@ Sentinels stand in alcoves along the route (`_spawn_sentinels`). PA announcement
 
 ## Content in M1
 
-- **Robots (S13):** guard, shield bearer, sentinel, dog, kamikaze drone, overseer. The welder counts as a hazard. Duelist and brute stay in the code without new tasks.
+- **Robots (S13):** guard, shield bearer, sentinel, dog, kamikaze drone, overseer. The welder counts as a hazard. Duelist and brute get no placements of their own as extra robot types, but their code is part of M1: the shield bearer is a duelist with a shield (`role 1`), the overseer builds on the brute (`role 2`, encounter id `brute`).
 - **Weapons (S14):** robot arm, pistol, smg, scattergun, energy rifle, shield; throwable crates. Weapon-bench mods stay.
-- **Economy (S15):** shards, death cache (recoverable once), weapon-bench mods. Servo trial, prefix ledger and item catalog are **frozen**: they stay in the code, get no new tasks and must not break.
+- **Economy (S15):** shards, death cache (recoverable once), weapon-bench mods; workbench equipment from `item_catalog.gd` (reinforced arm, salvage shield, lab armour). Servo trial and prefix ledger are **frozen**: they stay in the code, get no new tasks and must not break.
 - **Pressure task (S16):** one quick-maths door directly after the relay checkpoint. Announced by sound and light; ≥ 10 s visible countdown; single-digit operations; failure kills Rend.
 - **Boss (S21):** two phases (phase 2 at ≤ 50 % HP); every strike announced ≥ 0.5 s before it can hit (light + sound); first win 60–150 s.
 - **Intro comic (S17, S22):** ≤ 6 panels, ≤ 60 s; not skippable on the first start, skippable afterwards.
