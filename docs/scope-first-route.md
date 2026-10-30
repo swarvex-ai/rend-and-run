@@ -1,5 +1,7 @@
 # Rend&Run — Spielumfang und erste 10-Minuten-Strecke (P01)
 
+> **Historisch (30.10.2026):** Für Meilenstein 1 gilt `docs/milestone-1.md` (ADR `docs/decisions/0001-milestone-1-scope-freeze.md`). Wo dieses Dokument widerspricht (Schwert, menschliche Gegner, keine Schusswaffe für Rend, Abschnitte §2/§6 im GDD), ist es überholt.
+
 > Status: **Arbeit konkretisiert (01.10.26)** gemäß Produktionsplan P01 (`t_d8af4365`).
 > Alles in diesem Dokument ist Arbeitsfassung mit Abnahmepflicht: neVs nickt am
 > Playtest-Gate P32 ab (Designhoheit bleibt bei neVs, vgl. `docs/gdd.md`).

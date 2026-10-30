@@ -1,5 +1,7 @@
 # Game Design Document — Rend&Run
 
+> **Historisch (30.10.2026):** Für Meilenstein 1 gilt `docs/milestone-1.md` (ADR `docs/decisions/0001-milestone-1-scope-freeze.md`). Wo dieses Dokument widerspricht (Schwert, menschliche Gegner, keine Schusswaffe für Rend, Abschnitte §2/§6 im GDD), ist es überholt.
+
 > Arbeitstitel bestätigt von neVs (30.09.26): **Rend&Run**
 
 > Status: **Idee folgt.** Dieses Dokument füllt neVs schrittweise;
