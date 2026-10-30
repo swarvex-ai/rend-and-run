@@ -47,7 +47,7 @@ Reference first, then copies. Existing items are mapped, not duplicated: G-5 →
 
 | ID | Work | Level | Depends on |
 |---|---|---|---|
-| E11.1 | menu style guide, variants 1/2 and 2/2 (`design.ui`, text + mockup description); neVs picks one | A | – |
+| E11.1 | menu style guide, variants 1/2 and 2/2 (`design.ui`, text + mockup description); neVs picks one — tasks #38, #39 | A | – |
 | E11.2 | reference menu screen „Options“ (lead, extension point): `MenuScreen` base with transitions, focus animation, UI sounds, back handling; settings store (`user://settings.cfg`, separate from progress); audio buses Music/Voice; contract test | D | E11.1 pick, F3 text table |
 | E11.3 | options content: audio sliders, window mode, VSync, accessibility toggles (G16) on the reference screen | B | E11.2, E6 |
 | E11.4 | main menu on `MenuScreen`: add Options, Credits, version label | B | E11.2 |
@@ -56,8 +56,8 @@ Reference first, then copies. Existing items are mapped, not duplicated: G-5 →
 | E11.7 | focus loss pauses the game; window mode switches without restart | B | E11.2 |
 | E11.8 | input hints follow the last used device; gamepad hot-plug | B | E11.2 |
 | E11.9 | loading indicator at start and reload, no freeze > 1 s | B | E11.2 |
-| E11.10 | CHANGELOG.md (SemVer, entry `0.1.0-prealpha` drafted from git history) | A | – |
-| E11.11 | SECURITY.md | A | – |
-| E11.12 | issue template for bug reports (incl. log location `user://logs`) | A | – |
+| E11.10 | CHANGELOG.md (SemVer, entry `0.1.0-prealpha`) — task #40 | A | – |
+| E11.11 | SECURITY.md — task #41 (needs GitHub private vulnerability reporting switched on) | A | – |
+| E11.12 | issue form for bug reports (incl. log location `user://logs`) — task #42 | A | – |
 | E11.13 | app icon + title wordmark (asset brief, preview → neVs → final) | A | style guide |
 | E11.14 | itch.io page text + 3–5 screenshots; README player section | A | E10 |
