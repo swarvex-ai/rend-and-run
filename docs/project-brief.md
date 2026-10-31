@@ -1,7 +1,7 @@
 # Projektbrief: Rend&Run
 
 > Ergebnis des Projekt-Interviews (swarvex LEAD.md, Phase 0). Aufgaben für den Schwarm entstehen erst, wenn neVs den Brief bestätigt.
-> Stand 30.10.2026 · Interview-Runden: 4 (Runde 1 am 28.10., Runden 2–3 „Roast“ und Runde 4 „Grundpaket“ am 30.10.2026) · Runde 1 bestätigt von neVs am 28.10.2026 („alles ja“) · **Runde 3 am 30.10.2026 · **Brief neu zu bestätigen****
+> Stand 31.10.2026 · Interview-Runden: 5 (Runde 1 am 28.10., Runden 2–3 „Roast“ und Runde 4 „Grundpaket“ am 30.10., Runde 5 „Rollen und Gates“ am 31.10.2026) · Runde 1 bestätigt von neVs am 28.10.2026 („alles ja“) · **Brief mit Runden 1–5 und Grundpaket bestätigt von neVs am 31.10.2026**
 
 Rend&Run ist kein neues Projekt: Vision, GDD und 24 Tage Entwicklung liegen vor. Der Lead hat deshalb nur Lücken abgefragt (G13) und alles andere aus dem Bestand vorgeschlagen.
 
@@ -52,6 +52,7 @@ Rend&Run ist kein neues Projekt: Vision, GDD und 24 Tage Entwicklung liegen vor.
 | S23 | Streckenlänge | vor dem Inhaltsschnitt misst neVs einen Durchlauf (Zeit, Tode); < 9 min → Strecke verlängern ist erster Inhaltsblock, > 11 min → kürzen | Empfehlung angenommen, **Messung ausstehend** | 3 (Q9) | |
 | S18 | Festnahme | nicht in v1; Roboter töten nur; kommt mit dem Twist | Empfehlung angenommen | 2 (F9) | Vision |
 | S24 | Grundpaket (LEAD 1.4) | B1–B9 und G-1–G-20 eingeordnet, siehe Abschnitt „Grundpaket“; Menügefühl (G-11) in M1 über einen Referenz-Menübildschirm; Release-Pflichten in M1, weil M1 auf itch.io erscheint; B6/B7 über swarvex-ai/.github (neVs 30.10.) | Empfehlung angenommen | 4 (Q1–Q4) | `baseline-packages.md` |
+| S25 | Gate-Dokumente je Rolle (LEAD 1.5) | Sound Bible als 2 Varianten (Audio); Screen-Flow `docs/design/ux.md`, Story-Gerüst `docs/design/story.md` und neue Art Bible `docs/style-guide.md` je 1 Variante; neVs gibt jedes frei; `docs/architecture.md` und `docs/qa.md` schreibt der Lead | Empfehlung angenommen | 5 (Q2–Q5) | `docs/plan.md` „Roles and gates“ |
 
 Die folgenden Abschnitte fassen die Tabelle lesbar zusammen; bei Widerspruch gilt die Tabelle.
 
@@ -152,6 +153,10 @@ Q1 Einordnung aller 29 Bausteine wie unten · Q2 Menügefühl (G-11) in M1, ohne
 | G-15 | Qualitätsstufen | später (M2) | Messung in M1 (E9), Presets bei Bedarf |
 | G-16 | Fensterverhalten | M1 | Fokusverlust pausiert; Fenstermodus ohne Neustart |
 | G-17 | Logs, Abstürze | M1 schlank | Godot schreibt nach `user://logs`; Ort in der README (M1), im Bug-Formular ab v1 |
-| G-18 | Audio-Mix | später (M2) | Busse Master und Combat vorhanden; Musik- und Stimmen-Bus kommen mit G-4; Mix nach Playtests |
+| G-18 | Audio-Mix | später (M2) | Busse Master, Combat und Ambience vorhanden; Musik- und Stimmen-Bus kommen mit G-4; Mix nach Playtests |
 | G-19 | Release-Material | M1 schlank = B9; Rest später | Trailer, Key Art, Pressemappe beim größeren Release |
 | G-20 | Plattformdienste | nicht nötig | itch.io ohne Erfolge und Cloud-Saves; steht in den Nicht-Zielen |
+
+## Interview Runde 5 „Rollen und Gates“ (31.10.2026: Q1–Q5 Empfehlungen angenommen)
+
+Q1 Brief bestätigt · Q2 Sound Bible, 2 Varianten · Q3 Screen-Flow, 1 Variante · Q4 Story-Gerüst aus der Vision, 1 Variante · Q5 Art Bible erneuern, 1 Variante.

@@ -61,3 +61,20 @@ Reference first, then copies. Existing items are mapped, not duplicated: G-5 →
 | E11.12 | ~~bug issue form~~ — #42 closed: moved to v1 (backlog); generic form from swarvex-ai/.github until then | – | – |
 | E11.13 | app icon + title wordmark (asset brief, preview → neVs → final) | A | style guide |
 | E11.14 | itch.io page text + 3–5 screenshots; README player section | A | E10 |
+
+## Roles and gates (LEAD.md 1.5, section 9a)
+
+The lead plays all roles (virtual officers); cards: `lead/roles/game/*.md` in swarvex-ai/swarvex. Every new task names its `role`. Checked 31.10.2026.
+
+| Role | Gate document | State | Open tasks (role) | Gate |
+|---|---|---|---|---|
+| game-design | `docs/milestone-1.md` (M1 rules, route), `docs/gdd.md` (historical core loop) | exists; level briefs and balance-as-data come with F3 | #1, #3–#6, #43 bestiary | ok (fact sheets, no new mechanics) |
+| tech | `docs/architecture.md` + interfaces with contract tests | **missing** (F6, F3; lead, level D); pipeline green (F5) | – | B tasks #11–#19 touch test files only, no module interface needed; no game-code B task goes out before F3/F6 |
+| art | art bible: `docs/art/art_bible_p02_v01/ART_BIBLE.txt` | **outdated** (sword, human enemies); only palette and readability valid (brief S9); `docs/style-guide.md` missing | #7, #8 comic style guide | ok: text only, no asset task; comic assets wait for the chosen guide (E4) |
+| audio | sound bible `docs/design/sound-bible.md` + event list | **missing** | – | ok: no audio task out |
+| narrative | story outline + character sheets `docs/design/story.md` | **missing**; beats fixed in `docs/vision.md` („Geschichte“, „Comic“) | #9, #10 intro script | **went out before the gate**; acceptable because the four beats and the twist ban come verbatim from the vision and are in the acceptance criteria |
+| ux | screen flow `docs/design/ux.md` + menu style guide + reference screen | style guide in progress (#38, #39); screen flow **missing**; reference screen E11.2 (lead) | #38, #39 | ok: these are the gate documents; E11.3–E11.9 wait for all three |
+| qa | success criteria as checks: `docs/milestone-1.md` „Done means“, `docs/test-triage.md` | exists; `docs/qa.md` (severity scale, quarantine rules) missing | #11–#37 tests and diagnoses | ok |
+| release | version scheme (SemVer, `0.1.0-prealpha`), platforms (G7), baseline package (S24) | decided | #40 CHANGELOG | ok |
+
+Brief gate („brief and baseline package confirmed“): confirmed by neVs on 31.10.2026 (brief round 5). Gate documents still to write (S25): sound bible (2 variants), `docs/design/ux.md`, `docs/design/story.md`, `docs/style-guide.md`; lead: `docs/architecture.md` (F6), `docs/qa.md`.
