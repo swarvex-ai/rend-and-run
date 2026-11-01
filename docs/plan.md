@@ -13,7 +13,7 @@
 | F3 | split `lab_route.gd`: route data (encounters, props, PA cues, checkpoints) and a text table as extension points | open | E3, E5, E6, E7 |
 | F4 | headless test `route_playthrough`: start → airlock (criterion a) and retry < 10 s (c) | open | E2, E9 |
 | F5 | `swarvex env` green without network (77/77, 3 min); `.agents/**` protected; runner: `--headless` for named/quarantined tests, named runs fail on red | done 30.10. | first code task |
-| F6 | `docs/architecture.md` (module map, extension points), style-guide stub | open | B tasks |
+| F6 | `docs/architecture.md` (module map, extension points); `docs/qa.md` (severity scale, quarantine rules). The art bible is task #48 instead of a lead stub | open | B tasks |
 
 ### Running now (level A, no code dependency)
 
@@ -70,10 +70,10 @@ The lead plays all roles (virtual officers); cards: `lead/roles/game/*.md` in sw
 |---|---|---|---|---|
 | game-design | `docs/milestone-1.md` (M1 rules, route), `docs/gdd.md` (historical core loop) | exists; level briefs and balance-as-data come with F3 | #1, #3–#6, #43 bestiary | ok (fact sheets, no new mechanics) |
 | tech | `docs/architecture.md` + interfaces with contract tests | **missing** (F6, F3; lead, level D); pipeline green (F5) | – | B tasks #11–#19 touch test files only, no module interface needed; no game-code B task goes out before F3/F6 |
-| art | art bible: `docs/art/art_bible_p02_v01/ART_BIBLE.txt` | **outdated** (sword, human enemies); only palette and readability valid (brief S9); `docs/style-guide.md` missing | #7, #8 comic style guide | ok: text only, no asset task; comic assets wait for the chosen guide (E4) |
-| audio | sound bible `docs/design/sound-bible.md` + event list | **missing** | – | ok: no audio task out |
-| narrative | story outline + character sheets `docs/design/story.md` | **missing**; beats fixed in `docs/vision.md` („Geschichte“, „Comic“) | #9, #10 intro script | **went out before the gate**; acceptable because the four beats and the twist ban come verbatim from the vision and are in the acceptance criteria |
-| ux | screen flow `docs/design/ux.md` + menu style guide + reference screen | style guide in progress (#38, #39); screen flow **missing**; reference screen E11.2 (lead) | #38, #39 | ok: these are the gate documents; E11.3–E11.9 wait for all three |
+| art | art bible: `docs/art/art_bible_p02_v01/ART_BIBLE.txt` | **outdated** (sword, human enemies); only palette and readability valid (brief S9); renewal as `docs/style-guide.md` is task #48 | #7, #8 comic style guide, #48 | ok: text only, no asset task; comic assets wait for the chosen guide (E4) |
+| audio | sound bible `docs/design/sound-bible.md` + event list | **missing**; variants #45, #46 | #45, #46 | ok: no audio task out |
+| narrative | story outline + character sheets `docs/design/story.md` | **missing**; task #47; beats fixed in `docs/vision.md` („Geschichte“, „Comic“) | #9, #10 intro script, #47 | **went out before the gate**; acceptable because the four beats and the twist ban come verbatim from the vision and are in the acceptance criteria |
+| ux | screen flow `docs/design/ux.md` + menu style guide + reference screen | style guide in progress (#38, #39); screen flow task #44; reference screen E11.2 (lead) | #38, #39, #44 | ok: these are the gate documents; E11.3–E11.9 wait for all three |
 | qa | success criteria as checks: `docs/milestone-1.md` „Done means“, `docs/test-triage.md` | exists; `docs/qa.md` (severity scale, quarantine rules) missing | #11–#37 tests and diagnoses | ok |
 | release | version scheme (SemVer, `0.1.0-prealpha`), platforms (G7), baseline package (S24) | decided | #40 CHANGELOG | ok |
 
