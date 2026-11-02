@@ -2,6 +2,60 @@
 
 > Maintained by the lead. Milestone spec: `docs/milestone-1.md`. Status of each session: `docs/status.md`.
 
+## Baseline: solo build until 30.10.2026
+
+One agent (Claude) built Rend&Run alone in 24 calendar days, up to the public release `3b3f444` (28.10.) plus the lead foundation of 30.10. This is the starting point of the swarm, not a milestone (decision neVs, message 3, 02.11.2026). The swarm balance compares task units (level weights as in progress: A 1, B 2, C 3, D 5), not the duration of M1 against the 24 days, and no estimated hours.
+
+| Area | State at the baseline | Size (at `3b3f444`) |
+|---|---|---|
+| Features | route V12: five zones, six robot types (guard, shield bearer, sentinel, dog, drone, overseer), robot arm, pistol, smg, scattergun, energy rifle, shield, throwable crates, shards, death cache, workbench and weapon bench, two checkpoints, boss arena; details: `docs/milestone-1.md` „The route today“ | 114 GDScript files, 14,115 lines |
+| Tests | 77 headless green; 28 quarantined (`docs/test-triage.md`); no playthrough test | 133 test files, 9,708 lines |
+| Tools | asset, voice and test scripts | 41 scripts, 3,851 lines |
+| Assets | generated models, textures, sounds and motion, with provenance | 84 GLB, 78 PNG/JPG, 51 WAV, 17 generated motion resources |
+| Docs | GDD, scope, art bible P02 (partly outdated: sword, human enemies) | 24 files, ~12,800 words |
+| Not yet there | English text, intro comic, pressure task, tells ≥ 0.5 s checked, accessibility toggles, menus and baseline package (E11), Windows export, timed playtests | – |
+
+### The baseline in task units
+
+How the lead would have sliced `3b3f444` as swarm tasks, by the same rules as real tasks (LEAD.md 6.1–6.2: B ≤ 300 lines and 1–5 files behind a finished interface, C inside a system, D cross-cutting; tests are part of each task, not counted separately). Counted is only what exists at `3b3f444`, including later outdated parts (sword, chaser); discarded iterations are not counted, so the value is a lower bound.
+
+| Building block | Tasks | Level | Units | Reason |
+|---|---|---|---|---|
+| Walking skeleton, game loop, pause, `FX` autoload (`main.gd`, `start.gd`, `pause_controller.gd`, `fx.gd`) | 1 | D | 5 | defines scene flow and the only singleton |
+| Player architecture (`player.gd`: states, input, damage interface) | 1 | D | 5 | interface every robot, weapon and HUD depends on |
+| Robot base and state machine (`enemy.gd`: roles, attack phases) | 1 | D | 5 | base class of all robot types |
+| Route system (`lab_route.gd`, `notstrom_layout.gd`: zones, encounters, checkpoints) | 1 | D | 5 | data model of the whole level |
+| Combat contact and damage model (`hit_physics`, `blade_contact`, `attack_cadence`, hit stop) | 1 | D | 5 | shared by player and all robots |
+| Persistence and save format (`atomic_json_writer`, migration, save guard) | 1 | D | 5 | data model; migration must stay compatible |
+| Test runner, headless harness, manifest, asset validation (`tools/`) | 1 | D | 5 | the test contract |
+| Squad behaviour (`squad_director`, `guard_state`, `guard_spacing`) | 1 | C | 3 | inside the robot system, 351 lines in 3 files |
+| Shield bearer (role 1 in `enemy.gd`) | 1 | C | 3 | changes the shared state machine |
+| Overseer boss (`lab_overseer`, `overseer_low_pose`, role 2) | 1 | C | 3 | inside the robot system, two phases |
+| Equipment and workbench economy (`equipment_ledger`, `item_catalog`) | 1 | C | 3 | touches save format and player stats |
+| Checkpoints and respawn (`checkpoint_console`, route hooks) | 1 | C | 3 | inside the route system |
+| Robots breaking apart (`articulated_death`, `death_fragments`, `quadruped_death`, `debris`) | 1 | C | 3 | changes every robot's death path |
+| Player melee chain (robot arm combo inside `player.gd`) | 1 | C | 3 | inside the player system |
+| Route content zones 01–03 and zones 04–05 (placements, PA cues) | 2 | C | 6 | inside the route data, one task per zone group |
+| Player: movement and jump, dash, crouch, damage/bleeding/death, gun handling + ammo HUD, gun hold pose | 6 | B | 12 | isolated parts behind the player interface |
+| Robots: gun guard, pulse guard, sentinel, dog, drone, energy bolt, attack cues (tells), recovery step | 8 | B | 16 | one type or one behaviour behind the robot base |
+| Interactables: welding arm, security camera, alarm sequence + beacon + flicker, coolant canister, throwable crate, supply crate, shard pickup, arm/gun/shield pickups, arena gate, shortcut door, service return + wayfinding, death cache | 12 | B | 24 | one module each, 20–200 lines |
+| Frozen economy: servo trial + run ledger, prefix ledger | 2 | B | 4 | isolated modules |
+| UI: start menu, pause menu, sector complete, combat HUD (2, 374 lines), workbench menu (2, 383 lines), equipment menu, overseer status, edge threat indicator, feedback priority + hints | 11 | B | 22 | one screen or widget each; files over 300 lines count twice |
+| VFX: blood spray, metal and impact sparks, slash trail + dash streaks, landing dust, explosion + gun FX | 5 | B | 10 | one effect family each |
+| Visuals: blade and cleaver visuals, canister visual, small prop visuals (2) | 4 | B | 8 | one visual family each |
+| World: clean factory, factory corridor, assembly line + calibration, power sector, foreground + floor markings + atmosphere | 5 | B | 10 | one set piece each |
+| Audio code: ambience + foot contact clock, robot voice | 2 | B | 4 | isolated modules |
+| Tools: clip retargeting, motion baking, voice generation | 3 | B | 6 | one script each |
+| 3D models: 8 characters, 13 weapons and props, 24 environment pieces | 45 | A | 45 | one asset brief per model (variants like `_baked`/`_arm` folded in) |
+| Motion sets: hero, light humanoid, heavy humanoid, dog, hit reactions | 5 | A | 5 | one asset brief each |
+| Sound: voice lines (37, 3 batches), effects and ambience (14, 3 batches) | 6 | A | 6 | batches of 5–15 files |
+| Textures and atlas | 2 | A | 2 | atlas, environment finish |
+| Design docs: GDD, art bible P02, scope, asset specification | 4 | A | 4 | one document each |
+| Balancing and playtest runs | 3 | A | 3 | simulation or playtest report |
+| **Sum** | **139** | | **243** | D 7 · C 9 · B 58 · A 65 |
+
+**M1 is the increment on top:** everything under „Content in M1“ and „Done means“ in `docs/milestone-1.md` that the table marks as not yet there, plus all quarantined tests back to green (criterion f).
+
 ## M1: the first escape route
 
 ### Phase F: foundation (lead, level D) — blocks all code tasks
