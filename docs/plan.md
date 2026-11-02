@@ -64,10 +64,10 @@ How the lead would have sliced `3b3f444` as swarm tasks, by the same rules as re
 |---|---|---|---|
 | F1 | milestone-1.md, plan, status, ADR 0001 | done 30.10. | everything |
 | F2 | triage the 28 quarantined tests (`docs/test-triage.md`); dash_visual_test promoted to headless | done 30.10. | E1 |
-| F3 | split `lab_route.gd`: route data (encounters, props, PA cues, checkpoints) and a text table as extension points | open | E3, E5, E6, E7 |
-| F4 | headless test `route_playthrough`: start → airlock (criterion a) and retry < 10 s (c) | open | E2, E9 |
+| F3 | split `lab_route.gd`: route data (encounters, props, PA cues, checkpoints) and a text table as extension points — task #50 (waits for #11–#19) | open | E3, E5, E6, E7 |
+| F4 | headless test `route_playthrough`: start → airlock (criterion a) and retry < 10 s (c) — task #51 (waits for #50) | open | E2, E9 |
 | F5 | `swarvex env` green without network (77/77, 3 min); `.agents/**` protected; runner: `--headless` for named/quarantined tests, named runs fail on red | done 30.10. | first code task |
-| F6 | `docs/architecture.md` (module map, extension points); `docs/qa.md` (severity scale, quarantine rules). The art bible is task #48 instead of a lead stub | open | B tasks |
+| F6 | `docs/architecture.md` (module map, extension points); `docs/qa.md` (severity scale, quarantine rules). The art bible is task #48 instead of a lead stub — task #49 | open | B tasks |
 
 ### Running now (level A, no code dependency)
 
@@ -102,7 +102,7 @@ Reference first, then copies. Existing items are mapped, not duplicated: G-5 →
 | ID | Work | Level | Depends on |
 |---|---|---|---|
 | E11.1 | menu style guide, variants 1/2 and 2/2 (`design.ui`, text + mockup description); neVs picks one — tasks #38, #39 | A | – |
-| E11.2 | reference menu screen „Options“ (lead, extension point): `MenuScreen` base with transitions, focus animation, UI sounds, back handling; settings store (`user://settings.cfg`, separate from progress); audio buses Music/Voice; contract test | D | E11.1 pick, F3 text table |
+| E11.2 | reference menu screen „Options“ (lead, extension point): `MenuScreen` base with transitions, focus animation, UI sounds, back handling; settings store (`user://settings.cfg`, separate from progress); audio buses Music/Voice; contract test — task #52 (waits for #50 and #38 or #39) | D | E11.1 pick, F3 text table |
 | E11.3 | options content: audio sliders, window mode, VSync, accessibility toggles (G16) on the reference screen | B | E11.2, E6 |
 | E11.4 | main menu on `MenuScreen`: add Options, Credits, version label | B | E11.2 |
 | E11.5 | pause menu on `MenuScreen`: add Options, „Main menu“ | B | E11.2 |
@@ -118,7 +118,7 @@ Reference first, then copies. Existing items are mapped, not duplicated: G-5 →
 
 ## Roles and gates (LEAD.md 1.5, section 9a)
 
-The lead plays all roles (virtual officers); cards: `lead/roles/game/*.md` in swarvex-ai/swarvex. Every new task names its `role`. Checked 31.10.2026.
+The lead plays all roles (virtual officers); cards: `lead/roles/game/*.md` in swarvex-ai/swarvex. Every new task names its `role`. Lead D work runs as tasks #49–#52, closed with `complete_own_task` (shown as done by the lead without peer review, not in the four-eyes rate); larger ones (F3, E11.2) then get an advisory review task. Checked 31.10.2026.
 
 | Role | Gate document | State | Open tasks (role) | Gate |
 |---|---|---|---|---|
