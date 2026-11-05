@@ -92,6 +92,7 @@ quarantine ranged_integration_test V17_TEST
 headless recovery_step_test
 headless relay_checkpoint_integration
 window robot_roster_visual_capture
+headless route_playthrough
 headless route_rewards_integration
 headless route_layout_test
 headless route_text_table_test

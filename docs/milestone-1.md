@@ -12,9 +12,9 @@ Rend wakes up in the factory, finds a robot arm, fights through five zones and e
 
 | # | Criterion | Checked by |
 |---|---|---|
-| a | an automated run reaches the airlock from the start without a crash | headless test `route_playthrough` (to be written, plan F4) |
+| a | an automated run reaches the airlock from the start without a crash | headless test `route_playthrough` (F4, since 06.11.2026) |
 | b | first run takes 9–11 min; 2–5 deaths (S20) | playtest neVs + 2 fresh-eyes playtests |
-| c | back in control < 10 s after death | headless test |
+| c | back in control < 10 s after death | headless test `route_playthrough` (2.43 s game time) |
 | d | complete with keyboard and with gamepad | playtest checklist |
 | e | 1080p at 60 fps on the reference PC (Ryzen 7 5800X3D, RX 6800 class, 32 GB, Linux; G21) | measurement run |
 | f | 0 red, 0 flaky, 0 quarantined M1 tests | test pipeline |
