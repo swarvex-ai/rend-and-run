@@ -66,6 +66,7 @@ headless light_severance
 hook loot_integration_test V13_TEST
 window loot_persistence_test
 quarantine machinery_chamber_integration
+headless menu_screen_test
 headless metal_sparks_test
 headless mission_art_integration
 headless mission_extent_integration
