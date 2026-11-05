@@ -66,7 +66,7 @@ Each extension point has one reference example. A new variant copies it and is a
 | Effect | standalone `Node3D` in `game/modules/vfx/` with a counter for tests | `landing_dust.gd` | `landing_dust_test` |
 | Robot voice line | `game/modules/audio/robot_voice.gd` lines and subtitles | `intruder` | `voice_test` |
 
-Planned (F3, #50): route data and an English text table move out of `lab_route.gd`. That adds two extension points (route beats as data, texts by key). E11.2 (#52) adds a `MenuScreen` base for menus.
+Since F3 (#50) two more: route placements in `game/data/route_layout.gd` (reference: `CRATE_POSITIONS`, contract test `route_layout_test`) and route texts by key in `game/data/route_texts.gd` (reference: `msg_blocked`, contract test `route_text_table_test`). E11.2 (#52) adds a `MenuScreen` base for menus.
 
 ## Tests and the contract
 

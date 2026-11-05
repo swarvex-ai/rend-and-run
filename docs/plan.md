@@ -64,7 +64,7 @@ How the lead would have sliced `3b3f444` as swarm tasks, by the same rules as re
 |---|---|---|---|
 | F1 | milestone-1.md, plan, status, ADR 0001 | done 30.10. | everything |
 | F2 | triage the 28 quarantined tests (`docs/test-triage.md`); dash_visual_test promoted to headless | done 30.10. | E1 |
-| F3 | split `lab_route.gd`: route data (encounters, props, PA cues, checkpoints) and a text table as extension points — task #50 (waits for #11–#19) | open | E3, E5, E6, E7 |
+| F3 | split `lab_route.gd`: route data (encounters, props, PA cues, checkpoints) and a text table as extension points — task #50 | done 05.11. (`b87ff54` texts in `game/data/route_texts.gd`, `541f5be` placements in `game/data/route_layout.gd`, contract tests; review #59) | E3, E5, E6, E7 |
 | F4 | headless test `route_playthrough`: start → airlock (criterion a) and retry < 10 s (c) — task #51 (waits for #50) | open | E2, E9 |
 | F5 | `swarvex env` green without network (77/77, 3 min); `.agents/**` protected; runner: `--headless` for named/quarantined tests, named runs fail on red | done 30.10. | first code task |
 | F6 | `docs/architecture.md` (module map, extension points); `docs/qa.md` (severity scale, quarantine rules). The art bible is task #48 instead of a lead stub — task #49 | done 05.11. | B tasks |
