@@ -91,6 +91,14 @@ while read -r code kind name; do
 done < <(sort -k2,2 -k3 "$OUT/_results.txt") | tee "$OUT/_summary.txt" | grep -v '^PASS' || true
 echo "---"
 awk '{print $1, $2}' "$OUT/_summary.txt" | sort | uniq -c
+# Red tests print their exit code and log tail here: the test pipeline keeps stdout, not $OUT.
+while read -r code kind name; do
+  [ "$code" = 0 ] && continue
+  [ "$kind" = quarantine ] && [ ${#only[@]} -eq 0 ] && continue
+  reason=""; [ "$code" -gt 128 ] 2>/dev/null && reason=" (SIG$(kill -l $((code - 128)) 2>/dev/null))"
+  echo "=== $kind $name: exit $code$reason, last 30 lines of test.log"
+  tail -n 30 "$OUT/$name/test.log" 2>/dev/null
+done < <(sort -k2,2 -k3 "$OUT/_results.txt")
 echo "logs: $OUT/<test>/test.log"
 # Named tests are what the caller asked for: a red quarantined test fails that run too.
 if [ ${#only[@]} -gt 0 ]; then grep -q -v '^PASS' "$OUT/_summary.txt" && exit 1 || exit 0; fi
