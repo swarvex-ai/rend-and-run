@@ -18,7 +18,14 @@
 
 **Wartet auf neVs:** nichts.
 
-**Als Nächstes (Lead):** reparierte Tests aus der Quarantäne nehmen, sobald der Merge-Bot sie gemergt hat; Hook-Tests in die Pipeline; F6 (#49), dann F3 (#50), F4 (#51), E11.2 (#52).
+**Abends erledigt:** Hook-Tests laufen in der Pipeline (`3f3160d`); sieben reparierte Tests sind aus der Quarantäne, drei wackelige hinein, mit den Reparatur-Aufgaben #54–#56. F6 ist fertig (`docs/architecture.md`, `docs/qa.md`, #49), die beratende Prüfung ist #57. F3 Schritt 1: Alle 109 Routentexte kommen aus `game/data/route_texts.gd`, abgesichert durch den Vertragstest `route_text_table_test` (`b87ff54`). Suite: 81 headless + 11 hook grün, je 119 s.
+
+**Rulings (abends)**
+- Ruling: `--headless` führt auch Hook-Tests aus — sonst prüft die Pipeline zehn Tests nie — Kosten bei Irrtum: etwa 20 s mehr pro Lauf.
+- Ruling: `first_room_playthrough` und `ranged_integration_test` in Quarantäne statt in der Pipeline — wackelig ohne Codeänderung — Kosten bei Irrtum: zwei Tests prüfen bis zu ihrer Reparatur (#54, #55) nichts.
+- Ruling: Textschlüssel sind englisch, die Werte bleiben vorerst deutsch — E5 ändert nur die Tabelle — Kosten bei Irrtum: Schlüssel umbenennen, mechanisch.
+
+**Als Nächstes (Lead):** F3 Schritt 2 (Platzierungen als Routendaten), dann F4 (#51), E11.2 (#52).
 
 ## 30.10.2026 (Lead-Session 1)
 
