@@ -47,7 +47,7 @@ func run():
   if DisplayServer.get_name()!='headless':
    main.get_node('Camera3D').global_position=Vector3(31,1.05,5.8)
    RenderingServer.force_draw(false)
-   root.get_texture().get_image().save_png(OS.get_environment('H65_OUTPUT')+'/opposed-'+str(reverse)+'.png')
+   root.get_texture().get_image().save_png(OS.get_environment("H65_OUTPUT")+'/opposed-'+str(reverse)+'.png')
  prepare()
  main.player.global_position=Vector3(43,0,0)
  var guard=actors[0];guard.role=3;guard.global_position=Vector3(39,0,0)
@@ -84,7 +84,7 @@ func run():
   if tick in [4,12,28] and DisplayServer.get_name()!='headless':
    await process_frame
    RenderingServer.force_draw(false)
-   root.get_texture().get_image().save_png(OS.get_environment('H65_OUTPUT')+'/motion-'+str(tick)+'.png')
+   root.get_texture().get_image().save_png(OS.get_environment("H65_OUTPUT")+'/motion-'+str(tick)+'.png')
  for e in actors:e.set_physics_process(false)
  var separated:=true
  for index in range(1,times.size()):
@@ -95,8 +95,15 @@ func run():
  var replacement=load('res://main.tscn').instantiate()
  check('new scene owns empty independent clock',replacement.attack_cadence.active_count()==0)
  replacement.free()
- var f=FileAccess.open(OS.get_environment('H65_OUTPUT')+'/integration.json',FileAccess.WRITE)
- f.store_string(JSON.stringify({'failures':failures,'checks':checks},'  '))
+ var output_dir=OS.get_environment("H65_OUTPUT")
+ var result_path=output_dir+'/integration.json'
+ var f=FileAccess.open(result_path,FileAccess.WRITE) if output_dir!='' else null
+ if f==null:
+  printerr('H65 ERROR cannot write result file: ',result_path,' (H65_OUTPUT=',output_dir,')')
+  failures+=1
+ else:
+  f.store_string(JSON.stringify({'failures':failures,'checks':checks},'  '))
+  f.close()
  await create_timer(.8).timeout
  main.queue_free();await process_frame;await process_frame
  print('H65 SUMMARY checks=',checks.size(),' failures=',failures)
