@@ -93,6 +93,7 @@ headless recovery_step_test
 headless relay_checkpoint_integration
 window robot_roster_visual_capture
 headless route_rewards_integration
+headless route_layout_test
 headless route_text_table_test
 quarantine route_v12_test V12_TEST
 headless sector_complete_test
@@ -123,7 +124,7 @@ probe motion_review_capture
 headless depth_strip_test
 headless hound_test
 headless dog_arm_test
-headless depth_test
+quarantine depth_test
 headless prop_collision_test
 probe hit_pose_review
 window strike_review

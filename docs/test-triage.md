@@ -30,6 +30,7 @@ The live test pipeline (official Godot 4.7.2 build, `JOBS=3`) failed docs-only s
   - `first_room_playthrough`: the first fight uses unseeded enemy RNG (`enemy.gd:1115`); when Rend does not win it, the `assert` at line 38 does not end the script and the run hangs into the 240 s timeout. Red 4 times in a row locally on 05.11.; the game code is unchanged since 3b3f444.
   - `ranged_integration_test` (accepted #16): 'crouch evades committed high projectile' red once in five runs.
   - `landing_integration_test`: saves a screenshot without a headless guard (line 25), so it crashes without a display.
+  - `depth_test` (added later the same evening): 'the dog comes round the cover and attacks' red in 2 of 7 full-suite runs (`dog x=39.17 z=0.82 state=2`), before and after F3 step 2; the test is unseeded.
 - **Stays in quarantine:** `machinery_chamber_integration`. #19 found that nothing builds the machinery chamber any more (`lab_dressing.gd:17-26`); the test now fails fast instead of hanging.
 
 Full suite after these changes: 79 headless + 11 hook, green twice in 120 s each.

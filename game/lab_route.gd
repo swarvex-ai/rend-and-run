@@ -2,12 +2,13 @@ extends Node3D
 ## V12: compact authored route. Persistent exploration, not infinite arena waves.
 const MISSION = preload("res://modules/world/notstrom_layout.gd")
 const TEXT = preload("res://data/route_texts.gd")
+const ROUTE = preload("res://data/route_layout.gd")
 const SAVE_PATH := "user://rendrun_route_v12.json"
 const COPPER := Color(0.65,0.30,0.12)
 const TEAL := Color(0.12,0.72,0.78)
 var combat_hud: Control
 var ammo_hud: Control
-const GUN_BENCH_POS := Vector3(51.5,0,0)  # weapon bench: mods for the drawn gun, paid in shards
+const GUN_BENCH_POS := ROUTE.GUN_BENCH_POS  # weapon bench: mods for the drawn gun, paid in shards
 var gun_mods := {}                         # saved copy of player.gun_mods
 var _bench_pick := 0                       # which mod the bench offers
 var _bench_guard_was := false
@@ -18,11 +19,11 @@ var player: CharacterBody3D
 var armor := false
 var shield := false
 var shield_display: Node3D
-var shield_pos:=Vector3(24,0,0)
+var shield_pos:=ROUTE.SHIELD_POS
 var checkpoint := false
 var relay_checkpoint := false
 var relay_console:Node3D
-const RELAY_CHECKPOINT_POS := Vector3(58,0.05,0)
+const RELAY_CHECKPOINT_POS := ROUTE.RELAY_CHECKPOINT_POS
 var checkpoint_console: Node3D
 var completed := false
 var cleared: Array=[]
@@ -37,20 +38,20 @@ var equipment=preload("res://modules/equipment/equipment_ledger.gd").new()
 var servo_run=preload("res://modules/loot/servo_run_ledger.gd").new()
 var servo_trial: Node
 var _workbench_action_frame := -1
-var workbench_pos:=Vector3(28.5,0,0)
-const ENTRY_WORKBENCH_POS := Vector3(8.9,0,0)
+var workbench_pos:=ROUTE.WORKBENCH_POS
+const ENTRY_WORKBENCH_POS := ROUTE.ENTRY_WORKBENCH_POS
 const FIRST_SALVAGE_ID := "enemy_first"
-var first_salvage_position := Vector3(8.5,.28,0)
+var first_salvage_position := ROUTE.FIRST_SALVAGE_POS
 var shortcut_open:=false
 var power_sector:Node3D
 var power_state:Dictionary={}
 var shortcut: Node3D
-var shortcut_pos:=Vector3(16.5,0,0)
+var shortcut_pos:=ROUTE.SHORTCUT_POS
 var broken_crates: Array=[]
 var supply_crates: Array=[]
 var pending_shards: Dictionary = {}
 var shard_pickups: Dictionary = {}
-const CRATE_POSITIONS := {"entry_supply":Vector3(4,0,0),"maintenance_supply":Vector3(21.5,0,0),"exit_supply":Vector3(67,0,0),"freight_supply":Vector3(54,0,0)}
+const CRATE_POSITIONS := ROUTE.CRATE_POSITIONS
 var enemies: Array=[]
 var service_return: Node3D
 var arena_gate: Node3D
@@ -72,8 +73,8 @@ var save_error := false
 var _shown_combat_hints: Dictionary = {}
 var _combat_hint_cooldown := 0.0
 var _interact_was := false
-var checkpoint_pos := Vector3(26,0.05,0)
-var cache_pos := Vector3(18,0,0)
+var checkpoint_pos := ROUTE.CHECKPOINT_POS
+var cache_pos := ROUTE.CACHE_POS
 
 func _ready() -> void:
 	feedback.offer(toast, 0, toast_time)
@@ -106,14 +107,14 @@ func _ready() -> void:
 			old.queue_free()
 	_build_route()
 	arm_pickup = preload("res://modules/world/arm_pickup.gd").new()
-	arm_pickup.position = Vector3(1.8, 0.05, -0.55)
+	arm_pickup.position = ROUTE.ARM_PICKUP_POS
 	add_child(arm_pickup)
 	arm_pickup.set_collected(equipment.owns("robot_arm"))
 	var dressing:=preload("res://lab_dressing.gd").new()
 	dressing.name="LabDressing";add_child(dressing)
 	var damaged_cable = preload("res://modules/visuals/damaged_cable.gd").new()
 	damaged_cable.name = "DamagedCable"
-	damaged_cable.position = Vector3(4.65,2.85,-1.35)
+	damaged_cable.position = ROUTE.DAMAGED_CABLE_POS
 	add_child(damaged_cable)
 	arena_gate=preload("res://modules/combat/arena_gate.gd").new()
 	arena_gate.entry_x=MISSION.BOSS_ENTRY_X-.35
@@ -370,7 +371,7 @@ func _message(text: String, duration:=5.0, priority:=1) -> bool:
 
 # A half-built humanoid hangs over the corridor; as Rend passes beneath, it drops off its
 # hook, rights itself and attacks (the plant activates whatever it has).
-const AWAKENING_X := 37.2
+const AWAKENING_X := ROUTE.AWAKENING_X
 var awakening: Node3D
 var awakened: CharacterBody3D
 func _hang_awakening_blank() -> void:
@@ -602,7 +603,7 @@ func _build_route() -> void:
 	add_child(armor_display);armor_display.position=cache_pos+Vector3(0,0.61,-0.45);armor_display.scale=Vector3.ONE*1.5
 	checkpoint_console=preload("res://modules/world/checkpoint_console.gd").new()
 	checkpoint_console.name="CheckpointConsole"
-	checkpoint_console.position=Vector3(26,0,-0.85)
+	checkpoint_console.position=ROUTE.CHECKPOINT_CONSOLE_POS
 	checkpoint_console.set_saved(checkpoint and not relay_checkpoint)
 	add_child(checkpoint_console)
 	shield_display=preload("res://shield_visual.gd").new();add_child(shield_display)
@@ -625,7 +626,7 @@ func _build_route() -> void:
 	var bench_label:=Label3D.new();bench_label.name="UpgradeLabel"
 	bench_label.text=TEXT.t("sign_rework");bench_label.font_size=22;bench_label.pixel_size=.003;bench_label.outline_size=0
 	bench_label.modulate=Color(.14,.24,.27);bench_label.position=ENTRY_WORKBENCH_POS+Vector3(-.25,.698,-.324);add_child(bench_label)
-	for x in [3.0,26.0,39.0,50.0,63.0,78.0]:
+	for x in ROUTE.SERVICE_LAMP_XS:
 		var fixture=preload("res://modules/visuals/service_lamp.gd").new()
 		fixture.name="ServiceLamp%d"%int(x)
 		fixture.position=Vector3(x,3.2,-1.65)
@@ -655,13 +656,11 @@ func _dress_lock_door(door: Node3D) -> void:
 	paint.set_shader_parameter("hazard",true);paint.set_shader_parameter("wear",.15);paint.set_shader_parameter("size",Vector2(4.2,.22))
 	band.material_override=paint;door.add_child(band);band.position=Vector3(-.215,1.25,0);band.rotation.y=PI
 
-# Loose supply cases Rend can shove, lift and throw (throwable_crate.gd), against the back
-# of the floor strip; [x, stack height]. One stands in the first room to learn it on.
-const THROWABLE_STACKS := [[3.0,1],[20.6,2],[25.9,1],[37.4,2],[44.1,1],[49.3,2],[60.8,1],[66.4,2],[73.6,1]]
+# Loose supply cases Rend can shove, lift and throw (throwable_crate.gd); placements in route data.
+const THROWABLE_STACKS := ROUTE.THROWABLE_STACKS
 var throwables: Array[RigidBody3D] = []
-# Kamikaze drones over the security wing and the relay corridor (the night shift has its
-# own pair in power_sector.gd). They wake when Rend comes within reach.
-const WING_DRONES := [Vector3(45.5, 2.2, 0), Vector3(62.0, 2.5, 0)]
+# Kamikaze drones over the security wing and the relay corridor; placements in route data.
+const WING_DRONES := ROUTE.WING_DRONES
 var wing_drones: Array = []
 # Sentinels wait in the open wall alcoves (factory_corridor.gd); optional foes, not
 # part of the mission count. They wake when Rend runs past.
@@ -690,13 +689,8 @@ func _wake_wing_drones() -> void:
 # Reinforcements: when an encounter's robot first engages Rend, these run in from off
 # screen on the far side of him (he ends up between two fronts). Optional foes outside the
 # mission count. encounter id -> [[role, gun, shield], ...]
-const REINFORCEMENTS := {
-	"duelist": [[0, "", false]],
-	"guard": [[0, "", false]],
-	"freight_raider": [[1, "", true]],
-	"relay_guard": [[0, "", false], [1, "", false]],
-}
-const REINFORCE_DISTANCE := 10.0
+const REINFORCEMENTS := ROUTE.REINFORCEMENTS
+const REINFORCE_DISTANCE := ROUTE.REINFORCE_DISTANCE
 var _reinforced := {}
 var reinforcements: Array = []
 func _call_reinforcements() -> void:
@@ -724,7 +718,7 @@ var shield_kind := "salvage"  # which shield Rend carries (saved)
 var squad: Node  # squad_director.gd: radio, pincer, attack rhythm, fire discipline
 var voice: Node  # robot_voice.gd: robot lines and PA announcements
 # PA announcements as Rend reaches each part of the plant: [x, key]
-const PA_CUES := [[16.8, "lockdown"], [30.5, "assembly"], [44.5, "intact"], [57.5, "capture"], [69.0, "airlock"]]
+const PA_CUES := ROUTE.PA_CUES
 var _pa_done := {}
 func _announce_progress() -> void:
 	if not is_instance_valid(voice) or player._dying:return
@@ -1016,7 +1010,7 @@ func _shortcut_opened(id: String) -> void:
 func _spawn_security_cover() -> void:
 	var body := StaticBody3D.new()
 	body.name = "SecurityCover"
-	body.position = Vector3(40.8, 0, 0)
+	body.position = ROUTE.SECURITY_COVER_POS
 	body.collision_layer = 1
 	body.collision_mask = 0
 	var shape := BoxShape3D.new()
@@ -1073,7 +1067,7 @@ func _spawn_coolant_canister() -> void:
 	coolant_release = preload("res://modules/vfx/coolant_release_visual.gd").new()
 	add_child(coolant_release)
 	coolant_canister = preload("res://modules/loot/coolant_canister.gd").new()
-	coolant_canister.position = Vector3(37.1, 0, 0)
+	coolant_canister.position = ROUTE.COOLANT_CANISTER_POS
 	coolant_canister.restore_broken(coolant_consumed)
 	coolant_canister.broken.connect(_on_coolant_broken)
 	add_child(coolant_canister)
@@ -1205,10 +1199,10 @@ func _mission_objective() -> String:
 
 func _build_freight_rooms() -> void:
 	relay_console=preload("res://modules/world/checkpoint_console.gd").new()
-	relay_console.name="RelayCheckpoint";relay_console.position=Vector3(58,0,-.85)
+	relay_console.name="RelayCheckpoint";relay_console.position=ROUTE.RELAY_CONSOLE_POS
 	relay_console.set_saved(relay_checkpoint);add_child(relay_console)
 	# Sightline breaks, no extra combat locks.
-	for x in [46.0,60.0]:
+	for x in ROUTE.FREIGHT_COVER_XS:
 		var cover=_box("FreightCover",Vector3(x,.45,0),Vector3(1.0,.9,.65),Color(.15,.22,.24),true)
 		cover.get_child(0).hide()
 		var skin=preload("res://assets3d/env/factory_crate_v1/model.glb").instantiate()

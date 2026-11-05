@@ -4,22 +4,9 @@ func _initialize():call_deferred("run")
 func check(label:String,ok:bool):
  print("LAMP ","PASS " if ok else "FAIL ",label)
  if not ok:failures+=1
-func route_lamp_positions()->Array:
- var source:=FileAccess.get_file_as_string("res://lab_route.gd")
- var fixture:=source.find('fixture.name="ServiceLamp%d"')
- if fixture<0:return []
- var loop:=source.rfind("for x in [",fixture)
- if loop<0:return []
- loop+="for x in [".length()
- var end:=source.find("]",loop)
- if end<0:return []
- var positions:Array=[]
- for token in source.substr(loop,end-loop).split(","):
-  positions.append(float(token.strip_edges()))
- return positions
 func run():
  if not OS.get_user_data_dir().begins_with("/tmp/"):quit(2);return
- var expected_xs=route_lamp_positions()
+ var expected_xs:Array=preload("res://data/route_layout.gd").SERVICE_LAMP_XS  # the lamp positions lab_route.gd builds
  var main=load("res://main.tscn").instantiate();root.add_child(main);current_scene=main
  await create_timer(.3).timeout
  var lamps=main.route.find_children("ServiceLamp*","Node3D",false,false)
