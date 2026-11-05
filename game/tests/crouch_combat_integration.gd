@@ -18,6 +18,7 @@ func run():
  await create_timer(.3).timeout
  main.pause_controller.resume();main.set_process(false)
  var p=main.player
+ p.equip_weapon("robot_arm")
  for e in main.route.enemies:e.set_physics_process(false);e.hide()
  p.global_position=Vector3(27,0,0);p.velocity=Vector3.ZERO;p.facing=1
  main.get_node("Camera3D").global_position=Vector3(27.4,1.0,4.2)
@@ -33,13 +34,14 @@ func run():
  Input.action_press("move_right");await create_timer(.25).timeout
  check("crouch walk cadence follows movement",p._anim_state=="walk" and p._hero_anim.speed_scale>1.5)
  Input.action_press("attack");await create_timer(.06).timeout;Input.action_release("attack");Input.action_release("move_right")
- check("moving low cut resets locomotion cadence",p._crouch_attack and is_equal_approx(p._hero_anim.speed_scale,1.0))
+ check("moving low cut resets locomotion cadence",p._crouch_attack and is_equal_approx(p._hero_anim.speed_scale,p.ATTACK_TEMPO))
  await create_timer(.8).timeout
  check("stopping restores normal idle cadence",p._anim_state=="idle" and is_equal_approx(p._hero_anim.speed_scale,1.0))
  var crate=preload("res://modules/loot/supply_crate.gd").new();crate.hit_points=1
  main.add_child(crate);crate.global_position=p.global_position+Vector3(1,0,0)
  Input.action_press("attack");await create_timer(.06).timeout;Input.action_release("attack")
  check("actual input starts crouched cut",p._attack_phase>0 and p._crouch_attack and p.crouching)
+ var starter_crouch_dur:float=p._attack_dur
  await create_timer(.18).timeout
  await shot("cut1")
  Input.action_press("attack");await create_timer(.05).timeout;Input.action_release("attack")
@@ -61,20 +63,21 @@ func run():
  check("attack never forces standing through roof",p.crouching and p.hurt_height()<1.2)
  roof.queue_free();await create_timer(.2).timeout
  check("clearance permits standing",not p.crouching)
- p.equip_weapon("vibroblade")
- check("heavy model replaces starter exclusively",p._heavy_model.visible and not p._starter_model.visible and p._sword_model==p._heavy_model)
- var tip=p._heavy_model.find_child("blade_tip",true,false)
- var base=p._heavy_model.find_child("blade_base",true,false)
- check("authored heavy blade matches contact endpoints",tip!=null and base!=null and tip.position.distance_to(Vector3(-.02,1.167,0))<.00001 and base.position.distance_to(Vector3(0,.1,0))<.00001)
- check("authored grip root stays at hand",p._heavy_model.transform.is_equal_approx(Transform3D.IDENTITY) and p._heavy_model.get_parent() is BoneAttachment3D)
+ p.equip_weapon("reinforced_arm")
+ check("reinforced arm replaces robot arm exclusively",p._heavy_model.visible and not p._starter_model.visible and p._sword_model==p._heavy_model)
+ var arm_mesh=p._heavy_model.find_child("weapon_arm_detached",true,false)
+ var arm_aabb:AABB=arm_mesh.get_aabb() if arm_mesh is MeshInstance3D else AABB()
+ var reach:float=arm_aabb.end.y*p._heavy_model.scale.y if arm_mesh is MeshInstance3D else 0.0
+ check("authored reinforced arm matches contact endpoints",arm_mesh is MeshInstance3D and absf(reach-0.484)<.001 and arm_aabb.position.y<=.06 and arm_aabb.end.y>=.06)
+ check("authored arm grip root stays at hand",p._heavy_model.get_parent() is BoneAttachment3D and p._heavy_model.position.is_zero_approx() and p._heavy_model.rotation.is_zero_approx())
  Input.action_press("crouch");await create_timer(.2).timeout
  Input.action_press("attack");await create_timer(.08).timeout;Input.action_release("attack")
- check("heavy blade also attacks crouched",p._attack_phase>0 and p.crouching and p._attack_dur>.7)
+ check("heavy arm also attacks crouched",p._attack_phase>0 and p.crouching and p._attack_dur>starter_crouch_dur)
  await create_timer(.8).timeout
  Input.action_release("crouch");await create_timer(.2).timeout
- p.equip_weapon("starter_sword");Input.action_press("attack");await create_timer(.05).timeout;Input.action_release("attack")
- check("starter restored exclusively",p._starter_model.visible and not p._heavy_model.visible and p._sword_model==p._starter_model)
- check("standing sword timing preserved",not p._crouch_attack and is_equal_approx(p._attack_dur,.59))
+ p.equip_weapon("robot_arm");Input.action_press("attack");await create_timer(.05).timeout;Input.action_release("attack")
+ check("robot arm restored exclusively",p._starter_model.visible and not p._heavy_model.visible and p._sword_model==p._starter_model)
+ check("standing arm timing preserved",not p._crouch_attack and is_equal_approx(p._attack_dur,.59/p.ATTACK_TEMPO))
  var f=FileAccess.open(OS.get_environment("CROUCH_OUTPUT")+"/integration.json",FileAccess.WRITE);f.store_string(JSON.stringify({"checks":checks,"failures":failures},"  "))
  await create_timer(.8).timeout
  main.queue_free();await process_frame;await process_frame
