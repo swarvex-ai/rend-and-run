@@ -67,7 +67,7 @@ How the lead would have sliced `3b3f444` as swarm tasks, by the same rules as re
 | F3 | split `lab_route.gd`: route data (encounters, props, PA cues, checkpoints) and a text table as extension points — task #50 (waits for #11–#19) | open | E3, E5, E6, E7 |
 | F4 | headless test `route_playthrough`: start → airlock (criterion a) and retry < 10 s (c) — task #51 (waits for #50) | open | E2, E9 |
 | F5 | `swarvex env` green without network (77/77, 3 min); `.agents/**` protected; runner: `--headless` for named/quarantined tests, named runs fail on red | done 30.10. | first code task |
-| F6 | `docs/architecture.md` (module map, extension points); `docs/qa.md` (severity scale, quarantine rules). The art bible is task #48 instead of a lead stub — task #49 | open | B tasks |
+| F6 | `docs/architecture.md` (module map, extension points); `docs/qa.md` (severity scale, quarantine rules). The art bible is task #48 instead of a lead stub — task #49 | done 05.11. | B tasks |
 
 ### Running now (level A, no code dependency)
 
@@ -81,7 +81,7 @@ How the lead would have sliced `3b3f444` as swarm tasks, by the same rules as re
 
 | Epic | Content | Depends on |
 |---|---|---|
-| E1 | M1 tests green: one repair task per quarantined test kept by F2 | F2 |
+| E1 | M1 tests green: one repair task per quarantined test kept by F2. 05.11.: #11–#16 and #18 accepted and out of quarantine (ranged stays in: flaky); #19 found the machinery chamber is gone (retire or restore at milestone review); new repairs #54 first_room_playthrough, #55 ranged crouch check, #56 landing headless | F2 |
 | E2 | timing and route length (S23): playtests, then extend or cut | F4, playtests |
 | E3 | pressure task: quick-maths door after the relay checkpoint | F3 |
 | E4 | intro comic: pick script + style (neVs) → asset brief preview → final → in-game player | #7–#10 |
@@ -123,12 +123,12 @@ The lead plays all roles (virtual officers); cards: `lead/roles/game/*.md` in sw
 | Role | Gate document | State | Open tasks (role) | Gate |
 |---|---|---|---|---|
 | game-design | `docs/milestone-1.md` (M1 rules, route), `docs/gdd.md` (historical core loop) | exists; level briefs and balance-as-data come with F3 | #1, #3–#6, #43 bestiary | ok (fact sheets, no new mechanics) |
-| tech | `docs/architecture.md` + interfaces with contract tests | **missing** (F6, F3; lead, level D); pipeline green (F5) | – | B tasks #11–#19 touch test files only, no module interface needed; no game-code B task goes out before F3/F6 |
+| tech | `docs/architecture.md` + interfaces with contract tests | `docs/architecture.md` exists (F6, 05.11.); route data and text table still missing (F3; lead, level D); pipeline green (F5) | – | B tasks #11–#19 touch test files only, no module interface needed; no game-code B task goes out before F3/F6 |
 | art | art bible: `docs/art/art_bible_p02_v01/ART_BIBLE.txt` | **outdated** (sword, human enemies); only palette and readability valid (brief S9); renewal as `docs/style-guide.md` is task #48 | #7, #8 comic style guide, #48 | ok: text only, no asset task; comic assets wait for the chosen guide (E4) |
 | audio | sound bible `docs/design/sound-bible.md` + event list | **missing**; variants #45, #46 | #45, #46 | ok: no audio task out |
 | narrative | story outline + character sheets `docs/design/story.md` | **missing**; task #47; beats fixed in `docs/vision.md` („Geschichte“, „Comic“) | #9, #10 intro script, #47 | **went out before the gate**; acceptable because the four beats and the twist ban come verbatim from the vision and are in the acceptance criteria |
 | ux | screen flow `docs/design/ux.md` + menu style guide + reference screen | style guide in progress (#38, #39); screen flow task #44; reference screen E11.2 (lead) | #38, #39, #44 | ok: these are the gate documents; E11.3–E11.9 wait for all three |
-| qa | success criteria as checks: `docs/milestone-1.md` „Done means“, `docs/test-triage.md` | exists; `docs/qa.md` (severity scale, quarantine rules) missing | #11–#37 tests and diagnoses | ok |
+| qa | success criteria as checks: `docs/milestone-1.md` „Done means“, `docs/test-triage.md` | exists; `docs/qa.md` (severity scale, quarantine rules) exists since 05.11. | #11–#37 tests and diagnoses | ok |
 | release | version scheme (SemVer, `0.1.0-prealpha`), platforms (G7), baseline package (S24) | decided | #40 CHANGELOG | ok |
 
-Brief gate („brief and baseline package confirmed“): confirmed by neVs on 31.10.2026 (brief round 5). Gate documents still to write (S25): sound bible (2 variants), `docs/design/ux.md`, `docs/design/story.md`, `docs/style-guide.md`; lead: `docs/architecture.md` (F6), `docs/qa.md`.
+Brief gate („brief and baseline package confirmed“): confirmed by neVs on 31.10.2026 (brief round 5). Gate documents still to write (S25): sound bible (2 variants), `docs/design/ux.md`, `docs/design/story.md`, `docs/style-guide.md`; lead: `docs/architecture.md` and `docs/qa.md` done 05.11. (F6).
