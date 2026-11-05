@@ -1,6 +1,7 @@
 extends Node3D
 ## V12: compact authored route. Persistent exploration, not infinite arena waves.
 const MISSION = preload("res://modules/world/notstrom_layout.gd")
+const TEXT = preload("res://data/route_texts.gd")
 const SAVE_PATH := "user://rendrun_route_v12.json"
 const COPPER := Color(0.65,0.30,0.12)
 const TEAL := Color(0.12,0.72,0.78)
@@ -59,7 +60,7 @@ var armor_display: Node3D
 var gate: StaticBody3D
 var gate_open := false
 var feedback = preload("res://modules/ui/feedback_priority.gd").new()
-var toast := "N-LAB / SEKTOR 01 — Erreiche die Schleuse."
+var toast := TEXT.t("intro_objective")
 var coolant_canister: StaticBody3D
 var coolant_release: Node3D
 var coolant_consumed := false
@@ -243,86 +244,86 @@ func _process(delta: float) -> void:
 	arm_pickup.set_focused(can_collect_start_arm())
 	if not player._dying:
 		if can_collect_start_arm():
-			prompt="E / Y — Humanoidenarm bergen und ausrüsten"
+			prompt=TEXT.t("prompt_take_arm")
 			if use: collect_start_arm()
 		elif death_cache.is_active() and reach_distance(death_cache.position())<1.3:
-			prompt="E / Y — %d verlorene Splitter zurückholen"%death_cache.amount()
+			prompt=TEXT.t("prompt_recover_shards")%death_cache.amount()
 			if use:reclaim_shards()
 		elif completed and not service_return.prompt(player.global_position).is_empty():
 			prompt=service_return.prompt(player.global_position)
 			if use:service_return.interact(player.global_position)
 		elif _shield_pickup_in_reach():
 			var lying=_shield_pickup_in_reach()
-			prompt="E / Y — %s aufnehmen%s"%[lying.label()," (tauscht deinen Schild)" if player.shield_unlocked else ""]
+			prompt=TEXT.t("prompt_take_shield")%[lying.label(),TEXT.t("prompt_take_shield_swap") if player.shield_unlocked else ""]
 			if use:
 				var at:Vector3=lying.global_position;var kind:String=lying.kind;lying.queue_free()
 				var old:String=player.take_shield(kind)
 				shield=true;shield_kind=kind;_save_progress()
 				if not old.is_empty() and old!=kind:preload("res://modules/combat/shield_pickup.gd").drop(self,at+Vector3(-player.facing*0.4,0,0),old)
-				_message("%s angelegt — blockt Hiebe und Kugeln, kostet weniger Kraft"%lying.label() if kind=="riot" else "Schrottschild angelegt",3.0,1)
+				_message(TEXT.t("msg_riot_shield_equipped")%lying.label() if kind=="riot" else TEXT.t("msg_salvage_shield_equipped"),3.0,1)
 		elif _gun_pickup_in_reach():
 			var pickup=_gun_pickup_in_reach()
-			prompt="E / Y — %s aufnehmen  ·  Feuern: U / linke Maustaste / RT"%pickup.label()
+			prompt=TEXT.t("prompt_take_gun")%pickup.label()
 			if use:
 				var at:Vector3=pickup.global_position
 				var had:bool=player.holstered.values().any(func(h):return h.kind==pickup.kind)
 				var replaced:Dictionary=player.equip_gun(pickup.kind,pickup.ammo);pickup.queue_free()
 				# The gun it replaces goes down where the new one lay.
 				if not replaced.is_empty():preload("res://modules/combat/gun_pickup.gd").drop(self,at+Vector3(-player.facing*0.3,0,0),replaced.kind,replaced.ammo)
-				if had:_message("+%d Schuss für %s"%[pickup.ammo,pickup.label()],2.0,1)
-				else:_message("%s · %d Schuss  ·  Nachladen: R  ·  Waffen wechseln: 1–4 / Mausrad"%[pickup.label(),pickup.ammo],3.0,1)
+				if had:_message(TEXT.t("msg_ammo_added")%[pickup.ammo,pickup.label()],2.0,1)
+				else:_message(TEXT.t("msg_gun_taken")%[pickup.label(),pickup.ammo],3.0,1)
 		elif player.carried:
-			prompt="Angriff — Kiste werfen  ·  E / Y — absetzen"
+			prompt=TEXT.t("prompt_carry_crate")
 			if use:player.drop_carried()
 		elif player.throwable_in_reach():
-			prompt="E / Y — Kiste aufheben"
+			prompt=TEXT.t("prompt_lift_crate")
 			if use:player.pick_up(player.throwable_in_reach())
 		elif not equipment.owns("lab_armor") and reach_distance(cache_pos)<1.6:
-			prompt="E / Y — Laborpanzer anlegen  (+2 maximale HP)"
+			prompt=TEXT.t("prompt_take_armor")
 			if use:
 				_equip_armor(true)
 		elif not equipment.owns("salvage_shield") and reach_distance(shield_pos)<1.3:
-			prompt="E / Y — Schrottschild aufnehmen"
+			prompt=TEXT.t("prompt_take_salvage_shield")
 			if use:_equip_shield(true)
 		elif reach_distance(RELAY_CHECKPOINT_POS)<1.3:
 			var secured:bool="freight_raider" in cleared and "freight_duelist" in cleared
-			prompt="E / Y — Relais sichern und heilen" if secured else "Relais gesperrt — Frachtwachen ausschalten"
+			prompt=TEXT.t("prompt_relay_secure") if secured else TEXT.t("prompt_relay_locked")
 			if use and secured:
 				checkpoint=true;relay_checkpoint=true
 				main.spawn_point=RELAY_CHECKPOINT_POS;player.hp=player.max_hp
 				_save_progress();relay_console.flash_result(not save_error)
-				_message("Speichern fehlgeschlagen — Relais nur für diese Sitzung aktiv." if save_error else "Relais gesichert — Wiedereinstieg vor dem letzten Abschnitt.",5.0,3 if save_error else 1)
+				_message(TEXT.t("msg_relay_save_failed") if save_error else TEXT.t("msg_relay_secured"),5.0,3 if save_error else 1)
 		elif reach_distance(GUN_BENCH_POS)<1.2:
 			prompt=_gun_bench(use)
 		elif reach_distance(ENTRY_WORKBENCH_POS)<1.1 and not "first" in cleared:
-			prompt="Werkbank gesperrt — erste Wache ausschalten"
+			prompt=TEXT.t("prompt_workbench_locked")
 		elif _near_workbench():
-			prompt="E / Y — Werkbank öffnen"
+			prompt=TEXT.t("prompt_workbench_open")
 			if use:_use_workbench()
 		elif reach_distance(checkpoint_pos)<1.6:
-			prompt="E / Y — Kontrollpunkt aktivieren und heilen"
+			prompt=TEXT.t("prompt_checkpoint")
 			if use:
 				checkpoint=true;relay_checkpoint=false
 				main.spawn_point=checkpoint_pos
 				player.hp=player.max_hp
 				_save_progress()
 				checkpoint_console.flash_result(not save_error)
-				_message("Speichern fehlgeschlagen — Kontrollpunkt nur für diese Sitzung aktiv. Erneut E / Y versuchen." if save_error else "Kontrollpunkt gesichert. Ausrüstung bleibt beim Tod erhalten.", 5.0, 3 if save_error else 1)
+				_message(TEXT.t("msg_checkpoint_save_failed") if save_error else TEXT.t("msg_checkpoint_saved"), 5.0, 3 if save_error else 1)
 		elif player.global_position.x>MISSION.EXIT_X-4 and not gate_open:
-			prompt="Schleuse verriegelt — verbliebene Wachen ausschalten."
+			prompt=TEXT.t("prompt_exit_locked")
 		elif gate_open and player.global_position.x>MISSION.EXIT_X and not completed:
 			completed=true
 			_save_progress()
-			_message("SEKTOR GESICHERT — Laborroute abgeschlossen.",12,3)
-			main.pause_controller.show_completion({"guards_defeated":MISSION.cleared_count(cleared),"guards_total":MISSION.ENCOUNTERS.size(),"shards":shards,"weapon_name":ITEMS.label(player.weapon_id) if not player.weapon_id.is_empty() else "Unbewaffnet","armor_name":"Laborpanzer" if armor else "Ohne Panzer","save_ok":not save_error})
+			_message(TEXT.t("msg_sector_secured"),12,3)
+			main.pause_controller.show_completion({"guards_defeated":MISSION.cleared_count(cleared),"guards_total":MISSION.ENCOUNTERS.size(),"shards":shards,"weapon_name":ITEMS.label(player.weapon_id) if not player.weapon_id.is_empty() else TEXT.t("label_unarmed"),"armor_name":TEXT.t("label_lab_armor") if armor else TEXT.t("label_no_armor"),"save_ok":not save_error})
 	if prompt.is_empty() and toast_time<=0 and not completed and not player._dying:
 		_offer_combat_hint()
 	var zone:=MISSION.zone(player.global_position.x)
 	var state:={"hp":player.hp,"max_hp":player.max_hp,"stamina":player.guard.stamina,
 		"shield_unlocked":shield,"weapon_name":player.slot_summary(),
-		"armor_name":"Laborpanzer" if armor else "Ohne Panzer","shards":shards,"servo":equipment.prefixes.servo,"servo_unlocked":equipment.owns("reinforced_arm"),
+		"armor_name":TEXT.t("label_lab_armor") if armor else TEXT.t("label_no_armor"),"shards":shards,"servo":equipment.prefixes.servo,"servo_unlocked":equipment.owns("reinforced_arm"),
 		"guards_defeated":MISSION.cleared_count(cleared),"guards_total":MISSION.ENCOUNTERS.size(),"zone":zone,
-		"objective":("%s %d Splitter zurückholen"%["←" if death_cache.position().x<player.global_position.x else "→",death_cache.amount()]) if death_cache.is_active() else "Sektor gesichert" if completed else _mission_objective(),
+		"objective":(TEXT.t("objective_recover_shards")%["←" if death_cache.position().x<player.global_position.x else "→",death_cache.amount()]) if death_cache.is_active() else TEXT.t("objective_sector_secured") if completed else _mission_objective(),
 		"prompt":prompt,"feedback":toast if toast_time>0 else "",
 		"save_error":save_error,"help_visible":help_visible}
 	if state!=_hud_state:
@@ -332,8 +333,8 @@ func _process(delta: float) -> void:
 func _offer_combat_hint() -> void:
 	# Only accepted messages count as taught; saves/danger may temporarily suppress them.
 	if is_instance_valid(overseer) and not overseer._dead and overseer._braced_attack and overseer._state==overseer.WINDUP and not _shown_combat_hints.has("brace"):
-		var advice:="Parieren oder ausweichen!" if shield else "Ausweichen!"
-		if _message("STANDHAFT: Treffer stoppen den Hieb nicht. "+advice,4.0,2):
+		var advice:=TEXT.t("advice_parry_or_dodge") if shield else TEXT.t("advice_dodge")
+		if _message(TEXT.t("msg_overseer_braced")+advice,4.0,2):
 			_shown_combat_hints["brace"]=true
 			_combat_hint_cooldown=4.0
 		return
@@ -357,7 +358,7 @@ func _offer_combat_hint() -> void:
 		return
 	# Environment advice follows an imminent attack explanation, not the reverse.
 	if not coolant_consumed and not _coolant_hint_shown and absf(player.global_position.x - 37.1) < 3.5:
-		if _message("Kühlkanister zerschlagen — Druckstoß unterbricht nahe Wachen.", 3.5, 0):
+		if _message(TEXT.t("msg_coolant_hint"), 3.5, 0):
 			_coolant_hint_shown=true
 			_combat_hint_cooldown=4.0
 
@@ -404,7 +405,7 @@ func _check_awakening() -> void:
 		awakened.defeated.connect(_last_of_the_fight)
 		awakened.provoke()
 		if is_instance_valid(voice):voice.say(awakened, "intruder", true)
-		_message("Ein Rohling erwacht!", 2.0, 2)
+		_message(TEXT.t("msg_blank_awakens"), 2.0, 2)
 		hanging.queue_free())
 
 # The last robot of a fight goes down in a beat of slow motion.
@@ -429,12 +430,12 @@ func _enemy_defeated(enemy: CharacterBody3D) -> void:
 		first_salvage_position.z=0
 		pending_shards[FIRST_SALVAGE_ID]=3
 		_spawn_shard_pickup(FIRST_SALVAGE_ID)
-		_message("Wache zerlegt — Bauteile bergen. An der Werkbank wird daraus eine Verstärkung.",4.0,1)
+		_message(TEXT.t("msg_first_guard_destroyed"),4.0,1)
 	else:
 		shards=mini(999999,shards+3)
 	if MISSION.all_cleared(cleared):
 		_open_gate()
-		_message("Sicherheit aufgehoben. Die Schleuse ist offen.",5.0,2)
+		_message(TEXT.t("msg_exit_open"),5.0,2)
 	_save_progress()
 
 func _equip_armor(heal: bool) -> void:
@@ -459,7 +460,7 @@ func _equip_armor(heal: bool) -> void:
 			if socket:socket.show()
 	if heal:
 		_save_progress()
-		_message("Laborpanzer angelegt: +2 maximale HP. Bleibt beim Tod erhalten.")
+		_message(TEXT.t("msg_armor_equipped"))
 
 func _open_gate() -> void:
 	gate_open=true
@@ -617,12 +618,12 @@ func _build_route() -> void:
 	gun_bench.name="GunBench";add_child(gun_bench)
 	gun_bench.position=GUN_BENCH_POS+Vector3(0,0,-.75)
 	var gun_label:=Label3D.new();gun_label.name="GunBenchLabel"
-	gun_label.text="ARMORY / 02";gun_label.font_size=22;gun_label.pixel_size=.003;gun_label.outline_size=0
+	gun_label.text=TEXT.t("sign_armory");gun_label.font_size=22;gun_label.pixel_size=.003;gun_label.outline_size=0
 	gun_label.modulate=Color(.35,.18,.05);gun_label.position=GUN_BENCH_POS+Vector3(-.25,.698,-.324);add_child(gun_label)
 	var bench_lamp:=SpotLight3D.new();bench_lamp.name="GunBenchLamp";bench_lamp.light_color=Color(1,.68,.35);bench_lamp.light_energy=2.5
 	bench_lamp.spot_range=3.5;bench_lamp.spot_angle=32;bench_lamp.position=GUN_BENCH_POS+Vector3(0,2.6,-.5);bench_lamp.rotation.x=-PI/2;add_child(bench_lamp)
 	var bench_label:=Label3D.new();bench_label.name="UpgradeLabel"
-	bench_label.text="REWORK / 01";bench_label.font_size=22;bench_label.pixel_size=.003;bench_label.outline_size=0
+	bench_label.text=TEXT.t("sign_rework");bench_label.font_size=22;bench_label.pixel_size=.003;bench_label.outline_size=0
 	bench_label.modulate=Color(.14,.24,.27);bench_label.position=ENTRY_WORKBENCH_POS+Vector3(-.25,.698,-.324);add_child(bench_label)
 	for x in [3.0,26.0,39.0,50.0,63.0,78.0]:
 		var fixture=preload("res://modules/visuals/service_lamp.gd").new()
@@ -715,7 +716,7 @@ func _call_reinforcements() -> void:
 			mate.provoke()
 			mate.defeated.connect(_last_of_the_fight)
 			reinforcements.append(mate);i += 1
-		_message("Verstärkung im Anmarsch!", 2.0, 1)
+		_message(TEXT.t("msg_reinforcements"), 2.0, 1)
 
 # Escape alarm (alarm_sequence.gd) while the first room's guard is still standing.
 var alarm: Node3D
@@ -735,7 +736,7 @@ func _start_escape_alarm() -> void:
 	alarm=preload("res://modules/world/alarm_sequence.gd").new();alarm.name="EscapeAlarm";add_child(alarm)
 	alarm.start()
 	get_tree().create_timer(1.2).timeout.connect(func(): if is_instance_valid(voice):voice.announce("escape"))
-	_message("ALARM — Ausbruch erkannt. Greif dir den Arm!",5.0,2)
+	_message(TEXT.t("msg_alarm_take_arm"),5.0,2)
 
 func _spawn_throwables() -> void:
 	for spec in THROWABLE_STACKS:
@@ -791,8 +792,8 @@ func _collect_shard_pickup(id: String) -> void:
 	_save_progress()
 	if is_inside_tree():
 		FX.play("footstep_metal_b",1.65,-12.0)
-		_message("+%d Splitter · Gesamt: %d"%[reward,shards],1.8)
-		if save_error:_message("Speichern fehlgeschlagen — Splitter nur für diese Sitzung. Am Kontrollpunkt erneut speichern.",5.0,3)
+		_message(TEXT.t("msg_shards_added")%[reward,shards],1.8)
+		if save_error:_message(TEXT.t("msg_shards_save_failed"),5.0,3)
 
 func _equip_shield(save: bool) -> void:
 	equipment.grant("salvage_shield");equipment.equip("shield","salvage_shield")
@@ -801,10 +802,10 @@ func _equip_shield(save: bool) -> void:
 	if shield_display:shield_display.hide()
 	if save:
 		_save_progress()
-		_message("Schrottschild: L / RMB / LB halten. Kurz vor dem Treffer parieren!")
+		_message(TEXT.t("msg_shield_tutorial"))
 
 func _guard_feedback(outcome: String) -> void:
-	_message("PARIERT — Gegenangriff!" if outcome=="parry" else "SCHILDBRUCH — Loslassen und erholen!" if outcome=="break" else "GEBLOCKT",1.2,2)
+	_message(TEXT.t("msg_parried") if outcome=="parry" else TEXT.t("msg_shield_broken") if outcome=="break" else TEXT.t("msg_blocked"),1.2,2)
 
 func _record_found_shield() -> void:
 	var state: Dictionary=equipment.export_state()
@@ -816,9 +817,9 @@ func _record_found_shield() -> void:
 ## (guard key cycles), E buys and fits it. Returns the prompt line.
 func _gun_bench(use: bool) -> String:
 	var gun=player.gun
-	if not is_instance_valid(gun):return "Waffenbank — Schusswaffe ziehen (3 / 4), um sie umzubauen"
+	if not is_instance_valid(gun):return TEXT.t("bench_draw_gun")
 	var missing:Array=gun.MODS.keys().filter(func(m):return not gun.has_mod(m))
-	if missing.is_empty():return "%s — voll ausgebaut"%gun.spec().label
+	if missing.is_empty():return TEXT.t("bench_fully_modded")%gun.spec().label
 	var cycle:=Input.is_action_pressed("guard")
 	if cycle and not _bench_guard_was:_bench_pick+=1;FX.play("block",1.8,-14.0)
 	_bench_guard_was=cycle
@@ -826,14 +827,14 @@ func _gun_bench(use: bool) -> String:
 	var info:Dictionary=gun.MODS[mod]
 	if use:
 		if shards<info.cost:
-			_message("Zu wenig Splitter — %s kostet %d"%[info.label,info.cost],2.0,1);FX.play("radio_chirp",0.5,-8.0)
+			_message(TEXT.t("bench_not_enough_shards")%[info.label,info.cost],2.0,1);FX.play("radio_chirp",0.5,-8.0)
 		else:
 			shards-=info.cost;equipment.shards=shards
 			player.fit_mod(gun.kind,mod);gun_mods=player.gun_mods.duplicate(true)
 			FX.play("block",0.9,-4.0);FX.metal_contact(GUN_BENCH_POS+Vector3(0,1.0,-.4),Vector3.UP)
-			_message("%s eingebaut: %s"%[info.label,info.info],3.0,1);_save_progress()
+			_message(TEXT.t("bench_mod_installed")%[info.label,info.info],3.0,1);_save_progress()
 		return ""
-	return "E / Y — %s einbauen (%d Splitter): %s%s"%[info.label,info.cost,info.info,"  ·  Q / LB — nächstes Mod" if missing.size()>1 else ""]
+	return TEXT.t("bench_prompt_install")%[info.label,info.cost,info.info,TEXT.t("bench_prompt_next_mod") if missing.size()>1 else ""]
 
 func reach_distance(target: Vector3) -> float:
 	return Vector2(player.global_position.x - target.x, player.global_position.y - target.y).length()
@@ -844,7 +845,7 @@ func _near_workbench() -> bool:
 func _use_workbench() -> void:
 	if player._dying or not _near_workbench():return
 	if player._attack_phase>0 or player._dash_left>0 or player.guard.is_guarding():
-		_message("Waffe erst nach Angriff / Abwehr wechseln.",1.0);return
+		_message(TEXT.t("msg_switch_after_action"),1.0);return
 	main.pause_controller.open_shop(workbench_state())
 
 func workbench_state(feedback_text := "") -> Dictionary:
@@ -857,8 +858,8 @@ func apply_workbench_action(id:String) -> void:
 		main.pause_controller.resume();return
 	if id in ["servo_craft","servo_install","servo_remove"]:
 		var result:Dictionary=apply_prefix_action("" if id=="servo_remove" else "servo_i",id!="servo_craft")
-		var message:String="Servomodul hergestellt — jetzt anbauen." if id=="servo_craft" else equipment.PREFIXES.summary()+" · angebaut." if id=="servo_install" else "Servomodul abgebaut; bleibt im Besitz."
-		if not result.ok:message="Kauf nicht möglich: 12 Splitter + 2 Servo benötigt." if result.reason in ["insufficient_shards","insufficient_servo"] else "Aktion nicht gespeichert: "+str(result.reason)
+		var message:String=TEXT.t("shop_servo_crafted") if id=="servo_craft" else equipment.PREFIXES.summary()+TEXT.t("shop_servo_installed_suffix") if id=="servo_install" else TEXT.t("shop_servo_removed")
+		if not result.ok:message=TEXT.t("shop_servo_cannot_buy") if result.reason in ["insufficient_shards","insufficient_servo"] else TEXT.t("shop_action_not_saved")+str(result.reason)
 		shop.update_state(workbench_state(message));return
 	if id=="servo_trial":
 		var trial_result:Dictionary=start_servo_trial()
@@ -866,7 +867,7 @@ func apply_workbench_action(id:String) -> void:
 		else:shop.update_state(workbench_state(str(trial_result.reason)))
 		return
 	if id not in ["robot_arm","reinforced_arm"]:
-		shop.update_state(workbench_state("Unbekannte Ausrüstung."));return
+		shop.update_state(workbench_state(TEXT.t("shop_unknown_item")));return
 	if _workbench_action_frame==Engine.get_process_frames():
 		shop.update_state(workbench_state());return
 	equipment.shards=shards
@@ -874,18 +875,18 @@ func apply_workbench_action(id:String) -> void:
 	if not equipment.owns(id):
 		var result:Dictionary=equipment.purchase(id)
 		if not result.ok:
-			shop.update_state(workbench_state("Es fehlen %d Splitter."%maxi(0,int(equipment.CATALOGUE["reinforced_arm"].cost)-shards)));return
+			shop.update_state(workbench_state(TEXT.t("shop_missing_shards")%maxi(0,int(equipment.CATALOGUE["reinforced_arm"].cost)-shards)));return
 		shards=equipment.shards
-		message="Verstärkter Arm gekauft. Wähle Ausrüsten."
+		message=TEXT.t("shop_reinforced_arm_bought")
 	else:
 		if equipment.equipped_weapon()==id:
-			shop.update_state(workbench_state("Bereits ausgerüstet."));return
+			shop.update_state(workbench_state(TEXT.t("shop_already_equipped")));return
 		if not equipment.equip_weapon(id):return
 		player.equip_weapon(id)
-		message="Verstärkter Arm ausgerüstet." if id=="reinforced_arm" else "Roboterarm ausgerüstet."
+		message=TEXT.t("shop_reinforced_arm_equipped") if id=="reinforced_arm" else TEXT.t("shop_robot_arm_equipped")
 	_workbench_action_frame=Engine.get_process_frames()
 	_save_progress()
-	if save_error:message="Speichern fehlgeschlagen. Auswahl gilt nur für diese Sitzung. Am Kontrollpunkt erneut speichern."
+	if save_error:message=TEXT.t("shop_save_failed")
 	shop.update_state(workbench_state(message))
 
 func apply_prefix_action(module_id: String, install := false) -> Dictionary:
@@ -914,16 +915,16 @@ func apply_prefix_action(module_id: String, install := false) -> Dictionary:
 	return result
 
 func start_servo_trial() -> Dictionary:
-	if not equipment.owns("reinforced_arm") or not "first" in cleared:return {"ok":false,"reason":"Zuerst den Arm verstärken."}
-	if not main.pause_controller.shop.visible or reach_distance(ENTRY_WORKBENCH_POS)>=1.1:return {"ok":false,"reason":"Start an der Werkbank im ersten Raum."}
-	if player._dying or player._attack_phase>0 or player._dash_left>0 or player.guard.is_guarding():return {"ok":false,"reason":"Aktion erst beenden."}
+	if not equipment.owns("reinforced_arm") or not "first" in cleared:return {"ok":false,"reason":TEXT.t("servo_need_reinforced_arm")}
+	if not main.pause_controller.shop.visible or reach_distance(ENTRY_WORKBENCH_POS)>=1.1:return {"ok":false,"reason":TEXT.t("servo_start_at_workbench")}
+	if player._dying or player._attack_phase>0 or player._dash_left>0 or player.guard.is_guarding():return {"ok":false,"reason":TEXT.t("servo_finish_action")}
 	var before:Dictionary=servo_run.export_state()
-	if not servo_run.begin(randi() & 0x7ffffffe):return {"ok":false,"reason":"Aktiven Lauf beenden und alle Teile bergen."}
+	if not servo_run.begin(randi() & 0x7ffffffe):return {"ok":false,"reason":TEXT.t("servo_finish_run")}
 	_save_progress()
 	if save_error:
 		servo_run.import_state(before)
-		return {"ok":false,"reason":"Speichern fehlgeschlagen — Lauf nicht gestartet."}
-	_message("Rückgewinnung: 5 Roboter · mindestens 12 Splitter + 1 Servo. Links im Raum.",5.0,2)
+		return {"ok":false,"reason":TEXT.t("servo_save_failed_start")}
+	_message(TEXT.t("servo_run_started"),5.0,2)
 	return {"ok":true}
 
 func record_servo_arm(epoch:int, at:Vector3) -> bool:
@@ -945,7 +946,7 @@ func record_servo_defeat(epoch:int, index:int) -> bool:
 	_save_progress()
 	if save_error:
 		servo_run.import_state(before)
-		_message("Speichern fehlgeschlagen — Bergung pausiert.",5.0,3)
+		_message(TEXT.t("servo_save_failed_paused"),5.0,3)
 		return false
 	return true
 
@@ -962,11 +963,11 @@ func collect_servo_reward(epoch:int, index:int) -> bool:
 	_save_progress()
 	if save_error:
 		servo_run.import_state(before);equipment.import_state(before_equipment);shards=old_shards
-		_message("Speichern fehlgeschlagen — Beute bleibt liegen.",5.0,3)
+		_message(TEXT.t("servo_save_failed_loot"),5.0,3)
 		return false
 	var parts:PackedStringArray=[]
-	if int(reward.shards)>0:parts.append("+%d Splitter"%int(reward.shards))
-	if int(reward.servo)>0:parts.append("+%d Servo"%int(reward.servo))
+	if int(reward.shards)>0:parts.append(TEXT.t("servo_reward_shards")%int(reward.shards))
+	if int(reward.servo)>0:parts.append(TEXT.t("servo_reward_servo")%int(reward.servo))
 	_message(" · ".join(parts),2.0,1)
 	return true
 
@@ -1004,13 +1005,13 @@ func _playtest_jump() -> void:
 	ahead.sort_custom(func(a, b): return a.global_position.x < b.global_position.x)
 	if not shortcut_open and ahead[0].global_position.x > shortcut_pos.x:shortcut.try_open(Vector3(shortcut_pos.x - 0.8, shortcut_pos.y, shortcut_pos.z))
 	player.global_position = Vector3(ahead[0].global_position.x - 4.5, 0.05, 0.0);player.velocity = Vector3.ZERO
-	_message("Testsprung: %s" % ahead[0].encounter_id, 2.0, 1)
+	_message(TEXT.t("debug_test_jump") % ahead[0].encounter_id, 2.0, 1)
 
 func _shortcut_opened(id: String) -> void:
 	if id!="maintenance_return" or shortcut_open:return
 	shortcut_open=true
 	_save_progress()
-	_message("Wartungstür geöffnet — Hauptweg und Rückweg frei.")
+	_message(TEXT.t("msg_shortcut_opened"))
 
 func _spawn_security_cover() -> void:
 	var body := StaticBody3D.new()
@@ -1091,7 +1092,7 @@ func _on_coolant_broken(_id: String, _amount: int, origin: Vector3) -> void:
 		var ray := PhysicsRayQueryParameters3D.create(center, target, 1)
 		if not get_world_3d().direct_space_state.intersect_ray(ray).is_empty():continue
 		foe.interrupt_with_pressure(center)
-	_message("DRUCKSTOSS — nahe Wachen unterbrochen", 1.5,2)
+	_message(TEXT.t("msg_coolant_burst"), 1.5,2)
 
 func _valid_cache_position(at: Vector3) -> bool:
 	return at.is_finite() and at.x>=-3.0 and at.x<=MISSION.EAST_X-1 and at.y>=-0.1 and at.y<=6.0 and absf(at.z)<0.1
@@ -1115,8 +1116,8 @@ func on_player_death() -> void:
 	# Farming v0.2: collected currency/components and pending rewards survive death.
 	# Legacy caches remain reclaimable, but new deaths never replace or destroy them.
 	_save_progress()
-	if save_error:_message("Speichern fehlgeschlagen — geborgene Teile bleiben in dieser Sitzung erhalten.",5.0,3)
-	else:_message("Geborgene Teile und Ausrüstung bleiben erhalten.",4.0,2)
+	if save_error:_message(TEXT.t("msg_death_save_failed"),5.0,3)
+	else:_message(TEXT.t("msg_death_kept"),4.0,2)
 
 func _refresh_cache_marker() -> void:
 	if not is_instance_valid(_cache_marker):return
@@ -1129,7 +1130,7 @@ func reclaim_shards() -> bool:
 	shards=mini(999999,shards+recovered)
 	_refresh_cache_marker()
 	_save_progress()
-	_message("%d Splitter zurückgeholt."%recovered,3.0,2)
+	_message(TEXT.t("msg_shards_recovered")%recovered,3.0,2)
 	return true
 
 # G02 owner API. UI may only request a selection; ledger validates ownership/slot.
@@ -1163,44 +1164,44 @@ func _farming_objective() -> String:
 	if player.global_position.x>12.5 or not equipment.owns("reinforced_arm") or not "first" in cleared:return ""
 	if servo_run.run_id>0 and not servo_run.can_begin():
 		var count:int=servo_run.defeated_count()
-		if count<4:return "Bergung %d/5 · Servoträger am Ende"%count
+		if count<4:return TEXT.t("objective_servo_progress")%count
 		if count==4:
-			if servo_run.specialist_servo==0:return "Servoträger: Arm mit zweitem Hieb abtrennen"
-			return "Servo geborgen · Träger noch aktiv" if servo_run.servo_collected else "Servo freigelegt · Träger noch aktiv"
+			if servo_run.specialist_servo==0:return TEXT.t("objective_servo_bearer")
+			return TEXT.t("objective_servo_taken") if servo_run.servo_collected else TEXT.t("objective_servo_exposed")
 		var nearest:=Vector3.ZERO;var distance:=INF
 		for group in 6:
 			if servo_run.pending(servo_run.run_id,group).is_empty():continue
 			var at:Vector3=servo_run.reward_position(group)
 			if absf(at.x-player.global_position.x)<distance:
 				distance=absf(at.x-player.global_position.x);nearest=at
-		return "%s Bergung 5/5 · übrige Teile einsammeln"%("←" if nearest.x<player.global_position.x else "→")
+		return TEXT.t("objective_servo_collect")%("←" if nearest.x<player.global_position.x else "→")
 	if not equipment.prefixes.owns_module("servo_i"):
-		if shards>=12 and equipment.prefixes.servo>=2:return "Werkbank: Servomodul herstellen →"
-		return "Optional: Servoteile an der Werkbank bergen →"
-	if equipment.prefixes.installed("reinforced_arm")!="servo_i":return "Werkbank: Servomodul kostenlos anbauen →"
+		if shards>=12 and equipment.prefixes.servo>=2:return TEXT.t("objective_servo_craft")
+		return TEXT.t("objective_servo_optional")
+	if equipment.prefixes.installed("reinforced_arm")!="servo_i":return TEXT.t("objective_servo_install")
 	return ""
 
 func _mission_objective() -> String:
-	if player.global_position.x>=17 and player.global_position.x<29 and is_instance_valid(power_sector) and power_sector.defeated.size()<3:return "Nachtwartung: Drohnen-Blitz lesen, dann ausweichen"
+	if player.global_position.x>=17 and player.global_position.x<29 and is_instance_valid(power_sector) and power_sector.defeated.size()<3:return TEXT.t("objective_power_sector")
 	var farming:=_farming_objective()
 	if not farming.is_empty():return farming
-	if not equipment.owns("robot_arm"): return "Humanoidenarm am Ablagetisch bergen →"
-	if gate_open:return "Schleuse offen — Ausgang erreichen →"
-	if not "first" in cleared:return "Erste Wache überwinden →"
+	if not equipment.owns("robot_arm"): return TEXT.t("objective_take_arm")
+	if gate_open:return TEXT.t("objective_reach_exit")
+	if not "first" in cleared:return TEXT.t("objective_first_guard")
 	if player.global_position.x<12.5 and not equipment.owns("reinforced_arm"):
-		if pending_shards.has(FIRST_SALVAGE_ID):return "Bauteile der Wache bergen →"
-		if not "entry_supply" in broken_crates and shards<6:return "Kiste geduckt aufschlagen — 3 weitere Splitter bergen"
-		if pending_shards.has("entry_supply"):return "Splitter der Versorgungskiste einsammeln →"
-		if shards>=6:return "Werkbank im Labor: Arm für 6 Splitter verstärken →"
+		if pending_shards.has(FIRST_SALVAGE_ID):return TEXT.t("objective_salvage_guard")
+		if not "entry_supply" in broken_crates and shards<6:return TEXT.t("objective_break_crate")
+		if pending_shards.has("entry_supply"):return TEXT.t("objective_collect_crate")
+		if shards>=6:return TEXT.t("objective_upgrade_arm")
 	if player.global_position.x<29:
-		if not equipment.owns("salvage_shield"):return "Schrottschild auf dem Hauptweg bergen →"
-		if not checkpoint:return "Kontrollpunkt aktivieren und heilen →"
-		if not equipment.owns("reinforced_arm") and shards>=int(equipment.CATALOGUE["reinforced_arm"].cost):return "Werkbank: Verstärkter Arm verfügbar · %d Splitter"%int(equipment.CATALOGUE["reinforced_arm"].cost)
-	if not "duelist" in cleared:return "Sicherung: Duellanten überwinden →"
-	if not "guard" in cleared:return "Kühlbereich: Pulswache überwinden →"
-	if not "freight_raider" in cleared or not "freight_duelist" in cleared:return "Frachtbereich sichern →"
-	if not "relay_guard" in cleared:return "Relaisgang: Pulswache überwinden →"
-	return "Aufseher besiegen — Schleuse entriegeln →"
+		if not equipment.owns("salvage_shield"):return TEXT.t("objective_take_shield")
+		if not checkpoint:return TEXT.t("objective_checkpoint")
+		if not equipment.owns("reinforced_arm") and shards>=int(equipment.CATALOGUE["reinforced_arm"].cost):return TEXT.t("objective_arm_available")%int(equipment.CATALOGUE["reinforced_arm"].cost)
+	if not "duelist" in cleared:return TEXT.t("objective_duelist")
+	if not "guard" in cleared:return TEXT.t("objective_cooling")
+	if not "freight_raider" in cleared or not "freight_duelist" in cleared:return TEXT.t("objective_freight")
+	if not "relay_guard" in cleared:return TEXT.t("objective_relay")
+	return TEXT.t("objective_overseer")
 
 func _build_freight_rooms() -> void:
 	relay_console=preload("res://modules/world/checkpoint_console.gd").new()
@@ -1226,8 +1227,8 @@ func collect_start_arm() -> bool:
 	player.equip_weapon("robot_arm")
 	arm_pickup.set_collected(true)
 	_save_progress()
-	_message("Humanoidenarm ausgerüstet · J / X: schlagen · zweimal drücken: Folgeangriff", 6.0, 2)
-	if save_error: _message("Arm geborgen. Speichern fehlgeschlagen — am Kontrollpunkt erneut sichern.", 6.0, 3)
+	_message(TEXT.t("msg_arm_equipped"), 6.0, 2)
+	if save_error: _message(TEXT.t("msg_arm_save_failed"), 6.0, 3)
 	# The guard of the first room storms in the moment he is armed.
 	if is_instance_valid(alarm) and alarm.running:
 		for foe in enemies:

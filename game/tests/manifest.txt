@@ -93,6 +93,7 @@ headless recovery_step_test
 headless relay_checkpoint_integration
 window robot_roster_visual_capture
 headless route_rewards_integration
+headless route_text_table_test
 quarantine route_v12_test V12_TEST
 headless sector_complete_test
 quarantine security_pair_test V45_TEST
