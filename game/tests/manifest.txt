@@ -12,7 +12,7 @@ fixture arm_contact_fixture
 headless arm_contact_runner
 headless arm_first_fight
 window arm_visual_capture
-quarantine attack_cadence_integration
+headless attack_cadence_integration
 headless attack_cadence_smoke
 quarantine attack_cue_integration V41_TEST
 headless blood_spray_test
@@ -27,7 +27,7 @@ headless combat_hud_test
 probe combat_policy_probe
 hook completion_integration_test V30_TEST
 quarantine coolant_test V47_TEST
-quarantine crouch_combat_integration
+headless crouch_combat_integration
 headless crouch_gait_integration
 headless damaged_cable_integration
 headless dash_visual_test
@@ -39,7 +39,7 @@ quarantine duelist_footwork_test V44_TEST
 quarantine edge_warning_test V46_TEST
 probe encounter_probe
 headless energy_bolt_test
-quarantine equipment_integration_test V15_TEST
+hook equipment_integration_test V15_TEST
 headless expanded_world_integration
 headless factory_ambience_test
 window factory_visual_capture
@@ -49,7 +49,7 @@ headless feedback_layout_test
 quarantine feedback_priority_integration
 hook finisher_fallback_test V31_TEST
 headless first_room_loop
-headless first_room_playthrough
+quarantine first_room_playthrough
 quarantine guard_integration_test V14_TEST
 quarantine guard_spacing_test V48_TEST
 headless guard_state_test
@@ -60,10 +60,10 @@ headless interrupted_recovery_test
 headless jump_timing_probe
 window lab_visual_capture
 headless landing_dust_test
-hook landing_integration_test H19_TEST
+quarantine landing_integration_test H19_TEST
 window light_humanoid_visual_capture
 headless light_severance
-quarantine loot_integration_test V13_TEST
+hook loot_integration_test V13_TEST
 window loot_persistence_test
 quarantine machinery_chamber_integration
 headless metal_sparks_test
@@ -96,7 +96,7 @@ headless route_rewards_integration
 quarantine route_v12_test V12_TEST
 headless sector_complete_test
 quarantine security_pair_test V45_TEST
-quarantine service_lamp_integration
+headless service_lamp_integration
 quarantine service_return_integration
 headless servo_harvest_test
 headless servo_resume_test
@@ -116,7 +116,7 @@ headless vibroblade_visual_test
 headless vision_arm_integration
 quarantine workbench_integration
 headless workbench_prerequisite
-quarantine world_service_details_integration
+headless world_service_details_integration
 window impact_review_capture
 probe motion_review_capture
 headless depth_strip_test

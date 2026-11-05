@@ -22,6 +22,18 @@ The live test pipeline (official Godot 4.7.2 build, `JOBS=3`) failed docs-only s
 
 **Still open:** a Godot crash `SIGILL` seen twice live at `0x4fa5f1` of the official binary, a `ud2` right after a `cowdata.h:197` `get()` index error (`CRASH_BAD_INDEX`). That is an engine-side out-of-bounds access; the triggering test is still unknown.
 
+## Quarantine changes (05.11.2026, evening)
+
+- **Out of quarantine** after accepted repairs (#11–#15, #18): `loot_integration_test`, `equipment_integration_test` (hook), `crouch_combat_integration`, `service_lamp_integration`, `world_service_details_integration`, `attack_cadence_integration` (headless).
+- **Hook tests run in the pipeline now:** `--headless` selects headless and hook tests and runs both in parallel. Before, the pipeline never ran hook tests. The runner also reads `get_environment('…')` in single quotes; that was the root cause of #18.
+- **Into quarantine, flaky or broken without display:**
+  - `first_room_playthrough`: the first fight uses unseeded enemy RNG (`enemy.gd:1115`); when Rend does not win it, the `assert` at line 38 does not end the script and the run hangs into the 240 s timeout. Red 4 times in a row locally on 05.11.; the game code is unchanged since 3b3f444.
+  - `ranged_integration_test` (accepted #16): 'crouch evades committed high projectile' red once in five runs.
+  - `landing_integration_test`: saves a screenshot without a headless guard (line 25), so it crashes without a display.
+- **Stays in quarantine:** `machinery_chamber_integration`. #19 found that nothing builds the machinery chamber any more (`lab_dressing.gd:17-26`); the test now fails fast instead of hanging.
+
+Full suite after these changes: 79 headless + 11 hook, green twice in 120 s each.
+
 ## Per test
 
 | Test | Result (pass/fail) | Class | Note |

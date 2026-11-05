@@ -2,7 +2,7 @@
 # Run the Rend&Run test suite listed in game/tests/manifest.txt.
 #
 #   tools/run_tests.sh                 headless + window + hook tests
-#   tools/run_tests.sh --headless      only headless tests; every test runs without a display
+#   tools/run_tests.sh --headless      headless and hook tests, all in parallel without a display
 #   tools/run_tests.sh --quarantine    additionally run quarantined tests (reported separately)
 #   tools/run_tests.sh name ...        run only the named tests; any failure among them fails the run
 #   tools/run_tests.sh --headless name run named tests (also quarantined ones) without a display
@@ -26,7 +26,7 @@ TEST_SCREEN=${TEST_SCREEN:-1}
 kinds="headless window hook"; only=(); FORCE_HEADLESS=0
 for arg in "$@"; do
   case "$arg" in
-    --headless) kinds="headless"; FORCE_HEADLESS=1 ;;
+    --headless) kinds="headless hook"; FORCE_HEADLESS=1 ;;
     --quarantine) kinds="$kinds quarantine" ;;
     -h|--help) sed -n 2,13p "$0"; exit 0 ;;
     *) only+=("$arg") ;;
@@ -44,7 +44,7 @@ run_one() {  # kind name [flag] [VAR=value ...]
   done
   mkdir -p "$dir/data" "$dir/config" "$dir/out"
   local envs=(XDG_DATA_HOME="$dir/data" XDG_CONFIG_HOME="$dir/config")
-  for v in $(grep -oE 'get_environment\("[A-Z0-9_]+"\)' "$GAME/tests/$name.gd" | sed -E 's/.*\("(.*)"\)/\1/' | sort -u); do
+  for v in $(grep -oE "get_environment\\([\"'][A-Z0-9_]+[\"']\\)" "$GAME/tests/$name.gd" | sed -E "s/.*\\([\"'](.*)[\"']\\)/\\1/" | sort -u); do
     case "$v" in
       *_OUTPUT) envs+=("$v=$dir/out") ;;
       *_CAPTURE) envs+=("$v=$dir/out/capture.png") ;;
@@ -73,14 +73,16 @@ selected() {  # kind name -> 0 if it should run
 }
 
 : >"$OUT/_results.txt"
-# Headless tests run in parallel; anything that opens a window runs one at a time.
+# Headless tests run in parallel, and so do hook tests when nothing opens a window
+# (--headless); anything that opens a window runs one at a time.
+parallel() { [ "$1" = headless ] || { [ "$1" = hook ] && [ "$FORCE_HEADLESS" = 1 ]; }; }
 grep -v '^#' "$MANIFEST" | while read -r kind name rest; do
   # No trailing blank: xargs -L treats it as a line continuation.
-  [ "$kind" = headless ] && selected "$kind" "$name" && echo "$kind $name${rest:+ $rest}"
+  parallel "$kind" && selected "$kind" "$name" && echo "$kind $name${rest:+ $rest}"
 done | xargs -r -P "$JOBS" -L1 bash -c 'run_one "$@"' _
 grep -v '^#' "$MANIFEST" | while read -r kind name rest; do
   # shellcheck disable=SC2086 # rest holds the optional flag and VAR=value overrides
-  [ "$kind" != headless ] && selected "$kind" "$name" && [[ "$kind" =~ ^(window|hook|quarantine)$ ]] && run_one "$kind" "$name" $rest
+  ! parallel "$kind" && selected "$kind" "$name" && [[ "$kind" =~ ^(window|hook|quarantine)$ ]] && run_one "$kind" "$name" $rest
 done
 
 fail=0
