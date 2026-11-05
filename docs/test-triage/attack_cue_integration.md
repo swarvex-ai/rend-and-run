@@ -2,6 +2,8 @@
 
 ## How I ran it
 
+> Lead note, 05.11.2026: the task's actual base commit was `77db3e1`, not `2eba4f9`. Under `game/` the two differ only in `tests/manifest.txt`, so the runs and line references hold for `77db3e1`.
+
 base_commit: `2eba4f9`, the baseline named in `docs/test-triage.md`. This snapshot has no `.git`, so the commit could not be re-resolved locally. In this snapshot `tools/run_tests.sh` has no execute bit, so I invoked the same script through bash:
 
 ```
