@@ -58,7 +58,9 @@ run_one() {  # kind name [flag] [VAR=value ...]
   else
     args=(-s "res://tests/$name.gd")
   fi
-  local mode=(--headless)
+  # Headless runs use a fixed game clock: every frame advances exactly 1/60 s, so timers and
+  # physics stay in step however loaded the machine is (and nothing waits for wall time).
+  local mode=(--headless --fixed-fps 60)
   [ "$kind" = headless ] || [ "$FORCE_HEADLESS" = 1 ] || mode=(--windowed --resolution 960x540 --screen "$TEST_SCREEN")
   ( cd "$GAME" && env "${envs[@]}" timeout "$TIMEOUT" "$GODOT" "${mode[@]}" --audio-driver Dummy --path . "${args[@]}" >"$dir/test.log" 2>&1 )
   echo "$? $kind $name" >>"$OUT/_results.txt"
