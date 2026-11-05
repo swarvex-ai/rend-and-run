@@ -12,6 +12,16 @@
 | **H** harness | the test crashes in its own setup (null file, missing node) | level-B task: repair the test harness; test files only |
 | **D** diagnose | M1 behaviour fails and nobody knows yet whether the code or the test is wrong | level-A task: written diagnosis per failing check; the lead then cuts the fix |
 
+## Pipeline-red tests (05.11.2026)
+
+The live test pipeline (official Godot 4.7.2 build, `JOBS=3`) failed docs-only submissions 2–12 at changing tests: arm_first_fight, dash_visual_test, nav_test, first_room_playthrough, crouch_gait_integration, hound_test, throwable_crate_test, farming_input_playthrough, movement_quality_integration. The same commit is green locally and in the pipeline image via `swarvex env`.
+
+**Cause:** the live machine renders fewer headless frames per second than the 60 physics ticks. Godot then runs several physics ticks in one frame, and the tests' real-time waits (`create_timer`) drift against physics. Evidence: a VPS log of dash_visual_test shows a dash of 2.933 m (one tick too many) and a burst not yet retired; locally, throttling the old runner to 40 or 20 fps (`--max-fps`) turns arm_first_fight, crouch_gait_integration and hound_test red in 2 of 2 rounds.
+
+**Fix:** `tools/run_tests.sh` runs headless tests with `--fixed-fps 60` (one physics tick and 1/60 s of game time per frame). On one contended core all 77 stay green (full suite in 285 s, arm_first_fight and dash_visual_test also 2 of 2 separately). Red tests now print their exit code and log tail to stdout, so the pipeline report keeps the details.
+
+**Still open:** a Godot crash `SIGILL` seen twice live at `0x4fa5f1` of the official binary, a `ud2` right after a `cowdata.h:197` `get()` index error (`CRASH_BAD_INDEX`). That is an engine-side out-of-bounds access; the triggering test is still unknown.
+
 ## Per test
 
 | Test | Result (pass/fail) | Class | Note |
