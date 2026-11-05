@@ -13,7 +13,13 @@ func run():
  for e in main.route.enemies:e.set_physics_process(false)
  main.player.global_position=Vector3(3.3,0,0)
  var cam=main.get_node("Camera3D");cam.global_position=Vector3(4,1.6,7)
- var chamber=main.route.get_node("LabDressing/MachineryChamber")
+ var chamber=main.route.find_child("MachineryChamber",true,false)
+ if chamber==null:
+  for node in main.route.find_children("*","Node3D",true,false):
+   if node.get_script()==preload("res://modules/visuals/machinery_chamber.gd"):chamber=node;break
+ check("machinery chamber present",chamber!=null)
+ if chamber==null:
+  print("CABLE SUMMARY failures=",fails);quit(1);return
  check("chamber adds no physics bodies",chamber.find_children("*","CollisionObject3D",true,false).is_empty())
  var space=main.get_world_3d().direct_space_state
  var floor_hit=space.intersect_ray(PhysicsRayQueryParameters3D.create(Vector3(.95,.5,0),Vector3(.95,-.5,0),1))
