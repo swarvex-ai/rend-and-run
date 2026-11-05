@@ -25,7 +25,11 @@
 - Ruling: `first_room_playthrough` und `ranged_integration_test` in Quarantäne statt in der Pipeline — wackelig ohne Codeänderung — Kosten bei Irrtum: zwei Tests prüfen bis zu ihrer Reparatur (#54, #55) nichts.
 - Ruling: Textschlüssel sind englisch, die Werte bleiben vorerst deutsch — E5 ändert nur die Tabelle — Kosten bei Irrtum: Schlüssel umbenennen, mechanisch.
 
-**Als Nächstes (Lead):** F3 Schritt 2 (Platzierungen als Routendaten), dann F4 (#51), E11.2 (#52).
+**Nacht zum 06.11.:** F3 fertig (#50, Routendaten `541f5be`, Review #59), F4 fertig (#51, `route_playthrough`: Route in 20,6 s Spielzeit, Kontrolle nach Tod in 2,43 s), E11.2 fertig (#52, Einstellungsspeicher, `MenuScreen`, Options-Bildschirm; Screenshot geprüft). `depth_test` in Quarantäne (#58). Comic-Styleguides #7/#8 angenommen; Wahl liegt bei neVs (Nachricht 13). Suite: 84 headless + 11 hook grün.
+
+**Wartet auf neVs:** Comic-Stil Variante 1 oder 2 (Nachricht 13, Empfehlung Variante 2 mit der Prüfliste aus Variante 1).
+
+**Als Nächstes (Lead):** E11.4–E11.9 als B-Aufgaben schneiden (Hauptmenü, Pause, Credits auf `MenuScreen`); Drehbuch-Varianten #9/#10 bewerten.
 
 ## 30.10.2026 (Lead-Session 1)
 

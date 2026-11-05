@@ -102,7 +102,7 @@ Reference first, then copies. Existing items are mapped, not duplicated: G-5 →
 | ID | Work | Level | Depends on |
 |---|---|---|---|
 | E11.1 | menu style guide, variants 1/2 and 2/2 (`design.ui`, text + mockup description); neVs picks one — tasks #38, #39 | A | – |
-| E11.2 | reference menu screen „Options“ (lead, extension point): `MenuScreen` base with transitions, focus animation, UI sounds, back handling; settings store (`user://settings.cfg`, separate from progress); audio buses Music/Voice; contract test — task #52 (waits for #50 and #38 or #39) | D | E11.1 pick, F3 text table |
+| E11.2 | reference menu screen „Options“ (lead, extension point): `MenuScreen` base with transitions, focus animation, UI sounds, back handling; settings store (`user://settings.cfg`, separate from progress); audio buses Music/Voice; contract test — task #52, done 06.11. (`0d8787f` settings store, `8622049` MenuScreen + Options; follow-ups #60 voice bus, #61 fonts, #62 menu_back.wav) | D | E11.1 pick, F3 text table |
 | E11.3 | options content: audio sliders, window mode, VSync, accessibility toggles (G16) on the reference screen | B | E11.2, E6 |
 | E11.4 | main menu on `MenuScreen`: add Options, Credits, version label | B | E11.2 |
 | E11.5 | pause menu on `MenuScreen`: add Options, „Main menu“ | B | E11.2 |
