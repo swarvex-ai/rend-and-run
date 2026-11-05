@@ -1,5 +1,25 @@
 # Status
 
+## 05.11.2026 (Lead, Dauerbetrieb nach LEAD.md 2.4)
+
+**Lage:** Die Pipeline war seit Tagen rot, ohne dass ein Beitrag schuld war. Ursache war eine Bildrate unter dem Physiktakt auf der Live-Maschine. Seit `cf83969` laufen die Headless-Tests mit fester Spielzeit (`--fixed-fps 60`); rote Tests drucken jetzt Exit-Code und Log-Ende. 14 Einreichungen sind heute entschieden: 12 angenommen, 2 zur Nacharbeit (#1 inzwischen angenommen, #17 offen).
+
+**Angenommen heute:** #38 und #39 (Menü-Styleguides), #1, #3, #5 (Bestiarium Wächter, Wächterroboter in der Wandnische, Drohne), #11–#16 (veraltete Tests, jeweils lokal 3 × grün, ohne Patch rot).
+
+**Rulings**
+- Ruling: Menü-Styleguide ist Variante 2 mit zwei Ergänzungen aus Variante 1 (`docs/decisions/0002-menu-style-guide.md`) — von neVs delegiert; Variante 2 lässt weniger zu raten — Kosten bei Irrtum: eine B-Aufgabe, die Theme-Werte tauscht.
+- Ruling: Keine Reparatur-Aufgaben je rotem Test — die rote Pipeline hatte eine gemeinsame Ursache im Runner, nicht in den Tests — Kosten bei Irrtum: einzelne Tests bleiben rot und zeigen das jetzt mit Log.
+- Ruling: #17 (Abkürzungstür) zur Nacharbeit, weil der Test sich selbst Wegweiser baut; die Route baut keine mehr (Fehler in meiner Aufgabe, in der Begründung benannt) — Kosten bei Irrtum: ein Durchlauf mehr.
+
+**Tests:** headless 77 grün lokal; Pipeline mit festem Takt ab `cf83969`. Offen: seltener Godot-Absturz (SIGILL, `cowdata.h:197`, Engine-Fehler), Test noch unbekannt.
+
+**Risiken**
+- Hook-Tests (`hook` im Manifest) laufen in der Pipeline nicht, weil `--headless` nur `headless` auswählt. Das betrifft auch reparierte Tests wie loot, equipment, ranged. Prüfe ich als Nächstes (Runner, Stufe D).
+
+**Wartet auf neVs:** nichts.
+
+**Als Nächstes (Lead):** reparierte Tests aus der Quarantäne nehmen, sobald der Merge-Bot sie gemergt hat; Hook-Tests in die Pipeline; F6 (#49), dann F3 (#50), F4 (#51), E11.2 (#52).
+
 ## 30.10.2026 (Lead-Session 1)
 
 **Lage:** Interview abgeschlossen, Brief in Runden 2–3 geschärft und von neVs bestätigt. Zehn Level-A-Aufgaben (Bestiarium, Comic-Stil, Comic-Drehbuch) sind offen. Das Fundament für Code-Aufgaben steht noch nicht: 28 Tests in Quarantäne, `lab_route.gd` als Monolith, kein Durchlauf-Test.
