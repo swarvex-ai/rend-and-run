@@ -10,7 +10,9 @@ func run():
  await create_timer(.3).timeout
  var r=main.route;var d=r.get_node("WorldServiceDetails")
  check("nine replacement vents",d.find_children("Vent*","Node3D",false,false).size()==9)
- check("eleven cable segments",d.find_children("*Tray*","Node3D",false,false).size()==11)
+ # world_service_details.gd:8 builds 4 UpperTray and :9 builds 15 ServiceTray segments.
+ var expected_trays:=4+15
+ check("nineteen cable segments",d.find_children("*Tray*","Node3D",false,false).size()==expected_trays)
  check("one replacement frame",d.has_node("SecurityDoorFrame") and not r.has_node("DoorHeader"))
  check("no extra collision",d.find_children("*","CollisionObject3D",true,false).is_empty())
  check("no extra lights",d.find_children("*","Light3D",true,false).is_empty())
