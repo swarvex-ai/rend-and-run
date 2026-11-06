@@ -47,6 +47,9 @@
 - #55 (Einreichung 63): Pipeline rot an `arm_first_fight`, verursacht durch den Patch. `lab_route.gd:188` lädt `ranged_integration_test.gd` per `preload` bei jedem Spielstart, auch ohne `V17_TEST`; das neue `preload(energy_bolt.gd)` darin ändert die Ladereihenfolge des ganzen Spiels. Bei mir auf 36d8820: ohne Patch grün, mit Patch 3 × rot (`enemy_hp=1`). Mit `load()` statt `preload()` ist `arm_first_fight` grün, aber die Duck-Prüfung wieder 3 von 4 rot. Die Plattform hat die Einreichung selbst zurückgegeben (zweimal rot, Gegenprobe ohne Beitrag grün). #55 geschlossen und durch #91 ersetzt: dieselbe Aufgabe mit der Falle „kein preload“ und den Befunden des ersten Versuchs. Diagnose der Reihenfolge-Abhängigkeit: #90.
 - Risiko (neu): Spielcode lädt Testskripte (`lab_route.gd` lädt Hook-Tests per `preload`). Eine Teständerung kann so das Spielverhalten anderer Tests ändern, und die Ladereihenfolge beeinflusst offenbar einen Nahkampf (Verdacht: Reihenfolge nach Objekt-IDs). Aufgabe folgt: Hook-Tests erst zur Laufzeit laden, Ursache der Reihenfolge-Abhängigkeit diagnostizieren.
 
+- #85 zweite Einreichung (64): Fehler behoben und von mir bestätigt (Test auf main ohne Korrektur rot, mit Korrektur 3 × grün; `workbench_integration` Zeile 50 grün). Trotzdem Nacharbeit: Die Kampfsperre greift nach jedem Schließen der Werkbank, auch mit Esc; der erste Angriff danach würde verschluckt. Sperre nur, wenn die schließende Taste selbst Angriff/Ausweichen ist, plus eine Prüfung dafür.
+- #56 angenommen (landing_integration_test ohne Display; headless 3 × grün, mit Fenster wird der Screenshot weiter gespeichert). Aus der Quarantäne nach Merge und zwei grünen Suiten.
+
 **Rulings (Nachmittag)**
 - Ruling: Den Fehler der Fokusleiste behebe ich selbst statt per Aufgabe — er liegt in meiner Basis (Stufe D), und `menu_screen.gd` ist in allen Menü-Aufgaben ausgeschlossen — Kosten bei Irrtum: keine, die Korrektur hat einen eigenen Test.
 
