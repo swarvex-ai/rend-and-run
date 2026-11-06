@@ -14,7 +14,7 @@ headless arm_first_fight
 window arm_visual_capture
 headless attack_cadence_integration
 headless attack_cadence_smoke
-quarantine attack_cue_integration V41_TEST
+hook attack_cue_integration V41_TEST
 headless blood_spray_test
 window blood_visual_test
 headless brute_cleaver_check
