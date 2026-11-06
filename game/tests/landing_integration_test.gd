@@ -21,8 +21,9 @@ func run():
  var dust=scene.get_node_or_null("LandingDust")
  check("landing owns two fans",dust!=null and dust.active_count()==1)
  await wait(0.045)
- RenderingServer.force_draw(false)
- if OS.get_environment("H19_OUTPUT")!="":get_viewport().get_texture().get_image().save_png(OS.get_environment("H19_OUTPUT")+"/landing.png")
+ if DisplayServer.get_name()!="headless":
+  RenderingServer.force_draw(false)
+  if OS.get_environment("H19_OUTPUT")!="":get_viewport().get_texture().get_image().save_png(OS.get_environment("H19_OUTPUT")+"/landing.png")
  await wait(0.65)
  check("standing after landing does not retrigger",FX.landing_events==before+1)
  check("dust and timers fully cleaned",dust!=null and dust.get_child_count()==0)
