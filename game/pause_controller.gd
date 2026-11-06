@@ -6,9 +6,14 @@ var equipment_menu:Control
 var options_menu:Control
 var _leaving:=false
 var _resume_pending:=false
+var _combat_lock:=false
+var _combat_lock_held:=false
 const GAME_ACTIONS:=["move_left","move_right","move_up","move_down","jump","attack","dash","dodge","crouch","guard","interact","restart"]
+const COMBAT_ACTIONS:=["attack","dodge"]
 func _ready()->void:
 	process_mode=Node.PROCESS_MODE_ALWAYS
+	# Release the closing combat press before the player sees a fresh physics frame.
+	process_physics_priority=-10
 	var layer:=CanvasLayer.new();layer.layer=20;add_child(layer)
 	menu=preload("res://modules/ui/pause_menu.gd").new();layer.add_child(menu)
 	shop=preload("res://modules/ui/workbench_menu.gd").new();layer.add_child(shop)
@@ -27,11 +32,34 @@ func _ready()->void:
 	menu.restart_requested.connect(restart)
 	menu.main_menu_requested.connect(return_title)
 	menu.quit_requested.connect(quit_game)
+func _uses_combat_action(event:InputEvent)->bool:
+	for action in COMBAT_ACTIONS:
+		if InputMap.event_is_action(event,action):return true
+	return false
+func _combat_held()->bool:
+	for action in COMBAT_ACTIONS:
+		if Input.is_action_pressed(action):return true
+	return false
+func _release_combat()->void:
+	for action in COMBAT_ACTIONS:
+		if InputMap.has_action(action):Input.action_release(action)
+func _physics_process(_delta:float)->void:
+	# Only a close that was itself attack/dodge needs this: keep that press from
+	# becoming a fresh gameplay press, and let go once the button is released.
+	if not _combat_lock:return
+	_release_combat()
+	if _combat_held():
+		_combat_lock_held=true
+	elif _combat_lock_held:
+		_combat_lock=false
+		_combat_lock_held=false
 func _input(event:InputEvent)->void:
 	var active_panel:Control=equipment_menu if equipment_menu.visible else shop
 	if active_panel.visible:
 		var cancel:bool=(event is InputEventKey and event.physical_keycode==KEY_ESCAPE and event.pressed and not event.echo) or (event is InputEventJoypadButton and event.button_index in [JOY_BUTTON_B,JOY_BUTTON_START] and event.pressed)
 		if cancel:
+			_combat_lock=_uses_combat_action(event)
+			_combat_lock_held=_combat_lock
 			resume()
 			get_viewport().set_input_as_handled()
 		elif event is InputEventJoypadButton and event.button_index in [JOY_BUTTON_DPAD_UP,JOY_BUTTON_DPAD_DOWN] and event.pressed:
@@ -80,6 +108,9 @@ func resume()->void:
 	if focused:focused.release_focus()
 	if was_shop_open:
 		_resume_pending=true
+		# Keep gameplay frozen while the closing edge is still in the input clock,
+		# even if the shop was shown outside the usual paused open path.
+		get_tree().paused=true
 		# Let the cancel/accept edge expire in the physics input clock before the
 		# player's is_action_just_pressed can interpret B as dodge or A as jump.
 		await get_tree().physics_frame
