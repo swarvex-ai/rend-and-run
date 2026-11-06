@@ -33,8 +33,7 @@ func _count_controls(n: Node) -> int:
 	return c
 
 func _focus_name() -> String:
-	var fo := menu.get_viewport().gui_get_focus_owner()
-	return str(fo.name) if fo != null else "<none>"
+	return str(menu.rows[menu.focus_index].node.name) if menu.focus_index >= 0 else "<none>"
 
 func _btn(nm: String) -> Button:
 	return menu.find_child(nm, true, false) as Button
@@ -67,15 +66,12 @@ func _initialize() -> void:
 	paused = true
 	await process_frame
 
-	var main_box := menu.find_child("MainBox", true, false) as Control
-	var conf_box := menu.find_child("ConfirmBox", true, false) as Control
-
 	# --- Fall OHNE Save
 	menu.open_menu(false)
 	await process_frame
 	_check("ohne_save_sichtbar", menu.visible)
 	_check("ohne_save_continue_deaktiviert", _btn("BtnContinue").disabled)
-	_check("ohne_save_continue_nicht_fokussierbar", _btn("BtnContinue").focus_mode == Control.FOCUS_NONE)
+	_check("ohne_save_continue_nicht_fokussierbar", menu.focused_id() != "continue", menu.focused_id())
 	_check("ohne_save_fokus_neue_runde", _focus_name() == "BtnNewRun", _focus_name())
 	_press(_btn("BtnNewRun"))
 	await process_frame
@@ -85,8 +81,7 @@ func _initialize() -> void:
 	menu.open_menu(true)
 	await process_frame
 	_check("mit_save_fokus_fortsetzen", _focus_name() == "BtnContinue", _focus_name())
-	_check("mit_save_continue_aktiv", not _btn("BtnContinue").disabled \
-		and _btn("BtnContinue").focus_mode == Control.FOCUS_ALL)
+	_check("mit_save_continue_aktiv", not _btn("BtnContinue").disabled)
 	_press(_btn("BtnContinue"))
 	await process_frame
 	_check("continue_1x", n_continue == 1, "n=%d" % n_continue)
@@ -94,13 +89,13 @@ func _initialize() -> void:
 	_press(_btn("BtnNewRun"))
 	await process_frame
 	await process_frame
-	_check("mit_save_bestaetigung_offnet", conf_box.visible and not main_box.visible)
+	_check("mit_save_bestaetigung_offnet", _btn("BtnConfirmNewRun") != null and _btn("BtnQuit") == null)
 	_check("mit_save_kein_signal_vor_bestaetigung", n_newrun == 1, "n=%d" % n_newrun)
 	_check("fokus_neue_runde_starten", _focus_name() == "BtnConfirmNewRun", _focus_name())
 	_press(_btn("BtnBack"))
 	await process_frame
 	await process_frame
-	_check("abbruch_zurueck_zu_haupt", main_box.visible and not conf_box.visible)
+	_check("abbruch_zurueck_zu_haupt", _btn("BtnQuit") != null and _btn("BtnConfirmNewRun") == null)
 	_check("abbruch_fokus_neue_runde", _focus_name() == "BtnNewRun", _focus_name())
 	_check("abbruch_kein_signal", n_newrun == 1, "n=%d" % n_newrun)
 	_press(_btn("BtnNewRun"))
@@ -111,9 +106,13 @@ func _initialize() -> void:
 	await process_frame
 	_check("newrun_nach_bestaetigung_2x", n_newrun == 2, "n=%d" % n_newrun)
 
-	# --- Beenden
+	# --- Beenden (Bestaetigung auf demselben Screen)
+	menu.open_menu(true)
+	await process_frame
 	_press(_btn("BtnQuit"))
 	await process_frame
+	await process_frame
+	_press(_btn("BtnConfirmQuit"))
 	await process_frame
 	_check("quit_1x", n_quit == 1, "n=%d" % n_quit)
 
@@ -123,11 +122,11 @@ func _initialize() -> void:
 	_press(_btn("BtnNewRun"))
 	await process_frame
 	await process_frame
-	_check("bestaetigung_offnet_erneut", conf_box.visible)
+	_check("bestaetigung_offnet_erneut", _btn("BtnConfirmNewRun") != null)
 	menu.close_menu()
 	menu.open_menu(true)
 	await process_frame
-	_check("reopen_setzt_bestaetigung_zurueck", main_box.visible and not conf_box.visible)
+	_check("reopen_setzt_bestaetigung_zurueck", _btn("BtnQuit") != null and _btn("BtnConfirmNewRun") == null)
 	_check("reopen_fokus_fortsetzen", _focus_name() == "BtnContinue", _focus_name())
 	var before := _count_controls(menu)
 	for i in range(10):
@@ -136,13 +135,13 @@ func _initialize() -> void:
 	await process_frame
 	_check("kein_knotenwachstum", _count_controls(menu) == before, "before=%d after=%d" % [before, _count_controls(menu)])
 
-	# --- Umlaute real vorhanden
+	# --- Englische Labels real vorhanden
 	var txt_all := ""
 	for c in menu.find_children("*", "Label", true, false):
 		txt_all += (c as Label).text
 	for c in menu.find_children("*", "Button", true, false):
 		txt_all += (c as Button).text
-	_check("umlautvorhanden", txt_all.contains("Zurück") and txt_all.contains("gespeicherte"), "")
+	_check("labels_englisch", txt_all.contains("Continue") and txt_all.contains("New run"), "")
 
 	# --- Signale gesamt: continue 1, newrun 2 (1x ohne Save, 1x bestaetigt), quit 1
 	_check("signale_konsistent", n_continue == 1 and n_newrun == 2 and n_quit == 1,

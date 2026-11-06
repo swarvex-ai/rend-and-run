@@ -1,252 +1,120 @@
-extends Control
-## H31 — Start-Menue (eigenstaendiges Control-Modul).
-## Signale continue_requested / new_run_requested / quit_requested; Codex
-## verdrahtet Titel vor aktivem Spiel, Fortsetzen der gespeicherten Route und
-## die bestaetigte neue Runde inkl. Save-Handling. Das Modul fuehrt NIEMALS
-## selbst einen Engine-Quit, Szenen-Reload oder Pause-Befehl aus und betreibt
-## kein Datei-/Save-IO — es entscheidet nur ueber UI-Zustand und emittiert
-## Signale exakt einmal pro Aktivierung.
-##
-## API: open_menu(has_save: bool) / close_menu(). Initialet versteckt.
-## process_mode fest ALWAYS (Funktion auch bei gepausetem Baum).
-## Ohne Save: Fortsetzen deaktiviert UND nicht fokussierbar, Fokus auf Neue
-## Runde, Neue Runde emittiert sofort. Mit Save: Fokus auf Fortsetzen, Neue
-## Runde oeffnet ausdrueckliche In-Panel-Bestaetigung; new_run_requested erst
-## nach Bestaetigung. Erneutes Oeffnen setzt die Bestaetigung zurueck.
-##
-## Optik folgt modules/ui/pause_menu.gd / combat_hud.gd (dunkles Panel,
-## Off-White / blasses Cyan / Kupfer-Rand). Keine externen Fonts/Assets, kein
-## Per-Frame-Werk (kein _process). Deutsche Umlaute im Text.
+extends "res://modules/ui/menu_screen.gd"
+## Main menu (E11.4a): the style guide's Main screen on the shared MenuScreen base.
+## Rows Continue, New run, Options, Credits, Quit. Continue is disabled without a
+## save; New run (with a save) and Quit confirm on the same screen. B / Esc cancels
+## a confirmation and does nothing on the main list. The owner (start.gd) wires the
+## signals to scene changes and the Options screen; this module never does I/O.
 
 signal continue_requested
 signal new_run_requested
 signal quit_requested
+signal options_requested
+signal credits_requested
 
-const COL_BG := Color(0.02, 0.03, 0.04, 0.78)        # Backdrop, dunkel translucent
-const COL_PANEL := Color(0.07, 0.08, 0.10, 0.94)     # wie HUD-Panel
-const COL_TEXT := Color(0.93, 0.90, 0.84)            # warmes Off-White
-const COL_DIM := Color(0.93, 0.90, 0.84, 0.62)       # Sekundaertext
-const COL_CYAN := Color(0.55, 0.82, 0.85)            # Focus/Akzent (blasses Zyan)
-const COL_COPPER := Color(0.82, 0.55, 0.22)          # randiger Akzent
-const COL_BTN := Color(0.12, 0.14, 0.17, 0.95)
-const COL_BTN_HOVER := Color(0.18, 0.22, 0.26, 1.0)
-const COL_BTN_DOWN := Color(0.10, 0.11, 0.13, 1.0)
-const COL_DISABLED_TEXT := Color(0.93, 0.90, 0.84, 0.32)
+const MAIN_ROWS := [
+	["continue", "Continue"],
+	["new_run", "New run"],
+	["options", "Options"],
+	["credits", "Credits"],
+	["quit", "Quit"],
+]
 
 var _has_save := false
+var _confirm := ""
 var _btn_continue: Button
 var _btn_new_run: Button
-var _btn_quit: Button
 var _btn_back: Button
 var _btn_confirm_new: Button
-var _main_box: VBoxContainer
-var _confirm_box: VBoxContainer
-
 
 func _init() -> void:
-	# Aufbau in _init: find_child/API gelten schon vor dem Baumeintritt.
-	process_mode = Node.PROCESS_MODE_ALWAYS
+	super._init()
 	name = "StartMenu"
-	visible = false
-	mouse_filter = Control.MOUSE_FILTER_STOP
-	# Fullrect: Anker UND Offsets (H25-Lektion).
-	anchor_left = 0.0
-	anchor_top = 0.0
-	anchor_right = 1.0
-	anchor_bottom = 1.0
-	offset_left = 0.0
-	offset_top = 0.0
-	offset_right = 0.0
-	offset_bottom = 0.0
+	_backdrop.mouse_filter = Control.MOUSE_FILTER_STOP
+	title = "REND&RUN"
+	_build()
 
-	var backdrop := ColorRect.new()
-	backdrop.name = "Backdrop"
-	backdrop.color = COL_BG
-	backdrop.set_anchors_preset(Control.PRESET_FULL_RECT)
-	backdrop.mouse_filter = Control.MOUSE_FILTER_STOP   # kein Klick-Through
-	add_child(backdrop)
+func _build() -> void:
+	_add_main_rows()
+	set_row_enabled("continue", _has_save)
+	row_activated.connect(_on_row_activated)
+	back_requested.connect(_on_back)
 
-	var panel := PanelContainer.new()
-	panel.name = "Panel"
-	# ruhiges, zentriertes Startpanel (420 px breit) — 960x540..1920x1080
-	panel.anchor_left = 0.5
-	panel.anchor_top = 0.5
-	panel.anchor_right = 0.5
-	panel.anchor_bottom = 0.5
-	panel.grow_horizontal = Control.GROW_DIRECTION_BOTH
-	panel.grow_vertical = Control.GROW_DIRECTION_BOTH
-	panel.offset_left = -210.0
-	panel.offset_right = 210.0
-	panel.offset_top = -190.0
-	panel.offset_bottom = 190.0
-	panel.mouse_filter = Control.MOUSE_FILTER_STOP
-	var psb := StyleBoxFlat.new()
-	psb.bg_color = COL_PANEL
-	psb.border_color = Color(COL_COPPER.r, COL_COPPER.g, COL_COPPER.b, 0.8)
-	psb.set_border_width_all(2)
-	psb.set_content_margin_all(24.0)
-	panel.add_theme_stylebox_override("panel", psb)
-	add_child(panel)
-
-	var col := VBoxContainer.new()
-	col.name = "Column"
-	col.add_theme_constant_override("separation", 10)
-	panel.add_child(col)
-
-	# Titel ohne redundante "REND"-Untertitel
-	col.add_child(_mk_label("TitleLabel", "REND&RUN", 40, COL_TEXT, HORIZONTAL_ALIGNMENT_CENTER))
-	col.add_child(_mk_label("SectorLabel", "Laborsektor 01", 18, COL_CYAN, HORIZONTAL_ALIGNMENT_CENTER))
-	col.add_child(_mk_spacer(8))
-
-	_main_box = VBoxContainer.new()
-	_main_box.name = "MainBox"
-	_main_box.add_theme_constant_override("separation", 10)
-	col.add_child(_main_box)
-	_btn_continue = _mk_button("BtnContinue", "Fortsetzen")
-	_btn_new_run = _mk_button("BtnNewRun", "Neue Runde")
-	_btn_quit = _mk_button("BtnQuit", "Beenden")
-	_main_box.add_child(_btn_continue)
-	_main_box.add_child(_btn_new_run)
-	_main_box.add_child(_btn_quit)
-
-	_confirm_box = VBoxContainer.new()
-	_confirm_box.name = "ConfirmBox"
-	_confirm_box.add_theme_constant_override("separation", 10)
-	_confirm_box.visible = false
-	col.add_child(_confirm_box)
-	_confirm_box.add_child(_mk_label("ConfirmLabel",
-		"Neue Runde starten? Der gespeicherte\nFortschritt dieser Runde wird ersetzt.",
-		18, COL_TEXT, HORIZONTAL_ALIGNMENT_CENTER))
-	_btn_back = _mk_button("BtnBack", "Zurück")
-	_btn_confirm_new = _mk_button("BtnConfirmNewRun", "Neue Runde starten")
-	_confirm_box.add_child(_btn_back)
-	_confirm_box.add_child(_btn_confirm_new)
-
-	col.add_child(_mk_spacer(6))
-	# kleine Fusszeile: Steuerungs-Hinweis, keine grosse Spielhilfe
-	col.add_child(_mk_label("FooterLabel",
-		"A/D Bewegen · Leertaste Springen · J Angriff · Esc Pause",
-		18, COL_DIM, HORIZONTAL_ALIGNMENT_CENTER))
-
-	_btn_continue.pressed.connect(_on_continue)
-	_btn_new_run.pressed.connect(_on_new_run)
-	_btn_quit.pressed.connect(_on_quit)
-	_btn_back.pressed.connect(_on_back)
-	_btn_confirm_new.pressed.connect(_on_confirm_new_run)
-
-
-func open_menu(has_save: bool) -> void:
+## Opens the main list. focus_id lets the owner return to a row, e.g. Options.
+func open_menu(has_save: bool, focus_id := "") -> void:
 	_has_save = has_save
-	_show_main()
-	_btn_continue.disabled = not has_save
-	# ohne Save auch ohne Fokus-Reihenfolge erreichbar? Nein: deactivated +
-	# nicht fokussierbar, damit Tastatur-/Stick-Navigation direkt bei Neue Runde beginnt.
-	_btn_continue.focus_mode = Control.FOCUS_ALL if has_save else Control.FOCUS_NONE
-	visible = true
-	var first := _btn_continue if has_save else _btn_new_run
-	if first.is_inside_tree():
-		first.grab_focus()
-
+	if focus_id == "":
+		focus_id = "continue" if has_save else "new_run"
+	_show_main(focus_id)
+	open_screen()
 
 func close_menu() -> void:
 	visible = false
 
+## Detach old rows immediately so rebuilt rows keep their names (no sibling clashes).
+func clear_rows() -> void:
+	for row in rows:
+		var node: Node = row.node
+		if node.get_parent() != null:
+			node.get_parent().remove_child(node)
+	super.clear_rows()
 
-func is_open() -> bool:
-	return visible
+func _add_main_rows() -> void:
+	for row in MAIN_ROWS:
+		add_button(row[0], row[1])
+	rows[0].node.name = "BtnContinue"
+	rows[1].node.name = "BtnNewRun"
+	rows[2].node.name = "BtnOptions"
+	rows[3].node.name = "BtnCredits"
+	rows[4].node.name = "BtnQuit"
+	_btn_continue = rows[0].node
+	_btn_new_run = rows[1].node
 
+func _show_main(focus_id: String) -> void:
+	_confirm = ""
+	clear_rows()
+	_add_main_rows()
+	set_row_enabled("continue", _has_save)
+	set_title("REND&RUN")
+	show_rows(focus_id)
 
-func _show_main() -> void:
-	_main_box.visible = true
-	_confirm_box.visible = false
-
-
-func _show_confirm() -> void:
-	_main_box.visible = false
-	_confirm_box.visible = true
-
-
-func _on_continue() -> void:
-	continue_requested.emit()
-
-
-func _on_new_run() -> void:
-	if _has_save:
-		# ausdrueckliche Bestaetigung noetig — kein Signal hier
-		_show_confirm()
-		if _btn_confirm_new.is_inside_tree():
-			_btn_confirm_new.grab_focus()
+func _ask(action: String) -> void:
+	_confirm = action
+	clear_rows()
+	set_title("Start new run?" if action == "new_run" else "Quit?")
+	add_button("cancel", "Cancel")
+	rows[0].node.name = "BtnBack"
+	_btn_back = rows[0].node
+	if action == "new_run":
+		add_button("confirm_new_run", "Start new run")
+		rows[1].node.name = "BtnConfirmNewRun"
+		_btn_confirm_new = rows[1].node
 	else:
-		new_run_requested.emit()
+		add_button("confirm_quit", "Quit")
+		rows[1].node.name = "BtnConfirmQuit"
+	show_rows(rows[1].id)
 
+func _on_row_activated(id: String) -> void:
+	match id:
+		"continue":
+			continue_requested.emit()
+		"new_run":
+			if _has_save:
+				_ask("new_run")
+			else:
+				new_run_requested.emit()
+		"options":
+			options_requested.emit()
+		"credits":
+			credits_requested.emit()
+		"quit":
+			_ask("quit")
+		"cancel":
+			_show_main(_confirm)
+		"confirm_new_run":
+			new_run_requested.emit()
+		"confirm_quit":
+			quit_requested.emit()
 
 func _on_back() -> void:
-	_show_main()
-	if _btn_new_run.is_inside_tree():
-		_btn_new_run.grab_focus()
-
-
-func _on_confirm_new_run() -> void:
-	new_run_requested.emit()
-
-
-func _on_quit() -> void:
-	quit_requested.emit()
-
-
-func _mk_label(lbl_name: String, txt: String, size: int, color: Color, align: int) -> Label:
-	var l := Label.new()
-	l.name = lbl_name
-	l.text = txt
-	l.horizontal_alignment = align
-	# Autowrap: langer Text (Fusszeile/Bestaetigung) bricht sauber inside Panel
-	l.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	l.add_theme_font_size_override("font_size", size)
-	l.add_theme_color_override("font_color", color)
-	l.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	return l
-
-
-func _mk_spacer(h: float) -> Control:
-	var s := Control.new()
-	s.name = "Spacer"
-	s.custom_minimum_size = Vector2(0, h)
-	s.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	return s
-
-
-func _mk_button(btn_name: String, txt: String) -> Button:
-	var b := Button.new()
-	b.name = btn_name
-	b.text = txt
-	b.custom_minimum_size = Vector2(340, 46)
-	b.add_theme_font_size_override("font_size", 20)
-	b.add_theme_color_override("font_color", COL_TEXT)
-	b.add_theme_color_override("font_hover_color", COL_CYAN)
-	b.add_theme_color_override("font_pressed_color", COL_CYAN)
-	b.add_theme_color_override("font_focus_color", COL_CYAN)
-	b.add_theme_color_override("font_disabled_color", COL_DISABLED_TEXT)
-	var nb := StyleBoxFlat.new()
-	nb.bg_color = COL_BTN
-	nb.set_corner_radius_all(4)
-	nb.set_border_width_all(1)
-	nb.border_color = Color(0.3, 0.33, 0.36)
-	nb.content_margin_left = 14.0
-	nb.content_margin_right = 14.0
-	b.add_theme_stylebox_override("normal", nb)
-	var hb := nb.duplicate() as StyleBoxFlat
-	hb.bg_color = COL_BTN_HOVER
-	hb.border_color = COL_CYAN
-	b.add_theme_stylebox_override("hover", hb)
-	var pb := nb.duplicate() as StyleBoxFlat
-	pb.bg_color = COL_BTN_DOWN
-	pb.border_color = COL_CYAN
-	b.add_theme_stylebox_override("pressed", pb)
-	# kontrastreicher aktiver Fokus: 3 px Cyan-Rahmen
-	var fb := nb.duplicate() as StyleBoxFlat
-	fb.draw_center = false
-	fb.set_border_width_all(3)
-	fb.border_color = COL_CYAN
-	b.add_theme_stylebox_override("focus", fb)
-	b.mouse_filter = Control.MOUSE_FILTER_STOP
-	return b
+	if _confirm != "":
+		_show_main(_confirm)

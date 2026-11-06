@@ -1,8 +1,10 @@
 extends Node
 const SAVE_PATH:="user://rendrun_route_v12.json"
 var menu:Control
+var options_menu:Control
 var notice:Label
 var _starting:=false
+var _has_save:=false
 func _ready()->void:
 	get_tree().paused=false
 	Engine.time_scale=1.0
@@ -14,6 +16,7 @@ func _ready()->void:
 	var background:=ColorRect.new();background.color=Color(0.035,0.045,0.06)
 	background.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT);layer.add_child(background)
 	menu=preload("res://modules/ui/start_menu.gd").new();layer.add_child(menu)
+	options_menu=preload("res://modules/ui/options_menu.gd").new();layer.add_child(options_menu)
 	notice=Label.new();notice.set_anchors_and_offsets_preset(Control.PRESET_CENTER_BOTTOM)
 	notice.offset_left=-400;notice.offset_right=400;notice.offset_top=-70;notice.offset_bottom=-20
 	notice.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;notice.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
@@ -21,6 +24,8 @@ func _ready()->void:
 	menu.continue_requested.connect(_continue_game)
 	menu.new_run_requested.connect(_new_run)
 	menu.quit_requested.connect(FX.quit_game)
+	menu.options_requested.connect(_open_options)
+	options_menu.back_requested.connect(_close_options)
 	_refresh()
 	if OS.get_environment("V29_TEST")=="1" and not get_tree().root.has_meta("start_test_started"):
 		get_tree().root.set_meta("start_test_started",true)
@@ -31,11 +36,17 @@ func _valid_save()->bool:
 	return parser.parse(FileAccess.get_file_as_string(SAVE_PATH))==OK and parser.data is Dictionary and parser.data.get("version")==12
 func _refresh()->void:
 	var exists:=FileAccess.file_exists(SAVE_PATH)
+	_has_save=exists
 	menu.open_menu(exists)
 	if exists and not _valid_save():
-		menu._btn_continue.disabled=true;menu._btn_continue.focus_mode=Control.FOCUS_NONE
-		menu._btn_new_run.grab_focus()
+		menu.set_row_enabled("continue",false)
 		notice.text="Spielstand nicht lesbar. Eine neue Runde sichert die alte Datei als Rückfall."
+func _open_options()->void:
+	menu.close_menu()
+	options_menu.open_screen()
+func _close_options()->void:
+	await options_menu.close_screen()
+	menu.open_menu(_has_save,"options")
 func _continue_game()->void:
 	if not _valid_save():_refresh();return
 	_enter_game()

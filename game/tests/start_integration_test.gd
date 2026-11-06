@@ -14,7 +14,7 @@ func run()->void:
 	var start=get_parent();reparent(get_tree().root);await wait(0.2)
 	check("fresh start has no game actors",get_tree().get_nodes_in_group("player").is_empty())
 	check("continue disabled without save",start.menu._btn_continue.disabled)
-	check("fresh focus on new round",get_viewport().gui_get_focus_owner()==start.menu._btn_new_run)
+	check("fresh focus on new round",start.menu.focused_id()=="new_run")
 	if DisplayServer.get_name()!="headless":
 		RenderingServer.force_draw(false);get_viewport().get_texture().get_image().save_png(OS.get_environment("V29_OUTPUT")+"/start.png")
 	Input.action_press("jump");start.menu._btn_new_run.pressed.emit();await wait(0.4)
@@ -30,7 +30,7 @@ func run()->void:
 	main=get_tree().current_scene
 	check("continue restores equipment and checkpoint",main.route.checkpoint and main.route.shards==21 and main.player.shield_unlocked)
 	start=await title();start.menu._btn_new_run.pressed.emit();await wait(0.05)
-	check("existing save requires confirmation",start.menu._confirm_box.visible and get_tree().current_scene==start)
+	check("existing save requires confirmation",start.menu.focused_id()=="confirm_new_run" and get_tree().current_scene==start)
 	start.menu._btn_back.pressed.emit();await wait(0.05)
 	check("cancel preserves progress",FileAccess.get_file_as_string("user://rendrun_route_v12.json")==saved)
 	start.menu._btn_new_run.pressed.emit();start.menu._btn_confirm_new.pressed.emit();await wait(0.4)
@@ -41,6 +41,6 @@ func run()->void:
 	start=await title()
 	check("corrupt save disables continue with explanation",start.menu._btn_continue.disabled and not start.notice.text.is_empty())
 	start.menu._btn_new_run.pressed.emit()
-	check("corrupt save still requires replacement confirmation",start.menu._confirm_box.visible)
+	check("corrupt save still requires replacement confirmation",start.menu.focused_id()=="confirm_new_run")
 	print("V29 SUMMARY checks=%d failures=%d"%[checks,failures])
 	get_tree().quit(1 if failures else 0)
