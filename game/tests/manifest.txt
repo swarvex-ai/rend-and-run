@@ -81,7 +81,7 @@ quarantine overseer_integration
 hook pause_integration_test V28_TEST
 headless pause_menu_test
 headless shop_close_input_test
-quarantine persistence_v12_test
+headless persistence_v12_test
 headless prefix_ledger_test
 headless prefix_persistence_test
 headless prefix_save_guard_test
@@ -109,7 +109,7 @@ headless servo_run_ledger_test
 headless servo_trial_test
 headless servo_upgrade_test
 headless settings_store_test
-quarantine shard_pickup_integration
+headless shard_pickup_integration
 headless shortcut_door_test
 hook shortcut_integration_test H16_TEST
 probe shortcut_traversal_probe
