@@ -128,7 +128,7 @@ probe motion_review_capture
 headless depth_strip_test
 headless hound_test
 headless dog_arm_test
-quarantine depth_test
+headless depth_test
 headless prop_collision_test
 probe hit_pose_review
 window strike_review

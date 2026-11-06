@@ -51,6 +51,8 @@
 - #56 angenommen (landing_integration_test ohne Display; headless 3 × grün, mit Fenster wird der Screenshot weiter gespeichert). Nach dem Merge aus der Quarantäne: Suite zweimal grün mit 85 headless + 14 hook.
 
 **Abend 06.11.:** #85 angenommen (dritte Einreichung, 66). Die Kampfsperre greift nur noch, wenn die schließende Taste selbst Angriff/Ausweichen ist, und endet beim Loslassen. Von mir auf d98af8a geprüft: `shop_close_input_test` ohne Korrektur rot (3 Fehler, darunter „Esc verschluckt den Angriff“), mit Korrektur 3 × grün; `pause_menu_test`, `pause_integration_test`, `arm_first_fight` grün; das gesperrte `workbench_integration` zeigt mit und ohne Patch dieselben 12 Fehler. Nach dem Merge (b328e66) im Manifest eingetragen (headless); Suite grün mit 86 headless + 14 hook. Damit ist #86 (Werkbank) frei.
+- #58 angenommen (depth_test: `seed(1)`; die in Teil 1 gerufene Verstärkung und der geweckte Roboter werden geparkt, sodass in Teil 2 nur der Hund im Trupp ist). Bei mir 5 × grün mit identischem Ergebnis. Nach dem Merge (a67ee77) aus der Quarantäne: Suite zweimal grün mit 87 headless + 14 hook.
+- #60 angenommen (Rends Stimme auf dem Voice-Bus, `voice_bus_test` auf der Basis rot, mit Patch 3 × grün). Der Fehler lag in meiner Aufgabe: Roboterzeilen und Durchsagen laufen nicht über `FX.voice()`, sondern über `modules/audio/robot_voice.gd` und spielen weiter auf Master. Folgeaufgabe dafür geschnitten.
 
 **Rulings (Nachmittag)**
 - Ruling: Den Fehler der Fokusleiste behebe ich selbst statt per Aufgabe — er liegt in meiner Basis (Stufe D), und `menu_screen.gd` ist in allen Menü-Aufgaben ausgeschlossen — Kosten bei Irrtum: keine, die Korrektur hat einen eigenen Test.
