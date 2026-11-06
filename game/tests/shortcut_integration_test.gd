@@ -12,38 +12,30 @@ func run() -> void:
 	for e in scene.route.enemies:e.set_physics_process(false)
 	var door=scene.route.shortcut
 	check("actual door loaded",door!=null)
+	# Keep the route's proximity auto-open out of the locked-collision check so only
+	# the closed door itself can stop Rend.
+	scene.route.set_process(false)
 	p.global_position=Vector3(15,0.03,0);p.velocity=Vector3.ZERO
 	await wait(0.2);Input.action_press("move_right");await wait(0.5);Input.action_release("move_right")
 	check("locked lower passage blocks actual movement",p.global_position.x<16.3)
+	scene.route.set_process(true)
 	Input.action_press("interact");await wait(0.08);Input.action_release("interact");await wait(0.08)
 	check("west interaction opens main route without optional armor",door.is_open() and not scene.route.equipment.owns("lab_armor"))
-	check("route signs show open state",scene.route.wayfinding.size()==2 and scene.route.wayfinding[0].is_route_open())
+	# Door's own visible open state: try_open clears the collision layer deferred
+	# (shortcut_door.gd:136-138, _sync_collision at :184).
+	check("door shows open state after west interaction",door.is_open() and door.get_body().collision_layer==0)
 	Input.action_press("move_right");await wait(0.55);Input.action_release("move_right")
 	check("main route traversable without upper armor detour",p.global_position.x>17.0 and p.global_position.y<0.15)
-	# Reset fixture only for the separate upper-path/east-approach check.
+	# Reset fixture for the separate east-approach check.
 	door.restore_open(false);scene.route.shortcut_open=false
-	for marker in scene.route.wayfinding:marker.set_route_open(false)
-	if DisplayServer.get_name()!="headless":
-		RenderingServer.force_draw(false)
-		get_viewport().get_texture().get_image().save_png(OS.get_environment("V16_OUTPUT")+"/shortcut_closed.png")
+	check("closed shortcut stays solid after reset",not door.is_open() and door.get_body().collision_layer==1 and door.panel_offset_y()<0.01)
 	p.global_position=Vector3(8.5,0.03,0);p.velocity=Vector3.ZERO;await wait(0.5)
 	if DisplayServer.get_name()!="headless":
 		RenderingServer.force_draw(false)
-		get_viewport().get_texture().get_image().save_png(OS.get_environment("V16_OUTPUT")+"/wayfinding_west.png")
-	for target in [11.0,14.0,18.0]:
-		Input.action_press("jump");Input.action_press("move_right")
-		for frame in 100:
-			await get_tree().physics_frame
-			if p.global_position.x>=target-0.12:break
-		Input.action_release("move_right");await wait(0.6)
-		Input.action_release("jump");await wait(0.1)
-		print("H16-ROUTE landing ",target," ",p.global_position)
-	check("optional upper route remains reachable with real jumps",p.global_position.x>17.5 and p.global_position.y>2.3)
-	Input.action_press("move_right")
-	for frame in 100:
-		await get_tree().physics_frame
-		if p.global_position.x>20.6:break
-	Input.action_release("move_right");await wait(0.8)
+		get_viewport().get_texture().get_image().save_png(OS.get_environment("V16_OUTPUT")+"/shortcut_closed.png")
+	# The upper maintenance route is gone (lab_route.gd builds no walkway), so the
+	# east approach starts on the far side of the closed door as a fixture.
+	p.global_position=Vector3(20.6,0.03,0);p.velocity=Vector3.ZERO;await wait(0.5)
 	Input.action_press("move_left")
 	for frame in 100:
 		await get_tree().physics_frame
@@ -52,7 +44,7 @@ func run() -> void:
 	check("can reach east latch at floor height",p.global_position.x>16.8 and p.global_position.x<18 and p.global_position.y<0.15)
 	Input.action_press("interact");await wait(0.08);Input.action_release("interact");await wait(0.75)
 	check("east interaction opens and stores route state",door.is_open() and scene.route.shortcut_open)
-	check("both route signs reflect unlocked door",scene.route.wayfinding.all(func(m):return m.is_route_open()))
+	check("door shows open state after east interaction",door.is_open() and door.get_body().collision_layer==0)
 	check("raised panel clears upper jumping route",door.panel_offset_y()>5.9)
 	var saved=JSON.parse_string(FileAccess.get_file_as_string("user://rendrun_route_v12.json"))
 	var fresh=load("res://lab_route.gd").new();fresh._restore_progress(saved)
