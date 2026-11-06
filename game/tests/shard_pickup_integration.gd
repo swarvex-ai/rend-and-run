@@ -7,6 +7,13 @@ func check(label:String,ok:bool):
 	if not ok:failures+=1
 	print("PICKUP ","PASS " if ok else "FAIL ",label)
 func wait(t:float):await create_timer(t).timeout
+func pending_unchanged(r,pending_before:Dictionary) -> bool:
+	if r.pending_shards.size()!=pending_before.size():return false
+	for id in pending_before:
+		if r.pending_shards.get(id)!=pending_before[id]:return false
+	return true
+func pickup_kept(r,pending_before:Dictionary) -> bool:
+	return is_instance_valid(r.shard_pickups.get("entry_supply")) and pending_unchanged(r,pending_before)
 func run():
 	if not OS.get_user_data_dir().begins_with("/tmp/"):quit(2);return
 	var main=load("res://main.tscn").instantiate();root.add_child(main);current_scene=main
@@ -28,18 +35,19 @@ func run():
 	for e in r.enemies:e.set_physics_process(false);e.hide();e.collision_layer=0
 	check("scene reload reconstructs uncollected drop",r.shards==0 and r.supply_crates[0].is_broken() and r.shard_pickups.has("entry_supply"))
 	r.shards=2;r.on_player_death()
-	check("death preserves uncollected reward separately",r.pending_shards.get("entry_supply")==3 and r.shards==0 and r.death_cache.amount()==2)
+	check("death keeps wallet and uncollected reward",r.pending_shards.get("entry_supply")==3 and r.shards==2 and not r.death_cache.is_active())
+	r.shards=0;var pending:Dictionary=r.pending_shards.duplicate()
 	p.global_position=Vector3(3.3,0,0);p.velocity=Vector3.ZERO;p.set_physics_process(false)
 	var wall:=StaticBody3D.new();wall.collision_layer=1
 	var col:=CollisionShape3D.new();var box:=BoxShape3D.new();box.size=Vector3(.15,2,2);col.shape=box;wall.add_child(col)
 	main.add_child(wall);wall.global_position=Vector3(3.65,.9,0)
-	await wait(.7);check("nearby drop does not pass through walls",r.shards==0)
+	await wait(.7);check("nearby drop does not pass through walls",r.shards==0 and pickup_kept(r,pending))
 	wall.queue_free();await physics_frame
 	p.global_position=Vector3(4,2,0)
 	await wait(.6)
-	check("cannot collect from another elevation",r.shards==0)
+	check("cannot collect from another elevation",r.shards==0 and pickup_kept(r,pending))
 	p.global_position=Vector3(4,0,0);p._dying=true
-	await wait(.6);check("dead player cannot collect",r.shards==0)
+	await wait(.6);check("dead player cannot collect",r.shards==0 and pickup_kept(r,pending))
 	p._dying=false
 	var sounds:int=root.get_node("FX").audio_events.get("footstep_metal_b",0)
 	await wait(.8)
