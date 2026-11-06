@@ -34,6 +34,7 @@ The live test pipeline (official Godot 4.7.2 build, `JOBS=3`) failed docs-only s
 - **Out of quarantine on 06.11.:** `shortcut_integration_test` (hook) after #17; full suite green twice with it (84 headless + 12 hook).
 - **Out of quarantine on 06.11.:** `attack_cue_integration` (hook) after #53; full suite green twice with it (84 headless + 13 hook). Follow-up #89 makes its heavy-commitment check hit a robot that can take damage.
 - **Out of quarantine on 06.11.:** `first_room_playthrough` (headless) after #54 (`seed(1)`, fail-fast checks); full suite green twice with it (85 headless + 13 hook).
+- **Out of quarantine on 06.11.:** `landing_integration_test` (hook) after #56 (screenshot only with a display); full suite green twice with it (85 headless + 14 hook).
 - **Stays in quarantine:** `machinery_chamber_integration`. #19 found that nothing builds the machinery chamber any more (`lab_dressing.gd:17-26`); the test now fails fast instead of hanging.
 
 Full suite after these changes: 79 headless + 11 hook, green twice in 120 s each.

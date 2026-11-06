@@ -60,7 +60,7 @@ headless interrupted_recovery_test
 headless jump_timing_probe
 window lab_visual_capture
 headless landing_dust_test
-quarantine landing_integration_test H19_TEST
+hook landing_integration_test H19_TEST
 window light_humanoid_visual_capture
 headless light_severance
 hook loot_integration_test V13_TEST
