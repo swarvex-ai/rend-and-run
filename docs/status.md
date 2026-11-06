@@ -32,6 +32,10 @@
 - Ruling: Diagnosen #20–#22 angenommen, Reparaturen #65 (Arena-Tor), #66 (Overseer), #67 (Speichern) geschnitten.
 - Ruling: Diagnosen #23–#36 angenommen; Reparaturen #68–#78 geschnitten. Zwei echte Spielfehler gefunden: B schließt die Werkbank und löst ein Ausweichen aus (#70), und ein fliegender Schuss verliert seinen Schaden, wenn sein Schütze zerstört wird (#76).
 
+- Ruling: Menü-Aufgaben in zwei Teilen (Bildschirm + Anbindung mit minimalen Test-Anpassungen, dann neue Prüfungen) — drei Einreichungen scheiterten knapp an der 500-Zeilen-Grenze (579, 629, 515) — Kosten bei Irrtum: ein Merge mehr pro Menü. Ersetzt: #63/#80–#82 → #87/#88 (Hauptmenü), #64 → #83/#84 (Pause), #70 → #85, #71 → #86.
+
+**Wartet zusätzlich auf neVs:** UX-Spezifikation (Nachricht 16), Sound Bible (17), Story-Gerüst (18).
+
 **Für Playtest und neVs gesammelt (nicht dringend)**
 - Duellant/Schildträger: Der Rückzugsschritt endet bei 0,30 s, die Erholung bei 0,32 s; es bleibt kaum ein Strafzeitfenster nach dem Schritt (Diagnose #36). Balancing, Entscheidung neVs nach dem Playtest.
 - Die Wache bei x 40 steht 0,4 m in der Deckung (40,0–41,6) und wird beim Start auf x ≈ 39,6 geschoben (Diagnose #35). Schweregrad S4.
