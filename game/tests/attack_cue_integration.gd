@@ -16,9 +16,11 @@ func run()->void:
  p.global_position=Vector3(32,0,0)
  await wait(0.4)
  var e=route.enemies[1];e.global_position=Vector3(34,0,0);e.get_node("VisualPivot").rotation.y=PI
+ e.forced_strike="side"
  e._enter(e.WINDUP);e._state_t=0.15;e._update_weapon_pose(0)
  await wait(0.08)
  check("high cue visible in committed direction",e._attack_cue._pivot.visible and e._attack_cue._pivot.position.x<0 and is_equal_approx(e._attack_cue._pivot.position.y,1.25))
+ e.forced_strike=""
  shot("high")
  e.take_melee_hit(1,Vector3(2,0,0))
  check("hit interruption cancels cue immediately",not e._attack_cue._pivot.visible)
@@ -32,11 +34,16 @@ func run()->void:
  check("repeat attacks reuse cue nodes",e._attack_cue.get_child_count(true)==count)
  await wait(0.5);check("cue expires if transition is delayed",not e._attack_cue._pivot.visible)
  e._enter(e.WINDUP);e.take_melee_hit(5,Vector3(2,0,0));check("death cancels cue",e._dead and not e._attack_cue._pivot.visible)
- var brute=route.enemies[3];brute.global_position=Vector3(34,0,0);brute.get_node("VisualPivot").rotation.y=PI
- brute._enter(brute.WINDUP);brute._state_t=0.4;brute.take_melee_hit(1,Vector3(2,0,0))
- check("heavy commitment retains warning",brute._attack_cue._pivot.visible)
- brute._update_weapon_pose(0);await wait(0.08);shot("heavy")
- brute._enter(brute.IDLE)
+ var brute=null
+ for enemy in route.enemies:
+  if enemy.encounter_id=="brute":brute=enemy;break
+ check("brute encounter found",brute!=null)
+ if brute:
+  brute.global_position=Vector3(34,0,0);brute.get_node("VisualPivot").rotation.y=PI
+  brute._enter(brute.WINDUP);brute._state_t=0.4;brute.take_melee_hit(1,Vector3(2,0,0))
+  check("heavy commitment retains warning",brute._attack_cue._pivot.visible)
+  brute._update_weapon_pose(0);await wait(0.08);shot("heavy")
+  brute._enter(brute.IDLE)
  var guard=route.enemies[2];guard.global_position=Vector3(34,0,0);guard.get_node("VisualPivot").rotation.y=PI;guard._ranged_attack=true;guard._enter(guard.WINDUP)
  guard._state_t=0.3;guard._update_weapon_pose(0);await wait(0.08);shot("ranged")
  check("ranged warning has charge lifetime",guard._attack_cue._pivot.visible)
