@@ -13,28 +13,33 @@ func run():
  var p=main.player;var route=main.route;var boss=route.overseer;var gate=route.arena_gate
  p.set_physics_process(false)
  for e in route.enemies:e.set_physics_process(false)
- p.global_position=Vector3(46.1,0,0);boss.active=true
+ var entry:float=gate.entry_x
+ var close_x:float=gate.close_x
+ p.global_position=Vector3(close_x-0.4,0,0);boss.active=true
  await physics_frame;await physics_frame
  check("entry stays clear until whole player crossed",not gate.locked and gate.body.collision_layer==0)
- p.global_position.x=46.6
+ p.global_position.x=close_x+0.1
  await physics_frame;await physics_frame
  check("active encounter locks entry",gate.locked and gate.body.visible)
- main.get_node("Camera3D").global_position=Vector3(48.2,1.6,7)
+ print("ARENA state before death locked=",gate.locked," layer=",gate.body.collision_layer)
+ main.get_node("Camera3D").global_position=Vector3(close_x+0.2,1.6,7)
  await process_frame
  if DisplayServer.get_name()!="headless":
   RenderingServer.force_draw(false)
   root.get_texture().get_image().save_png(OS.get_environment("ARENA_OUTPUT")+"/closed.png")
- var query=PhysicsRayQueryParameters3D.create(Vector3(46.2,1,0),Vector3(45,1,0),1)
+ var query=PhysicsRayQueryParameters3D.create(Vector3(entry+0.2,1,0),Vector3(entry-0.8,1,0),1)
  check("gate physically blocks return",not main.get_world_3d().direct_space_state.intersect_ray(query).is_empty())
- route.shards=7;route._last_grounded=Vector3(47,0,0);p._dying=true;route.on_player_death()
+ route.shards=7;p._dying=true;route.on_player_death()
  await physics_frame;await physics_frame
  check("death opens entry and resets living boss",not gate.locked and not boss.active and boss.hp==12)
- check("death preserves reachable cache",route.death_cache.amount()==7 and route.death_cache.position().x==47)
- p._dying=false;p.global_position.x=47
- check("cache reclaim still works",route.reclaim_shards() and route.shards==7)
+ check("death keeps wallet",route.shards==7 and not route.death_cache.is_active())
+ p._dying=false;p.global_position=Vector3(close_x+0.1,0,0)
+ route.death_cache.replace(5,Vector3(close_x+0.1,0,0));route._refresh_cache_marker()
+ check("cache reclaim still works",route.reclaim_shards() and route.shards==12 and not route.death_cache.is_active())
  boss.active=true
  await physics_frame;await physics_frame
  check("new attempt locks again",gate.locked)
+ print("ARENA state before defeat locked=",gate.locked," layer=",gate.body.collision_layer)
  boss._dead=true
  await physics_frame;await physics_frame
  check("boss defeat releases entry",not gate.locked and gate.body.collision_layer==0)
