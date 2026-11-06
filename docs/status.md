@@ -50,6 +50,8 @@
 - #85 zweite Einreichung (64): Fehler behoben und von mir bestätigt (Test auf main ohne Korrektur rot, mit Korrektur 3 × grün; `workbench_integration` Zeile 50 grün). Trotzdem Nacharbeit: Die Kampfsperre greift nach jedem Schließen der Werkbank, auch mit Esc; der erste Angriff danach würde verschluckt. Sperre nur, wenn die schließende Taste selbst Angriff/Ausweichen ist, plus eine Prüfung dafür.
 - #56 angenommen (landing_integration_test ohne Display; headless 3 × grün, mit Fenster wird der Screenshot weiter gespeichert). Nach dem Merge aus der Quarantäne: Suite zweimal grün mit 85 headless + 14 hook.
 
+**Abend 06.11.:** #85 angenommen (dritte Einreichung, 66). Die Kampfsperre greift nur noch, wenn die schließende Taste selbst Angriff/Ausweichen ist, und endet beim Loslassen. Von mir auf d98af8a geprüft: `shop_close_input_test` ohne Korrektur rot (3 Fehler, darunter „Esc verschluckt den Angriff“), mit Korrektur 3 × grün; `pause_menu_test`, `pause_integration_test`, `arm_first_fight` grün; das gesperrte `workbench_integration` zeigt mit und ohne Patch dieselben 12 Fehler. Nach dem Merge (b328e66) im Manifest eingetragen (headless); Suite grün mit 86 headless + 14 hook. Damit ist #86 (Werkbank) frei.
+
 **Rulings (Nachmittag)**
 - Ruling: Den Fehler der Fokusleiste behebe ich selbst statt per Aufgabe — er liegt in meiner Basis (Stufe D), und `menu_screen.gd` ist in allen Menü-Aufgaben ausgeschlossen — Kosten bei Irrtum: keine, die Korrektur hat einen eigenen Test.
 
