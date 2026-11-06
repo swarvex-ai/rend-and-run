@@ -66,6 +66,14 @@ func run() -> void:
 		await process_frame;ticks += 1
 	check("close emits closed within 300 ms", "closed" in events and not menu.is_open() and ticks * (1.0 / 60.0) <= 0.3)
 	check("all transitions are at most 300 ms", menu.SCREEN_IN <= 0.3 and menu.SCREEN_OUT <= 0.3 and menu.FOCUS_MOVE <= 0.3)
+	menu.open_screen();await process_frame
+	menu.set_row_enabled("music_volume", false);menu.focus_index = 0;await press("ui_down")
+	check("set_row_enabled disables a row and focus skips it", menu.focused_id() == "effects_volume" and menu.rows[1].node.disabled)
+	menu.clear_rows();menu.set_title("Quit?");menu.add_button("cancel", "Cancel");menu.add_button("quit", "Quit")
+	await menu.show_rows("cancel")
+	check("clear_rows and show_rows swap the rows on the open screen", menu.is_open() and menu.rows.size() == 2 and menu.focused_id() == "cancel")
+	await press("ui_down");await press("ui_down")
+	check("focus wraps inside a confirmation", menu.focused_id() == "cancel")
 	check("options never touch the route save", not FileAccess.file_exists("user://rendrun_route_v12.json"))
 	DirAccess.remove_absolute(ProjectSettings.globalize_path(PATH))
 	print("MENU SUMMARY failures=", failures)

@@ -11,7 +11,8 @@ extends Control
 ##   value_changed(id, value)  a slider, cycle or switch row changed its value
 ##
 ## Build rows in _build() with add_button / add_slider / add_cycle / add_switch, then
-## call open_screen(). Rows are navigated with ui_up / ui_down (wrapping, disabled rows
+## call open_screen(). For a confirmation on the same screen: clear_rows(), set_title(),
+## add the new rows, show_rows(). set_row_enabled() disables a row (e.g. Continue). Rows are navigated with ui_up / ui_down (wrapping, disabled rows
 ## skipped), adjusted with ui_left / ui_right, confirmed with ui_accept.
 ## process_mode is ALWAYS so menus work while the tree is paused.
 
@@ -152,6 +153,36 @@ func handle_action(action: String) -> bool:
 			_play(_back_sound(), -16.0, 0.75 if _back_sound() == SND_CONFIRM else 1.0);back_requested.emit()
 			return true
 	return false
+
+## Removes all rows (e.g. to show a confirmation on the same screen); add new rows after it.
+## The screen stays open; focus goes to the first enabled new row on show_rows().
+func clear_rows() -> void:
+	for row in rows:row.node.queue_free()
+	rows.clear()
+	focus_index = -1
+	_marker.visible = false
+
+## Call after adding rows to an open screen (after clear_rows()); focuses `focus_id` if given.
+func show_rows(focus_id := "") -> void:
+	focus_index = -1
+	for i in rows.size():
+		if rows[i].id == focus_id and rows[i].enabled:focus_index = i
+	if focus_index < 0:focus_index = _next_enabled(-1, 1)
+	await get_tree().process_frame   # let the new rows take their size
+	_center_panel()
+	_show_focus(false)
+
+func set_title(text: String) -> void:
+	title = text
+	(_panel.get_child(0).get_child(0) as Label).text = text
+
+## Enables or disables a row; a disabled row is dimmed and skipped by focus.
+func set_row_enabled(id: String, enabled: bool) -> void:
+	for i in rows.size():
+		if rows[i].id == id:
+			rows[i].enabled = enabled;rows[i].node.disabled = not enabled
+			if not enabled and i == focus_index:
+				focus_index = _next_enabled(i, 1);_show_focus(false)
 
 func value_of(id: String) -> Variant:
 	for row in rows:
