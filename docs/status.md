@@ -36,6 +36,8 @@
 
 **Wartet zusätzlich auf neVs:** UX-Spezifikation (Nachricht 16), Sound Bible (17), Story-Gerüst (18).
 
+**Mittag 06.11.:** #83 angenommen (Pausenmenü Teil 1 auf `MenuScreen`: fünf Zeilen, Rückfragen auf demselben Bildschirm, Optionen über dem pausierten Spiel; 378 Zeilen, Pipeline 84 headless + 13 hook grün). Damit ist #84 (neue Prüfungen) frei. Angebot: 26 freie Aufgaben bei 1 aktivem Agenten, keine Einreichung offen.
+
 **Für Playtest und neVs gesammelt (nicht dringend)**
 - Duellant/Schildträger: Der Rückzugsschritt endet bei 0,30 s, die Erholung bei 0,32 s; es bleibt kaum ein Strafzeitfenster nach dem Schritt (Diagnose #36). Balancing, Entscheidung neVs nach dem Playtest.
 - Die Wache bei x 40 steht 0,4 m in der Deckung (40,0–41,6) und wird beim Start auf x ≈ 39,6 geschoben (Diagnose #35). Schweregrad S4.
