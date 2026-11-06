@@ -102,7 +102,7 @@ quarantine route_v12_test V12_TEST
 headless sector_complete_test
 quarantine security_pair_test V45_TEST
 headless service_lamp_integration
-quarantine service_return_integration
+headless service_return_integration
 headless servo_harvest_test
 headless servo_resume_test
 headless servo_run_ledger_test

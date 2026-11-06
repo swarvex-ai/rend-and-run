@@ -58,6 +58,8 @@
 - #66 (Aufseher-Test) zur Nacharbeit: RC1–RC4 sind gut gelöst, aber die Prüfung „sichtbare tiefe Klinge im Trefferband“ wurde auf t ≥ 0,15 s verschoben (Höhe ein Bild später) und trifft damit genau das eine Bild, in dem sie besteht. Gemessen: Das Trefferfenster ist 0,075–0,15 s (`enemy.gd:408`), die Klinge steht darin bei 2,1–0,6 m statt 0,2–0,6 m. Die alte Prüfung bleibt, der Test bleibt mit dieser einen roten Prüfung in der Quarantäne. Diagnose: #93 (Spielfehler oder Messfehler, weil der Arm per `SkeletonModifier3D` gestellt wird).
 - Ruling: Eine Prüfung, die nur durch verschobene Abtastzeit grün wird, gilt als abgeschwächt, auch wenn die Grenzen gleich bleiben — Maßstab ist der Augenblick, in dem das Spiel den Treffer wertet — Kosten bei Irrtum: ein Testlauf mehr, falls die Diagnose einen Messfehler findet.
 
+**Nacht 06./07.11.:** #69 angenommen (service_return_integration: Aufzug aus `lift_x`, volle Vollendung, Rückweg nach Strecke und Tempo; 3 × grün). Nach dem Merge (9087310) aus der Quarantäne, Suite zweimal grün mit 92 headless + 14 hook. #66 nach Nacharbeit angenommen (f99042d): 32 von 33 Prüfungen grün, nur die tiefe Klinge rot (t 0,117 s, Höhe 1,46 m); der Test bleibt bis #93 in der Quarantäne.
+
 **Rulings (Nachmittag)**
 - Ruling: Den Fehler der Fokusleiste behebe ich selbst statt per Aufgabe — er liegt in meiner Basis (Stufe D), und `menu_screen.gd` ist in allen Menü-Aufgaben ausgeschlossen — Kosten bei Irrtum: keine, die Korrektur hat einen eigenen Test.
 
