@@ -102,7 +102,8 @@ func voice(group: String, vol_db := -4.0) -> void:
 	if takes.size() > 1 and pick == _last_voice.get(group, -1):pick = (pick + 1) % takes.size()
 	_last_voice[group] = pick
 	if _voice_player == null:
-		_voice_player = AudioStreamPlayer.new();_voice_player.bus = "Combat";add_child(_voice_player)
+		preload("res://modules/persistence/settings_store.gd").bus_index("Voice")
+		_voice_player = AudioStreamPlayer.new();_voice_player.bus = "Voice";add_child(_voice_player)
 	# One mouth: a new cry cuts the previous one instead of stacking.
 	_voice_player.stream = takes[pick]
 	_voice_player.pitch_scale = randf_range(0.97, 1.03)
