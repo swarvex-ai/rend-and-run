@@ -76,9 +76,7 @@ func _initialize() -> void:
 	_check("open_sichtbar", menu.visible)
 	_check("fokus_weiter", _focus_name() == "BtnResume", _focus_name())
 
-	var main_box := menu.find_child("MainBox", true, false) as Control
-	var conf_box := menu.find_child("ConfirmBox", true, false) as Control
-	_check("hauptansicht_sichtbar", main_box.visible and not conf_box.visible)
+	_check("hauptansicht_sichtbar", menu.confirm_id == "" and menu.rows.size() == 5)
 
 	# --- Weiter emittiert resume_requested genau einmal
 	_press(menu.find_child("BtnResume", true, false) as Button)
@@ -89,7 +87,7 @@ func _initialize() -> void:
 	_press(menu.find_child("BtnRestart", true, false) as Button)
 	await process_frame
 	await process_frame
-	_check("bestaetigung_offnet", conf_box.visible and not main_box.visible)
+	_check("bestaetigung_offnet", menu.confirm_id == "restart" and menu.rows.size() == 2)
 	_check("keine_restart_signal_vor_bestaetigung", n_restart == 0, "n=%d" % n_restart)
 	_check("fokus_neu_laden", _focus_name() == "BtnReload", _focus_name())
 	_press(menu.find_child("BtnReload", true, false) as Button)
@@ -98,20 +96,24 @@ func _initialize() -> void:
 	_check("restart_genau_einmal_nach_bestaetigung", n_restart == 1, "n=%d" % n_restart)
 
 	# --- Abbruchpfad: Zurueck fuehrt zu den Hauptbuttons, kein restart-Signal
+	menu.open_menu()
+	await process_frame
 	_press(menu.find_child("BtnRestart", true, false) as Button)
 	await process_frame
 	await process_frame
-	_check("bestaetigung_offnet_2", conf_box.visible)
+	_check("bestaetigung_offnet_2", menu.confirm_id == "restart" and menu.rows.size() == 2)
 	_press(menu.find_child("BtnBack", true, false) as Button)
 	await process_frame
 	await process_frame
-	_check("abbruch_zurueck_zu_haupt", main_box.visible and not conf_box.visible)
+	_check("abbruch_zurueck_zu_haupt", menu.confirm_id == "" and menu.rows.size() == 5)
 	_check("abbruch_fokus_kontrollpunkt", _focus_name() == "BtnRestart", _focus_name())
 	_check("abbruch_kein_zusaetzliches_restart", n_restart == 1, "n=%d" % n_restart)
 
 	# --- Beenden emittiert quit_requested genau einmal
 	_press(menu.find_child("BtnQuit", true, false) as Button)
 	await process_frame
+	await process_frame
+	_press(menu.rows[1].node as Button)
 	await process_frame
 	_check("quit_genau_einmal", n_quit == 1, "n=%d" % n_quit)
 
@@ -123,11 +125,11 @@ func _initialize() -> void:
 	_press(menu.find_child("BtnRestart", true, false) as Button)
 	await process_frame
 	await process_frame
-	_check("in_bestaetigung_vor_reopen", conf_box.visible)
+	_check("in_bestaetigung_vor_reopen", menu.confirm_id == "restart" and menu.rows.size() == 2)
 	menu.close_menu()
 	menu.open_menu()
 	await process_frame
-	_check("reopen_setzt_bestaetigung_zurueck", main_box.visible and not conf_box.visible)
+	_check("reopen_setzt_bestaetigung_zurueck", menu.confirm_id == "" and menu.rows.size() == 5)
 	_check("reopen_fokus_weiter", _focus_name() == "BtnResume", _focus_name())
 
 	# --- kein Knotenwachstum nach 10 Oeffnen/Schliessen

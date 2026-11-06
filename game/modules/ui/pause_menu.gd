@@ -1,232 +1,135 @@
-extends Control
-## H30 — Pause-Menue (eigenstaendiges Control-Modul).
-## Signale resume_requested / restart_requested / quit_requested; Codex
-## verdrahtet Esc/gamepadStart, SceneTree-Pause und das geladene
-## Checkpoint-Neuladen. Das Modul fuehrt NIEMALS selbst einen Engine-Quit,
-## Szenen-Reload oder Pause-Befehl aus und betreibt kein Save-IO — es
-## entscheidet nur over UI-Zustand
-## und emittiert Signale exakt einmal pro Aktivierung.
-##
-## process_mode ist fest ALWAYS, damit das Menue bei pausiertem Baum
-## weiterbedient werden kann. Initialet versteckt; oeffnen ueber open_menu(),
-## schliessen ueber close_menu(). Keine externen Assets, keine Polling-Loop,
-## ESC wird NICHT im Modul behandelt.
-##
-## Farbpalette folgt modules/ui/combat_hud.gd (Off-White / blasses Cyan /
-## gedaempftes Kupfer). Schriftgroessen >= 18 px.
+extends "res://modules/ui/menu_screen.gd"
+## Pause screen built on MenuScreen (E11.5a). Rows follow the style guide and
+## docs/decisions/0002-menu-style-guide.md (Quit to desktop added).
+## The module never quits, reloads or pauses the tree itself; it only emits
+## resume_requested / options_requested / restart_requested / main_menu_requested /
+## quit_requested. The last three rows confirm on the same screen; B / Esc returns
+## to the list, B / Esc on the list resumes. The owner wires the actions.
 
 signal resume_requested
 signal restart_requested
 signal quit_requested
+signal options_requested
+signal main_menu_requested
 
-const COL_BG := Color(0.02, 0.03, 0.04, 0.66)        # Backdrop, dunkel translucent
-const COL_PANEL := Color(0.07, 0.08, 0.10, 0.92)     # wie HUD-Panel, deckender
-const COL_TEXT := Color(0.93, 0.90, 0.84)            # warmes Off-White
-const COL_DIM := Color(0.93, 0.90, 0.84, 0.62)       # Sekundaertext
-const COL_CYAN := Color(0.55, 0.82, 0.85)            # Focus (blasses Zyan)
-const COL_COPPER := Color(0.82, 0.55, 0.22)          # Akzent (Amber/Kupfer)
-const COL_BTN := Color(0.12, 0.14, 0.17, 0.95)
-const COL_BTN_HOVER := Color(0.18, 0.22, 0.26, 1.0)
-const COL_BTN_DOWN := Color(0.10, 0.11, 0.13, 1.0)
+const TITLE := "Paused"
+const ROWS := [
+	["resume", "Resume"],
+	["options", "Options"],
+	["restart", "To checkpoint"],
+	["main_menu", "Quit to main menu"],
+	["quit", "Quit to desktop"],
+]
+const CONFIRMATIONS := {
+	"restart": ["Restart from checkpoint?", "To checkpoint"],
+	"main_menu": ["Quit to main menu?", "Quit to main menu"],
+	"quit": ["Quit to desktop?", "Quit to desktop"],
+}
 
+var confirm_id := ""
 var _btn_resume: Button
 var _btn_restart: Button
 var _btn_quit: Button
 var _btn_back: Button
 var _btn_reload: Button
-var _main_box: VBoxContainer
-var _confirm_box: VBoxContainer
-var _confirm_label: Label
-
 
 func _init() -> void:
-	# Aufbau in _init: find_child/API gelten schon vor dem Baumeintritt,
-	# falls Codex erst open_menu() und dann add_child() aufruft.
-	process_mode = Node.PROCESS_MODE_ALWAYS
+	super._init()
 	name = "PauseMenu"
-	visible = false
-	mouse_filter = Control.MOUSE_FILTER_STOP
-	# Fullrect: Anker UND Offsets (Anker allein liessen rechte/untere Kante
-	# ausserhalb des CanvasLayer-Camas wandern — H25-Lektion).
-	anchor_left = 0.0
-	anchor_top = 0.0
-	anchor_right = 1.0
-	anchor_bottom = 1.0
-	offset_left = 0.0
-	offset_top = 0.0
-	offset_right = 0.0
-	offset_bottom = 0.0
+	title = TITLE
+	_panel.custom_minimum_size.x = 640.0
+	_backdrop.mouse_filter = Control.MOUSE_FILTER_STOP
+	_build()
 
-	var backdrop := ColorRect.new()
-	backdrop.name = "Backdrop"
-	backdrop.color = COL_BG
-	backdrop.set_anchors_preset(Control.PRESET_FULL_RECT)
-	backdrop.mouse_filter = Control.MOUSE_FILTER_STOP   # kein Klick-Through
-	add_child(backdrop)
-
-	var panel := PanelContainer.new()
-	panel.name = "Panel"
-	# schmales, zentriertes Panel (360 px) — passt von 960x540 bis 1920x1080
-	panel.anchor_left = 0.5
-	panel.anchor_top = 0.5
-	panel.anchor_right = 0.5
-	panel.anchor_bottom = 0.5
-	panel.grow_horizontal = Control.GROW_DIRECTION_BOTH
-	panel.grow_vertical = Control.GROW_DIRECTION_BOTH
-	panel.offset_left = -180.0
-	panel.offset_right = 180.0
-	panel.offset_top = -160.0
-	panel.offset_bottom = 160.0
-	panel.mouse_filter = Control.MOUSE_FILTER_STOP
-	var psb := StyleBoxFlat.new()
-	psb.bg_color = COL_PANEL
-	psb.border_color = Color(COL_COPPER.r, COL_COPPER.g, COL_COPPER.b, 0.8)
-	psb.set_border_width_all(2)
-	psb.set_content_margin_all(20.0)
-	panel.add_theme_stylebox_override("panel", psb)
-	add_child(panel)
-
-	var col := VBoxContainer.new()
-	col.name = "Column"
-	col.set_anchors_preset(Control.PRESET_FULL_RECT)
-	col.add_theme_constant_override("separation", 10)
-	panel.add_child(col)
-
-	col.add_child(_mk_label("TitleLabel", "REND&RUN", 30, COL_TEXT, HORIZONTAL_ALIGNMENT_CENTER))
-	col.add_child(_mk_label("PauseLabel", "PAUSE", 20, COL_CYAN, HORIZONTAL_ALIGNMENT_CENTER))
-	col.add_child(_mk_label("InfoLabel", "Ausrüstung und gespeicherter Fortschritt\nbleiben erhalten.", 18, COL_DIM, HORIZONTAL_ALIGNMENT_CENTER))
-	col.add_child(_mk_spacer(6))
-
-	_main_box = VBoxContainer.new()
-	_main_box.name = "MainBox"
-	_main_box.add_theme_constant_override("separation", 10)
-	col.add_child(_main_box)
-	_btn_resume = _mk_button("BtnResume", "Weiter")
-	_btn_restart = _mk_button("BtnRestart", "Zum Kontrollpunkt")
-	_btn_quit = _mk_button("BtnQuit", "Spiel beenden")
-	_main_box.add_child(_btn_resume)
-	_main_box.add_child(_btn_restart)
-	_main_box.add_child(_btn_quit)
-
-	_confirm_box = VBoxContainer.new()
-	_confirm_box.name = "ConfirmBox"
-	_confirm_box.add_theme_constant_override("separation", 10)
-	_confirm_box.visible = false
-	col.add_child(_confirm_box)
-	_confirm_label = _mk_label("ConfirmLabel", "Wirklich zum letzten gespeicherten\nKontrollpunkt zurück?", 18, COL_TEXT, HORIZONTAL_ALIGNMENT_CENTER)
-	_confirm_box.add_child(_confirm_label)
-	_btn_back = _mk_button("BtnBack", "Zurück")
-	_btn_reload = _mk_button("BtnReload", "Neu laden")
-	_confirm_box.add_child(_btn_back)
-	_confirm_box.add_child(_btn_reload)
-
-	_btn_resume.pressed.connect(_on_resume)
-	_btn_restart.pressed.connect(_on_restart)
-	_btn_quit.pressed.connect(_on_quit)
-	_btn_back.pressed.connect(_on_back)
-	_btn_reload.pressed.connect(_on_reload)
-
+func _build() -> void:
+	for row in ROWS: _add(row[0], row[1], _list_node_name(row[0]))
+	row_activated.connect(_on_row_activated)
+	back_requested.connect(_on_back_requested)
 
 func open_menu() -> void:
-	# Hauptansicht wiederherstellen (offener Bestaetigungsdialog wird verworfen)
-	_show_main()
-	visible = true
-	if _btn_resume.is_inside_tree():
-		_btn_resume.grab_focus()
-
+	if confirm_id != "" or (not rows.is_empty() and rows[0].id != "resume"):
+		_show_list()
+	open_screen()
 
 func close_menu() -> void:
 	visible = false
+	if confirm_id != "" or (not rows.is_empty() and rows[0].id != "resume"):
+		_show_list()
 
+func is_confirming() -> bool:
+	return confirm_id != ""
 
-func is_open() -> bool:
-	return visible
-
-
-func _show_main() -> void:
-	_main_box.visible = true
-	_confirm_box.visible = false
-
-
-func _show_confirm() -> void:
-	_main_box.visible = false
-	_confirm_box.visible = true
-
-
-func _on_resume() -> void:
-	resume_requested.emit()
-
-
+## Keeps the old entry point used when the gameplay restart action opens the menu.
 func _on_restart() -> void:
-	_show_confirm()
-	if _btn_reload.is_inside_tree():
-		_btn_reload.grab_focus()
+	if not visible: open_menu()
+	_show_confirm("restart")
 
+func _on_row_activated(id: String) -> void:
+	match id:
+		"resume": resume_requested.emit()
+		"options": options_requested.emit()
+		"restart", "main_menu", "quit": _show_confirm(id)
+		"cancel": _cancel_confirm()
+		"confirm": _confirm_action()
 
-func _on_back() -> void:
-	_show_main()
-	if _btn_restart.is_inside_tree():
-		_btn_restart.grab_focus()
+func _on_back_requested() -> void:
+	if confirm_id != "": _cancel_confirm()
+	else: resume_requested.emit()
 
+func _confirm_action() -> void:
+	match confirm_id:
+		"restart": restart_requested.emit()
+		"main_menu": main_menu_requested.emit()
+		"quit": quit_requested.emit()
 
-func _on_quit() -> void:
-	quit_requested.emit()
+func _cancel_confirm() -> void:
+	_show_list(confirm_id)
 
+func _show_list(focus_id := "resume") -> void:
+	clear_rows()
+	_build_list()
+	show_rows(focus_id)
 
-func _on_reload() -> void:
-	restart_requested.emit()
+func _build_list() -> void:
+	confirm_id = ""
+	set_title(TITLE)
+	for row in ROWS: _add(row[0], row[1], _list_node_name(row[0]))
 
+func _show_confirm(id: String) -> void:
+	confirm_id = id
+	var texts: Array = CONFIRMATIONS[id]
+	clear_rows()
+	set_title(texts[0])
+	_add("cancel", "Cancel", "BtnBack")
+	var action := _add("confirm", texts[1], "BtnReload" if id == "restart" else "BtnConfirm")
+	if id == "restart": _btn_reload = action
+	show_rows("confirm")
 
-func _mk_label(lbl_name: String, txt: String, size: int, color: Color, align: int) -> Label:
-	var l := Label.new()
-	l.name = lbl_name
-	l.text = txt
-	l.horizontal_alignment = align
-	l.add_theme_font_size_override("font_size", size)
-	l.add_theme_color_override("font_color", color)
-	l.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	return l
+func _add(id: String, text: String, node_name: String) -> Button:
+	add_button(id, text)
+	var node: Button = rows.back().node
+	node.name = node_name
+	match id:
+		"resume": _btn_resume = node
+		"restart": _btn_restart = node
+		"quit": _btn_quit = node
+		"cancel": _btn_back = node
+	return node
 
+func _list_node_name(id: String) -> String:
+	match id:
+		"resume": return "BtnResume"
+		"options": return "BtnOptions"
+		"restart": return "BtnRestart"
+		"main_menu": return "BtnMainMenu"
+		_: return "BtnQuit"
 
-func _mk_spacer(h: float) -> Control:
-	var s := Control.new()
-	s.name = "Spacer"
-	s.custom_minimum_size = Vector2(0, h)
-	s.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	return s
+## Keep real focus in step with the base's marker so keyboard/gamepad focus is
+## visible to the rest of the game while navigation stays inside MenuScreen.
+func _show_focus(animate: bool) -> void:
+	super._show_focus(animate)
+	if focus_index >= 0 and visible and is_inside_tree():
+		var node: Button = rows[focus_index].node
+		node.focus_mode = Control.FOCUS_ALL
+		node.grab_focus()
 
-
-func _mk_button(btn_name: String, txt: String) -> Button:
-	var b := Button.new()
-	b.name = btn_name
-	b.text = txt
-	b.custom_minimum_size = Vector2(300, 46)
-	b.add_theme_font_size_override("font_size", 20)
-	b.add_theme_color_override("font_color", COL_TEXT)
-	b.add_theme_color_override("font_hover_color", COL_CYAN)
-	b.add_theme_color_override("font_pressed_color", COL_CYAN)
-	b.add_theme_color_override("font_focus_color", COL_CYAN)
-	var nb := StyleBoxFlat.new()
-	nb.bg_color = COL_BTN
-	nb.set_corner_radius_all(4)
-	nb.set_border_width_all(1)
-	nb.border_color = Color(0.3, 0.33, 0.36)
-	nb.content_margin_left = 14.0
-	nb.content_margin_right = 14.0
-	b.add_theme_stylebox_override("normal", nb)
-	var hb := nb.duplicate() as StyleBoxFlat
-	hb.bg_color = COL_BTN_HOVER
-	hb.border_color = COL_CYAN
-	b.add_theme_stylebox_override("hover", hb)
-	var pb := nb.duplicate() as StyleBoxFlat
-	pb.bg_color = COL_BTN_DOWN
-	pb.border_color = COL_CYAN
-	b.add_theme_stylebox_override("pressed", pb)
-	# sichtbarer Fokus: markanter Cyan-Rahmen (Tastatur/Controller-Navigation)
-	var fb := nb.duplicate() as StyleBoxFlat
-	fb.draw_center = false
-	fb.set_border_width_all(3)
-	fb.border_color = COL_CYAN
-	b.add_theme_stylebox_override("focus", fb)
-	b.mouse_filter = Control.MOUSE_FILTER_STOP
-	return b

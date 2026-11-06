@@ -7,9 +7,9 @@ func check(label:String,ok:bool)->void:
 	print("V28 %s %s"%["PASS" if ok else "FAIL",label])
 func wait(t:float)->void:await get_tree().create_timer(t,true,false,true).timeout
 func escape()->void:
-	var key:=InputEventKey.new();key.physical_keycode=KEY_ESCAPE;key.pressed=true
+	var key:=InputEventKey.new();key.physical_keycode=KEY_ESCAPE;key.keycode=KEY_ESCAPE;key.pressed=true
 	Input.parse_input_event(key)
-	key=InputEventKey.new();key.physical_keycode=KEY_ESCAPE;key.pressed=false;Input.parse_input_event(key)
+	key=InputEventKey.new();key.physical_keycode=KEY_ESCAPE;key.keycode=KEY_ESCAPE;key.pressed=false;Input.parse_input_event(key)
 func run()->void:
 	process_mode=Node.PROCESS_MODE_ALWAYS
 	var main=get_parent();var route=main.route;var p=main.player;var ctl=main.pause_controller
@@ -28,7 +28,7 @@ func run()->void:
 	if DisplayServer.get_name()!="headless":
 		RenderingServer.force_draw(false);get_viewport().get_texture().get_image().save_png(OS.get_environment("V28_OUTPUT")+"/pause.png")
 	ctl.menu._btn_restart.pressed.emit();await wait(0.03)
-	check("restart requires confirmation",get_tree().current_scene==main and get_tree().paused and ctl.menu._confirm_box.visible)
+	check("restart requires confirmation",get_tree().current_scene==main and get_tree().paused and ctl.menu.is_confirming())
 	ctl.menu._btn_back.pressed.emit();await wait(0.03)
 	check("cancel preserves scene and save",get_tree().current_scene==main and FileAccess.get_file_as_string("user://rendrun_route_v12.json")==saved)
 	Input.action_press("attack");ctl.menu._btn_resume.pressed.emit();await wait(0.05)
@@ -52,7 +52,7 @@ func run()->void:
 	check("checkpoint equipment and shards survive death and reload",fresh.route.checkpoint and fresh.route.shards==9 and fresh.route.death_cache.amount()==0 and fresh.player.shield_unlocked)
 	check("saved file unchanged",FileAccess.get_file_as_string("user://rendrun_route_v12.json")==saved)
 	check("new scene menu hidden",not fresh.pause_controller.menu.visible)
-	fresh.pause_controller.open_menu();fresh.pause_controller.menu._btn_quit.pressed.emit()
+	fresh.pause_controller.open_menu();fresh.pause_controller.menu._btn_quit.pressed.emit();fresh.pause_controller.menu.rows[1].node.pressed.emit()
 	check("quit exits pause",fresh.pause_controller._leaving and not get_tree().paused)
 	print("V28 SUMMARY checks=%d failures=%d"%[checks,failures])
 	get_tree().quit(1 if failures else 0)

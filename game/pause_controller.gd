@@ -3,6 +3,7 @@ var menu:Control
 var summary:Control
 var shop:Control
 var equipment_menu:Control
+var options_menu:Control
 var _leaving:=false
 var _resume_pending:=false
 const GAME_ACTIONS:=["move_left","move_right","move_up","move_down","jump","attack","dash","dodge","crouch","guard","interact","restart"]
@@ -19,8 +20,12 @@ func _ready()->void:
 	summary=preload("res://modules/ui/sector_complete.gd").new();layer.add_child(summary)
 	summary.explore_requested.connect(resume)
 	summary.title_requested.connect(return_title)
+	options_menu=preload("res://modules/ui/options_menu.gd").new();layer.add_child(options_menu)
+	options_menu.back_requested.connect(_close_options)
 	menu.resume_requested.connect(resume)
+	menu.options_requested.connect(open_options)
 	menu.restart_requested.connect(restart)
+	menu.main_menu_requested.connect(return_title)
 	menu.quit_requested.connect(quit_game)
 func _input(event:InputEvent)->void:
 	var active_panel:Control=equipment_menu if equipment_menu.visible else shop
@@ -41,9 +46,15 @@ func _input(event:InputEvent)->void:
 	var inventory:bool=(event is InputEventKey and event.physical_keycode==KEY_I and event.pressed and not event.echo) or (event is InputEventJoypadButton and event.button_index==JOY_BUTTON_BACK and event.pressed)
 	if inventory:
 		open_equipment();get_viewport().set_input_as_handled();return
-	var toggle:bool=(event is InputEventKey and event.physical_keycode==KEY_ESCAPE and event.pressed and not event.echo) or (event is InputEventJoypadButton and event.button_index==JOY_BUTTON_START and event.pressed)
-	if toggle:
-		if menu.visible or summary.visible:resume()
+	var escape:bool=event is InputEventKey and event.physical_keycode==KEY_ESCAPE and event.pressed and not event.echo
+	var start:bool=event is InputEventJoypadButton and event.button_index==JOY_BUTTON_START and event.pressed
+	# MenuScreen already handles B / Esc while a menu is open (back_requested).
+	if escape and not menu.visible and not options_menu.visible:
+		if summary.visible:resume()
+		else:open_menu()
+		get_viewport().set_input_as_handled()
+	elif start:
+		if menu.visible or options_menu.visible or summary.visible:resume()
 		else:open_menu()
 		get_viewport().set_input_as_handled()
 func _release_inputs()->void:
@@ -61,6 +72,7 @@ func resume()->void:
 	var was_shop_open:bool=shop.visible or equipment_menu.visible
 	_release_inputs()
 	menu.close_menu()
+	options_menu.visible=false
 	shop.close_menu()
 	equipment_menu.close_menu()
 	summary.close_summary()
@@ -102,6 +114,15 @@ func show_completion(state:Dictionary)->void:
 	_release_inputs();menu.close_menu()
 	get_tree().paused=true
 	summary.show_summary(state)
+func open_options()->void:
+	if _leaving or _resume_pending:return
+	menu.close_menu();get_tree().paused=true
+	options_menu.open_screen()
+
+func _close_options()->void:
+	await options_menu.close_screen()
+	if not _leaving and not _resume_pending and get_tree().paused:menu.open_menu()
+
 func return_title()->void:
 	if _leaving:return
 	_leaving=true
