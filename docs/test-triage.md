@@ -36,6 +36,7 @@ The live test pipeline (official Godot 4.7.2 build, `JOBS=3`) failed docs-only s
 - **Out of quarantine on 06.11.:** `first_room_playthrough` (headless) after #54 (`seed(1)`, fail-fast checks); full suite green twice with it (85 headless + 13 hook).
 - **Out of quarantine on 06.11.:** `landing_integration_test` (hook) after #56 (screenshot only with a display); full suite green twice with it (85 headless + 14 hook).
 - **Out of quarantine on 06.11.:** `depth_test` (headless) after #58 (`seed(1)`, leftover fighters from part 1 parked so the dog is the only squad melee robot); full suite green twice with it (87 headless + 14 hook).
+- **Out of quarantine on 06.11.:** `arena_gate_integration` (headless) after #65 (positions derived from `arena_gate`, death keeps the wallet, legacy cache reclaim); full suite green twice with it (89 headless + 14 hook).
 - **Stays in quarantine:** `machinery_chamber_integration`. #19 found that nothing builds the machinery chamber any more (`lab_dressing.gd:17-26`); the test now fails fast instead of hanging.
 
 Full suite after these changes: 79 headless + 11 hook, green twice in 120 s each.

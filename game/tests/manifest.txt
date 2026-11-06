@@ -7,7 +7,7 @@
 # fixture   helper scene/script used by other tests
 # quarantine  failed on 2026-10-22 already before Vision 2.0 changes; re-baseline or retire
 # tools/run_tests.sh runs headless, window and hook entries; --quarantine adds the rest.
-quarantine arena_gate_integration
+headless arena_gate_integration
 fixture arm_contact_fixture
 headless arm_contact_runner
 headless arm_first_fight
