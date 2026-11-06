@@ -144,5 +144,6 @@ headless nav_test
 headless loadout_test
 headless ammo_test
 headless voice_test
+headless voice_bus_test
 headless escape_events_test
 window rend_death_review
