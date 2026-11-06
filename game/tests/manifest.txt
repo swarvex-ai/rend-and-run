@@ -110,7 +110,7 @@ headless servo_upgrade_test
 headless settings_store_test
 quarantine shard_pickup_integration
 headless shortcut_door_test
-quarantine shortcut_integration_test H16_TEST
+hook shortcut_integration_test H16_TEST
 probe shortcut_traversal_probe
 headless slash_trail_test
 hook start_integration_test V29_TEST
