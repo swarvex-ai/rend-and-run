@@ -30,6 +30,12 @@
 **Rulings (Nacht)**
 - Ruling: Testreparaturen prüfen die heutige Todesregel (Geldbörse bleibt, kein neuer Cache) — so steht es in Code und Farming-Design v02; GDD und Glossar widersprechen, Frage an neVs (Nachricht 15) — Kosten bei Irrtum: #65/#66 und `shard_pickup_integration` werden angepasst.
 - Ruling: Diagnosen #20–#22 angenommen, Reparaturen #65 (Arena-Tor), #66 (Overseer), #67 (Speichern) geschnitten.
+- Ruling: Diagnosen #23–#36 angenommen; Reparaturen #68–#78 geschnitten. Zwei echte Spielfehler gefunden: B schließt die Werkbank und löst ein Ausweichen aus (#70), und ein fliegender Schuss verliert seinen Schaden, wenn sein Schütze zerstört wird (#76).
+
+**Für Playtest und neVs gesammelt (nicht dringend)**
+- Duellant/Schildträger: Der Rückzugsschritt endet bei 0,30 s, die Erholung bei 0,32 s; es bleibt kaum ein Strafzeitfenster nach dem Schritt (Diagnose #36). Balancing, Entscheidung neVs nach dem Playtest.
+- Die Wache bei x 40 steht 0,4 m in der Deckung (40,0–41,6) und wird beim Start auf x ≈ 39,6 geschoben (Diagnose #35). Schweregrad S4.
+- Alte Spielstände ohne `brute` schalten den Service-Aufzug nach dem Laden nicht frei (Diagnose #24). Schweregrad S3.
 
 **Als Nächstes (Lead):** E11.4–E11.9 als B-Aufgaben schneiden (Hauptmenü, Pause, Credits auf `MenuScreen`); Drehbuch-Varianten #9/#10 bewerten.
 
