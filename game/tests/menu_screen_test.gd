@@ -19,6 +19,12 @@ func press(action: String) -> void:
 	root.push_input(ev)
 	await process_frame
 
+## The marker bar sits left of the focused row, vertically centred on it.
+func marker_beside(menu) -> bool:
+	var row: Rect2 = menu.rows[menu.focus_index].node.get_global_rect()
+	var bar: Rect2 = menu._marker.get_global_rect()
+	return menu._marker.visible and absf(bar.get_center().y - row.get_center().y) < 2.0 and bar.end.x <= row.position.x
+
 func stored(key: String) -> Variant:
 	var s = STORE.new();s.load_from(PATH);return s.get_value(key)
 
@@ -37,6 +43,8 @@ func run() -> void:
 	check("focus starts on the first row", menu.focused_id() == "master_volume")
 	var focused_style: StyleBoxFlat = menu.rows[0].node.get_theme_stylebox("normal")
 	check("focus has a marker bar and an outline, not colour alone", menu._marker.visible and menu._marker.size == menu.MARKER_SIZE and focused_style.border_width_left == 2 and focused_style.content_margin_left == menu.ROW_INSET + menu.FOCUS_OFFSET)
+	for i in 20: await process_frame
+	check("focus marker sits beside the focused row after the screen slid in", marker_beside(menu))
 	await press("ui_up")
 	check("up on the first row wraps to the last", menu.focused_id() == "back")
 	await press("ui_down")
@@ -72,6 +80,8 @@ func run() -> void:
 	menu.clear_rows();menu.set_title("Quit?");menu.add_button("cancel", "Cancel");menu.add_button("quit", "Quit")
 	await menu.show_rows("cancel")
 	check("clear_rows and show_rows swap the rows on the open screen", menu.is_open() and menu.rows.size() == 2 and menu.focused_id() == "cancel")
+	for i in 5: await process_frame
+	check("focus marker follows the shorter panel in a confirmation", marker_beside(menu))
 	await press("ui_down");await press("ui_down")
 	check("focus wraps inside a confirmation", menu.focused_id() == "cancel")
 	check("options never touch the route save", not FileAccess.file_exists("user://rendrun_route_v12.json"))

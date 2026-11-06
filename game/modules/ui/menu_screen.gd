@@ -88,6 +88,11 @@ func _init() -> void:
 	_marker = ColorRect.new();_marker.name = "FocusMarker";_marker.color = COL_FOCUS
 	_marker.size = MARKER_SIZE;_marker.mouse_filter = Control.MOUSE_FILTER_IGNORE;_marker.visible = false
 	add_child(_marker)
+	# The marker is not inside the panel, so it follows the panel and the rows whenever
+	# they move: the slide-in tween, a re-sort after clear_rows/show_rows, a resize.
+	_panel.item_rect_changed.connect(_sync_marker)
+	_list.item_rect_changed.connect(_sync_marker)
+	_list.sort_children.connect(_sync_marker)
 
 func _ready() -> void:
 	(_panel.get_child(0).get_child(0) as Label).text = title
@@ -284,6 +289,12 @@ func _show_focus(animate: bool) -> void:
 		_marker_tween.tween_property(_marker, "position", target, FOCUS_MOVE)
 	else:
 		_marker.position = target
+
+## Snaps the marker to the focused row after a layout change (not during a focus move).
+func _sync_marker() -> void:
+	if focus_index < 0 or focus_index >= rows.size():return
+	if _marker_tween and _marker_tween.is_running():return
+	_marker.position = _marker_target()
 
 func _marker_target() -> Vector2:
 	var node: Control = rows[focus_index].node

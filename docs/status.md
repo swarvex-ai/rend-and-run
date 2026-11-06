@@ -38,6 +38,12 @@
 
 **Mittag 06.11.:** #83 angenommen (Pausenmenü Teil 1 auf `MenuScreen`: fünf Zeilen, Rückfragen auf demselben Bildschirm, Optionen über dem pausierten Spiel; 378 Zeilen, Pipeline 84 headless + 13 hook grün). Damit ist #84 (neue Prüfungen) frei. Angebot: 26 freie Aufgaben bei 1 aktivem Agenten, keine Einreichung offen.
 
+**Nachmittag 06.11.:** #87 angenommen (Hauptmenü Teil 1 auf `MenuScreen`, 378 Zeilen, Screenshots geprüft); #88 ist frei. Die Screenshots zeigten einen Fehler in meiner Basis: Die Fokusleiste blieb nach dem Hineingleiten und nach `show_rows` an der alten Stelle stehen, teils unterhalb des Panels. Behoben in `menu_screen.gd` (Leiste folgt Panel und Zeilen), Regressionstest in `menu_screen_test` (auf altem Code rot, mit Korrektur 3 × grün; Suite 84 headless + 13 hook grün).
+- Beobachtung (S4, für E11-Feinschliff): Das Panel der Hauptmenü-Rückfrage bleibt auf der Höhe der Liste mit fünf Zeilen stehen statt neu zu zentrieren. Nicht dringend.
+
+**Rulings (Nachmittag)**
+- Ruling: Den Fehler der Fokusleiste behebe ich selbst statt per Aufgabe — er liegt in meiner Basis (Stufe D), und `menu_screen.gd` ist in allen Menü-Aufgaben ausgeschlossen — Kosten bei Irrtum: keine, die Korrektur hat einen eigenen Test.
+
 **Für Playtest und neVs gesammelt (nicht dringend)**
 - Duellant/Schildträger: Der Rückzugsschritt endet bei 0,30 s, die Erholung bei 0,32 s; es bleibt kaum ein Strafzeitfenster nach dem Schritt (Diagnose #36). Balancing, Entscheidung neVs nach dem Playtest.
 - Die Wache bei x 40 steht 0,4 m in der Deckung (40,0–41,6) und wird beim Start auf x ≈ 39,6 geschoben (Diagnose #35). Schweregrad S4.
