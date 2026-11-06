@@ -42,7 +42,7 @@
 - Beobachtung (S4, für E11-Feinschliff): Das Panel der Hauptmenü-Rückfrage bleibt auf der Höhe der Liste mit fünf Zeilen stehen statt neu zu zentrieren. Nicht dringend.
 
 - #85 zur Nacharbeit: Der neue Test `shop_close_input_test` ist auf der Basis grün (3 ×, von mir geprüft), bildet den Fehler also nicht ab; mit dem Patch zeigt `workbench_integration` weiter `dash=0.08` nach B. Der Ausweichschritt beginnt schon etwa beim Druck auf B, nicht erst im ersten Spielbild nach der Pause. Anleitung in der Begründung.
-- #54 angenommen (`first_room_playthrough` mit `seed(1)`, Abbruch statt `assert`; bei mir 5 × grün, je 7–8 s). Aus der Quarantäne nach Merge und zwei grünen Suiten.
+- #54 angenommen (`first_room_playthrough` mit `seed(1)`, Abbruch statt `assert`; bei mir 5 × grün, je 7–8 s). Nach dem Merge aus der Quarantäne genommen: Suite zweimal grün mit 85 headless + 13 hook.
 
 **Rulings (Nachmittag)**
 - Ruling: Den Fehler der Fokusleiste behebe ich selbst statt per Aufgabe — er liegt in meiner Basis (Stufe D), und `menu_screen.gd` ist in allen Menü-Aufgaben ausgeschlossen — Kosten bei Irrtum: keine, die Korrektur hat einen eigenen Test.

@@ -49,7 +49,7 @@ headless feedback_layout_test
 quarantine feedback_priority_integration
 hook finisher_fallback_test V31_TEST
 headless first_room_loop
-quarantine first_room_playthrough
+headless first_room_playthrough
 quarantine guard_integration_test V14_TEST
 quarantine guard_spacing_test V48_TEST
 headless guard_state_test
