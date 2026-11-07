@@ -4,6 +4,12 @@ extends RefCounted
 ## `UI_TEXT.t("key")`; formatting (`%s`, `%d`) stays with the caller.
 
 const TEXTS := {
+	"checkpoint_error": "FEHLER",
+	"checkpoint_ready": "BEREIT",
+	"checkpoint_saved": "GESICHERT",
+	"overseer_braced": "STANDHAFT",
+	"overseer_phase": "Phase %d",
+	"overseer_role": "LABOR-AUFSEHER",
 	"sector_complete_back": "Zurück",
 	"sector_complete_confirm": "Trotzdem zum Hauptmenü?\nUngespeicherter Fortschritt geht verloren.",
 	"sector_complete_explore": "Weiter erkunden",

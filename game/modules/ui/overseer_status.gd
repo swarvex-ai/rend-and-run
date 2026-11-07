@@ -4,7 +4,8 @@ extends Control
 # encounter. No combat, damage/healing, input, pause or save logic.
 # Built-in font/styleboxes only; no textures, lights, assets or services.
 
-const TITLE_TEXT: String = "LABOR-AUFSEHER"
+var UI_TEXT = load("res://data/ui_texts.gd")
+
 const MAX_BLOCK_WIDTH: float = 340.0
 const WIDTH_FACTOR: float = 0.6
 const TOP_ABOVE_BOTTOM: float = 105.0     # block top edge: 105 px above bottom
@@ -71,7 +72,7 @@ func _build_once() -> void:
 
 	_title = Label.new()
 	_title.name = "TitleLabel"
-	_title.text = TITLE_TEXT
+	_title.text = UI_TEXT.t("overseer_role")
 	_title.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_title.add_theme_font_size_override("font_size", TITLE_FONT_SIZE)
 	_title.add_theme_color_override("font_color", COLOR_TEXT)
@@ -103,7 +104,7 @@ func _build_once() -> void:
 func _refresh() -> void:
 	if _panel == null:
 		return
-	_phase_label.text = "STANDHAFT" if _braced else "Phase %d" % _phase
+	_phase_label.text = UI_TEXT.t("overseer_braced") if _braced else UI_TEXT.t("overseer_phase") % _phase
 	_bar.max_value = float(_max_hp)
 	_bar.value = float(_hp)
 

@@ -10,7 +10,7 @@ extends Node3D
 ## - flash_result(success) = kurzer <=0.7s Bildschirm-Puls, danach Rueckkehr zum
 ##   aktuellen Saved-Zustand; wiederholte Aufrufe ersetzen den laufenden Puls;
 ##   free-safe. Fehler ROT und niemals falschlich als gespeichert gezeigt.
-## - Genau 1 Label3D mit Kurzlabel BEREIT / GESICHERT / FEHLER.
+## - Genau 1 Label3D mit Kurzlabel aus der Text-Tabelle (checkpoint_ready/_saved/_error).
 ## - Im Leerlauf keine Per-Frame-Updates (kein _process): Puls traegt ein
 ##   OneShot-Timer-Kind und endet von selbst.
 ## - <=16 Mesh-Surfaces, geteilte Materialien.
@@ -18,6 +18,8 @@ extends Node3D
 ## Der Speichерstatus ist DATENGETRIEBEN: Codex ruft set_saved() nach dem
 ## echten Speichern; das Modul liest/schreibt keine Saetze und feuert keine
 ## Gameplay-Kommandos.
+
+var UI_TEXT = load("res://data/ui_texts.gd")
 
 const W := 0.75
 const H := 1.3
@@ -96,7 +98,7 @@ func _init() -> void:
 	_check_b.position+=Vector3(0.08,0.02,0)
 
 	_label = Label3D.new()
-	_label.text = "BEREIT"
+	_label.text = UI_TEXT.t("checkpoint_ready")
 	_label.font_size = 32
 	_label.pixel_size = 0.0038
 	_label.outline_size = 8
@@ -149,7 +151,7 @@ func flash_result(success: bool) -> void:
 	else:
 		_pulse = "fail"
 		_set_screen(C_RED, C_RED * 0.9)
-		_label.text = "FEHLER"
+		_label.text = UI_TEXT.t("checkpoint_error")
 		_label.modulate = C_RED
 	if _pulse_timer == null:
 		_pulse_timer = Timer.new()
@@ -174,13 +176,13 @@ func _apply_base() -> void:
 		_dot.visible = false
 		_check_a.visible = true
 		_check_b.visible = true
-		_label.text = "GESICHERT"
+		_label.text = UI_TEXT.t("checkpoint_saved")
 		_set_screen(C_SCREEN_DARK, C_TEAL * 0.25)
 	else:
 		_dot.visible = true
 		_check_a.visible = false
 		_check_b.visible = false
-		_label.text = "BEREIT"
+		_label.text = UI_TEXT.t("checkpoint_ready")
 		_set_screen(C_SCREEN_DARK, C_SCREEN_DARK * 0.35)
 	_label.modulate = Color(1, 1, 1)
 

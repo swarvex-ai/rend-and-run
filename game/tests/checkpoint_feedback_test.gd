@@ -1,5 +1,6 @@
 extends Node
 var TEXT = load("res://data/route_texts.gd")
+const UI_TEXT = preload("res://data/ui_texts.gd")
 var failures:=0
 func check(label:String,ok:bool)->void:
  print("V35 %s %s"%["PASS" if ok else "FAIL",label])
@@ -17,17 +18,17 @@ func run()->void:
  main.pause_controller.resume()
  for e in route.enemies:e.set_physics_process(false)
  await wait(0.3)
- check("new console starts unsaved",not c.saved and c.get_state_snapshot().label=="BEREIT")
+ check("new console starts unsaved",not c.saved and c.get_state_snapshot().label==UI_TEXT.t("checkpoint_ready"))
  main.player.global_position=route.checkpoint_pos;main.player.hp=2;await wait(0.3)
  # Isolated test profile only: directory prevents opening the temporary save file.
  DirAccess.make_dir_absolute("user://rendrun_route_v12.json.tmp")
  await interact()
  check("failed write reports failure",route.save_error and route.toast==TEXT.t("msg_checkpoint_save_failed"))
- check("failure never claims persisted checkpoint",not c.saved and c.get_state_snapshot().label=="FEHLER")
+ check("failure never claims persisted checkpoint",not c.saved and c.get_state_snapshot().label==UI_TEXT.t("checkpoint_error"))
  check("session checkpoint and healing retained",route.checkpoint and main.player.hp==main.player.max_hp and main.spawn_point==route.checkpoint_pos)
  DirAccess.remove_absolute("user://rendrun_route_v12.json.tmp")
  await interact()
- check("retry replaces stale error label immediately",not route.save_error and c.saved and c.get_state_snapshot().label=="GESICHERT")
+ check("retry replaces stale error label immediately",not route.save_error and c.saved and c.get_state_snapshot().label==UI_TEXT.t("checkpoint_saved"))
  var data=JSON.parse_string(FileAccess.get_file_as_string("user://rendrun_route_v12.json"))
  check("real save contains checkpoint",data is Dictionary and data.checkpoint)
  await wait(0.7)
@@ -40,7 +41,7 @@ func run()->void:
   RenderingServer.force_draw(false);get_viewport().get_texture().get_image().save_png(OS.get_environment("V35_OUTPUT")+"/checkpoint.png")
  var restored=load("res://lab_route.gd").new();restored._restore_progress(data)
  var fresh=load("res://modules/world/checkpoint_console.gd").new();fresh.set_saved(restored.checkpoint)
- check("restored checkpoint initializes saved visual",fresh.saved and fresh.get_state_snapshot().label=="GESICHERT")
+ check("restored checkpoint initializes saved visual",fresh.saved and fresh.get_state_snapshot().label==UI_TEXT.t("checkpoint_saved"))
  fresh.free();restored.free()
  print("V35 SUMMARY failures=",failures)
  get_tree().quit(1 if failures else 0)

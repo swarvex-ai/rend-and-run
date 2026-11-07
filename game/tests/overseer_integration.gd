@@ -1,5 +1,6 @@
 extends SceneTree
 const MISSION := preload("res://modules/world/notstrom_layout.gd")
+const UI_TEXT = preload("res://data/ui_texts.gd")
 # Base enemy role timings, enemy.gd:1145-1149 at base commit (role 0..3: windup, recovery).
 const ROLE_TIMINGS := [[.44,.40],[.40,.32],[.64,.62],[.44,.40]]
 var failures := 0
@@ -62,7 +63,7 @@ func run():
  boss._enter(boss.WINDUP)
  check("next tell latches phase two low",boss.phase==2 and boss._committed_low and boss._attack_cue._kind=="low" and boss.hp==6)
  main.route._process(0)
- check("HUD receives phase and damage",main.route.overseer_hud._phase_label.text=="Phase 2" and main.route.overseer_hud._bar.value==6)
+ check("HUD receives phase and damage",main.route.overseer_hud._phase_label.text==UI_TEXT.t("overseer_phase") % 2 and main.route.overseer_hud._bar.value==6)
  boss._state_t=.35;boss._update_weapon_pose(0)
  await capture("low")
  # Test actual hurt-volume routing in the real physics world.

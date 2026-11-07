@@ -1,6 +1,7 @@
 extends "res://enemy.gd"
 ## P28 greybox: authored two-height encounter, using the existing Brute asset.
 ## Entry gate closes after full admission; death/defeat releases it.
+var UI_TEXT = load("res://data/ui_texts.gd")
 const MAX_HP := 12
 const ADMISSION_X := preload("res://modules/world/notstrom_layout.gd").BOSS_ENTRY_X
 var active := false
@@ -19,7 +20,7 @@ func _ready() -> void:
 		_skeleton.add_child(low_pose)
 	hp = MAX_HP
 	territory_min_x = ADMISSION_X
-	get_node("RoleLabel").text = "LABOR-AUFSEHER"
+	get_node("RoleLabel").text = UI_TEXT.t("overseer_role")
 
 func _physics_process(delta: float) -> void:
 	if _dead:return
@@ -92,7 +93,7 @@ func _enter(s: int) -> void:
 	super._enter(s)
 	var label=get_node_or_null("RoleLabel")
 	if label:
-		label.text="STANDHAFT" if _braced_attack and s in [WINDUP,SWING] else "LABOR-AUFSEHER"
+		label.text=UI_TEXT.t("overseer_braced") if _braced_attack and s in [WINDUP,SWING] else UI_TEXT.t("overseer_role")
 		label.modulate=Color(1,.7,.2) if _braced_attack else Color(1,.3,.5)
 
 func _has_attack_momentum() -> bool:
@@ -102,4 +103,4 @@ func receive_parry() -> void:
 	_brace_hits=0;_braced_attack=false
 	super.receive_parry()
 	var label=get_node_or_null("RoleLabel")
-	if label:label.text="LABOR-AUFSEHER";label.modulate=Color(1,.3,.5)
+	if label:label.text=UI_TEXT.t("overseer_role");label.modulate=Color(1,.3,.5)

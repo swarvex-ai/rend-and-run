@@ -1,5 +1,6 @@
 extends SceneTree
 const TEXT = preload("res://data/route_texts.gd")
+const UI_TEXT = preload("res://data/ui_texts.gd")
 var failures:=0
 var checks:=0
 func _initialize():call_deferred("run")
@@ -18,7 +19,7 @@ func run():
  b.take_melee_hit(1,Vector3.ZERO)
  check("first early hit still interrupts",b._state==b.RECOVERY and b.hp==11)
  b.take_melee_hit(1,Vector3.ZERO);b._enter(b.WINDUP)
- check("two stagger hits arm next clearly signalled windup",b._braced_attack and b.get_node("RoleLabel").text=="STANDHAFT")
+ check("two stagger hits arm next clearly signalled windup",b._braced_attack and b.get_node("RoleLabel").text==UI_TEXT.t("overseer_braced"))
  check("original high low cue retained",b._attack_cue._kind in ["high","low"])
  var duration:float=b._windup_duration();b._state_t=.12
  b.take_melee_hit(2,Vector3.ZERO)
@@ -28,7 +29,7 @@ func run():
  main.route._offer_combat_hint()
  check("first brace explanation bypasses ordinary hint cooldown",main.route._shown_combat_hints.has("brace") and TEXT.t("msg_overseer_braced") in main.route.feedback.current_text())
  main.route._process(0)
- check("HUD names standhaft explicitly",main.route.overseer_hud._phase_label.text=="STANDHAFT")
+ check("HUD names standhaft explicitly",main.route.overseer_hud._phase_label.text==UI_TEXT.t("overseer_braced"))
  if DisplayServer.get_name()!="headless":
   root.size=Vector2i(960,540);main.get_node("Camera3D").global_position=Vector3(48.1,1.05,5.8)
   await process_frame;RenderingServer.force_draw(false)
