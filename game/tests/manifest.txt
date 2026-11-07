@@ -90,7 +90,7 @@ headless pressure_step_test
 quarantine projectile_lifetime_test V49_TEST
 headless pulse_emitter_check
 hook pulse_pack_test V50_TEST
-quarantine ranged_integration_test V17_TEST
+hook ranged_integration_test V17_TEST
 headless recovery_step_test
 headless relay_checkpoint_integration
 window robot_roster_visual_capture
@@ -146,5 +146,6 @@ headless loadout_test
 headless ammo_test
 headless voice_test
 headless voice_bus_test
+headless robot_voice_bus_test
 headless escape_events_test
 window rend_death_review
