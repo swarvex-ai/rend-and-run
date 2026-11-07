@@ -1,4 +1,5 @@
 extends SceneTree
+const TEXT = preload("res://data/route_texts.gd")
 var failures:=0
 var checks:=0
 func _initialize():call_deferred("run")
@@ -27,5 +28,5 @@ func run():
  boss._brace_hits=2;boss._enter(boss.WINDUP);r.feedback.clear();r.feedback.offer("Speicherfehler",3,5)
  r._offer_combat_hint();check("blocked brace lesson retries later",not r._shown_combat_hints.has("brace"))
  r.feedback.clear();r._offer_combat_hint()
- check("brace retry is honest about missing shield",r._shown_combat_hints.has("brace") and "STANDHAFT" in r.feedback.current_text() and not "Parieren" in r.feedback.current_text())
+ check("brace retry is honest about missing shield",r._shown_combat_hints.has("brace") and TEXT.t("msg_overseer_braced") in r.feedback.current_text() and not TEXT.t("advice_parry_or_dodge") in r.feedback.current_text())
  print("TEACH SUMMARY checks=%d failures=%d"%[checks,failures]);quit(1 if failures else 0)

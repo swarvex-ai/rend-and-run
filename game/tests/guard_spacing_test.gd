@@ -1,4 +1,5 @@
 extends Node
+var TEXT = load("res://data/route_texts.gd")
 var failures:=0
 func check(label:String,ok:bool)->void:
  print("V48 %s %s"%["PASS" if ok else "FAIL",label])
@@ -70,5 +71,5 @@ func run()->void:
  route._message("Speicherfehler",5,3);route._guard_feedback("block")
  check("save warning survives combat feedback",route.toast=="Speicherfehler")
  route.feedback.clear();route._message("hint",3,0);route._guard_feedback("parry")
- check("parry replaces routine hint",route.toast=="PARIERT — Gegenangriff!")
+ check("parry replaces routine hint",route.toast==TEXT.t("msg_parried"))
  print("V48 SUMMARY failures=",failures);get_tree().quit(1 if failures else 0)

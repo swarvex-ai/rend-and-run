@@ -1,4 +1,5 @@
 extends SceneTree
+const TEXT = preload("res://data/route_texts.gd")
 var failures:=0
 var checks:=0
 func _initialize():call_deferred("run")
@@ -25,7 +26,7 @@ func run():
  check("braced tell not canceled or restarted",b._state==b.WINDUP and is_equal_approx(b._state_t,.12) and is_equal_approx(b._windup_duration(),duration))
  main.route._shown_combat_hints.erase("brace");main.route._combat_hint_cooldown=12
  main.route._offer_combat_hint()
- check("first brace explanation bypasses ordinary hint cooldown",main.route._shown_combat_hints.has("brace") and "STANDHAFT" in main.route.feedback.current_text())
+ check("first brace explanation bypasses ordinary hint cooldown",main.route._shown_combat_hints.has("brace") and TEXT.t("msg_overseer_braced") in main.route.feedback.current_text())
  main.route._process(0)
  check("HUD names standhaft explicitly",main.route.overseer_hud._phase_label.text=="STANDHAFT")
  if DisplayServer.get_name()!="headless":

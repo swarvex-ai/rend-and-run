@@ -1,4 +1,5 @@
 extends Node
+var TEXT = load("res://data/route_texts.gd")
 var checks:=0
 var failures:=0
 func check(label:String,ok:bool)->void:
@@ -33,11 +34,11 @@ func run()->void:
 	Input.parse_input_event(key);await wait(0.05)
 	check("second F1 closes help",not hud._help_panel.visible)
 	p.global_position=Vector3(28.5,0.01,0);p.velocity=Vector3.ZERO
-	route._message("Kontrollpunkt gesichert. Ausrüstung bleibt beim Tod erhalten.")
+	route._message(TEXT.t("msg_checkpoint_saved"))
 	route.save_error=true
 	await wait(0.7)
 	print("HUD rect ",hud.get_global_rect()," viewport ",get_viewport().get_visible_rect()," zone ",hud._zone_label.get_global_rect()," prompt ",hud._prompt_label.get_global_rect())
-	check("actual workbench prompt displayed",hud._prompt_label.visible and hud._prompt_label.text.contains("Werkbank"))
+	check("actual workbench prompt displayed",hud._prompt_label.visible and hud._prompt_label.text==TEXT.t("prompt_workbench_open"))
 	check("save warning survives concurrent feedback",hud._save_warn_label.visible and hud._feedback_label.visible)
 	if DisplayServer.get_name()!="headless":
 		RenderingServer.force_draw(false)

@@ -1,4 +1,5 @@
 extends Node
+var TEXT = load("res://data/route_texts.gd")
 var failures:=0
 func check(label:String,ok:bool)->void:
  print("V35 %s %s"%["PASS" if ok else "FAIL",label])
@@ -21,7 +22,7 @@ func run()->void:
  # Isolated test profile only: directory prevents opening the temporary save file.
  DirAccess.make_dir_absolute("user://rendrun_route_v12.json.tmp")
  await interact()
- check("failed write reports failure",route.save_error and "fehlgeschlagen" in route.toast)
+ check("failed write reports failure",route.save_error and route.toast==TEXT.t("msg_checkpoint_save_failed"))
  check("failure never claims persisted checkpoint",not c.saved and c.get_state_snapshot().label=="FEHLER")
  check("session checkpoint and healing retained",route.checkpoint and main.player.hp==main.player.max_hp and main.spawn_point==route.checkpoint_pos)
  DirAccess.remove_absolute("user://rendrun_route_v12.json.tmp")

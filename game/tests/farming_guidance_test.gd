@@ -1,4 +1,5 @@
 extends SceneTree
+const TEXT = preload("res://data/route_texts.gd")
 class DrawClock extends Node:
 	func _process(delta:float):RenderingServer.force_draw(false,delta)
 var checks:=0
@@ -23,29 +24,29 @@ func run():
 	var r=main.route;var p=main.player;p.set_physics_process(false);r.servo_trial.set_process(false)
 	for enemy in r.enemies:enemy.set_physics_process(false);enemy.hide();enemy.collision_layer=0
 	p.global_position=Vector3(4,.05,0)
-	check("initial arm objective retained",r._mission_objective().contains("Humanoidenarm"))
+	check("initial arm objective retained",r._mission_objective()==TEXT.t("objective_take_arm"))
 	r.equipment.grant("robot_arm");r.equipment.credit(6);r.equipment.purchase("reinforced_arm");r.equipment.equip_weapon("reinforced_arm");p.equip_weapon("reinforced_arm");r.cleared.append("first")
-	check("optional source offered",r._mission_objective().begins_with("Optional:"))
+	check("optional source offered",r._mission_objective()==TEXT.t("objective_servo_optional"))
 	r.servo_run.begin(71)
 	for i in 2:r.servo_run.defeat(1,i)
-	check("fight progress counted",r._mission_objective().contains("2/5"))
+	check("fight progress counted",r._mission_objective()==TEXT.t("objective_servo_progress")%2)
 	main.get_node("Camera3D").global_position=Vector3(5.3,1.05,7.2);main.get_node("Camera3D").rotation=Vector3.ZERO;main.get_node("Camera3D").fov=35
 	await capture("01_active_farm")
 	for i in range(2,4):r.servo_run.defeat(1,i)
-	check("targeted arm action explained",r._mission_objective().contains("zweitem Hieb"))
+	check("targeted arm action explained",r._mission_objective()==TEXT.t("objective_servo_bearer"))
 	r.servo_run.expose_servo(1,Vector3(8,.28,0))
-	check("early drop distinguished from kill",r._mission_objective().contains("Träger noch aktiv"))
+	check("early drop distinguished from kill",r._mission_objective()==TEXT.t("objective_servo_exposed"))
 	r.servo_run.defeat(1,4)
 	for i in 4:r.servo_run.collect(1,i)
-	check("remaining salvage points right",r._mission_objective().begins_with("→"))
+	check("remaining salvage points right",r._mission_objective()==TEXT.t("objective_servo_collect")%"→")
 	p.global_position.x=10
-	check("remaining salvage points left",r._mission_objective().begins_with("←"))
+	check("remaining salvage points left",r._mission_objective()==TEXT.t("objective_servo_collect")%"←")
 	p.global_position.x=20
 	check("main path objective outside room",r._farming_objective().is_empty())
 	p.global_position=r.ENTRY_WORKBENCH_POS
 	for i in range(4,6):r.servo_run.collect(1,i)
 	r.shards=12;r.equipment.shards=12;r.equipment.prefixes.credit_servo(2)
-	check("recipe available guidance",r._mission_objective().contains("herstellen"))
+	check("recipe available guidance",r._mission_objective()==TEXT.t("objective_servo_craft"))
 	main.pause_controller.open_shop(r.workbench_state());await process_frame;await physics_frame;await process_frame
 	var shop=main.pause_controller.shop
 	check("recipe shows inventory versus cost",shop._servo_info.text.contains("12/12") and shop._servo_info.text.contains("2/2"))

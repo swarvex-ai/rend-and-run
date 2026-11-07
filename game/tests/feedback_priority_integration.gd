@@ -1,4 +1,5 @@
 extends SceneTree
+const TEXT = preload("res://data/route_texts.gd")
 var failures:=0
 func check(label:String,ok:bool)->void:
  print("H54 INTEGRATION %s %s"%["PASS" if ok else "FAIL",label])
@@ -16,11 +17,11 @@ func run()->void:
  r._collect_shard_pickup("entry_supply")
  check("collected supply reward cannot hide save warning",r.toast=="Speichern fehlgeschlagen" and r.shards==3)
  r.feedback.tick(5);r._message("hint",3,0);r._guard_feedback("parry")
- check("parry replaces routine hint",r.toast=="PARIERT — Gegenangriff!")
+ check("parry replaces routine hint",r.toast==TEXT.t("msg_parried"))
  r._message("routine hint",3,0)
- check("hint cannot replace combat feedback",r.toast=="PARIERT — Gegenangriff!")
+ check("hint cannot replace combat feedback",r.toast==TEXT.t("msg_parried"))
  r._guard_feedback("break")
- check("latest combat outcome replaces old outcome",r.toast.begins_with("SCHILDBRUCH"))
+ check("latest combat outcome replaces old outcome",r.toast==TEXT.t("msg_shield_broken"))
  r.feedback.tick(1.3)
  check("discarded hints do not replay",r.feedback.current_text().is_empty())
  r._message("SEKTOR GESICHERT",12,3);r._guard_feedback("block")
