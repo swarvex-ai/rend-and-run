@@ -12,10 +12,11 @@ func check(label:String,ok:bool)->void:
  if not ok:failures+=1
 func wait(t:float)->void:await get_tree().create_timer(t).timeout
 func run()->void:
+ seed(1337)
  var main=get_parent();var route=main.route;var p=main.player;var guard=route.enemies[2]
  for e in route.enemies:e.set_physics_process(false)
  p.set_physics_process(false);p.global_position=Vector3(35,0.01,0);p.hp=5;p._iframes=0
- guard.global_position=Vector3(32,0.01,0);guard._attack_front=1;guard._aim_point=p.global_position+Vector3(0,1.2,0)
+ guard.global_position=Vector3(32,0.01,0);guard.territory_min_x=30.0;guard._attack_front=1;guard._aim_point=p.global_position+Vector3(0,1.2,0)
  await wait(0.15)
  guard._fire_energy(p);await wait(0.7)
  check("live shooter projectile still deals one damage",p.hp==4)
@@ -24,7 +25,9 @@ func run()->void:
  var bolt:Node
  for child in main.get_children():
   if child.get_script()==preload("res://modules/combat/energy_bolt.gd") and not child.is_queued_for_deletion():bolt=child
- check("actual fired bolt owns impact handler",is_instance_valid(bolt) and bolt.get_child_count()==2)
+ var handler:Node=null
+ if is_instance_valid(bolt):handler=bolt.get_node_or_null("Impact")
+ check("actual fired bolt owns impact handler",is_instance_valid(handler) and handler.get_parent()==bolt and handler.get_meta("shooter") is WeakRef)
  var weak:WeakRef=weakref(guard);guard.queue_free();await wait(0.08)
  check("handler does not retain shooter",weak.get_ref()==null)
  await wait(0.7)

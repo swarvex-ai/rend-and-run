@@ -198,7 +198,14 @@ func fire(direction: Vector3, mask: int, shooter: Node, exclude: Array = []) -> 
 		get_tree().current_scene.add_child(bolt)
 		bolt.lifetime = s.life
 		_tint(bolt, s.color, dir)
-		bolt.impacted.connect(_on_impact.bind(bolt, s.damage, dir, shooter, has_mod("piercer")))
+		var impact := Node.new()
+		impact.name = "Impact"
+		impact.set_meta("damage", s.damage)
+		impact.set_meta("direction", dir)
+		impact.set_meta("piercing", has_mod("piercer"))
+		impact.set_meta("shooter", weakref(shooter))
+		bolt.add_child(impact)
+		bolt.impacted.connect(Callable(get_script(), "_resolve_impact").bind(bolt))
 		var skip: Array[RID] = [];skip.assign(exclude)
 		bolt.launch(origin, dir * s.speed, mask, skip)
 		get_tree().create_timer(s.life + 0.1, false).timeout.connect(bolt.queue_free)
@@ -222,13 +229,25 @@ func _tint(bolt: Node3D, color: Color, dir: Vector3) -> void:
 	var streak := CapsuleMesh.new();streak.radius = 0.014;streak.height = 0.5;visual.mesh = streak
 	visual.basis = Basis(Quaternion(Vector3.UP, dir.normalized()))
 
-func _on_impact(collider: Object, point: Vector3, _normal: Vector3, bolt: Node3D, damage: int, dir: Vector3, shooter: Node, piercing := false) -> void:
+## Projectile-owned: the bolt's handler child carries the shot data and a weak reference to the
+## shooter, while this static resolver stays valid after the gun and shooter are freed.
+static func _resolve_impact(collider: Object, point: Vector3, normal: Vector3, bolt: Node3D) -> void:
+	var impact: Node = bolt.get_node_or_null("Impact") if is_instance_valid(bolt) else null
+	if impact == null:
+		if is_instance_valid(bolt):bolt.queue_free()
+		return
+	var scene: Node = bolt.get_tree().current_scene if bolt.is_inside_tree() else null
+	var source: WeakRef = impact.get_meta("shooter") as WeakRef
+	var shooter: Node = source.get_ref() as Node if source != null else null
+	var damage: int = impact.get_meta("damage")
+	var direction: Vector3 = impact.get_meta("direction")
+	var piercing: bool = impact.get_meta("piercing")
 	if is_instance_valid(bolt):bolt.queue_free()
 	if collider == null or collider == shooter:return
 	if collider.has_method("take_damage"):
-		collider.take_damage(damage, point - dir, shooter)  # Rend
+		collider.take_damage(damage, point - direction, shooter)  # Rend
 	elif collider.has_method("take_melee_hit"):
-		collider.take_melee_hit(damage, Vector3(signf(dir.x) * 2.5, 3.0 if piercing else 0.6, 0))  # robots, drones; a piercer hits like a heavy blow
+		collider.take_melee_hit(damage, Vector3(signf(direction.x) * 2.5, 3.0 if piercing else 0.6, 0))  # robots, drones; a piercer hits like a heavy blow
 	else:
-		FX.metal_contact(point, -dir)
-		preload("res://modules/vfx/gun_fx.gd").bullet_hole(get_tree().current_scene, point, _normal)
+		FX.metal_contact(point, -direction)
+		preload("res://modules/vfx/gun_fx.gd").bullet_hole(scene, point, normal)
