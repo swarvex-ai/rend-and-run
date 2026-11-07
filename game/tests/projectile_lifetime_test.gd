@@ -16,11 +16,13 @@ func run()->void:
  var main=get_parent();var route=main.route;var p=main.player;var guard=route.enemies[2]
  for e in route.enemies:e.set_physics_process(false)
  p.set_physics_process(false);p.global_position=Vector3(35,0.01,0);p.hp=5;p._iframes=0
+ p.get_node("Collision").shape.height=p.hurt_height();p.get_node("Collision").position.y=p.hurt_height()*0.5
  guard.global_position=Vector3(32,0.01,0);guard.territory_min_x=30.0;guard._attack_front=1;guard._aim_point=p.global_position+Vector3(0,1.2,0)
  await wait(0.15)
  guard._fire_energy(p);await wait(0.7)
  check("live shooter projectile still deals one damage",p.hp==4)
  p.hp=5;p._iframes=0;guard._aim_point=p.global_position+Vector3(0,1.2,0)
+ seed(1337)
  guard._fire_energy(p)
  var bolt:Node
  for child in main.get_children():
