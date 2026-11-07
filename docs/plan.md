@@ -86,7 +86,7 @@ How the lead would have sliced `3b3f444` as swarm tasks, by the same rules as re
 | E3 | pressure task: quick-maths door after the relay checkpoint | F3 |
 | E4 | intro comic: pick script + style (neVs) → asset brief preview → final → in-game player | #7–#10 |
 | E5 | English in-game text from the text table | F3 |
-| E6 | accessibility: subtitles, slow-motion and screen-shake toggles, alarm ≤ 3 Hz. 07.11.: #99 settings apply at start + shake/slow-motion toggles, #100 subtitles toggle (after #99), #101 alarm ≤ 3 Hz contract test | F3 |
+| E6 | accessibility: subtitles, slow-motion and screen-shake toggles, alarm ≤ 3 Hz. 07.11.: #99 settings apply at start + shake/slow-motion toggles, #100 subtitles toggle (after #99), #101 alarm ≤ 3 Hz contract test; #99 and #101 accepted, tests registered | F3 |
 | E7 | readable danger: every tell ≥ 0.5 s (from bestiary gaps), boss 60–150 s | #1–#6, E1 |
 | E8 | Windows export + smoke test | F5 |
 | E9 | performance measurement on the reference PC | F4 |
