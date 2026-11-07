@@ -67,6 +67,7 @@ hook loot_integration_test V13_TEST
 window loot_persistence_test
 quarantine machinery_chamber_integration
 headless menu_screen_test
+headless menu_sound_level_test
 headless metal_sparks_test
 headless mission_art_integration
 headless mission_extent_integration
@@ -149,5 +150,6 @@ headless ammo_test
 headless voice_test
 headless voice_bus_test
 headless robot_voice_bus_test
+headless robot_voice_subtitle_test
 headless escape_events_test
 window rend_death_review
