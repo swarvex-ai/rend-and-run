@@ -25,7 +25,7 @@
 
 **Nacht zum 06.11.:** F3 fertig (#50, Routendaten `541f5be`, Review #59), F4 fertig (#51, `route_playthrough`: Route in 20,6 s Spielzeit, Kontrolle nach Tod in 2,43 s), E11.2 fertig (#52, Einstellungsspeicher, `MenuScreen`, Options-Bildschirm; Screenshot geprüft). `depth_test` in Quarantäne (#58). Comic-Styleguides #7/#8 angenommen; Wahl liegt bei neVs (Nachricht 13). Suite: 84 headless + 11 hook grün.
 
-**Wartet auf neVs:** Comic-Stil (Nachricht 13), Comic-Drehbuch (Nachricht 14), Tod und Splitter (Nachricht 15); später dazugekommen: UX-Spezifikation (16), Sound Bible (17), Story-Gerüst (18), Art Bible (19).
+**Wartet auf neVs:** Comic-Stil (Nachricht 13), Comic-Drehbuch (Nachricht 14), Tod und Splitter (Nachricht 15); später dazugekommen: UX-Spezifikation (16), Sound Bible (17), Story-Gerüst (18), Art Bible (19), Warnzeiten von Rolle 1 (20).
 
 **Rulings (Nacht)**
 - Ruling: Testreparaturen prüfen die heutige Todesregel (Geldbörse bleibt, kein neuer Cache) — so steht es in Code und Farming-Design v02; GDD und Glossar widersprechen, Frage an neVs (Nachricht 15) — Kosten bei Irrtum: #65/#66 und `shard_pickup_integration` werden angepasst.
@@ -102,6 +102,9 @@
 - Angebot wieder leer; neu geschnitten: #105 (keine internen Fehler-IDs in der Servo-Werkbank) und #106 (E7-Messung: Warnzeit jeder Roboter-Attacke; heute liegen Rolle 1 mit 0,40 s und die Wache im Nahkampf mit 0,44 s Ausholzeit unter 0,5 s; ob das so bleibt, entscheidet neVs nach der Messung).
 - #106 angenommen (Fix #104 zu #90): Die Tiefenspur eines Roboters kommt aus dem Spawn-Zähler in `main._make_enemy`, nicht mehr aus der Objekt-ID. Mit dem Probe-`preload` aus der Reproduktion bleibt `arm_first_fight` grün. `enemy_lane_assignment_test` ist registriert; die Suite war zweimal grün mit 104 headless + 23 hook. Das Risiko #90 ist damit erledigt; die Warnung „kein preload in Hook-Tests“ entfällt in neuen Aufgaben.
 - Ruling: Die Spur hängt an der Spawn-Reihenfolge, einschließlich der zwei Wächter vor den Begegnungen. Ändert sich deren Zahl, verschieben sich die Spuren der Routen-Roboter. Das ist deterministisch, und für M1 nehme ich es so hin — Kosten bei Irrtum: ein Test wie arm_first_fight kippt bei einer Wächter-Änderung sichtbar statt zufällig, dann bekommt die Begegnung eine feste Spur in den Routendaten.
+- #107 angenommen (#105): Die Servo-Werkbank zeigt lesbare Sätze statt interner Fehler-IDs. `shop_reason_text_test` ist registriert.
+- #108 angenommen (#106, E7-Messung, `docs/measurements/tell-durations.md`, Sonde `tell_duration_probe` als `probe` registriert): 4 von 18 Angriffen warnen nur 0,483 s vor, beide Schläge des Schildträgers und Faust und Ellbogen des Wächters in der Nische (Ausholzeit von Rolle 1: 0,40 s). Nahkampf-Roboter sind nur 0,083 s vorher hörbar, Fernkämpfer erst beim Schuss. Frage an neVs: Nachricht 20 (Empfehlung: Ausholzeit von Rolle 1 auf 0,43 s). Die Suite war zweimal grün mit 105 headless + 23 hook.
+- Neu: #107, E5-Vorbereitung. Es geht um die Liste der Tests, die deutsche Texte wörtlich vergleichen und bei der Übersetzung brechen würden.
 
 **Rulings (Nachmittag)**
 - Ruling: Den Fehler der Fokusleiste behebe ich selbst statt per Aufgabe — er liegt in meiner Basis (Stufe D), und `menu_screen.gd` ist in allen Menü-Aufgaben ausgeschlossen — Kosten bei Irrtum: keine, die Korrektur hat einen eigenen Test.

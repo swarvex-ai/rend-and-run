@@ -82,6 +82,7 @@ headless overseer_integration
 hook pause_integration_test V28_TEST
 headless pause_menu_test
 headless shop_close_input_test
+headless shop_reason_text_test
 headless persistence_v12_test
 headless prefix_ledger_test
 headless prefix_persistence_test
@@ -139,6 +140,7 @@ probe hit_pose_review
 window strike_review
 headless combat_spacing_test
 headless door_approach_test
+probe tell_duration_probe
 headless throwable_crate_test
 headless drone_kamikaze_test
 headless sentinel_test
