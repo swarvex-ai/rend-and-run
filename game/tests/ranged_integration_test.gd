@@ -43,6 +43,12 @@ func run() -> void:
 	await wait(1.5)
 	check("live ranged hit deals one damage",foe.shots_fired==burst and p.hp==4)
 	foe.set_physics_process(false)
+	# The route spawns a melee reinforcement for the guard encounter while the guard winds
+	# up. It is not in route.enemies, so the initial loop above does not cover it; left
+	# active it walks into Rend and randomly hits him during the later checks (seen at
+	# x=34.31 during the crouch check). With the guard stopped no further mates spawn.
+	for e in get_tree().get_nodes_in_group("enemies"):
+		if is_instance_valid(e):e.set_physics_process(false)
 	await wait(1.0)
 	check("no rapid second shot",foe.shots_fired==burst)
 	foe._stun=0;foe._attack_front=-1
@@ -67,9 +73,26 @@ func run() -> void:
 	await wait(maxf(0.0,arrival-0.06)+0.2)
 	check("timed guard parries projectile and staggers shooter",p.hp==5 and p.guard.stamina==90.0 and foe._stun>0)
 	Input.action_release("guard");await wait(0.1);foe._stun=0
+	# Root cause: the SMG muzzle sits near y=1.8 while the aim point was y=1.4, so at this
+	# 1.5 m range the shot points ~16 degrees down. The +-4 degree spread (and the gun
+	# sinking during the burst) let the lowest pellet cross y=1.22 at x~35.9 and reach
+	# (35.46, 1.04), just under the crouched capsule top (1.05), so it hit. Stale pellets
+	# from the shield/parry bursts could also still be in flight. Aim above the crouched
+	# silhouette but below the standing head (1.65), clear leftover bolts and wait
+	# (bounded) for the crouch.
+	var bolt_script = load("res://modules/combat/energy_bolt.gd")
+	for child in get_tree().current_scene.get_children():
+		if child.get_script() == bolt_script and not child.is_resolved():
+			child.set_physics_process(false)
+			child.queue_free()
+	await get_tree().physics_frame
 	p._iframes=0;p.hp=5;p.global_position=Vector3(35.5,0.03,0)
-	Input.action_press("crouch");await wait(0.1)
-	foe._aim_point=p.global_position+Vector3(0,1.4,0);foe._fire_energy(p)
+	Input.action_press("crouch")
+	var crouch_wait:=0.0
+	while not p.crouching and crouch_wait<0.5:
+		await wait(0.02);crouch_wait+=0.02
+	await wait(0.05)
+	foe._aim_point=p.global_position+Vector3(0,1.6,0);foe._fire_energy(p)
 	await wait(0.5);Input.action_release("crouch")
 	check("crouch evades committed high projectile",p.hp==5)
 	var wall:=StaticBody3D.new();var col:=CollisionShape3D.new();var box:=BoxShape3D.new()
