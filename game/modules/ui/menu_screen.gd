@@ -44,6 +44,9 @@ const CONTROL_WIDTH := 240.0
 const TITLE_SIZE := 48
 const ITEM_SIZE := 36
 const VALUE_SIZE := 26
+const FONT_INTER_PATH := "res://assets/fonts/inter/Inter-Variable.ttf"
+const FONT_VALUE_PATH := "res://assets/fonts/jetbrains_mono/JetBrainsMono-Regular.ttf"
+const FONT_AXIS_WEIGHT := 0x77676874
 # Motion (style guide "Motion"), seconds
 const SCREEN_IN := 0.18
 const SCREEN_OUT := 0.14
@@ -65,6 +68,9 @@ var _tween: Tween
 var _marker_tween: Tween
 var _players: Dictionary = {}
 var _last_focus_sound_ms := -1000
+var _font_title: Font
+var _font_item: Font
+var _font_value: Font
 
 func _init() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -117,6 +123,7 @@ func add_switch(id: String, text: String, value: bool) -> void:
 
 func open_screen() -> void:
 	if rows.is_empty():_build()
+	_apply_fonts()
 	visible = true
 	modulate.a = 0.0
 	_center_panel()
@@ -173,6 +180,7 @@ func show_rows(focus_id := "") -> void:
 	for i in rows.size():
 		if rows[i].id == focus_id and rows[i].enabled:focus_index = i
 	if focus_index < 0:focus_index = _next_enabled(-1, 1)
+	_apply_fonts()
 	await get_tree().process_frame   # let the new rows take their size
 	_center_panel()
 	_show_focus(false)
@@ -227,6 +235,24 @@ func _add_row(id: String, kind: String, text: String, value: Variant, options: A
 	row_node.mouse_entered.connect(_on_row_hovered.bind(index))
 	row_node.pressed.connect(_on_row_clicked.bind(index))
 	_refresh_value(rows[index])
+
+func _apply_fonts() -> void:
+	if _font_title == null:
+		var inter: FontFile = load(FONT_INTER_PATH) as FontFile
+		_font_title = _inter_weight(inter, 600)
+		_font_item = _inter_weight(inter, 500)
+		_font_value = load(FONT_VALUE_PATH) as FontFile
+	(_panel.get_child(0).get_child(0) as Label).add_theme_font_override("font", _font_title)
+	for row in rows:
+		(row.node as Button).add_theme_font_override("font", _font_item)
+		if row.value_label != null:
+			(row.value_label as Label).add_theme_font_override("font", _font_value)
+
+func _inter_weight(base: FontFile, weight: int) -> FontVariation:
+	var font := FontVariation.new()
+	font.base_font = base
+	font.variation_opentype = {FONT_AXIS_WEIGHT: weight}
+	return font
 
 func _on_row_hovered(index: int) -> void:
 	if rows[index].enabled and focus_index != index:
