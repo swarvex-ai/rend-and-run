@@ -2,7 +2,11 @@ extends SceneTree
 class DrawClock extends Node:
 	func _process(delta:float):RenderingServer.force_draw(false,delta)
 var p:CharacterBody3D
+var failures := 0
 func _initialize():Engine.max_fps=120;call_deferred("run")
+func check(label: String, ok: bool) -> void:
+	print("FARM INPUT ", "PASS " if ok else "FAIL ", label)
+	if not ok: failures += 1
 func walk(x:float):
 	for i in 360:
 		var dx:float=x-p.global_position.x
@@ -20,7 +24,9 @@ func snap(label):
 	await RenderingServer.frame_post_draw
 	root.get_texture().get_image().save_png(OS.get_environment("LOOP_OUTPUT")+"/"+label+".png")
 func run():
-	assert(OS.get_user_data_dir().begins_with("/tmp/"))
+	var isolated := OS.get_user_data_dir().begins_with("/tmp/")
+	check("isolated user data under /tmp", isolated)
+	if not isolated: quit(1); return
 	if DisplayServer.get_name()!="headless":
 		RenderingServer.render_loop_enabled=false
 		var clock=DrawClock.new();clock.process_mode=Node.PROCESS_MODE_ALWAYS;clock.process_priority=10000;root.add_child(clock)
@@ -41,7 +47,7 @@ func run():
 		if i%16==0:Input.action_press("attack")
 		elif i%16==2:Input.action_release("attack")
 	for action in ["attack","move_right","move_left"]:Input.action_release(action)
-	assert(foe._dead and not p._dying)
+	check("first robot defeated without Rend dying", foe._dead and not p._dying)
 	await walk(3.4)
 	Input.action_press("move_right");await physics_frame;Input.action_release("move_right")
 	Input.action_press("crouch")
@@ -53,19 +59,19 @@ func run():
 		await physics_frame
 	Input.action_release("attack");Input.action_release("crouch")
 	print("CRATE CONTACT x=",p.global_position," hp=",r.supply_crates[0]._hp," crouch=",p.crouching)
-	assert(r.supply_crates[0].is_broken())
+	check("crate breaks under repeated attacks", r.supply_crates[0].is_broken())
 	await walk(4);await create_timer(.8).timeout
 	if r.pending_shards.has(r.FIRST_SALVAGE_ID):
 		await walk(r.first_salvage_position.x);await create_timer(.8).timeout
-	assert(r.shards==6)
+	check("guard and crate salvage totals six shards", r.shards==6)
 	await walk(r.ENTRY_WORKBENCH_POS.x);await create_timer(.5).timeout
 	await snap("04_workbench_ready")
 	await tap("interact");await process_frame
-	var shop=main.pause_controller.shop;assert(shop.visible and not shop._vibro_action.disabled)
+	var shop=main.pause_controller.shop;check("workbench opens with vibro upgrade available", shop.visible and not shop._vibro_action.disabled)
 	await snap("05_upgrade_menu_final")
 	shop._vibro_action.pressed.emit();await process_frame
 	shop._vibro_action.pressed.emit();await process_frame
-	assert(p.weapon_id=="reinforced_arm" and r.shards==0)
+	check("vibro upgrade equips and spends six shards", p.weapon_id=="reinforced_arm" and r.shards==0)
 	main.pause_controller.resume()
 	await create_timer(.5).timeout;await snap("06_upgrade_equipped")
 
@@ -73,11 +79,11 @@ func run():
 	for cycle in 3:
 		await walk(r.ENTRY_WORKBENCH_POS.x);await create_timer(.25).timeout
 		await tap("interact");await process_frame
-		assert(shop.visible and not shop._trial_action.disabled)
+		check("trial opens with trial action available", shop.visible and not shop._trial_action.disabled)
 		if cycle==2:
 			shop._servo_action.pressed.emit();await process_frame
 			shop._servo_action.pressed.emit();await process_frame
-			assert(p._servo_installed and r.shards==12)
+			check("servo crafts with twelve shards in third run", p._servo_installed and r.shards==12)
 		shop._trial_action.pressed.emit();await create_timer(.15).timeout
 		# Each trial starts at full health: this test covers the farming loop, not a bot surviving 18 fights unhealed.
 		p.hp=p.max_hp
@@ -120,11 +126,12 @@ func run():
 		summary.append({"run":cycle+1,"seconds":(Time.get_ticks_msec()-start_ms)/1000.0,"hp_before":start_hp,"hp_after":p.hp,"shards":r.shards,"servo":r.equipment.prefixes.servo})
 	await walk(r.ENTRY_WORKBENCH_POS.x);await create_timer(.25).timeout
 	await tap("interact");await process_frame
-	assert(shop.visible and not shop._servo_action.disabled)
-	assert(p._servo_installed and p._servo_model.visible and r.shards==24)
+	check("workbench opens with servo action available", shop.visible and not shop._servo_action.disabled)
+	check("servo installs and spends all shards", p._servo_installed and p._servo_model.visible and r.shards==24)
 	await snap("07_earned_servo")
 	main.pause_controller.resume();await create_timer(.3).timeout
 	print("FARM INPUT SUMMARY ",JSON.stringify(summary))
 	print("FARM INPUT PASS: fresh save, actual input fights and physical collection, two base runs, craft/install and third run using servo; HP=",p.hp)
 	main.queue_free();for i in 8:await process_frame
-	quit()
+	print("FARM INPUT SUMMARY failures=", failures)
+	quit(1 if failures else 0)

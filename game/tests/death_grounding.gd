@@ -1,7 +1,13 @@
 extends SceneTree
+var failures := 0
 func _initialize(): call_deferred("run")
+func check(label: String, ok: bool) -> void:
+	print("DEATH_GROUNDING ", "PASS " if ok else "FAIL ", label)
+	if not ok: failures += 1
 func run():
-	assert(OS.get_user_data_dir().begins_with("/tmp/"))
+	var isolated := OS.get_user_data_dir().begins_with("/tmp/")
+	check("isolated user data under /tmp", isolated)
+	if not isolated: quit(1); return
 	root.content_scale_size=Vector2i(1280,720)
 	root.content_scale_mode=Window.CONTENT_SCALE_MODE_VIEWPORT
 	root.content_scale_aspect=Window.CONTENT_SCALE_ASPECT_KEEP
@@ -56,4 +62,6 @@ func run():
 		print("DEATH_CLEANUP ","PASS" if cleaned else "FAIL")
 	scene.queue_free()
 	for i in 6:await process_frame
-	quit(0 if ok else 1)
+	failures += 0 if ok else 1
+	print("DEATH_GROUNDING SUMMARY failures=", failures)
+	quit(1 if failures else 0)

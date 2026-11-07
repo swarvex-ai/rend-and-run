@@ -16,7 +16,9 @@ func scene():
 	main.player.set_physics_process(false)
 	return main
 func run():
-	assert(OS.get_user_data_dir().begins_with("/tmp/"))
+	var isolated := OS.get_user_data_dir().begins_with("/tmp/")
+	check("isolated user data under /tmp", isolated)
+	if not isolated: quit(1); return
 	root.content_scale_size=Vector2i(1280,720);root.content_scale_mode=Window.CONTENT_SCALE_MODE_VIEWPORT;root.content_scale_aspect=Window.CONTENT_SCALE_ASPECT_KEEP
 	var main=await scene();var r=main.route;var p=main.player
 	p.global_position=r.ENTRY_WORKBENCH_POS;r._use_workbench()

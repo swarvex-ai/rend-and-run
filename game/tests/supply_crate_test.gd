@@ -16,9 +16,11 @@ func check(label: String, ok: bool) -> void:
 
 func intact_visible(crate: Node) -> bool:
 	var intact := crate.get_node("CrateVisual").find_child("IntactVisual", true, false)
-	assert(intact != null)
+	check("intact visual exists", intact != null)
+	if intact == null:
+		return false
 	var meshes := intact.find_children("*", "MeshInstance3D", true, false)
-	assert(not meshes.is_empty())
+	check("intact visual has meshes", not meshes.is_empty())
 	for mesh in meshes:
 		if mesh.visible:
 			return true
@@ -119,5 +121,5 @@ func _initialize() -> void:
 	d.restore_broken(false)
 	check("restore(false) never emits", d_events.size() == before)
 
-	print("H13 SUMMARY checks=%d failures=%d" % [checks, failures])
+	print("H13 SUMMARY failures=%d checks=%d" % [failures, checks])
 	quit(1 if failures else 0)

@@ -1,10 +1,18 @@
 extends SceneTree
 ## Stable real-Godot art review: fixed gameplay-plane framing and settled temporal history.
+var failures := 0
 func _initialize():call_deferred("run")
+func check(label: String, ok: bool) -> void:
+	print("FACTORY VISUAL ", "PASS " if ok else "FAIL ", label)
+	if not ok: failures += 1
 func run():
-	assert(OS.get_user_data_dir().begins_with("/tmp/"))
+	var isolated := OS.get_user_data_dir().begins_with("/tmp/")
+	check("isolated user data under /tmp", isolated)
+	if not isolated: quit(1); return
 	var output:=OS.get_environment("TOUR_OUTPUT")
-	assert(not output.is_empty())
+	var output_ok := not output.is_empty()
+	check("tour output path is set", output_ok)
+	if not output_ok: quit(1); return
 	root.content_scale_size=Vector2i(1280,720)
 	root.content_scale_mode=Window.CONTENT_SCALE_MODE_VIEWPORT
 	root.content_scale_aspect=Window.CONTENT_SCALE_ASPECT_KEEP
@@ -31,7 +39,8 @@ func run():
 		for frame in 48:
 			RenderingServer.force_draw(false,1.0/60.0)
 			await process_frame
-		assert(root.get_texture().get_image().save_png(output+"/room_%02d.png"%int(x))==OK)
+		check("room screenshot saved", root.get_texture().get_image().save_png(output+"/room_%02d.png"%int(x))==OK)
 	main.queue_free()
 	for frame in 8:await process_frame
-	quit()
+	print("FACTORY VISUAL SUMMARY failures=", failures)
+	quit(1 if failures else 0)
