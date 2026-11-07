@@ -18,7 +18,7 @@ hook attack_cue_integration V41_TEST
 headless blood_spray_test
 window blood_visual_test
 headless brute_cleaver_check
-quarantine brute_commitment_test
+headless brute_commitment_test
 headless calibration_cycle
 hook checkpoint_feedback_test V35_TEST
 hook cleaver_integration_test V26_TEST
@@ -120,7 +120,7 @@ headless supply_crate_test
 headless supply_crate_visual_test
 headless vibroblade_visual_test
 headless vision_arm_integration
-quarantine workbench_integration
+headless workbench_integration
 headless workbench_prerequisite
 headless world_service_details_integration
 window impact_review_capture

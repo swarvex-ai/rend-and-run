@@ -46,6 +46,7 @@ The live test pipeline (official Godot 4.7.2 build, `JOBS=3`) failed docs-only s
 - **Out of quarantine on 07.11.:** `guard_integration_test` (hook) and `feedback_priority_integration` (headless) after #82 (hurt voice event instead of the `ow` cue, robot arm equipped before the attack, supply reward pending then collected); full suite green twice with both (94 headless + 20 hook).
 - **Out of quarantine on 07.11.:** `security_pair_test` and `duelist_footwork_test` (hook) after #83 (encounter ids, spacing from `MISSION.ENCOUNTERS`, chest aim, guard out of the jump lane, recovery sampled from `_recovery_duration()`, pinned high strike without `awakened_blank`); full suite green twice with both (94 headless + 22 hook).
 - **Back in quarantine on 07.11.:** `projectile_lifetime_test` (flaky in the pipeline after #81: the second bolt sometimes neither hits nor resolves; green 10/10 alone). Diagnosis task #95.
+- **Out of quarantine on 07.11.:** `brute_commitment_test` (headless) after #84 (plain brute, explicit HP, new braced-overseer check) and `workbench_integration` (headless) after #86 (robot arm ids, values from the catalogue and text keys); full suite green twice with both (96 headless + 21 hook).
 - **Stays in quarantine:** `machinery_chamber_integration`. #19 found that nothing builds the machinery chamber any more (`lab_dressing.gd:17-26`); the test now fails fast instead of hanging.
 
 Full suite after these changes: 79 headless + 11 hook, green twice in 120 s each.
