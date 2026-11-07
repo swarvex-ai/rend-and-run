@@ -94,6 +94,7 @@
   - #100: Untertitel abschaltbar, wartet auf #99.
   - #101: Vertragstest für das Alarmlicht, höchstens 3 Hz (heute etwa 1,75 Hz).
   - #103: Menü-Klänge auf die Spitzenpegel des Styleguides. Heute klingt Zurück etwa 13 dB leiser als Bestätigen. #103 ersetzt #102, meine erste Fassung, die übersehen hatte, dass die WAVs mit QOA importiert werden.
+- #100 angenommen (Folgeaufgabe #98 aus der F3-Review): Kühlmittel-Hinweis und Lampenfarben kommen aus den Routendaten. Gegenprobe: Mit geänderter Farbe in den Daten wird der neue Check rot.
 
 **Rulings (Nachmittag)**
 - Ruling: Den Fehler der Fokusleiste behebe ich selbst statt per Aufgabe — er liegt in meiner Basis (Stufe D), und `menu_screen.gd` ist in allen Menü-Aufgaben ausgeschlossen — Kosten bei Irrtum: keine, die Korrektur hat einen eigenen Test.
