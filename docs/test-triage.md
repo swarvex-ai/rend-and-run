@@ -40,6 +40,7 @@ The live test pipeline (official Godot 4.7.2 build, `JOBS=3`) failed docs-only s
 - **Out of quarantine on 06.11.:** `persistence_v12_test` (headless) after #67 (split checks, legacy and current save format) and `shard_pickup_integration` (headless) after #68 (wallet kept on death, pickup and pending checked); full suite green twice with both (91 headless + 14 hook).
 - **Out of quarantine on 07.11.:** `service_return_integration` (headless) after #69 (lift from `lift_x`, full completion, distance-based walk); full suite green twice with it (92 headless + 14 hook). `overseer_integration` stays in quarantine after #66: 32 of 33 green, only "visible low blade matches hit band" red (diagnosis #93).
 - **Out of quarantine on 07.11.:** `route_v12_test` (hook) after #72 (encounter count from `ENCOUNTERS`, `RightArm` bone, bounded respawn wait, gate through the defeat rules, exit past `EXIT_X`); full suite green twice with it (92 headless + 15 hook).
+- **Out of quarantine on 07.11.:** `coolant_test` (hook) after #73 (robot arm equipped, encounter count from `ENCOUNTERS`); full suite green twice with it (92 headless + 16 hook).
 - **Stays in quarantine:** `machinery_chamber_integration`. #19 found that nothing builds the machinery chamber any more (`lab_dressing.gd:17-26`); the test now fails fast instead of hanging.
 
 Full suite after these changes: 79 headless + 11 hook, green twice in 120 s each.

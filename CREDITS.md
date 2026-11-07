@@ -13,6 +13,8 @@
 | [Blender](https://www.blender.org) (bakes, edits) | GPL (the tool; its output belongs to the author) |
 | [Piper](https://github.com/rhasspy/piper) text to speech, voices `en_US-norman-medium` and `en_US-kristin-medium` | voices trained on public-domain LibriVox recordings |
 | Godot 4.7 engine reference for agents (`.agents/skills/godot-4-7/`), from [Claude Code Game Studios](https://github.com/Donchitos/Claude-Code-Game-Studios) via swarvex | MIT, Copyright (c) 2026 Donchitos |
+| [Inter](https://github.com/rsms/inter) 4.1 (InterVariable.ttf), menu font for titles and rows | SIL OFL 1.1; provenance in `asset_library/fonts/PROVENANCE.md` |
+| [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) 2.304 (Regular TTF), menu font for values | SIL OFL 1.1; provenance in `asset_library/fonts/PROVENANCE.md` |
 
 ## Asset sources
 | Source | What | Status |

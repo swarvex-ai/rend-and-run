@@ -26,7 +26,7 @@ fixture combat_hud_preview
 headless combat_hud_test
 probe combat_policy_probe
 hook completion_integration_test V30_TEST
-quarantine coolant_test V47_TEST
+hook coolant_test V47_TEST
 headless crouch_combat_integration
 headless crouch_gait_integration
 headless damaged_cable_integration
