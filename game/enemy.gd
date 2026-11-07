@@ -140,7 +140,6 @@ var _weapon_mat: StandardMaterial3D
 
 func _ready() -> void:
 	set_meta("owns_melee_hit_audio", true)
-	_lane_offset = float(get_instance_id() % 3 - 1) * 0.25
 	collision_layer = 2
 	collision_mask = 1 | 4  # world and Rend: robots cannot walk through him
 	_spawn_x = position.x

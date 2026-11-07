@@ -16,6 +16,7 @@ extends Node3D
 
 var pause_controller:Node
 var route: Node3D
+var _spawned := 0
 var attack_cadence = preload("res://modules/combat/attack_cadence.gd").new()
 var wave := 1
 var wave_wait := 0.0
@@ -147,6 +148,9 @@ func _make_enemy(at_x: float, enemy_role := 0, enemy_script: Script = null, gun 
 	vis.mesh = bm
 	pivot.add_child(vis)
 	e.add_child(pivot)
+	# Deterministic depth lane from spawn order (instance ids shift with load order).
+	_spawned += 1
+	e._lane_offset = float(_spawned % 3 - 1) * 0.25
 	add_child(e)                      # _ready(): Kollision 1.5 m, Modell + Waffe
 	e.global_position = Vector3(at_x, 0.05, 0)
 	return e
