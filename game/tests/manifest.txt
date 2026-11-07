@@ -35,7 +35,7 @@ headless death_cache_integration
 headless death_cache_smoke
 window death_grounding
 headless debris_pause_test
-quarantine duelist_footwork_test V44_TEST
+hook duelist_footwork_test V44_TEST
 hook edge_warning_test V46_TEST
 probe encounter_probe
 headless energy_bolt_test
@@ -100,7 +100,7 @@ headless route_layout_test
 headless route_text_table_test
 hook route_v12_test V12_TEST
 headless sector_complete_test
-quarantine security_pair_test V45_TEST
+hook security_pair_test V45_TEST
 headless service_lamp_integration
 headless service_return_integration
 headless servo_harvest_test
