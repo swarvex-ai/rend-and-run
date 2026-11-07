@@ -6,6 +6,7 @@ const ROUTE = preload("res://data/route_layout.gd")
 const SAVE_PATH := "user://rendrun_route_v12.json"
 const COPPER := Color(0.65,0.30,0.12)
 const TEAL := Color(0.12,0.72,0.78)
+const LAMP_TINTS := {"teal": TEAL, "warm": Color(1.0,.72,.43), "cool": Color(.75,.80,1.0)}
 var combat_hud: Control
 var ammo_hud: Control
 const GUN_BENCH_POS := ROUTE.GUN_BENCH_POS  # weapon bench: mods for the drawn gun, paid in shards
@@ -358,7 +359,7 @@ func _offer_combat_hint() -> void:
 			_combat_hint_cooldown=4.0
 		return
 	# Environment advice follows an imminent attack explanation, not the reverse.
-	if not coolant_consumed and not _coolant_hint_shown and absf(player.global_position.x - 37.1) < 3.5:
+	if not coolant_consumed and not _coolant_hint_shown and absf(player.global_position.x - ROUTE.COOLANT_CANISTER_POS.x) < 3.5:
 		if _message(TEXT.t("msg_coolant_hint"), 3.5, 0):
 			_coolant_hint_shown=true
 			_combat_hint_cooldown=4.0
@@ -626,11 +627,12 @@ func _build_route() -> void:
 	var bench_label:=Label3D.new();bench_label.name="UpgradeLabel"
 	bench_label.text=TEXT.t("sign_rework");bench_label.font_size=22;bench_label.pixel_size=.003;bench_label.outline_size=0
 	bench_label.modulate=Color(.14,.24,.27);bench_label.position=ENTRY_WORKBENCH_POS+Vector3(-.25,.698,-.324);add_child(bench_label)
-	for x in ROUTE.SERVICE_LAMP_XS:
+	for lamp in ROUTE.SERVICE_LAMPS:
+		var x: float = lamp["x"]
 		var fixture=preload("res://modules/visuals/service_lamp.gd").new()
 		fixture.name="ServiceLamp%d"%int(x)
 		fixture.position=Vector3(x,3.2,-1.65)
-		fixture.tint=TEAL if x==26 else Color(1.0,.72,.43) if x==39 else Color(.75,.80,1.0)
+		fixture.tint=LAMP_TINTS[lamp["tint"]]
 		add_child(fixture)
 	# Sideways door has a real through-path and a destination chamber, never a fake wall plaque.
 	gate=_box("SecurityDoor",Vector3(MISSION.EXIT_X-2,1.6,0),Vector3(0.35,3.2,3.8),Color(0.28,0.12,0.09),true)

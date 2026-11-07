@@ -30,7 +30,16 @@ const SECURITY_COVER_POS := Vector3(40.8, 0, 0)
 const FREIGHT_COVER_XS := [46.0, 60.0]                     # sightline breaks in the freight rooms
 
 # Lights and dressing with a fixed place on the route
-const SERVICE_LAMP_XS := [3.0, 26.0, 39.0, 50.0, 63.0, 78.0]
+const SERVICE_LAMPS := [
+	{"x": 3.0, "tint": "cool"},
+	{"x": 26.0, "tint": "teal"},
+	{"x": 39.0, "tint": "warm"},
+	{"x": 50.0, "tint": "cool"},
+	{"x": 63.0, "tint": "cool"},
+	{"x": 78.0, "tint": "cool"},
+]
+# Derived for the existing service-lamp integration test; keep it in step with SERVICE_LAMPS.
+const SERVICE_LAMP_XS := [SERVICE_LAMPS[0]["x"], SERVICE_LAMPS[1]["x"], SERVICE_LAMPS[2]["x"], SERVICE_LAMPS[3]["x"], SERVICE_LAMPS[4]["x"], SERVICE_LAMPS[5]["x"]]
 const DAMAGED_CABLE_POS := Vector3(4.65, 2.85, -1.35)
 
 # Robots outside the mission count

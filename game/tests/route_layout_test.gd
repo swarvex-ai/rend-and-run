@@ -3,6 +3,8 @@ extends SceneTree
 ## route between the west and east boundary, and the built route uses the data.
 const ROUTE = preload("res://data/route_layout.gd")
 const MISSION = preload("res://modules/world/notstrom_layout.gd")
+const LAMP_TINTS := ["teal", "warm", "cool"]
+const LAMP_COLOURS := {"teal": Color(0.12, 0.72, 0.78), "warm": Color(1.0, 0.72, 0.43), "cool": Color(0.75, 0.80, 1.0)}
 var failures := 0
 
 func check(label: String, ok: bool) -> void:
@@ -28,6 +30,8 @@ func run() -> void:
 	var unknown: Array = ROUTE.REINFORCEMENTS.keys().filter(func(id): return not id in ids)
 	check("reinforcements name existing encounters %s" % [unknown], unknown.is_empty())
 	check("checkpoints come in route order", ROUTE.CHECKPOINT_POS.x < ROUTE.RELAY_CHECKPOINT_POS.x)
+	var bad_lamps: Array = ROUTE.SERVICE_LAMPS.filter(func(lamp): return not lamp.has("x") or not lamp.has("tint") or not lamp["tint"] in LAMP_TINTS)
+	check("service lamps carry a position and a known tint %s" % [bad_lamps], bad_lamps.is_empty())
 	var main = load("res://main.tscn").instantiate();root.add_child(main);current_scene=main
 	await create_timer(0.3).timeout
 	var route = main.route
@@ -36,6 +40,10 @@ func run() -> void:
 	check("route builds the wing drones", route.wing_drones.size() == ROUTE.WING_DRONES.size())
 	check("arm pickup stands where the data says", route.arm_pickup.position.is_equal_approx(ROUTE.ARM_PICKUP_POS))
 	check("checkpoint console stands where the data says", route.checkpoint_console.position.is_equal_approx(ROUTE.CHECKPOINT_CONSOLE_POS))
+	var lamp26 = route.find_child("ServiceLamp26", true, false)
+	var lamp39 = route.find_child("ServiceLamp39", true, false)
+	check("service lamp 26 keeps its teal tint", lamp26 != null and lamp26.tint == LAMP_COLOURS["teal"])
+	check("service lamp 39 keeps its warm tint", lamp39 != null and lamp39.tint == LAMP_COLOURS["warm"])
 	print("LAYOUT SUMMARY failures=", failures)
 	quit(1 if failures else 0)
 
