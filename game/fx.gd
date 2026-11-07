@@ -3,6 +3,10 @@ extends Node
 
 var shake := 0.0
 var shake_dir := Vector3(1, 0.35, 0)   # V85: Hauptrichtung des Traumas (x dominant)
+## Accessibility switches from the Options screen; default on until settings say otherwise.
+var screen_shake_enabled := true
+var slow_motion_enabled := true
+var subtitles_enabled := true
 var _players: Array = []
 var _sfx := {}
 var audio_events: Dictionary = {}
@@ -13,6 +17,7 @@ var fx_stats := {"hitstop": 0, "blood": 0, "pool": 0}
 var _quitting := false
 
 func _ready() -> void:
+	call_deferred("_load_settings")
 	get_tree().set_auto_accept_quit(false)  # closing the window goes through quit_game()
 	for i in 10:
 		var p := AudioStreamPlayer.new()
@@ -30,6 +35,18 @@ func _ready() -> void:
 			var path := "res://audio/voice/%s_%02d.wav" % [group, i]
 			if ResourceLoader.exists(path):takes.append(load(path))
 		if not takes.is_empty():_voices[group] = takes
+
+## Loads the saved options once at game start; a missing file keeps the defaults.
+func _load_settings() -> void:
+	var settings = load("res://modules/persistence/settings_store.gd").new()
+	settings.load_from()
+	settings.apply()
+
+## Applies the accessibility switches (screen shake, slow motion, subtitles).
+func apply_accessibility(values: Dictionary) -> void:
+	screen_shake_enabled = bool(values.get("screen_shake", true))
+	slow_motion_enabled = bool(values.get("slow_motion", true))
+	subtitles_enabled = bool(values.get("subtitles", true))
 
 ## Brief slow motion (real seconds), e.g. as the last robot of a fight goes down.
 var slowmos := 0
@@ -75,6 +92,8 @@ func _process(delta: float) -> void:
 	shake = maxf(0.0, shake - delta * 2.2)
 
 func add_shake(v: float, direction := Vector3.ZERO) -> void:
+	if not screen_shake_enabled:
+		return
 	shake = minf(1.0, shake + v)
 	if direction != Vector3.ZERO:
 		shake_dir = direction.normalized()
@@ -112,9 +131,11 @@ func voice(group: String, vol_db := -4.0) -> void:
 	audio_events[group] = int(audio_events.get(group, 0)) + 1
 
 func hitstop(duration := 0.06, scale := 0.04, glide := 0.0) -> void:
+	fx_stats["hitstop"] += 1
+	if not slow_motion_enabled:
+		return
 	if Engine.time_scale != 1.0:
 		return
-	fx_stats["hitstop"] += 1
 	Engine.time_scale = scale
 	# ignore_time_scale=true: der Timer läuft in REALZEIT weiter
 	await get_tree().create_timer(duration, true, false, true).timeout

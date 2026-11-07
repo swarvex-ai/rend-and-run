@@ -70,6 +70,11 @@ func save_to(path := PATH) -> Error:
 ## display, window mode and VSync. Accessibility switches are read by the systems that
 ## use them (subtitles, slow motion, screen shake).
 func apply() -> void:
+	var loop = Engine.get_main_loop()
+	if loop != null and loop.root != null:
+		var fx = loop.root.get_node_or_null("FX")
+		if fx != null and fx.has_method("apply_accessibility"):
+			fx.apply_accessibility(values)
 	for key in BUSES:
 		var index := bus_index(BUSES[key])
 		AudioServer.set_bus_volume_db(index, volume_db(int(values[key])))
