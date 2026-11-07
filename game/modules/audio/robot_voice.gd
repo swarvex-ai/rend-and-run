@@ -53,7 +53,7 @@ func say(robot: Node3D, key: String, force := false) -> bool:
 	speaker.unit_size = 6.0;speaker.max_db = 4.0;speaker.volume_db = 2.0
 	robot.add_child(speaker);speaker.position.y = 1.6;speaker.play()
 	speaker.finished.connect(speaker.queue_free)
-	_subtitle(robot, LINES[key])
+	if FX.subtitles_enabled:_subtitle(robot, LINES[key])
 	return true
 
 func _subtitle(robot: Node3D, text: String) -> void:
@@ -74,4 +74,4 @@ func announce(key: String) -> void:
 	preload("res://modules/persistence/settings_store.gd").bus_index("Voice")
 	hall.bus = "Voice";hall.volume_db = -4.0
 	add_child(hall);hall.play();hall.finished.connect(hall.queue_free)
-	if route and route.has_method("_message"):route._message("DURCHSAGE: " + PA[key], 5.5, 1)
+	if FX.subtitles_enabled and route and route.has_method("_message"):route._message("DURCHSAGE: " + PA[key], 5.5, 1)
