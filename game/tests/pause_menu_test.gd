@@ -20,6 +20,8 @@ var menu: Control
 var n_resume := 0
 var n_restart := 0
 var n_quit := 0
+var n_options := 0
+var n_main_menu := 0
 
 func _check(label: String, ok: bool, detail := "") -> void:
 	_checks += 1
@@ -31,6 +33,15 @@ func _check(label: String, ok: bool, detail := "") -> void:
 ## 'pressed' emittieren. Das prueft die Modul-Verdrahtung (Handler -> Signal).
 func _press(btn: Button) -> void:
 	btn.pressed.emit()
+
+## Sends a real ui_* action through the input system, like a keyboard/gamepad press.
+func _ui(action: String) -> void:
+	var ev := InputEventAction.new();ev.action = action;ev.pressed = true
+	root.push_input(ev)
+	ev = InputEventAction.new();ev.action = action;ev.pressed = false
+	root.push_input(ev)
+	await process_frame
+	await process_frame
 
 func _count_controls(n: Node) -> int:
 	var c := 0
@@ -52,6 +63,8 @@ func _initialize() -> void:
 	menu.resume_requested.connect(func() -> void: n_resume += 1)
 	menu.restart_requested.connect(func() -> void: n_restart += 1)
 	menu.quit_requested.connect(func() -> void: n_quit += 1)
+	menu.options_requested.connect(func() -> void: n_options += 1)
+	menu.main_menu_requested.connect(func() -> void: n_main_menu += 1)
 
 	# --- Grundzustand
 	_check("initial_versteckt", not menu.visible)
@@ -165,6 +178,41 @@ func _initialize() -> void:
 		var br: Rect2 = (menu.find_child("Backdrop", true, false) as Control).get_global_rect()
 		_check("backdrop_fullrect_%dx%d" % [vp_size.x, vp_size.y],
 			absf(br.size.x - float(vp_size.x)) < 1.0 and absf(br.size.y - float(vp_size.y)) < 1.0, str(br.size))
+
+	# --- E11.5b: style-guide row order, confirmations and real ui_* input
+	n_resume = 0;n_restart = 0;n_quit = 0;n_options = 0;n_main_menu = 0
+	menu.open_menu()
+	await process_frame
+	var ids: Array = menu.rows.map(func(r): return r.id)
+	_check("zeilen_stilfuehrer_reihenfolge", ids == ["resume", "options", "restart", "main_menu", "quit"], str(ids))
+	for id in ["restart", "main_menu", "quit"]:
+		menu.open_menu()
+		await process_frame
+		var idx := -1
+		for i in menu.rows.size():
+			if menu.rows[i].id == id: idx = i
+		menu.focus_index = idx
+		await _ui("ui_accept")
+		_check("bestaetigung_%s_cancel_zuerst" % id,
+			menu.confirm_id == id and menu.rows.size() == 2 and menu.rows[0].id == "cancel",
+			"id=%s rows=%d" % [menu.confirm_id, menu.rows.size()])
+		await _ui("ui_cancel")
+		_check("ui_cancel_%s_zurueck" % id, menu.confirm_id == "" and menu.rows.size() == 5)
+	menu.open_menu()
+	await process_frame
+	await _ui("ui_cancel")
+	_check("ui_cancel_liste_resume", n_resume == 1, "n=%d" % n_resume)
+	for id in ["restart", "main_menu", "quit"]:
+		menu.open_menu()
+		await process_frame
+		var idx := -1
+		for i in menu.rows.size():
+			if menu.rows[i].id == id: idx = i
+		menu.focus_index = idx
+		await _ui("ui_accept")
+		await _ui("ui_accept")
+		var n := n_restart if id == "restart" else (n_main_menu if id == "main_menu" else n_quit)
+		_check("bestaetigt_%s_genau_einmal" % id, n == 1, "n=%d" % n)
 
 	paused = false
 	print("H30 SUMMARY checks=%d failures=%d" % [_checks, _fail])

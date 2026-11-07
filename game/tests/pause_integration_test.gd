@@ -10,6 +10,10 @@ func escape()->void:
 	var key:=InputEventKey.new();key.physical_keycode=KEY_ESCAPE;key.keycode=KEY_ESCAPE;key.pressed=true
 	Input.parse_input_event(key)
 	key=InputEventKey.new();key.physical_keycode=KEY_ESCAPE;key.keycode=KEY_ESCAPE;key.pressed=false;Input.parse_input_event(key)
+func ui(action:String)->void:
+	var ev:=InputEventAction.new();ev.action=action;ev.pressed=true;Input.parse_input_event(ev)
+	ev=InputEventAction.new();ev.action=action;ev.pressed=false;Input.parse_input_event(ev)
+	await wait(0.05)
 func run()->void:
 	process_mode=Node.PROCESS_MODE_ALWAYS
 	var main=get_parent();var route=main.route;var p=main.player;var ctl=main.pause_controller
@@ -52,6 +56,22 @@ func run()->void:
 	check("checkpoint equipment and shards survive death and reload",fresh.route.checkpoint and fresh.route.shards==9 and fresh.route.death_cache.amount()==0 and fresh.player.shield_unlocked)
 	check("saved file unchanged",FileAccess.get_file_as_string("user://rendrun_route_v12.json")==saved)
 	check("new scene menu hidden",not fresh.pause_controller.menu.visible)
+	# E11.5b: Options opens while the tree stays paused; back returns to the pause list.
+	fresh.pause_controller.open_menu();await wait(0.05)
+	await ui("ui_down");await ui("ui_accept")
+	check("Options opens while the tree stays paused",get_tree().paused and fresh.pause_controller.options_menu.visible and not fresh.pause_controller.menu.visible)
+	await ui("ui_cancel");await wait(0.3)
+	check("back from Options returns to the pause list",get_tree().paused and fresh.pause_controller.menu.visible and not fresh.pause_controller.options_menu.visible)
+	# E11.5b: Quit to main menu reaches start.tscn unpaused. Disable the hook flag so
+	# start.gd does not immediately re-enter the game for this check.
+	OS.set_environment("V28_TEST","0")
+	fresh.pause_controller.open_menu();await wait(0.05)
+	fresh.pause_controller.menu.focus_index=0
+	for i in 3: await ui("ui_down")
+	await ui("ui_accept");await ui("ui_accept");await wait(0.4)
+	check("Quit to main menu reaches start.tscn unpaused",get_tree().current_scene!=null and get_tree().current_scene.scene_file_path=="res://start.tscn" and not get_tree().paused)
+	get_tree().change_scene_to_file("res://main.tscn");await wait(0.4)
+	fresh=get_tree().current_scene
 	fresh.pause_controller.open_menu();fresh.pause_controller.menu._btn_quit.pressed.emit();fresh.pause_controller.menu.rows[1].node.pressed.emit()
 	check("quit exits pause",fresh.pause_controller._leaving and not get_tree().paused)
 	print("V28 SUMMARY checks=%d failures=%d"%[checks,failures])
