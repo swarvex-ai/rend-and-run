@@ -98,7 +98,7 @@ headless route_playthrough
 headless route_rewards_integration
 headless route_layout_test
 headless route_text_table_test
-quarantine route_v12_test V12_TEST
+hook route_v12_test V12_TEST
 headless sector_complete_test
 quarantine security_pair_test V45_TEST
 headless service_lamp_integration
