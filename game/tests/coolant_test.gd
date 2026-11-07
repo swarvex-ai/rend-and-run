@@ -19,9 +19,10 @@ func run() -> void:
  route.enemies[1].global_position = Vector3(33,0,0)
  var hp_before: int = p.hp;var guard_hp: int = guard.hp;var brute_hp: int = brute.hp;var money: int = route.shards
  p.global_position=Vector3(35.95,0.01,0);p.velocity=Vector3.ZERO;p.facing=1
+ route.equipment.grant("robot_arm");route.equipment.equip_weapon("robot_arm");p.equip_weapon("robot_arm")
  await wait(0.15);Input.action_press("attack");await wait(0.04);Input.action_release("attack")
  await wait(0.28)
- check("actual sword input breaks canister once",can.is_broken() and route.coolant_releases==1)
+ check("actual arm attack breaks canister once",can.is_broken() and route.coolant_releases==1)
  check("ranged charge interrupted and marker cleared",guard._state==guard.RECOVERY and guard._stun>0 and not guard._attack_cue._pivot.visible)
  check("committed brute attack interrupted",brute._state==brute.RECOVERY and brute._stun>0)
  check("outside radius unchanged",far._state==far.WINDUP and far._stun==0)
@@ -39,7 +40,7 @@ func run() -> void:
  await get_tree().physics_frame
  can.take_melee_hit(1,Vector3.ZERO)
  check("real cover blocks pressure within radius",guard._state==guard.WINDUP and guard._stun==0)
- check("gate and encounter count unchanged",route.cleared.is_empty() and not route.gate_open and route.enemies.size()==4)
+ check("gate and encounter count unchanged",route.cleared.is_empty() and not route.gate_open and route.enemies.size()==route.MISSION.ENCOUNTERS.size())
  var saved = JSON.parse_string(FileAccess.get_file_as_string(route.SAVE_PATH))
  check("consumption saved without reward",saved is Dictionary and saved.get("coolant_consumed")==true and int(saved.shards)==money)
  reparent(get_tree().root);main.queue_free();await wait(0.1)
