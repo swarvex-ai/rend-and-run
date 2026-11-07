@@ -14,6 +14,8 @@ var menu: Control
 var n_continue := 0
 var n_newrun := 0
 var n_quit := 0
+var n_options := 0
+var n_credits := 0
 
 func _check(label: String, ok: bool, detail := "") -> void:
 	_checks += 1
@@ -23,6 +25,14 @@ func _check(label: String, ok: bool, detail := "") -> void:
 
 func _press(btn: Button) -> void:
 	btn.pressed.emit()
+
+## Real ui_* action like a key press, routed through the viewport.
+func _key(action: String) -> void:
+	var ev := InputEventAction.new();ev.action = action;ev.pressed = true
+	root.push_input(ev)
+	ev = InputEventAction.new();ev.action = action;ev.pressed = false
+	root.push_input(ev)
+	await process_frame
 
 func _count_controls(n: Node) -> int:
 	var c := 0
@@ -46,6 +56,8 @@ func _initialize() -> void:
 	menu.continue_requested.connect(func() -> void: n_continue += 1)
 	menu.new_run_requested.connect(func() -> void: n_newrun += 1)
 	menu.quit_requested.connect(func() -> void: n_quit += 1)
+	menu.options_requested.connect(func() -> void: n_options += 1)
+	menu.credits_requested.connect(func() -> void: n_credits += 1)
 
 	# --- Grundzustand / verbotene Aufrufe
 	_check("initial_versteckt", not menu.visible)
@@ -146,6 +158,73 @@ func _initialize() -> void:
 	# --- Signale gesamt: continue 1, newrun 2 (1x ohne Save, 1x bestaetigt), quit 1
 	_check("signale_konsistent", n_continue == 1 and n_newrun == 2 and n_quit == 1,
 		"c=%d n=%d q=%d" % [n_continue, n_newrun, n_quit])
+
+	# --- E11.4b: echte ui_*-Eingaben, Reihenfolge und Signale
+	menu.open_menu(false)
+	await process_frame
+	var ids: Array = menu.rows.map(func(r): return r.id)
+	_check("reihenfolge_style_guide", ids == ["continue", "new_run", "options", "credits", "quit"], str(ids))
+	_check("echte_eingabe_fokus_neue_runde", menu.focused_id() == "new_run", menu.focused_id())
+	await _key("ui_up")
+	_check("ohne_save_up_ueberspringt_continue", menu.focused_id() == "quit", menu.focused_id())
+	await _key("ui_down")
+	_check("ohne_save_down_ueberspringt_continue", menu.focused_id() == "new_run", menu.focused_id())
+
+	menu.open_menu(true)
+	await process_frame
+	await _key("ui_down")
+	_check("mit_save_fokus_neue_runde", menu.focused_id() == "new_run", menu.focused_id())
+	await _key("ui_accept")
+	await process_frame
+	await process_frame
+	_check("mit_save_neue_runde_fragt_zuerst", _btn("BtnConfirmNewRun") != null and _btn("BtnQuit") == null)
+	await _key("ui_cancel")
+	await process_frame
+	await process_frame
+	_check("ui_cancel_zurueck_zur_liste", _btn("BtnQuit") != null and menu.focused_id() == "new_run", menu.focused_id())
+
+	menu.open_menu(true)
+	await process_frame
+	await _key("ui_up")
+	_check("mit_save_fokus_quit", menu.focused_id() == "quit", menu.focused_id())
+	var q0 := n_quit
+	await _key("ui_accept")
+	await process_frame
+	await process_frame
+	_check("quit_fragt_zuerst", _btn("BtnConfirmQuit") != null and n_quit == q0, "n=%d" % n_quit)
+	await _key("ui_accept")
+	await process_frame
+	_check("quit_bestaetigt_genau_1x", n_quit == q0 + 1, "n=%d" % n_quit)
+
+	menu.open_menu(true)
+	await process_frame
+	await _key("ui_down")
+	await _key("ui_down")
+	_check("fokus_options", menu.focused_id() == "options", menu.focused_id())
+	var o0 := n_options
+	await _key("ui_accept")
+	await process_frame
+	_check("options_genau_1x", n_options == o0 + 1, "n=%d" % n_options)
+
+	menu.open_menu(true)
+	await process_frame
+	await _key("ui_down")
+	await _key("ui_down")
+	await _key("ui_down")
+	_check("fokus_credits", menu.focused_id() == "credits", menu.focused_id())
+	var c0 := n_credits
+	await _key("ui_accept")
+	await process_frame
+	_check("credits_genau_1x", n_credits == c0 + 1, "n=%d" % n_credits)
+
+	menu.open_menu(false)
+	await process_frame
+	var before_signals := [n_continue, n_newrun, n_quit, n_options, n_credits]
+	await _key("ui_cancel")
+	_check("ui_cancel_hauptliste_kein_signal",
+		[n_continue, n_newrun, n_quit, n_options, n_credits] == before_signals)
+	_check("ui_cancel_hauptliste_bleibt_offen", menu.visible and _btn("BtnQuit") != null)
+	menu.close_menu()
 
 	# --- Layout 960x540..1920x1080: Panel im Viewport, Backdrop fullrect,
 	#     Text der Fusszeile/Bestaetigung passt ohne Uberstand ins Panel
