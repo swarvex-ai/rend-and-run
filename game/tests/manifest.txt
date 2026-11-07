@@ -36,7 +36,7 @@ headless death_cache_smoke
 window death_grounding
 headless debris_pause_test
 quarantine duelist_footwork_test V44_TEST
-quarantine edge_warning_test V46_TEST
+hook edge_warning_test V46_TEST
 probe encounter_probe
 headless energy_bolt_test
 hook equipment_integration_test V15_TEST
@@ -51,7 +51,7 @@ hook finisher_fallback_test V31_TEST
 headless first_room_loop
 headless first_room_playthrough
 quarantine guard_integration_test V14_TEST
-quarantine guard_spacing_test V48_TEST
+hook guard_spacing_test V48_TEST
 headless guard_state_test
 headless h39_atomic_writer_check
 hook hud_integration_test V24_TEST
@@ -86,7 +86,7 @@ headless prefix_ledger_test
 headless prefix_persistence_test
 headless prefix_save_guard_test
 headless prefix_transaction_test
-quarantine pressure_step_test
+headless pressure_step_test
 quarantine projectile_lifetime_test V49_TEST
 headless pulse_emitter_check
 hook pulse_pack_test V50_TEST
