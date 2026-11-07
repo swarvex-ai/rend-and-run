@@ -82,6 +82,7 @@
 - #93 angenommen (Fix #96: `_bone()`-Fallback für die Armknochen in `overseer_low_pose.gd`). Nach dem Merge (e7784c2) ist overseer_integration aus der Quarantäne (33/33). Die Suite war zweimal grün mit 99 headless + 22 hook.
 - #92 angenommen (Diagnose #95): Fehler im Test, kein Spielfehler. Der Test schaltet Rends Physik ab, deshalb bleibt seine Kapsel bei 1,3 m statt 1,65 m, und ein hoch gestreuter Schuss fliegt darüber. Reparatur-Aufgabe #97 (Steh-Kapsel setzen, Seed direkt vor dem zweiten Schuss). Die Aussage, `FX.hitstop` laufe unter `--fixed-fps` in Echtzeit, ist nicht belegt.
 - In der Quarantäne bleiben zwei Tests: machinery_chamber_integration (Meilenstein-Review) und projectile_lifetime_test (#97).
+- #94 (Art Bible, #48) zur Nacharbeit: Die Kriterien sind erfüllt, aber das Dokument nennt den Comic-Stil Variante 1 als festgelegt. Die Wahl ist offen (Nachricht 13). Es ist nur ein Satz zu korrigieren. Danach geht die Art Bible als Gate-Dokument zur Freigabe an neVs.
 
 **Rulings (Nachmittag)**
 - Ruling: Den Fehler der Fokusleiste behebe ich selbst statt per Aufgabe — er liegt in meiner Basis (Stufe D), und `menu_screen.gd` ist in allen Menü-Aufgaben ausgeschlossen — Kosten bei Irrtum: keine, die Korrektur hat einen eigenen Test.
