@@ -5,6 +5,7 @@ extends SceneTree
 ## Engine nach echtem Klick und prueft Verdrahtung + Zustandsmaschine.
 ## godot --headless --path game --script res://tests/sector_complete_test.gd
 
+const UI_TEXT = preload("res://data/ui_texts.gd")
 var _fail := 0
 var _checks := 0
 var menu: Control
@@ -82,11 +83,11 @@ func _initialize() -> void:
 	menu.show_summary(_state(true))
 	await process_frame
 	_check("show_sichtbar", menu.visible)
-	_check("werte_echt_wachen", _val("Wachen") == "7 / 8", _val("Wachen"))
-	_check("werte_echt_splitter", _val("Splitter") == "12", _val("Splitter"))
-	_check("werte_echt_waffe", _val("Waffe") == "Puls-Emitter Mk. IV", _val("Waffe"))
-	_check("werte_echt_ruestung", _val("Rüstung") == "Leichtpanzer Mk. II", _val("Rüstung"))
-	_check("save_ok_text", save_lbl.text == "Fortschritt gespeichert", save_lbl.text)
+	_check("werte_echt_wachen", _val("guards") == "7 / 8", _val("guards"))
+	_check("werte_echt_splitter", _val("shards") == "12", _val("shards"))
+	_check("werte_echt_waffe", _val("weapon") == "Puls-Emitter Mk. IV", _val("weapon"))
+	_check("werte_echt_ruestung", _val("armor") == "Leichtpanzer Mk. II", _val("armor"))
+	_check("save_ok_text", save_lbl.text == UI_TEXT.t("sector_complete_saved"), save_lbl.text)
 	_check("initialefokus_explore", _focus_name() == "BtnExplore", _focus_name())
 	_check("mainbox_sichtbar_bestaetigung_nein", main_box.visible and not conf_box.visible)
 	_press(_btn("BtnExplore"))
@@ -100,7 +101,7 @@ func _initialize() -> void:
 	# --- Fall SPEICHERFEHLER: Warntext, Hauptmenue nur mit Bestaetigung
 	menu.show_summary(_state(false))
 	await process_frame
-	_check("save_fail_text", save_lbl.text == "Speichern fehlgeschlagen — Fortschritt nur in dieser Sitzung.", save_lbl.text)
+	_check("save_fail_text", save_lbl.text == UI_TEXT.t("sector_complete_save_failed"), save_lbl.text)
 	_check("fehler_mainbox_reset", main_box.visible and not conf_box.visible)
 	_press(_btn("BtnTitle"))
 	await process_frame
@@ -137,8 +138,8 @@ func _initialize() -> void:
 		"weapon_name": "", "armor_name": "", "save_ok": true})
 	await process_frame
 	_check("reopen_setzt_confirm_zurueck", main_box.visible and not conf_box.visible)
-	_check("werte_aktualisiert", _val("Wachen") == "2 / 8" and _val("Splitter") == "3", _val("Wachen"))
-	_check("leere_ausruestung_platzhalter", _val("Waffe") == "— keine —" and _val("Rüstung") == "— keine —", _val("Waffe"))
+	_check("werte_aktualisiert", _val("guards") == "2 / 8" and _val("shards") == "3", _val("guards"))
+	_check("leere_ausruestung_platzhalter", _val("weapon") == UI_TEXT.t("sector_complete_none") and _val("armor") == UI_TEXT.t("sector_complete_none"), _val("weapon"))
 	var before := _count_controls(menu)
 	for i in range(10):
 		menu.show_summary(_state(true))
@@ -153,8 +154,10 @@ func _initialize() -> void:
 		txt_all += (c as Label).text + "\n"
 	for c in menu.find_children("*", "Button", true, false):
 		txt_all += (c as Button).text + "\n"
-	_check("umlauten_echt", txt_all.contains("Zum Hauptmenü") and txt_all.contains("Zurück") \
-		and txt_all.contains("SEKTOR GESICHERT") and txt_all.contains("Rüstung"), "")
+	_check("umlauten_echt", txt_all.contains(UI_TEXT.t("sector_complete_to_title")) \
+		and txt_all.contains(UI_TEXT.t("sector_complete_back")) \
+		and txt_all.contains(UI_TEXT.t("sector_complete_title")) \
+		and txt_all.contains(UI_TEXT.t("sector_complete_row_armor")), "")
 	_check("sichtbar_keine_technik_reworts", not txt_all.to_lower().contains("save") \
 		and not txt_all.to_lower().contains("signal") and not txt_all.to_lower().contains("bool"))
 

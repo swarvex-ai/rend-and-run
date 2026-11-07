@@ -18,6 +18,7 @@ extends Control
 signal explore_requested
 signal title_requested
 
+const UI_TEXT = preload("res://data/ui_texts.gd")
 const COL_BG := Color(0.02, 0.03, 0.04, 0.82)
 const COL_PANEL := Color(0.07, 0.08, 0.10, 0.95)
 const COL_TEXT := Color(0.93, 0.90, 0.84)
@@ -89,24 +90,24 @@ func _init() -> void:
 	col.add_theme_constant_override("separation", 8)
 	panel.add_child(col)
 
-	col.add_child(_mk_label("TitleLabel", "SEKTOR GESICHERT", 34, COL_TEXT, HORIZONTAL_ALIGNMENT_CENTER))
-	col.add_child(_mk_label("SectorLabel", "Laborsektor 01", 18, COL_CYAN, HORIZONTAL_ALIGNMENT_CENTER))
+	col.add_child(_mk_label("TitleLabel", UI_TEXT.t("sector_complete_title"), 34, COL_TEXT, HORIZONTAL_ALIGNMENT_CENTER))
+	col.add_child(_mk_label("SectorLabel", UI_TEXT.t("sector_complete_sector"), 18, COL_CYAN, HORIZONTAL_ALIGNMENT_CENTER))
 	col.add_child(_mk_spacer(6))
 
 	_main_box = VBoxContainer.new()
 	_main_box.name = "MainBox"
 	_main_box.add_theme_constant_override("separation", 8)
 	col.add_child(_main_box)
-	_val_guards = _mk_value_row(_main_box, "Wachen", "0 / 0")
-	_val_shards = _mk_value_row(_main_box, "Splitter", "0")
-	_val_weapon = _mk_value_row(_main_box, "Waffe", "—")
-	_val_armor = _mk_value_row(_main_box, "Rüstung", "—")
+	_val_guards = _mk_value_row(_main_box, "guards", UI_TEXT.t("sector_complete_row_guards"), "0 / 0")
+	_val_shards = _mk_value_row(_main_box, "shards", UI_TEXT.t("sector_complete_row_shards"), "0")
+	_val_weapon = _mk_value_row(_main_box, "weapon", UI_TEXT.t("sector_complete_row_weapon"), "—")
+	_val_armor = _mk_value_row(_main_box, "armor", UI_TEXT.t("sector_complete_row_armor"), "—")
 	col.add_child(_mk_spacer(4))
 	_save_label = _mk_label("SaveStatus", "", 18, COL_OK, HORIZONTAL_ALIGNMENT_LEFT)
 	col.add_child(_save_label)
 	col.add_child(_mk_spacer(6))
-	_btn_explore = _mk_button("BtnExplore", "Weiter erkunden")
-	_btn_title = _mk_button("BtnTitle", "Zum Hauptmenü")
+	_btn_explore = _mk_button("BtnExplore", UI_TEXT.t("sector_complete_explore"))
+	_btn_title = _mk_button("BtnTitle", UI_TEXT.t("sector_complete_to_title"))
 	_main_box.add_child(_btn_explore)
 	_main_box.add_child(_btn_title)
 
@@ -116,10 +117,10 @@ func _init() -> void:
 	_confirm_box.visible = false
 	col.add_child(_confirm_box)
 	_confirm_box.add_child(_mk_label("ConfirmLabel",
-		"Trotzdem zum Hauptmenü?\nUngespeicherter Fortschritt geht verloren.",
+		UI_TEXT.t("sector_complete_confirm"),
 		18, COL_TEXT, HORIZONTAL_ALIGNMENT_CENTER))
-	_btn_back = _mk_button("BtnBack", "Zurück")
-	_btn_leave = _mk_button("BtnLeave", "Verlassen")
+	_btn_back = _mk_button("BtnBack", UI_TEXT.t("sector_complete_back"))
+	_btn_leave = _mk_button("BtnLeave", UI_TEXT.t("sector_complete_leave"))
 	_confirm_box.add_child(_btn_back)
 	_confirm_box.add_child(_btn_leave)
 
@@ -136,13 +137,13 @@ func show_summary(state: Dictionary) -> void:
 	_val_shards.text = str(int(state.get("shards", 0)))
 	var w := str(state.get("weapon_name", ""))
 	var a := str(state.get("armor_name", ""))
-	_val_weapon.text = w if w != "" else "— keine —"
-	_val_armor.text = a if a != "" else "— keine —"
+	_val_weapon.text = w if w != "" else UI_TEXT.t("sector_complete_none")
+	_val_armor.text = a if a != "" else UI_TEXT.t("sector_complete_none")
 	if _save_ok:
-		_save_label.text = "Fortschritt gespeichert"
+		_save_label.text = UI_TEXT.t("sector_complete_saved")
 		_save_label.add_theme_color_override("font_color", COL_OK)
 	else:
-		_save_label.text = "Speichern fehlgeschlagen — Fortschritt nur in dieser Sitzung."
+		_save_label.text = UI_TEXT.t("sector_complete_save_failed")
 		_save_label.add_theme_color_override("font_color", COL_WARN)
 	_show_main()
 	visible = true
@@ -185,15 +186,15 @@ func _on_leave() -> void:
 	title_requested.emit()
 
 
-func _mk_value_row(parent: VBoxContainer, key: String, initial: String) -> Label:
+func _mk_value_row(parent: VBoxContainer, id: String, label_text: String, initial: String) -> Label:
 	var row := HBoxContainer.new()
-	row.name = "Row_" + key
+	row.name = "Row_" + id
 	row.add_theme_constant_override("separation", 12)
 	parent.add_child(row)
-	var k := _mk_label("Key_" + key, key, 18, COL_DIM, HORIZONTAL_ALIGNMENT_LEFT)
+	var k := _mk_label("Key_" + id, label_text, 18, COL_DIM, HORIZONTAL_ALIGNMENT_LEFT)
 	k.custom_minimum_size = Vector2(96, 0)
 	row.add_child(k)
-	var v := _mk_label("Val_" + key, initial, 18, COL_TEXT, HORIZONTAL_ALIGNMENT_LEFT)
+	var v := _mk_label("Val_" + id, initial, 18, COL_TEXT, HORIZONTAL_ALIGNMENT_LEFT)
 	v.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	row.add_child(v)
 	return v
