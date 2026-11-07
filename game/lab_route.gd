@@ -847,6 +847,16 @@ func _use_workbench() -> void:
 func workbench_state(feedback_text := "") -> Dictionary:
 	return {"shards":shards,"owned":equipment.export_state().owned,"equipped":equipment.equipped_weapon(),"feedback":feedback_text,"servo":equipment.prefixes.servo,"trial_unlocked":equipment.owns("reinforced_arm") and "first" in cleared,"trial_ready":servo_run.can_begin(),"trial_run":servo_run.run_id,"trial_defeated":servo_run.defeated_count(),"bonus_misses":servo_run.bonus_misses,"servo_owned":equipment.prefixes.owns_module("servo_i"),"servo_installed":equipment.prefixes.installed("reinforced_arm")=="servo_i"}
 
+func _shop_reason_text(reason: String) -> String:
+	match reason:
+		"not_at_workbench": return TEXT.t("shop_reason_not_at_workbench")
+		"busy": return TEXT.t("shop_reason_busy")
+		"install": return TEXT.t("shop_reason_install")
+		"missing_base": return TEXT.t("shop_reason_missing_base")
+		"already_owned": return TEXT.t("shop_reason_already_owned")
+		"save_failed": return TEXT.t("shop_save_failed")
+		_: return TEXT.t("shop_reason_unknown")
+
 func apply_workbench_action(id:String) -> void:
 	var shop:Control=main.pause_controller.shop
 	if not shop.visible:return
@@ -855,7 +865,7 @@ func apply_workbench_action(id:String) -> void:
 	if id in ["servo_craft","servo_install","servo_remove"]:
 		var result:Dictionary=apply_prefix_action("" if id=="servo_remove" else "servo_i",id!="servo_craft")
 		var message:String=TEXT.t("shop_servo_crafted") if id=="servo_craft" else equipment.PREFIXES.summary()+TEXT.t("shop_servo_installed_suffix") if id=="servo_install" else TEXT.t("shop_servo_removed")
-		if not result.ok:message=TEXT.t("shop_servo_cannot_buy") if result.reason in ["insufficient_shards","insufficient_servo"] else TEXT.t("shop_action_not_saved")+str(result.reason)
+		if not result.ok:message=TEXT.t("shop_servo_cannot_buy") if result.reason in ["insufficient_shards","insufficient_servo"] else _shop_reason_text(str(result.reason))
 		shop.update_state(workbench_state(message));return
 	if id=="servo_trial":
 		var trial_result:Dictionary=start_servo_trial()
