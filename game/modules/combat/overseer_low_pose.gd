@@ -11,9 +11,9 @@ func _process_modification() -> void:
  amount=move_toward(amount,desired,get_process_delta_time()*12)
  if amount<.001:return
  var sk:=get_skeleton()
- var upper:=sk.find_bone("mixamorig_RightArm")
- var lower:=sk.find_bone("mixamorig_RightForeArm")
- var hand:=sk.find_bone("mixamorig_RightHand")
+ var upper:=_bone(sk,"mixamorig_RightArm")
+ var lower:=_bone(sk,"mixamorig_RightForeArm")
+ var hand:=_bone(sk,"mixamorig_RightHand")
  var grip:=sk.find_bone("hand_r")
  if mini(mini(upper,lower),mini(hand,grip))<0:return
  var front:float=actor._attack_front
@@ -61,3 +61,8 @@ func _set_global(sk: Skeleton3D,bone: int,pose: Transform3D) -> void:
  var local:=sk.get_bone_global_pose(parent).affine_inverse()*pose if parent>=0 else pose
  sk.set_bone_pose_position(bone,local.origin)
  sk.set_bone_pose_rotation(bone,local.basis.orthonormalized().get_rotation_quaternion())
+
+func _bone(sk: Skeleton3D,name: String) -> int:
+ var found:=sk.find_bone(name)
+ if found>=0:return found
+ return sk.find_bone(name.trim_prefix("mixamorig_"))
