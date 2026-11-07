@@ -12,6 +12,7 @@ signal action_requested(item_id: String)
 signal close_requested
 
 const PREFIX := preload("res://modules/equipment/prefix_ledger.gd")
+const UI_TEXT = preload("res://data/ui_texts.gd")
 const ID_STARTER := "robot_arm"
 const ID_VIBRO := "reinforced_arm"
 const ITEMS := preload("res://modules/equipment/item_catalog.gd")
@@ -148,43 +149,43 @@ func _primary() -> Button:
 
 
 func _refresh() -> void:
-	_balance_label.text = "Splitter: %d · Servo: %d" % [_shards,_servo]
+	_balance_label.text = UI_TEXT.t("workbench_balance") % [_shards,_servo]
 	_trial_action.visible=_trial_unlocked
 	_trial_info.visible=_trial_unlocked and _feedback.is_empty()
 	_trial_action.disabled=not _trial_unlocked or not _trial_ready
-	_trial_action.text="Servoteile bergen · 5 Roboter" if _trial_ready else "Bergung %d/5 — fortsetzen"%_trial_defeated if _trial_defeated<5 else "5/5 besiegt — übrige Teile einsammeln"
-	_trial_info.text="12 Splitter + 1 Servo sicher · Extra spätestens in %d %s"%[4-_bonus_misses,"Lauf" if _bonus_misses==3 else "Läufen"] if _trial_ready else "Fortschritt gespeichert · zurück in den Raum"
+	_trial_action.text=UI_TEXT.t("workbench_trial_start") if _trial_ready else UI_TEXT.t("workbench_trial_progress")%_trial_defeated if _trial_defeated<5 else UI_TEXT.t("workbench_trial_done")
+	_trial_info.text=UI_TEXT.t("workbench_trial_info")%[4-_bonus_misses,UI_TEXT.t("workbench_trial_run") if _bonus_misses==3 else UI_TEXT.t("workbench_trial_runs")] if _trial_ready else UI_TEXT.t("workbench_trial_saved")
 	_servo_info.visible=_is_owned(ID_VIBRO);_servo_action.visible=_is_owned(ID_VIBRO)
-	_servo_info.text=PREFIX.summary()+"\n"+("Modul im Besitz" if _servo_owned else "%d/12 Splitter · %d/2 Servo"%[_shards,_servo])
-	_servo_action.text="Abbauen" if _servo_installed else "Anbauen" if _servo_owned else "Herstellen"
+	_servo_info.text=PREFIX.summary()+"\n"+(UI_TEXT.t("workbench_servo_owned") if _servo_owned else UI_TEXT.t("workbench_servo_cost")%[_shards,_servo])
+	_servo_action.text=UI_TEXT.t("workbench_servo_remove") if _servo_installed else UI_TEXT.t("workbench_servo_install") if _servo_owned else UI_TEXT.t("workbench_servo_craft")
 	_servo_action.disabled=not _is_owned(ID_VIBRO) or (not _servo_owned and (_shards<12 or _servo<2))
 	_feedback_label.text = _feedback
 	_feedback_label.visible = _feedback != ""
 
 	if _equipped == ID_STARTER:
-		_starter_action.text = "Ausgerüstet"
+		_starter_action.text = UI_TEXT.t("workbench_equipped")
 		_starter_action.disabled = true
 	else:
-		_starter_action.text = "Ausrüsten"
+		_starter_action.text = UI_TEXT.t("workbench_equip")
 		_starter_action.disabled = not _is_owned(ID_STARTER) or _locked_id == ID_STARTER
 
 	if _is_owned(ID_VIBRO):
 		_shortage_label.visible = false
 		if _equipped == ID_VIBRO:
-			_vibro_action.text = "Ausgerüstet"
+			_vibro_action.text = UI_TEXT.t("workbench_equipped")
 			_vibro_action.disabled = true
 		else:
-			_vibro_action.text = "Ausrüsten"
+			_vibro_action.text = UI_TEXT.t("workbench_equip")
 			_vibro_action.disabled = _locked_id == ID_VIBRO
 	else:
-		_vibro_action.text = "Kaufen · %d Splitter" % VIBRO_COST
+		_vibro_action.text = UI_TEXT.t("workbench_buy") % VIBRO_COST
 		var lacking: int = VIBRO_COST - _shards
 		_vibro_action.disabled = not _is_owned(ID_STARTER) or lacking > 0 or _locked_id == ID_VIBRO
 		_shortage_label.visible = not _is_owned(ID_STARTER) or lacking > 0
 		if not _is_owned(ID_STARTER):
-			_shortage_label.text = "Zuerst den Humanoidenarm am Start bergen."
+			_shortage_label.text = UI_TEXT.t("workbench_need_arm")
 		elif lacking > 0:
-			_shortage_label.text = "Es fehlen %d Splitter" % lacking
+			_shortage_label.text = UI_TEXT.t("workbench_missing_shards") % lacking
 
 	# Fokus: bei Reopen Primäraktion, sonst existing Button-Fokus erhalten.
 	var focus_owner: Control = null
@@ -242,19 +243,19 @@ func _build_once() -> void:
 	_panel.add_theme_stylebox_override("panel", sb)
 	add_child(_panel)
 
-	_panel.add_child(_mk_label("TitleLabel", "WERKBANK", 20, COLOR_COPPER, Vector2(16, 12)))
-	_balance_label = _mk_label("BalanceLabel", "Splitter: 0", 14, COLOR_TEXT, Vector2(16, 42))
+	_panel.add_child(_mk_label("TitleLabel", UI_TEXT.t("workbench_title"), 20, COLOR_COPPER, Vector2(16, 12)))
+	_balance_label = _mk_label("BalanceLabel", UI_TEXT.t("workbench_balance_initial"), 14, COLOR_TEXT, Vector2(16, 42))
 	_panel.add_child(_balance_label)
 
 	_starter_info = _mk_label("StarterInfo", ITEMS.label(ID_STARTER)+"\n"+ITEMS.summary(ID_STARTER), 14, COLOR_TEXT, Vector2(16, 65))
 	_panel.add_child(_starter_info)
-	_starter_action = _mk_button("StarterAction", "Ausrüsten", Vector2(16, 68))
+	_starter_action = _mk_button("StarterAction", UI_TEXT.t("workbench_equip"), Vector2(16, 68))
 	_starter_action.pressed.connect(_on_action_pressed.bind(ID_STARTER))
 	_panel.add_child(_starter_action)
 
 	_vibro_info = _mk_label("VibroInfo", ITEMS.label(ID_VIBRO)+"\n"+ITEMS.summary(ID_VIBRO), 14, COLOR_TEXT, Vector2(16, 108))
 	_panel.add_child(_vibro_info)
-	_vibro_action = _mk_button("VibroAction", "Kaufen · %d Splitter"%VIBRO_COST, Vector2(16, 114))
+	_vibro_action = _mk_button("VibroAction", UI_TEXT.t("workbench_buy")%VIBRO_COST, Vector2(16, 114))
 	_vibro_action.pressed.connect(_on_action_pressed.bind(ID_VIBRO))
 	_panel.add_child(_vibro_action)
 	_shortage_label = _mk_label("ShortageLabel", "", 11, COLOR_COPPER, Vector2(16, 148))
@@ -267,19 +268,19 @@ func _build_once() -> void:
 
 	_servo_info=_mk_label("ServoInfo",PREFIX.summary(),13,COLOR_TEXT,Vector2(16,152))
 	_panel.add_child(_servo_info)
-	_servo_action=_mk_button("ServoAction","Herstellen",Vector2(16,154))
+	_servo_action=_mk_button("ServoAction",UI_TEXT.t("workbench_servo_craft"),Vector2(16,154))
 	_servo_action.pressed.connect(_on_servo_pressed);_panel.add_child(_servo_action)
-	_trial_info=_mk_label("ServoTrialInfo","Freiwillig: 12 Splitter + mindestens 1 Servo",12,COLOR_MUTED,Vector2(16,196))
+	_trial_info=_mk_label("ServoTrialInfo",UI_TEXT.t("workbench_trial_available"),12,COLOR_MUTED,Vector2(16,196))
 	_panel.add_child(_trial_info)
-	_trial_action=_mk_button("ServoTrialAction","Servoteile bergen · 5 Roboter",Vector2(16,212))
+	_trial_action=_mk_button("ServoTrialAction",UI_TEXT.t("workbench_trial_start"),Vector2(16,212))
 	_trial_action.pressed.connect(_on_action_pressed.bind("servo_trial"))
 	_panel.add_child(_trial_action)
 
-	_btn_close = _mk_button("CloseButton", "Zurück", Vector2(16, 200))
+	_btn_close = _mk_button("CloseButton", UI_TEXT.t("workbench_back"), Vector2(16, 200))
 	_btn_close.pressed.connect(_on_close_pressed)
 	_panel.add_child(_btn_close)
 
-	_footer_label = _mk_label("FooterLabel", "Eingabe / A: wählen · Esc / B: zurück", 12, COLOR_MUTED, Vector2.ZERO)
+	_footer_label = _mk_label("FooterLabel", UI_TEXT.t("workbench_footer"), 12, COLOR_MUTED, Vector2.ZERO)
 	_footer_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_panel.add_child(_footer_label)
 

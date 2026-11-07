@@ -1,5 +1,6 @@
 extends SceneTree
 const TEXT = preload("res://data/route_texts.gd")
+const UI_TEXT = preload("res://data/ui_texts.gd")
 class DrawClock extends Node:
 	func _process(delta:float):RenderingServer.force_draw(false,delta)
 var checks:=0
@@ -52,7 +53,8 @@ func run():
 	check("recipe shows inventory versus cost",shop._servo_info.text.contains("12/12") and shop._servo_info.text.contains("2/2"))
 	for misses in [0,3]:
 		r.servo_run.bonus_misses=misses;shop.update_state(r.workbench_state())
-		check("bonus deadline reflects saved pity",shop._trial_info.text.contains("in %d"%(4-misses)))
+		var deadline:String=UI_TEXT.t("workbench_trial_info")%[4-misses,UI_TEXT.t("workbench_trial_run") if misses==3 else UI_TEXT.t("workbench_trial_runs")]
+		check("bonus deadline reflects saved pity",shop._trial_info.text==deadline)
 	for size in [Vector2i(1280,720),Vector2i(640,360)]:
 		root.size=size;await process_frame;await process_frame
 		check("trial explanation fits width",shop._trial_info.get_theme_font("font").get_string_size(shop._trial_info.text,HORIZONTAL_ALIGNMENT_LEFT,-1,shop._trial_info.get_theme_font_size("font_size")).x<=shop._trial_info.size.x)

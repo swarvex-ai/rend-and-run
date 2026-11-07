@@ -1,4 +1,5 @@
 extends SceneTree
+const UI_TEXT = preload("res://data/ui_texts.gd")
 class DrawClock extends Node:
 	func _process(delta:float):RenderingServer.force_draw(false,delta)
 var failures:=0
@@ -51,7 +52,7 @@ func run():
 	check("UI craft charges exact price",r.shards==0 and r.equipment.prefixes.servo==0 and r.equipment.prefixes.owns_module("servo_i"))
 	check("craft not auto installed",not p._servo_installed and not p._servo_model.visible)
 	shop._servo_action.pressed.emit()
-	check("UI install shows authored module",p._servo_installed and p._servo_model.visible and shop._servo_action.text=="Abbauen")
+	check("UI install shows authored module",p._servo_installed and p._servo_model.visible and shop._servo_action.text==UI_TEXT.t("workbench_servo_remove"))
 	for size in [Vector2i(1280,720),Vector2i(640,360)]:
 		root.size=size;await process_frame;await process_frame
 		check("servo label does not overlap button",shop._servo_info.get_global_rect().end.x<shop._servo_action.get_global_rect().position.x)
