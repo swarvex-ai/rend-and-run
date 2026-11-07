@@ -96,6 +96,7 @@
   - #103: Menü-Klänge auf die Spitzenpegel des Styleguides. Heute klingt Zurück etwa 13 dB leiser als Bestätigen. #103 ersetzt #102, meine erste Fassung, die übersehen hatte, dass die WAVs mit QOA importiert werden.
 - #100 angenommen (Folgeaufgabe #98 aus der F3-Review): Kühlmittel-Hinweis und Lampenfarben kommen aus den Routendaten. Gegenprobe: Mit geänderter Farbe in den Daten wird der neue Check rot.
 - #101 angenommen (Diagnose #90, Risiko Ladereihenfolge): `enemy.gd:143` leitet die Tiefenspur eines Roboters aus `get_instance_id() % 3` ab. Jedes zusätzlich geladene Skript verschiebt die Objekt-IDs und damit die Spur des ersten Roboters (−0,25 → 0,0), und `arm_first_fight` kippt. Fix-Aufgabe #104: Die Spur kommt aus einem Spawn-Zähler in `main._make_enemy`, mit Regressionstest. Danach entfällt die Regel „kein preload in Hook-Tests“.
+- #102 angenommen (E6, #99): Gespeicherte Optionen wirken beim Start, Bildschirmwackeln und Zeitlupe lassen sich wirklich abschalten. Der Mitwirkende hat bestätigt, dass ein `preload` in `fx.gd` `arm_first_fight` rot macht (Ursache #90), und deshalb `load()` genommen. Nach dem Merge (30b624c) ist accessibility_settings_test registriert. Die Suite war zweimal grün mit 100 headless + 23 hook. #100 (Untertitel) ist damit frei.
 
 **Rulings (Nachmittag)**
 - Ruling: Den Fehler der Fokusleiste behebe ich selbst statt per Aufgabe — er liegt in meiner Basis (Stufe D), und `menu_screen.gd` ist in allen Menü-Aufgaben ausgeschlossen — Kosten bei Irrtum: keine, die Korrektur hat einen eigenen Test.

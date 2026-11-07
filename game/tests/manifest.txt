@@ -109,6 +109,7 @@ headless servo_run_ledger_test
 headless servo_trial_test
 headless servo_upgrade_test
 headless settings_store_test
+headless accessibility_settings_test
 headless shard_pickup_integration
 headless shortcut_door_test
 hook shortcut_integration_test H16_TEST
