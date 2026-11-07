@@ -100,6 +100,7 @@ headless route_playthrough
 headless route_rewards_integration
 headless route_layout_test
 headless route_text_table_test
+headless ui_text_table_test
 hook route_v12_test V12_TEST
 headless sector_complete_test
 hook security_pair_test V45_TEST
