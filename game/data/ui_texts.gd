@@ -24,6 +24,11 @@ const TEXTS := {
 	"sector_complete_sector": "Laborsektor 01",
 	"sector_complete_title": "SEKTOR GESICHERT",
 	"sector_complete_to_title": "Zum Hauptmenü",
+	"zone_airlock": "05 / SCHLEUSE",
+	"zone_arrival": "01 / ANKUNFT",
+	"zone_maintenance": "02 / WARTUNG",
+	"zone_security": "04 / SICHERUNG",
+	"zone_supply": "03 / VERSORGUNG",
 }
 
 static func t(key: String) -> String:

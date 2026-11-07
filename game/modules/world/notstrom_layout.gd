@@ -1,5 +1,6 @@
 extends RefCounted
 ## Authored mission beats; stable encounter IDs preserve existing route saves.
+const UI_TEXT = preload("res://data/ui_texts.gd")
 const REVISION := 2
 const BOSS_X := 73.0
 const BOSS_ENTRY_X := 70.0
@@ -34,8 +35,8 @@ static func cleared_count(cleared:Array) -> int:
  return result
 
 static func zone(x:float) -> String:
- if x<11:return "01 / ANKUNFT"
- if x<24:return "02 / WARTUNG"
- if x<29.5:return "03 / VERSORGUNG"
- if x<BOSS_ENTRY_X:return "04 / SICHERUNG"
- return "05 / SCHLEUSE"
+ if x<11:return UI_TEXT.t("zone_arrival")
+ if x<24:return UI_TEXT.t("zone_maintenance")
+ if x<29.5:return UI_TEXT.t("zone_supply")
+ if x<BOSS_ENTRY_X:return UI_TEXT.t("zone_security")
+ return UI_TEXT.t("zone_airlock")

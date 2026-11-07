@@ -1,4 +1,5 @@
 extends SceneTree
+const UI_TEXT = preload("res://data/ui_texts.gd")
 var failures:=0
 var checks:=0
 func _initialize():call_deferred("run")
@@ -26,6 +27,6 @@ func run():
  var saved={"version":12,"economy_revision":1,"cleared":["first","duelist","guard","brute","foreign","guard"],"completed":true}
  var restored=load("res://lab_route.gd").new();restored._restore_progress(saved)
  check("old completed save retains all cleared encounters",layout.all_cleared(restored.cleared) and restored.completed and restored.cleared.size()==layout.ENCOUNTERS.size())
- check("five mission sections distinguish supply and exit",layout.zone(28)=="03 / VERSORGUNG" and layout.zone(73)=="05 / SCHLEUSE")
+ check("five mission sections distinguish supply and exit",layout.zone(28)==UI_TEXT.t("zone_supply") and layout.zone(73)==UI_TEXT.t("zone_airlock"))
  restored.free()
  print("NOTSTROM SUMMARY checks=%d failures=%d"%[checks,failures]);quit(1 if failures else 0)
