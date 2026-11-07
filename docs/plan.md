@@ -85,7 +85,7 @@ How the lead would have sliced `3b3f444` as swarm tasks, by the same rules as re
 | E2 | timing and route length (S23): playtests, then extend or cut | F4, playtests |
 | E3 | pressure task: quick-maths door after the relay checkpoint | F3 |
 | E4 | intro comic: pick script + style (neVs) → asset brief preview → final → in-game player | #7–#10 |
-| E5 | English in-game text from the text table. 07.11.: #107 inventory of tests that compare German literals (prerequisite: switch them to TEXT keys first) | F3 |
+| E5 | English in-game text from the text table. 07.11.: #107 inventory accepted (41 hits); decision 0004 (ui_texts.gd for module texts); #108 route-text comparisons via TEXT.t(), #110 ui_texts.gd + contract test + sector_complete; then one task per module; English values last | F3 |
 | E6 | accessibility: subtitles, slow-motion and screen-shake toggles, alarm ≤ 3 Hz. 07.11.: #99 settings apply at start + shake/slow-motion toggles, #100 subtitles toggle (after #99), #101 alarm ≤ 3 Hz contract test; #99, #100 and #101 accepted, tests registered (E6 done in code; check in the playtest) | F3 |
 | E7 | readable danger: every tell ≥ 0.5 s (from bestiary gaps), boss 60–150 s. 07.11.: measurement #106 accepted: 4 of 18 attacks at 0.483 s (role-1 windup 0.40 s), question to neVs (message 20) | #1–#6, E1 |
 | E8 | Windows export + smoke test | F5 |

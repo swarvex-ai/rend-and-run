@@ -105,6 +105,11 @@
 - #107 angenommen (#105): Die Servo-Werkbank zeigt lesbare Sätze statt interner Fehler-IDs. `shop_reason_text_test` ist registriert.
 - #108 angenommen (#106, E7-Messung, `docs/measurements/tell-durations.md`, Sonde `tell_duration_probe` als `probe` registriert): 4 von 18 Angriffen warnen nur 0,483 s vor, beide Schläge des Schildträgers und Faust und Ellbogen des Wächters in der Nische (Ausholzeit von Rolle 1: 0,40 s). Nahkampf-Roboter sind nur 0,083 s vorher hörbar, Fernkämpfer erst beim Schuss. Frage an neVs: Nachricht 20 (Empfehlung: Ausholzeit von Rolle 1 auf 0,43 s). Die Suite war zweimal grün mit 105 headless + 23 hook.
 - Neu: #107, E5-Vorbereitung. Es geht um die Liste der Tests, die deutsche Texte wörtlich vergleichen und bei der Übersetzung brechen würden.
+- #109 angenommen (#107): 41 Stellen in 14 Testdateien vergleichen deutsche Texte wörtlich, 14 davon kommen aus der Routen-Tabelle, 27 aus Modulskripten. Entscheidung 0004 (`docs/decisions/0004-text-tables.md`): Module bekommen eine zweite Tabelle `game/data/ui_texts.gd` mit eigenem Vertragstest; Tests vergleichen nur über die Tabellen. Neu geschnitten:
+  - #108: Die 14 Vergleiche mit Routentexten laufen über `TEXT.t()`.
+  - #110: `ui_texts.gd`, `ui_text_table_test` und das erste Modul `sector_complete.gd`.
+  - #109: `assert()` wird in 11 Testdateien durch `check()` ersetzt. Selbst geprüft: Ein fehlgeschlagenes `assert` hält den Test bis zum Timeout an, statt sauber rot zu enden.
+- Ruling: Texte in Modulen kommen in eine eigene Tabelle (`ui_texts.gd`), nicht in die Routen-Tabelle, weil deren Vertragstest nur `lab_route.gd` prüft. Robotersätze und Durchsagen bleiben, bis das Story-Gerüst freigegeben ist (Nachricht 18) — Kosten bei Irrtum: zwei Tabellen statt einer, später mechanisch zusammenlegbar.
 
 **Rulings (Nachmittag)**
 - Ruling: Den Fehler der Fokusleiste behebe ich selbst statt per Aufgabe — er liegt in meiner Basis (Stufe D), und `menu_screen.gd` ist in allen Menü-Aufgaben ausgeschlossen — Kosten bei Irrtum: keine, die Korrektur hat einen eigenen Test.
