@@ -77,7 +77,7 @@ headless movement_quality_integration
 headless notstrom_migration_test
 headless notstrom_sequence_integration
 headless overseer_brace_integration
-quarantine overseer_integration
+headless overseer_integration
 hook pause_integration_test V28_TEST
 headless pause_menu_test
 headless shop_close_input_test

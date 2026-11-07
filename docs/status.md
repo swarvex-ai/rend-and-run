@@ -79,6 +79,9 @@
 - #89 angenommen (ranged_integration_test: zwei Ursachen mit Messwerten belegt, ein zu tief gezielter Schuss und eine nicht abgeschaltete Verstärkung der Route; kein preload; 10/10 grün, arm_first_fight 3/3). #90 angenommen (Roboterzeilen und Durchsagen auf dem Voice-Bus; robot_voice_bus_test ohne Fix rot, mit Fix grün). Nach dem Merge (0fe35d6, 96f4781) ist ranged_integration_test aus der Quarantäne und robot_voice_bus_test registriert. Die Suite war zweimal grün mit 98 headless + 22 hook.
 - #91 angenommen (Diagnose #93): Spielfehler. `overseer_low_pose.gd` sucht nur nach `mixamorig_*`-Knochen, das Meshy-Rig des Aufsehers hat kurze Namen, die IK für den tiefen Schlag läuft also nie. Reparatur-Aufgabe #96 (Fallback für die Knochennamen wie in `crouch_pose.gd`).
 - In der Quarantäne bleiben drei Tests: machinery_chamber_integration (Meilenstein-Review), overseer_integration (#96), projectile_lifetime_test (#95).
+- #93 angenommen (Fix #96: `_bone()`-Fallback für die Armknochen in `overseer_low_pose.gd`). Nach dem Merge (e7784c2) ist overseer_integration aus der Quarantäne (33/33). Die Suite war zweimal grün mit 99 headless + 22 hook.
+- #92 angenommen (Diagnose #95): Fehler im Test, kein Spielfehler. Der Test schaltet Rends Physik ab, deshalb bleibt seine Kapsel bei 1,3 m statt 1,65 m, und ein hoch gestreuter Schuss fliegt darüber. Reparatur-Aufgabe #97 (Steh-Kapsel setzen, Seed direkt vor dem zweiten Schuss). Die Aussage, `FX.hitstop` laufe unter `--fixed-fps` in Echtzeit, ist nicht belegt.
+- In der Quarantäne bleiben zwei Tests: machinery_chamber_integration (Meilenstein-Review) und projectile_lifetime_test (#97).
 
 **Rulings (Nachmittag)**
 - Ruling: Den Fehler der Fokusleiste behebe ich selbst statt per Aufgabe — er liegt in meiner Basis (Stufe D), und `menu_screen.gd` ist in allen Menü-Aufgaben ausgeschlossen — Kosten bei Irrtum: keine, die Korrektur hat einen eigenen Test.

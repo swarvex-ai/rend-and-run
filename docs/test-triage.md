@@ -48,6 +48,7 @@ The live test pipeline (official Godot 4.7.2 build, `JOBS=3`) failed docs-only s
 - **Back in quarantine on 07.11.:** `projectile_lifetime_test` (flaky in the pipeline after #81: the second bolt sometimes neither hits nor resolves; green 10/10 alone). Diagnosis task #95.
 - **Out of quarantine on 07.11.:** `brute_commitment_test` (headless) after #84 (plain brute, explicit HP, new braced-overseer check) and `workbench_integration` (headless) after #86 (robot arm ids, values from the catalogue and text keys); full suite green twice with both (96 headless + 21 hook).
 - **Out of quarantine on 07.11.:** `ranged_integration_test` (hook) after #89 (aim between crouched and standing height, leftover bolts cleared, route reinforcement disabled; 10/10 green, `arm_first_fight` 3/3); full suite green twice with it (98 headless + 22 hook). `overseer_integration`: the root cause is a game bug (#93: low-pose IK never finds the Meshy arm bones); fix task #96.
+- **Out of quarantine on 07.11.:** `overseer_integration` (headless) after #93 (fix #96: arm-bone name fallback in `overseer_low_pose.gd`); full suite green twice with it (99 headless + 22 hook). `projectile_lifetime_test`: diagnosis #95 accepted (test fixture: capsule stays at 1.3 m with physics off); fix task #97.
 - **Stays in quarantine:** `machinery_chamber_integration`. #19 found that nothing builds the machinery chamber any more (`lab_dressing.gd:17-26`); the test now fails fast instead of hanging.
 
 Full suite after these changes: 79 headless + 11 hook, green twice in 120 s each.
