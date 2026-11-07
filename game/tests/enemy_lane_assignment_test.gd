@@ -1,6 +1,6 @@
 extends SceneTree
 ## Regression test for deterministic robot depth lanes: robots get their lane offset
-## from the scene spawn order, not from engine instance ids shifted by load order.
+## and sway phase from the scene spawn order, not from engine instance ids shifted by load order.
 var failures := 0
 func _initialize() -> void:
 	call_deferred("run")
@@ -14,6 +14,12 @@ func _collect_lanes(route) -> Dictionary:
 		lanes[e.encounter_id] = e._lane_offset
 	return lanes
 
+func _collect_spawn_fields(route) -> Dictionary:
+	var fields := {}
+	for e in route.enemies:
+		fields[e.encounter_id] = [e.get("_sway_phase"), e.get("_spawn_index")]
+	return fields
+
 func run() -> void:
 	if not OS.get_user_data_dir().begins_with("/tmp/"):
 		quit(2)
@@ -24,12 +30,18 @@ func run() -> void:
 	await create_timer(0.3).timeout
 
 	var first_lanes := _collect_lanes(main.route)
+	var first_spawn := _collect_spawn_fields(main.route)
 	var expected := [-0.25, 0.0, 0.25]
 	var ordered: bool = main.route.enemies.size() == 8
 	for i in main.route.enemies.size():
 		if not is_equal_approx(main.route.enemies[i]._lane_offset, expected[i % 3]):
 			ordered = false
 	check("route robots follow -0.25/0.0/+0.25 by spawn order", ordered)
+	var has_spawn_fields := true
+	for value in first_spawn.values():
+		if value[0] == null or value[1] == null:
+			has_spawn_fields = false
+	check("route robots carry a spawn index and sway phase", has_spawn_fields)
 
 	main.queue_free()
 	await process_frame
@@ -45,12 +57,17 @@ func run() -> void:
 	await create_timer(0.3).timeout
 
 	var same := true
+	var spawn_same := true
 	for e in second.route.enemies:
 		if not first_lanes.has(e.encounter_id):
 			same = false
 		elif not is_equal_approx(float(first_lanes[e.encounter_id]), e._lane_offset):
 			same = false
+		var before = first_spawn.get(e.encounter_id)
+		if before == null or before[0] == null or before[1] == null or before != [e.get("_sway_phase"), e.get("_spawn_index")]:
+			spawn_same = false
 	check("lanes survive a shift of 1000 engine object ids", same)
+	check("sway phase and spawn index survive a shift of 1000 engine object ids", spawn_same)
 
 	var a = second._make_enemy(0, 0)
 	var b = second._make_enemy(0, 0)

@@ -115,6 +115,8 @@ var _severed := false
 var hits_taken := 0                 # [P04] Zaehlt Hiebe (Test: ein Treffer pro Ziel pro Hieb)
 var _kb_timer := 0.0                # Knockback-Fenster: Chaser darf velocity nicht sofort schlucken
 var _lane_offset := 0.0             # per-robot depth offset so pairs flank instead of stacking
+var _spawn_index := 0               # stable spawn order, set by main._make_enemy
+var _sway_phase := 0.0              # circling sway phase 0-6 from spawn order, not instance ids
 var _heavy := false                 # heavy chassis model (brute role)
 var _sidestep_t := 0.0              # stepping around a prop that blocks the chase
 var _strike := "slash"              # current strike of a light humanoid (STRIKES key)
@@ -361,13 +363,13 @@ func _physics_process(delta: float) -> void:
 					var gap: float = global_position.x-other.global_position.x
 					# Only robots sharing a depth lane crowd each other; a flanker passes on its own lane.
 					if absf(gap) < 1.05 and absf(global_position.z-other.global_position.z) < 0.5:
-						desired += (signf(gap) if absf(gap)>0.05 else (1.0 if get_instance_id()>other.get_instance_id() else -1.0)) * 2.8
+						desired += (signf(gap) if absf(gap)>0.05 else (1.0 if _spawn_index>other._spawn_index else -1.0)) * 2.8
 				if _kb_timer <= 0.0:
 					velocity.x = desired if retreating else move_toward(velocity.x, desired, 24.0 * delta)
 					# Close in on Rend's depth; a small per-robot offset keeps pairs from stacking.
 					var lane_gap := dz + _lane_offset * clampf(absf(dx) / 3.0, 0.0, 1.0)
 					if is_finite(squad_goal_z):lane_gap = squad_goal_z - global_position.z
-					elif _circling:lane_gap = dz + sin(_state_t * 1.7 + float(get_instance_id() % 7)) * 0.55
+					elif _circling:lane_gap = dz + sin(_state_t * 1.7 + _sway_phase) * 0.55
 					else:
 						# A squad mate standing in my lane between me and Rend: overtake it on another lane.
 						var blocker := _lane_blocker(dx)
