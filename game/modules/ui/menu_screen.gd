@@ -56,6 +56,13 @@ const SND_FOCUS := preload("res://audio/radio_chirp.wav")
 const SND_CONFIRM := preload("res://audio/block.wav")
 const SND_BACK_PATH := "res://audio/menu_back.wav"
 const FOCUS_SOUND_GAP_MS := 40
+# Style-guide peak targets and the measured peaks of the raw source files (dBFS).
+const SOUND_PEAK_DB := {"focus": -18.0, "confirm": -14.0, "back": -16.0}
+const SOUND_FILE_PEAK_DB := {
+	"res://audio/radio_chirp.wav": -12.8,
+	"res://audio/block.wav": -4.5,
+	"res://audio/menu_back.wav": -16.0,
+}
 
 var title := ""
 var rows: Array[Dictionary] = []   # {id, kind, node, value_label, value, options, enabled}
@@ -157,12 +164,12 @@ func handle_action(action: String) -> bool:
 		"ui_accept":
 			var row: Dictionary = rows[focus_index]
 			if row.kind == "button":
-				_play(SND_CONFIRM, -14.0, 0.92);row_activated.emit(row.id)
+				_play(SND_CONFIRM, sound_volume_db("confirm"), 0.92);row_activated.emit(row.id)
 			elif row.kind == "switch" or row.kind == "cycle":
 				_adjust(row, 1)
 			return true
 		"ui_cancel":
-			_play(_back_sound(), -16.0, 0.75 if _back_sound() == SND_CONFIRM else 1.0);back_requested.emit()
+			_play(_back_sound(), sound_volume_db("back"), 0.75 if _back_sound() == SND_CONFIRM else 1.0);back_requested.emit()
 			return true
 	return false
 
@@ -276,7 +283,7 @@ func _adjust(row: Dictionary, direction: int) -> bool:
 			row.value = not bool(row.value)
 		_:
 			return false
-	_refresh_value(row);_play(SND_CONFIRM, -14.0, 0.92)
+	_refresh_value(row);_play(SND_CONFIRM, sound_volume_db("confirm"), 0.92)
 	value_changed.emit(row.id, row.value)
 	return true
 
@@ -350,7 +357,18 @@ func _play_focus() -> void:
 	var now := Time.get_ticks_msec()
 	if now - _last_focus_sound_ms < FOCUS_SOUND_GAP_MS:return
 	_last_focus_sound_ms = now
-	_play(SND_FOCUS, -18.0, 1.06)
+	_play(SND_FOCUS, sound_volume_db("focus"), 1.06)
+
+## Volume that makes an event's source file play at its style-guide peak target.
+func sound_volume_db(event: String) -> float:
+	return SOUND_PEAK_DB[event] - SOUND_FILE_PEAK_DB[_sound_path(event)]
+
+func _sound_path(event: String) -> String:
+	match event:
+		"focus": return "res://audio/radio_chirp.wav"
+		"confirm": return "res://audio/block.wav"
+		"back": return SND_BACK_PATH if ResourceLoader.exists(SND_BACK_PATH) else "res://audio/block.wav"
+	return ""
 
 func _back_sound() -> AudioStream:
 	return load(SND_BACK_PATH) if ResourceLoader.exists(SND_BACK_PATH) else SND_CONFIRM
