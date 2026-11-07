@@ -48,6 +48,8 @@ func say(robot: Node3D, key: String, force := false) -> bool:
 	said.append(key);_said[robot] = said
 	_quiet = PAUSE;lines_spoken += 1
 	var speaker := AudioStreamPlayer3D.new();speaker.stream = load(path)
+	preload("res://modules/persistence/settings_store.gd").bus_index("Voice")
+	speaker.bus = "Voice"
 	speaker.unit_size = 6.0;speaker.max_db = 4.0;speaker.volume_db = 2.0
 	robot.add_child(speaker);speaker.position.y = 1.6;speaker.play()
 	speaker.finished.connect(speaker.queue_free)
@@ -68,6 +70,8 @@ func announce(key: String) -> void:
 	var path := "res://audio/voice/pa_%s.wav" % key
 	if not ResourceLoader.exists(path):return
 	pa_spoken += 1
-	var hall := AudioStreamPlayer.new();hall.stream = load(path);hall.volume_db = -4.0
+	var hall := AudioStreamPlayer.new();hall.stream = load(path)
+	preload("res://modules/persistence/settings_store.gd").bus_index("Voice")
+	hall.bus = "Voice";hall.volume_db = -4.0
 	add_child(hall);hall.play();hall.finished.connect(hall.queue_free)
 	if route and route.has_method("_message"):route._message("DURCHSAGE: " + PA[key], 5.5, 1)
