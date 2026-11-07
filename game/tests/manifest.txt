@@ -116,6 +116,7 @@ probe shortcut_traversal_probe
 headless slash_trail_test
 hook start_integration_test V29_TEST
 headless start_menu_test
+headless start_options_test
 headless supply_crate_test
 headless supply_crate_visual_test
 headless vibroblade_visual_test

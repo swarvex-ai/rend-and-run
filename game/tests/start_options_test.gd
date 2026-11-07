@@ -22,6 +22,8 @@ func _key(action: String) -> void:
 	await process_frame
 
 func _initialize() -> void:
+	# Deletes the route save below: only ever run on isolated test data.
+	if not OS.get_user_data_dir().begins_with("/tmp/"): quit(2); return
 	await process_frame
 	if FileAccess.file_exists(SAVE_PATH):
 		DirAccess.remove_absolute(ProjectSettings.globalize_path(SAVE_PATH))
