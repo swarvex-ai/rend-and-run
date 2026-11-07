@@ -34,14 +34,14 @@ A test is in quarantine when its manifest line starts with `quarantine`. The pip
 
 A failing test that points to a real game bug is **not** quarantined. It stays red, and the bug gets a task by severity.
 
-**Exit.** The lead moves a test out of quarantine after a repair is accepted and the full suite (`JOBS=3 tools/run_tests.sh --headless`) is green twice in a row with the test included. The move is noted in `docs/test-triage.md`.
+**Exit.** The lead moves a test out of quarantine after a repair is accepted and the full suite (`JOBS=3 tools/run_tests.sh --headless`) is green twice in a row after the test's manifest line was changed from `quarantine` to `headless` or `hook` (`--headless` never runs `quarantine` lines; use `--quarantine` or a named run to see them). The move is noted in `docs/test-triage.md`.
 
-**Maximum age.** No test stays in quarantine longer than its milestone. At the milestone review, the lead decides for each quarantined test: repaired, or retired. A retired test is deleted together with a note in `docs/test-triage.md` that says what it covered and why that no longer exists (example: `machinery_chamber_integration`, the chamber is no longer built).
+**Maximum age.** No test stays in quarantine longer than its milestone. At the milestone review, the lead decides for each quarantined test: repaired, or retired. A retired test is deleted together with a note in `docs/test-triage.md` that says what it covered and why that no longer exists (candidate: `machinery_chamber_integration`, still in quarantine: nothing builds the chamber any more, decided at the milestone review).
 
 ## Flaky tests
 
 - A flaky test is a defect in the test contract and gets fixed at once (LEAD.md 7.1).
-- It is never a reason to reject a contribution. The pipeline reruns red tests once and runs a counter-check without the contribution. If the base is red too, the contribution goes to review.
+- It is never a reason to reject a contribution. The swarvex test pipeline (not `run_tests.sh`) reruns a red suite once and runs a counter-check without the contribution. If the base is red too, the contribution goes to review.
 - Usual causes here and their fixes:
 
 | Cause | Fix |
@@ -54,4 +54,4 @@ A failing test that points to a real game bug is **not** quarantined. It stays r
 
 ## What a green pipeline means
 
-The test pipeline runs `swarvex.yaml`: import, then `JOBS=3 ../tools/run_tests.sh --headless`, which covers all headless and hook tests. Window tests and probes need a display and run only locally; for visual changes the summary adds a screenshot.
+The test pipeline runs `swarvex.yaml`: import, then `JOBS=3 ../tools/run_tests.sh --headless`, which covers all headless and hook tests. Window tests need a display and run only locally; `probe` and `fixture` lines are never run by the suite (probes are run by hand); for visual changes the summary adds a screenshot.
