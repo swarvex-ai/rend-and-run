@@ -25,7 +25,7 @@
 
 **Nacht zum 06.11.:** F3 fertig (#50, Routendaten `541f5be`, Review #59), F4 fertig (#51, `route_playthrough`: Route in 20,6 s Spielzeit, Kontrolle nach Tod in 2,43 s), E11.2 fertig (#52, Einstellungsspeicher, `MenuScreen`, Options-Bildschirm; Screenshot geprüft). `depth_test` in Quarantäne (#58). Comic-Styleguides #7/#8 angenommen; Wahl liegt bei neVs (Nachricht 13). Suite: 84 headless + 11 hook grün.
 
-**Wartet auf neVs:** Comic-Stil (Nachricht 13), Comic-Drehbuch (Nachricht 14), Tod und Splitter (Nachricht 15).
+**Wartet auf neVs:** Comic-Stil (Nachricht 13), Comic-Drehbuch (Nachricht 14), Tod und Splitter (Nachricht 15); später dazugekommen: UX-Spezifikation (16), Sound Bible (17), Story-Gerüst (18), Art Bible (19).
 
 **Rulings (Nacht)**
 - Ruling: Testreparaturen prüfen die heutige Todesregel (Geldbörse bleibt, kein neuer Cache) — so steht es in Code und Farming-Design v02; GDD und Glossar widersprechen, Frage an neVs (Nachricht 15) — Kosten bei Irrtum: #65/#66 und `shard_pickup_integration` werden angepasst.
@@ -85,6 +85,9 @@
 - #94 (Art Bible, #48) zur Nacharbeit: Die Kriterien sind erfüllt, aber das Dokument nennt den Comic-Stil Variante 1 als festgelegt. Die Wahl ist offen (Nachricht 13). Es ist nur ein Satz zu korrigieren. Danach geht die Art Bible als Gate-Dokument zur Freigabe an neVs.
 - #95 angenommen (Review #57 meiner F6-Dokumente): fünf veraltete Zeilenangaben, falsche Modulzahlen, verschwiegene Abhängigkeiten (audio und fx.gd → settings_store, combat ↔ world) und vier QA-Regeln, die nicht zum Runner passten. Ich habe `docs/architecture.md` und `docs/qa.md` korrigiert. Ein Punkt der Review war falsch: Wiederholungslauf und Gegenprobe macht die swarvex-Pipeline, nicht `run_tests.sh`. Das steht jetzt deutlicher in qa.md. #96 angenommen (projectile_lifetime_test: Steh-Kapsel und Seed vor dem zweiten Schuss; 10/10 lokal, 30/30 beim Mitwirkenden).
 - Nach dem Merge (591c86a) ist projectile_lifetime_test wieder aus der Quarantäne. Die Suite war zweimal grün mit 99 headless + 23 hook. In der Quarantäne bleibt nur machinery_chamber_integration (Entscheidung beim Meilenstein-Review: streichen oder die Kammer wieder bauen).
+- #97 angenommen (Art Bible #48, nach der Nacharbeit): Gate-Dokument, Freigabe bei neVs angefragt (Nachricht 19, zwei Korrekturen: Schildträger mit Ausfallschritten, Ring des Wächters in Amber statt Rot).
+- #98 angenommen (Review #59 meiner F3-Aufteilung): Zwei Zahlen in `lab_route.gd` wiederholen Daten (Kühlmittel-Hinweis bei 37.1, Lampenfarben an x 26/39). Reparatur-Aufgabe #98. Dass an `lab_route.gd:856` ein englischer Grund an einen deutschen Text gehängt wird, gehört zu E5.
+- Ruling: Offsets relativ zu einem Anker aus den Daten bleiben im Code; in die Routendaten gehört nur, was beim Verschieben der Daten mitwandern muss — Kosten bei Irrtum: eine weitere Daten-Aufgabe.
 
 **Rulings (Nachmittag)**
 - Ruling: Den Fehler der Fokusleiste behebe ich selbst statt per Aufgabe — er liegt in meiner Basis (Stufe D), und `menu_screen.gd` ist in allen Menü-Aufgaben ausgeschlossen — Kosten bei Irrtum: keine, die Korrektur hat einen eigenen Test.
