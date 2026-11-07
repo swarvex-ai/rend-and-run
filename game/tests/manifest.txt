@@ -46,11 +46,11 @@ window factory_visual_capture
 headless farming_guidance_test
 headless farming_input_playthrough
 headless feedback_layout_test
-quarantine feedback_priority_integration
+headless feedback_priority_integration
 hook finisher_fallback_test V31_TEST
 headless first_room_loop
 headless first_room_playthrough
-quarantine guard_integration_test V14_TEST
+hook guard_integration_test V14_TEST
 hook guard_spacing_test V48_TEST
 headless guard_state_test
 headless h39_atomic_writer_check
