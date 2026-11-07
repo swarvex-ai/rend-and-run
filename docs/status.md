@@ -84,6 +84,7 @@
 - In der Quarantäne bleiben zwei Tests: machinery_chamber_integration (Meilenstein-Review) und projectile_lifetime_test (#97).
 - #94 (Art Bible, #48) zur Nacharbeit: Die Kriterien sind erfüllt, aber das Dokument nennt den Comic-Stil Variante 1 als festgelegt. Die Wahl ist offen (Nachricht 13). Es ist nur ein Satz zu korrigieren. Danach geht die Art Bible als Gate-Dokument zur Freigabe an neVs.
 - #95 angenommen (Review #57 meiner F6-Dokumente): fünf veraltete Zeilenangaben, falsche Modulzahlen, verschwiegene Abhängigkeiten (audio und fx.gd → settings_store, combat ↔ world) und vier QA-Regeln, die nicht zum Runner passten. Ich habe `docs/architecture.md` und `docs/qa.md` korrigiert. Ein Punkt der Review war falsch: Wiederholungslauf und Gegenprobe macht die swarvex-Pipeline, nicht `run_tests.sh`. Das steht jetzt deutlicher in qa.md. #96 angenommen (projectile_lifetime_test: Steh-Kapsel und Seed vor dem zweiten Schuss; 10/10 lokal, 30/30 beim Mitwirkenden).
+- Nach dem Merge (591c86a) ist projectile_lifetime_test wieder aus der Quarantäne. Die Suite war zweimal grün mit 99 headless + 23 hook. In der Quarantäne bleibt nur machinery_chamber_integration (Entscheidung beim Meilenstein-Review: streichen oder die Kammer wieder bauen).
 
 **Rulings (Nachmittag)**
 - Ruling: Den Fehler der Fokusleiste behebe ich selbst statt per Aufgabe — er liegt in meiner Basis (Stufe D), und `menu_screen.gd` ist in allen Menü-Aufgaben ausgeschlossen — Kosten bei Irrtum: keine, die Korrektur hat einen eigenen Test.
