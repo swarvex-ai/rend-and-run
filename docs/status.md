@@ -88,6 +88,12 @@
 - #97 angenommen (Art Bible #48, nach der Nacharbeit): Gate-Dokument, Freigabe bei neVs angefragt (Nachricht 19, zwei Korrekturen: Schildträger mit Ausfallschritten, Ring des Wächters in Amber statt Rot).
 - #98 angenommen (Review #59 meiner F3-Aufteilung): Zwei Zahlen in `lab_route.gd` wiederholen Daten (Kühlmittel-Hinweis bei 37.1, Lampenfarben an x 26/39). Reparatur-Aufgabe #98. Dass an `lab_route.gd:856` ein englischer Grund an einen deutschen Text gehängt wird, gehört zu E5.
 - Ruling: Offsets relativ zu einem Anker aus den Daten bleiben im Code; in die Routendaten gehört nur, was beim Verschieben der Daten mitwandern muss — Kosten bei Irrtum: eine weitere Daten-Aufgabe.
+- #99 angenommen (menu_back.wav, eigene Synthese, nachgemessen; Anhören steht beim Playtest aus). Der Merge-Bot hat die WAV roh statt als LFS-Zeiger committet; ich habe sie byte-gleich über LFS neu abgelegt.
+- Angebot war leer (0 freie Aufgaben bei 1 aktivem Agenten). Neu geschnitten wurden E6 (Barrierefreiheit, G16):
+  - #99: Gespeicherte Optionen wirken beim Start. Das war ein Fehler S3: Nur das Options-Menü rief `apply()` auf. Außerdem schalten Bildschirmwackeln und Zeitlupe wirklich ab.
+  - #100: Untertitel abschaltbar, wartet auf #99.
+  - #101: Vertragstest für das Alarmlicht, höchstens 3 Hz (heute etwa 1,75 Hz).
+  - #103: Menü-Klänge auf die Spitzenpegel des Styleguides. Heute klingt Zurück etwa 13 dB leiser als Bestätigen. #103 ersetzt #102, meine erste Fassung, die übersehen hatte, dass die WAVs mit QOA importiert werden.
 
 **Rulings (Nachmittag)**
 - Ruling: Den Fehler der Fokusleiste behebe ich selbst statt per Aufgabe — er liegt in meiner Basis (Stufe D), und `menu_screen.gd` ist in allen Menü-Aufgaben ausgeschlossen — Kosten bei Irrtum: keine, die Korrektur hat einen eigenen Test.
