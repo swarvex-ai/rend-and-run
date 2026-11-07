@@ -130,6 +130,7 @@ headless world_service_details_integration
 window impact_review_capture
 probe motion_review_capture
 headless depth_strip_test
+headless enemy_lane_assignment_test
 headless hound_test
 headless dog_arm_test
 headless depth_test
