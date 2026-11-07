@@ -28,7 +28,8 @@ func run()->void:
   check("miss leaves an initial punish window %s"%front,absf(e.global_position.x-start_x)<0.03)
   # Player changes sides AFTER commitment: retreat must not reverse or home.
   p.global_position.x=32-4*front
-  await wait(0.24);e.set_physics_process(false)
+  var sample_t:float=e._recovery_duration()-0.02
+  await wait(maxf(0.0,sample_t-0.08));e.set_physics_process(false)
   var retreat:float=(start_x-e.global_position.x)*front
   check("fixed bounded retreat %s"%front,retreat>0.40 and retreat<0.60)
   check("still in vulnerable recovery",e._state==e.RECOVERY and not e._recovery_step.is_active())
@@ -53,7 +54,10 @@ func run()->void:
  await wait(0.32);e.set_physics_process(false)
  check("backward ground check prevents ledge exit",e.global_position.x>99.5 and e.global_position.y>4.9 and not e._recovery_step.is_active())
  ledge.queue_free()
- # Same encounter seed, actual crouch input vs standing; no attack manipulation.
+ # Same encounter seed, actual crouch input vs standing; pinned high strike, no second attacker.
+ e.forced_strike="side"
+ if is_instance_valid(main.route.awakened):
+  main.route.awakened.set_physics_process(false);main.route.awakened.collision_layer=0;main.route.awakened._dead=true
  for crouch in [false,true]:
   await prepare()
   e.set_physics_process(false);e.debug_reset_ai();e._attack_count=0
