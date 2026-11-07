@@ -34,16 +34,15 @@ func run()->void:
  check("repeat attacks reuse cue nodes",e._attack_cue.get_child_count(true)==count)
  await wait(0.5);check("cue expires if transition is delayed",not e._attack_cue._pivot.visible)
  e._enter(e.WINDUP);e.take_melee_hit(5,Vector3(2,0,0));check("death cancels cue",e._dead and not e._attack_cue._pivot.visible)
- var brute=null
- for enemy in route.enemies:
-  if enemy.encounter_id=="brute":brute=enemy;break
- check("brute encounter found",brute!=null)
- if brute:
-  brute.global_position=Vector3(34,0,0);brute.get_node("VisualPivot").rotation.y=PI
-  brute._enter(brute.WINDUP);brute._state_t=0.4;brute.take_melee_hit(1,Vector3(2,0,0))
-  check("heavy commitment retains warning",brute._attack_cue._pivot.visible)
-  brute._update_weapon_pose(0);await wait(0.08);shot("heavy")
-  brute._enter(brute.IDLE)
+ var brute=main._make_enemy(34,2);brute.set_physics_process(false)
+ brute.get_node("VisualPivot").rotation.y=PI
+ brute._enter(brute.WINDUP);brute._state_t=0.4
+ var hp_before:int=brute.hp
+ brute.take_melee_hit(1,Vector3(2,0,0))
+ check("heavy commitment takes the hit",brute.hp==hp_before-1)
+ check("heavy commitment retains warning",brute._attack_cue._pivot.visible)
+ brute._update_weapon_pose(0);await wait(0.08);shot("heavy")
+ brute._enter(brute.IDLE);brute.queue_free()
  var guard=route.enemies[2];guard.global_position=Vector3(34,0,0);guard.get_node("VisualPivot").rotation.y=PI;guard._ranged_attack=true;guard._enter(guard.WINDUP)
  guard._state_t=0.3;guard._update_weapon_pose(0);await wait(0.08);shot("ranged")
  check("ranged warning has charge lifetime",guard._attack_cue._pivot.visible)
