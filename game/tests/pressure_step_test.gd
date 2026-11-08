@@ -1,4 +1,5 @@
 extends SceneTree
+const UI_TEXT = preload("res://data/ui_texts.gd")
 var failures:=0
 func _initialize()->void:call_deferred("run")
 func check(label:String,ok:bool)->void:
@@ -44,7 +45,7 @@ func run()->void:
  route._combat_hint_cooldown=0;route.feedback.clear();route.toast_time=0
  route._offer_combat_hint()
  var low_hint:String=route.toast
- check("low attack teaches jump",low_hint.contains("springen"))
+ check("low attack teaches jump",low_hint==UI_TEXT.t("hint_low"))
  route.toast="sentinel";route._offer_combat_hint()
  check("cooldown prevents hint spam",route.toast=="sentinel")
  route.toast="sentinel";route._combat_hint_cooldown=0

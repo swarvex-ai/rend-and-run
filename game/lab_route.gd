@@ -351,9 +351,8 @@ func _offer_combat_hint() -> void:
 			kind="crouch"
 		var key:="%d:%s"%[foe.role,kind]
 		if _shown_combat_hints.has(key):continue
-		var hint:=preload("res://modules/ui/combat_hint_text.gd").text_for(foe.role,kind)
+		var hint:=preload("res://modules/ui/combat_hint_text.gd").text_for(foe.role,kind,shield)
 		if hint.is_empty():continue
-		if not shield:hint=hint.replace("ducken oder parieren","ducken")
 		if _message(hint,3.5,0):
 			_shown_combat_hints[key]=true
 			_combat_hint_cooldown=4.0
