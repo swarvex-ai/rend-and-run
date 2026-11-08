@@ -1,6 +1,7 @@
 extends SceneTree
 ## Contract test for the module text table (game/data/ui_texts.gd): every key the modules
-## look up exists, every key in the table is used under res://modules/, and no text is empty.
+## look up exists, every key in the table is used under res://modules/ or by a script directly
+## under res:// (main.gd, player.gd, start.gd, pause_controller.gd …), and no text is empty.
 const UI_TEXT = preload("res://data/ui_texts.gd")
 const MODULES_ROOT := "res://modules"
 var failures := 0
@@ -25,10 +26,20 @@ func _gd_files(path: String) -> Array:
 	dir.list_dir_end()
 	return files
 
+## Scripts directly under res:// (not recursive): the core scripts outside modules/.
+func _root_gd_files() -> Array:
+	var files: Array = []
+	for entry in DirAccess.get_files_at("res://"):
+		if entry.ends_with(".gd"): files.append("res://" + entry)
+	return files
+
 func _initialize() -> void:
 	if not OS.get_user_data_dir().begins_with("/tmp/"): quit(2); return
 	var files := _gd_files(MODULES_ROOT)
 	check("module scripts found %s" % [files], files.size() > 0)
+	var root_files := _root_gd_files()
+	check("core scripts under res:// found %s" % [root_files], root_files.has("res://start.gd") and root_files.has("res://player.gd"))
+	files.append_array(root_files)
 	var used: Dictionary = {}
 	var pattern := RegEx.create_from_string('UI_TEXT\\.t\\("([a-z0-9_]+)"\\)')
 	for path in files:
