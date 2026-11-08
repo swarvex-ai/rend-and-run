@@ -28,9 +28,8 @@ func _draw() -> void:
 	var origin := Vector2(size.x - WIDTH - 28.0, size.y - HEIGHT - 150.0)
 	draw_rect(Rect2(origin, Vector2(WIDTH, HEIGHT)), Color(0.03, 0.05, 0.06, 0.72))
 	draw_rect(Rect2(origin, Vector2(4, HEIGHT)), CYAN)
-	var spec: Dictionary = gun.spec()
-	var mods: Array = gun.mods.map(func(m): return gun.MODS[m].label)
-	draw_string(font, origin + Vector2(16, 24), spec.label.to_upper(), HORIZONTAL_ALIGNMENT_LEFT, -1, 16, CYAN)
+	var mods: Array = gun.mods.map(func(m): return gun.mod_label(m))
+	draw_string(font, origin + Vector2(16, 24), gun.label().to_upper(), HORIZONTAL_ALIGNMENT_LEFT, -1, 16, CYAN)
 	if not mods.is_empty():
 		draw_string(font, origin + Vector2(16, 42), " · ".join(mods), HORIZONTAL_ALIGNMENT_LEFT, WIDTH - 24, 11, Color(CYAN, 0.7))
 	var mag: int = gun.mag_size()

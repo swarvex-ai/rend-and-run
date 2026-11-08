@@ -26,7 +26,7 @@ func _ready() -> void:
 	_halo.omni_range = 0.9;_halo.shadow_enabled = false;_halo.position.y = 0.25;add_child(_halo)
 
 func label() -> String:
-	return preload("res://modules/combat/gun.gd").SPECS[kind].label
+	return preload("res://modules/combat/gun.gd").label_of(kind)
 
 func _process(delta: float) -> void:
 	_t += delta

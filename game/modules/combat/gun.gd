@@ -10,27 +10,53 @@ extends Node3D
 signal emptied     # magazine and reserve both spent
 signal reloaded
 
+const UI_TEXT = preload("res://data/ui_texts.gd")
+
 const MODS := {
-	"laser": {"label": "Laservisier", "cost": 4, "info": "Laserlinie, enge Streuung, Zielhilfe 16 m"},
-	"extmag": {"label": "Erweitertes Magazin", "cost": 5, "info": "+50 % Schuss pro Magazin"},
-	"quickload": {"label": "Schnellladegriff", "cost": 4, "info": "Nachladen 40 % schneller"},
-	"piercer": {"label": "Panzerbrecher", "cost": 6, "info": "Schüsse brechen Schilde"},
+	"laser": {"cost": 4},
+	"extmag": {"cost": 5},
+	"quickload": {"cost": 4},
+	"piercer": {"cost": 6},
 }
 
 const SPECS := {
-	"pistol": {"model": "res://assets3d/weapons/pistol_v1/model.glb", "label": "Dienstpistole",
+	"pistol": {"model": "res://assets3d/weapons/pistol_v1/model.glb",
 		"damage": 1, "interval": 0.32, "ammo": 12, "speed": 30.0, "spread": 1.5, "pellets": 1, "life": 1.0,
 		"burst": 2, "color": Color(1.0, 0.75, 0.35), "length": 0.24, "reload": 1.1},
-	"smg": {"model": "res://assets3d/weapons/smg_v1/model.glb", "label": "Maschinenpistole",
+	"smg": {"model": "res://assets3d/weapons/smg_v1/model.glb",
 		"damage": 1, "interval": 0.09, "ammo": 30, "speed": 32.0, "spread": 4.0, "pellets": 1, "life": 0.9,
 		"burst": 4, "color": Color(1.0, 0.8, 0.4), "length": 0.5, "reload": 1.6},
-	"scattergun": {"model": "res://assets3d/weapons/scattergun_v1/model.glb", "label": "Streugewehr",
+	"scattergun": {"model": "res://assets3d/weapons/scattergun_v1/model.glb",
 		"damage": 1, "interval": 0.75, "ammo": 6, "speed": 24.0, "spread": 13.0, "pellets": 5, "life": 0.3,
 		"burst": 1, "color": Color(1.0, 0.6, 0.25), "length": 0.62, "reload": 2.1},
-	"energy_rifle": {"model": "res://assets3d/weapons/energy_rifle_v1/model.glb", "label": "Energiegewehr",
+	"energy_rifle": {"model": "res://assets3d/weapons/energy_rifle_v1/model.glb",
 		"damage": 1, "interval": 0.11, "ammo": 32, "speed": 44.0, "spread": 1.6, "pellets": 1, "life": 1.5,
 		"burst": 5, "color": Color(0.3, 0.95, 1.0), "length": 0.75, "reload": 1.8},  # full auto
 }
+
+static func label_of(kind: String) -> String:
+	match kind:
+		"pistol": return UI_TEXT.t("gun_pistol")
+		"smg": return UI_TEXT.t("gun_smg")
+		"scattergun": return UI_TEXT.t("gun_scattergun")
+		"energy_rifle": return UI_TEXT.t("gun_energy_rifle")
+	return ""
+
+static func mod_label(id: String) -> String:
+	match id:
+		"laser": return UI_TEXT.t("gun_mod_laser")
+		"extmag": return UI_TEXT.t("gun_mod_extmag")
+		"quickload": return UI_TEXT.t("gun_mod_quickload")
+		"piercer": return UI_TEXT.t("gun_mod_piercer")
+	return ""
+
+static func mod_info(id: String) -> String:
+	match id:
+		"laser": return UI_TEXT.t("gun_mod_laser_info")
+		"extmag": return UI_TEXT.t("gun_mod_extmag_info")
+		"quickload": return UI_TEXT.t("gun_mod_quickload_info")
+		"piercer": return UI_TEXT.t("gun_mod_piercer_info")
+	return ""
 
 var kind := "pistol"
 var ammo := 0                 # rounds in the magazine
@@ -90,6 +116,9 @@ static func make(gun_kind: String) -> Node3D:
 
 func spec() -> Dictionary:
 	return SPECS[kind]
+
+func label() -> String:
+	return label_of(kind)
 
 func _ready() -> void:
 	var model := (load(spec().model) as PackedScene).instantiate() as Node3D

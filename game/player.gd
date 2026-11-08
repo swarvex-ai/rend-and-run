@@ -411,7 +411,7 @@ func slot_summary() -> String:
 					var drawn: bool = n == slot and is_instance_valid(gun)
 					var ammo: int = gun.ammo if drawn else holstered[n].ammo
 					var spare: int = gun.reserve if drawn else holstered[n].reserve
-					label = "%s %d/%d" % [preload("res://modules/combat/gun.gd").SPECS[holstered[n].kind].label, ammo, spare]
+					label = "%s %d/%d" % [preload("res://modules/combat/gun.gd").label_of(holstered[n].kind), ammo, spare]
 				else:label = "—"
 		names.append(("[%d %s]" if n == slot else "%d %s") % [n, label])
 	return "  ".join(names)

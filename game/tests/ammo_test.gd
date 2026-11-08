@@ -2,6 +2,7 @@ extends SceneTree
 # Magazines and mods: a gun empties its magazine, reloads from the reserve (R), a second
 # gun of the same kind adds to the reserve; the weapon bench sells mods for shards, they
 # show on the gun (laser) and change it (bigger magazine, armour piercer opens a shield).
+const UI_TEXT = preload("res://data/ui_texts.gd")
 var failures := 0
 func _initialize():call_deferred("run")
 func check(label: String, ok: bool, detail := "") -> void:
@@ -38,14 +39,14 @@ func run():
 	r.shards=20;r.equipment.shards=20
 	await create_timer(.3).timeout
 	var line:String=r.combat_hud._prompt_label.text if r.combat_hud.get("_prompt_label") else ""
-	check("the bench offers a mod",line.contains("Laservisier"),line)
+	check("the bench offers a mod",line.contains(UI_TEXT.t("gun_mod_laser")),line)
 	await tap("interact")
 	check("buying fits the laser and costs shards",p.gun.has_mod("laser") and r.shards==16 and p.gun._laser!=null,"shards %d"%r.shards)
 	await create_timer(.2).timeout
 	check("the laser runs from the muzzle",p.gun._laser.visible and p.gun._laser.global_position.distance_to(p.gun.muzzle())>0.05)
 	await tap("guard")
 	await create_timer(.1).timeout
-	check("the guard key cycles the offer",r.combat_hud._prompt_label.text.contains("Schnellladegriff"),r.combat_hud._prompt_label.text)
+	check("the guard key cycles the offer",r.combat_hud._prompt_label.text.contains(UI_TEXT.t("gun_mod_quickload")),r.combat_hud._prompt_label.text)
 	p.fit_mod("pistol","extmag")
 	check("the extended magazine holds more",p.gun.mag_size()==18)
 	check("mods are saved",r.gun_mods.get("pistol",[]).has("laser"))

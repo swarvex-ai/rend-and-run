@@ -814,7 +814,7 @@ func _gun_bench(use: bool) -> String:
 	var gun=player.gun
 	if not is_instance_valid(gun):return TEXT.t("bench_draw_gun")
 	var missing:Array=gun.MODS.keys().filter(func(m):return not gun.has_mod(m))
-	if missing.is_empty():return TEXT.t("bench_fully_modded")%gun.spec().label
+	if missing.is_empty():return TEXT.t("bench_fully_modded")%gun.label()
 	var cycle:=Input.is_action_pressed("guard")
 	if cycle and not _bench_guard_was:_bench_pick+=1;FX.play("block",1.8,-14.0)
 	_bench_guard_was=cycle
@@ -822,14 +822,14 @@ func _gun_bench(use: bool) -> String:
 	var info:Dictionary=gun.MODS[mod]
 	if use:
 		if shards<info.cost:
-			_message(TEXT.t("bench_not_enough_shards")%[info.label,info.cost],2.0,1);FX.play("radio_chirp",0.5,-8.0)
+			_message(TEXT.t("bench_not_enough_shards")%[gun.mod_label(mod),info.cost],2.0,1);FX.play("radio_chirp",0.5,-8.0)
 		else:
 			shards-=info.cost;equipment.shards=shards
 			player.fit_mod(gun.kind,mod);gun_mods=player.gun_mods.duplicate(true)
 			FX.play("block",0.9,-4.0);FX.metal_contact(GUN_BENCH_POS+Vector3(0,1.0,-.4),Vector3.UP)
-			_message(TEXT.t("bench_mod_installed")%[info.label,info.info],3.0,1);_save_progress()
+			_message(TEXT.t("bench_mod_installed")%[gun.mod_label(mod),gun.mod_info(mod)],3.0,1);_save_progress()
 		return ""
-	return TEXT.t("bench_prompt_install")%[info.label,info.cost,info.info,TEXT.t("bench_prompt_next_mod") if missing.size()>1 else ""]
+	return TEXT.t("bench_prompt_install")%[gun.mod_label(mod),info.cost,gun.mod_info(mod),TEXT.t("bench_prompt_next_mod") if missing.size()>1 else ""]
 
 func reach_distance(target: Vector3) -> float:
 	return Vector2(player.global_position.x - target.x, player.global_position.y - target.y).length()
