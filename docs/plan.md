@@ -95,6 +95,8 @@ How the lead would have sliced `3b3f444` as swarm tasks, by the same rules as re
 
 Critical path: F2 → F3 → F4 → E1/E3/E7 → E2 → E10.
 
+Estimate 08.11.2026 (`estimate_milestone`): M1 needs about 140 tasks in all (104 done, 107 planned). Not cut yet: E2 2–4, E3 2–3, E4 3–4, E5 d 1–2, E7 1–2, E8 1–2, E9 1, E10 3–4, E11 rest 5–8, follow-ups from messages 13–20 4–6, plus about 20 % buffer. Update the estimate whenever the plan changes.
+
 ### E11: menus and baseline package
 
 Reference first, then copies. Existing items are mapped, not duplicated: G-5 → E6, G-14 → F3/E5, B5 → E8, G-7 corrupt save → diagnosis #22, G-8/G-9 → E10 playtests, G-10 retry → F4.
