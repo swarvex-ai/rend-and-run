@@ -2,6 +2,7 @@ extends Control
 signal close_requested
 signal selection_requested(slot: String, id: String)
 const ITEMS=preload("res://modules/equipment/item_catalog.gd")
+const UI_TEXT=preload("res://data/ui_texts.gd")
 var buttons:Array[Button]=[]
 var rows:Dictionary={}
 var status:Label
@@ -24,7 +25,7 @@ func _ready():
 		button.add_theme_font_size_override("font_size",14);column.add_child(button);rows[id]=button;buttons.append(button)
 		button.pressed.connect(_select.bind(id))
 	status=Label.new();status.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART;status.custom_minimum_size.y=44;frame.add_child(status)
-	var close:=Button.new();close.text="Zurück · Esc / B";frame.add_child(close);buttons.append(close);close.pressed.connect(func():close_requested.emit())
+	var close:=Button.new();close.text=UI_TEXT.t("equipment_back");frame.add_child(close);buttons.append(close);close.pressed.connect(func():close_requested.emit())
 	get_viewport().size_changed.connect(_layout);_layout()
 func _layout():
 	size=get_viewport_rect().size
@@ -35,19 +36,19 @@ func open_menu(state:Dictionary):
 func close_menu():visible=false
 func update_state(state:Dictionary):
 	_state=state
-	balance.text="AUSRÜSTUNG · %d Splitter"%int(state.get("shards",0))
+	balance.text=UI_TEXT.t("equipment_balance")%int(state.get("shards",0))
 	var owned:Array=state.get("owned",[])
 	for id in rows:
 		var item:Dictionary=ITEMS.ITEMS[id]
 		var equipped:bool=state.get("equipped",{}).get(item.slot,"")==id
-		var action:="Nicht gefunden" if item.acquisition=="world" else "Werkbank · %d Splitter"%int(item.cost)
-		if id in owned:action="Ausgerüstet" if equipped else "Ausrüsten"
-		if equipped and item.slot!="weapon":action="Ausgerüstet · Ablegen"
-		var slot_name:String={"weapon":"WAFFE","armor":"SCHUTZKLEIDUNG","shield":"SCHILD"}[item.slot]
-		rows[id].text="%s · %s\n%s\n%s"%[item.name,slot_name,item.summary,action]
+		var action:=UI_TEXT.t("equipment_not_found") if item.acquisition=="world" else UI_TEXT.t("equipment_workbench_cost")%int(item.cost)
+		if id in owned:action=UI_TEXT.t("equipment_equipped") if equipped else UI_TEXT.t("equipment_equip")
+		if equipped and item.slot!="weapon":action=UI_TEXT.t("equipment_equipped_remove")
+		var slot_name:String={"weapon":UI_TEXT.t("equipment_slot_weapon"),"armor":UI_TEXT.t("equipment_slot_armor"),"shield":UI_TEXT.t("equipment_slot_shield")}[item.slot]
+		rows[id].text="%s · %s\n%s\n%s"%[ITEMS.label(id),slot_name,ITEMS.summary(id),action]
 		_style_row(rows[id],equipped,id in owned)
 		rows[id].disabled=not id in owned or (equipped and item.slot=="weapon")
-	status.text=state.get("feedback","Waffe, Schutzkleidung und Schild. Ausrüstung bleibt beim Tod erhalten.\nI / Select öffnet die Übersicht; ↑↓ / Steuerkreuz und Eingabe / A wählen.")
+	status.text=state.get("feedback",UI_TEXT.t("equipment_hint"))
 func _select(id:String):
 	var item:Dictionary=ITEMS.ITEMS[id]
 	var selected:String="" if item.slot!="weapon" and _state.get("equipped",{}).get(item.slot,"")==id else id
