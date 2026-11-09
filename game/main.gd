@@ -76,6 +76,14 @@ func _ready() -> void:
 	for e in get_tree().get_nodes_in_group("enemies"):
 		e._spawn_x = e.position.x
 
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
+		_on_focus_lost()
+
+func _on_focus_lost() -> void:
+	if pause_controller and not get_tree().paused:
+		pause_controller.open_menu()
+
 func _physics_process(delta: float) -> void:
 	attack_cadence.advance(delta)
 
