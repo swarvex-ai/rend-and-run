@@ -1,5 +1,6 @@
 extends Node
 ## Optional first-room recovery trial; reuses the accepted mechanical guard.
+const UI_TEXT = preload("res://data/ui_texts.gd")
 var route: Node3D
 var foe: CharacterBody3D
 var pickups: Dictionary = {}
@@ -56,7 +57,7 @@ func _process(delta: float) -> void:
 	foe.hp=5 if next==4 else 2
 	if foe.has_node("RoleLabel"):
 		var label=foe.get_node("RoleLabel")
-		label.text="SERVOTRÄGER" if next==4 else "RÜCKGEWINNUNG %d / 5"%[next+1]
+		label.text=UI_TEXT.t("servo_trial_carrier") if next==4 else UI_TEXT.t("servo_trial_recovery")%[next+1]
 		label.modulate=Color(.9,.65,.3);label.font_size=24;label.pixel_size=.003;label.visible=next==4
 	foe.defeated.connect(_defeated.bind(ledger.run_id,next))
 	if next==4:
@@ -105,8 +106,8 @@ func _spawn_pickup(index:int) -> void:
 
 func _reward_label(reward:Dictionary) -> String:
 	var parts:PackedStringArray=[]
-	if int(reward.get("shards",0))>0:parts.append("%d SPLITTER"%int(reward.shards))
-	if int(reward.get("servo",0))>0:parts.append("%d SERVO"%int(reward.servo))
+	if int(reward.get("shards",0))>0:parts.append(UI_TEXT.t("loot_shards_label")%int(reward.shards))
+	if int(reward.get("servo",0))>0:parts.append(UI_TEXT.t("loot_servo_label")%int(reward.servo))
 	return " + ".join(parts)
 
 func _collect(_id:String, epoch:int, index:int) -> void:

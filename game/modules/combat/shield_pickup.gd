@@ -2,6 +2,8 @@ extends Node3D
 ## A shield lying on the floor strip (a security robot's riot shield, or the chest plate Rend
 ## swapped away) until he takes it; lab_route offers the swap within reach. Group "shield_pickups".
 
+const UI_TEXT = preload("res://data/ui_texts.gd")
+
 var kind := "riot"
 var _halo: OmniLight3D
 var _t := 0.0
@@ -14,7 +16,7 @@ static func drop(parent: Node, at: Vector3, shield_kind: String) -> Node3D:
 	return pickup
 
 func label() -> String:
-	return "Einsatzschild" if kind == "riot" else "Schrottschild"
+	return UI_TEXT.t("shield_riot") if kind == "riot" else UI_TEXT.t("shield_scrap")
 
 func _ready() -> void:
 	add_to_group("shield_pickups")

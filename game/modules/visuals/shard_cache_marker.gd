@@ -1,5 +1,6 @@
 extends Node3D
 ## One reusable world marker; ledger and interaction remain route-owned.
+const UI_TEXT = preload("res://data/ui_texts.gd")
 var _label: Label3D
 func _init() -> void:
  name="LostShardCache"
@@ -22,5 +23,5 @@ func _init() -> void:
  add_child(_label)
  visible=false
 func show_amount(value:int) -> void:
- _label.text="%d SPLITTER"%value
+ _label.text=UI_TEXT.t("loot_shards_label")%value
  visible=value>0

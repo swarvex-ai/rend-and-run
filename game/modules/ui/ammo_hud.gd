@@ -3,6 +3,8 @@ extends Control
 ## magazine over the reserve, one pip per round, a reload bar. Low magazine pulses amber,
 ## an empty one red with the reload key. Palette as combat_hud.gd (off-white / pale cyan).
 
+const UI_TEXT = preload("res://data/ui_texts.gd")
+
 const OFF_WHITE := Color(0.93, 0.95, 0.96)
 const CYAN := Color(0.62, 0.86, 0.92)
 const AMBER := Color(1.0, 0.62, 0.2)
@@ -56,6 +58,6 @@ func _draw() -> void:
 		draw_rect(Rect2(bar.position, Vector2(bar.size.x * gun.reload_progress(), bar.size.y)), CYAN)
 		draw_string(font, origin + Vector2(WIDTH - 120, 24), "NACHLADEN", HORIZONTAL_ALIGNMENT_LEFT, -1, 13, CYAN)
 	elif gun.ammo == 0 and gun.reserve > 0:
-		draw_string(font, origin + Vector2(WIDTH - 120, 24), "R — LADEN", HORIZONTAL_ALIGNMENT_LEFT, -1, 13, Color(RED, pulse))
+		draw_string(font, origin + Vector2(WIDTH - 120, 24), UI_TEXT.t("ammo_hud_reload"), HORIZONTAL_ALIGNMENT_LEFT, -1, 13, Color(RED, pulse))
 	elif gun.ammo < mag and gun.reserve > 0:
 		draw_string(font, origin + Vector2(WIDTH - 60, 24), "R", HORIZONTAL_ALIGNMENT_LEFT, -1, 13, Color(OFF_WHITE, 0.45))

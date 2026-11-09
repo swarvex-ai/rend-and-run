@@ -1,6 +1,7 @@
 extends Node3D
 ## The owner handles input, ownership and persistence; this node is presentation only.
 const MODEL = preload("res://assets/models/weapon/weapon_arm_detached.glb")
+const UI_TEXT = preload("res://data/ui_texts.gd")
 var collected := false
 var focused := false
 var _arm: Node3D
@@ -26,7 +27,7 @@ func _ready() -> void:
 	_light.shadow_enabled = false
 	add_child(_light)
 	_label = Label3D.new()
-	_label.text = "[E / Y] ARM BERGEN"
+	_label.text = UI_TEXT.t("arm_pickup_prompt")
 	_label.position = Vector3(0, 1.42, 0)
 	_label.font_size = 24
 	_label.pixel_size = 0.0035

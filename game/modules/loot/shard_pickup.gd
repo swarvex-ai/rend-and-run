@@ -1,6 +1,7 @@
 extends Node3D
 ## Presentation only. Route owns the one-time reward and persistent pending state.
 signal reached(crate_id: String)
+const UI_TEXT = preload("res://data/ui_texts.gd")
 var crate_id := ""
 var amount := 3
 var player: CharacterBody3D
@@ -24,7 +25,7 @@ func _ready() -> void:
 		piece.rotation=Vector3(.2,(i-1)*.7,(i-1)*-.45)
 		_visual.add_child(piece)
 	var label:=Label3D.new()
-	label.text="%d SPLITTER"%amount;label.font_size=20;label.pixel_size=.003
+	label.text=UI_TEXT.t("loot_shards_label")%amount;label.font_size=20;label.pixel_size=.003
 	label.position.y=.32;label.modulate=Color(.4,.9,.93)
 	label.billboard=BaseMaterial3D.BILLBOARD_ENABLED
 	add_child(label)

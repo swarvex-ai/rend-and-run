@@ -1,6 +1,7 @@
 extends RefCounted
 ## Farming v0.2 foundation. Value state only; callers persist with equipment.
 ## Not yet exposed in gameplay: no loot source, shop button or attack modifier.
+const UI_TEXT = preload("res://data/ui_texts.gd")
 const CAP := 999999
 const RECIPE := {"shards": 12, "servo": 2}
 const MODULE := "servo_i"
@@ -8,7 +9,7 @@ const MODULE := "servo_i"
 const RECOVERY_MULTIPLIER := 0.8
 
 static func summary() -> String:
-	return "Servogestützt · Erholung −%d %%" % roundi((1.0-RECOVERY_MULTIPLIER)*100.0)
+	return UI_TEXT.t("prefix_servo_summary") % roundi((1.0-RECOVERY_MULTIPLIER)*100.0)
 var servo: int = 0
 var _modules: Array[String] = []
 var _installed: Dictionary = {}

@@ -15,6 +15,8 @@ extends Control
 #   Nur eingebaute Fonts/StyleBoxFlat; Fonts >= 16 px sekundar, 18 px main.
 # - Help-Panel NUR bei help_visible; Footer 'F1 Hilfe' immer; NIE F5 Save-Reset.
 
+const UI_TEXT = preload("res://data/ui_texts.gd")
+
 const COLOR_PANEL := Color(0.07, 0.08, 0.10, 0.62)       # dunkel, translucent
 const COLOR_TEXT := Color(0.93, 0.90, 0.84)              # warmes Off-White
 const COLOR_DIM := Color(0.93, 0.90, 0.84, 0.62)         # Sekundaer
@@ -85,9 +87,9 @@ func update_state(state: Dictionary) -> void:
 
 	_zone_label.text = str(state.get("zone", ""))
 	_zone_label.visible = _zone_label.text != ""
-	_guards_label.text = "Wachen %d/%d" % [int(state.get("guards_defeated", 0)), int(state.get("guards_total", 0))]
-	_shards_label.text = "Splitter %d" % int(state.get("shards", 0))
-	if state.get("servo_unlocked",false):_shards_label.text += " · Servo %d"%int(state.get("servo",0))
+	_guards_label.text = UI_TEXT.t("hud_guards") % [int(state.get("guards_defeated", 0)), int(state.get("guards_total", 0))]
+	_shards_label.text = UI_TEXT.t("hud_shards") % int(state.get("shards", 0))
+	if state.get("servo_unlocked",false):_shards_label.text += UI_TEXT.t("hud_servo_suffix")%int(state.get("servo",0))
 
 	var objective := str(state.get("objective", ""))
 	_objective_label.text = objective
@@ -284,7 +286,7 @@ func _build_bottom() -> void:
 	# Save-Warnung: eigene kleine Zeile, direkt sichtbar, nicht hinter feedback.
 	_save_warn_label = _make_label(FONT_SUB, COLOR_WARN)
 	_save_warn_label.name = "SaveWarn"
-	_save_warn_label.text = "Speichern fehlgeschlagen"
+	_save_warn_label.text = UI_TEXT.t("hud_save_failed")
 	_save_warn_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	_save_warn_label.set_anchors_preset(Control.PRESET_CENTER_BOTTOM)
 	_save_warn_label.offset_left = -280
@@ -298,7 +300,7 @@ func _build_bottom() -> void:
 	var footer := _make_label(FONT_SUB, COLOR_DIM)
 	_footer_label = footer
 	footer.name = "HelpFooter"
-	footer.text = "I / Select Ausrüstung · F1 Hilfe · Esc / Start Pause"
+	footer.text = UI_TEXT.t("hud_footer_wide")
 	footer.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	footer.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
 	footer.offset_left = -460
@@ -330,17 +332,17 @@ func _build_help_panel() -> void:
 	_help_panel.add_child(col)
 
 	var title := _make_label(FONT_MAIN, COLOR_TEXT)
-	title.text = "Steuerung"
+	title.text = UI_TEXT.t("hud_help_title")
 	col.add_child(title)
 
 	var rows := [
-		"A/D", "Bewegen",
-		"W/S / ↑↓", "In die Tiefe",
-		"Space", "Springen",
-		"J / X", "Angriff",
-		"Shift / K / B", "Ausweichen",
-		"C / Strg / RB", "Ducken",
-		"E / Y", "Interagieren",
+		"A/D", UI_TEXT.t("hud_help_move"),
+		"W/S / ↑↓", UI_TEXT.t("hud_help_depth"),
+		"Space", UI_TEXT.t("hud_help_jump"),
+		"J / X", UI_TEXT.t("hud_help_attack"),
+		"Shift / K / B", UI_TEXT.t("hud_help_dodge"),
+		UI_TEXT.t("hud_help_crouch_keys"), UI_TEXT.t("hud_help_crouch"),
+		"E / Y", UI_TEXT.t("hud_help_interact"),
 		"L / RMB / LB", "Guard",
 	]
 	for i in range(0, rows.size(), 2):
@@ -370,5 +372,5 @@ func _layout_feedback() -> void:
 	_feedback_label.offset_top = 20.0 if wide else 116.0
 	_feedback_label.offset_bottom = _feedback_label.offset_top
 	if is_instance_valid(_footer_label):
-		_footer_label.text = "I / Select Ausrüstung · F1 Hilfe · Esc / Start Pause" if wide else "F1 Hilfe · Esc Pause"
+		_footer_label.text = UI_TEXT.t("hud_footer_wide") if wide else UI_TEXT.t("hud_footer_narrow")
 		_footer_label.offset_left = -460.0 if wide else -180.0
