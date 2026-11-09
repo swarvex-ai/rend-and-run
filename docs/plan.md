@@ -108,10 +108,10 @@ Reference first, then copies. Existing items are mapped, not duplicated: G-5 →
 | E11.3 | options content: audio sliders, window mode, VSync, accessibility toggles (G16) on the reference screen | B | E11.2, E6 |
 | E11.4 | main menu on `MenuScreen`: add Options, Credits, version label | B | E11.2 |
 | E11.5 | pause menu on `MenuScreen`: add Options, „Main menu“ | B | E11.2 |
-| E11.6 | credits screen from `CREDITS.md` data; reachable from main menu and after the end card | B | E11.2 |
+| E11.6 | credits screen from `CREDITS.md` data; reachable from main menu and after the end card — tasks #150 (screen, title) and #153 (end card, after #150/#152) | B | E11.2 |
 | E11.7 | focus loss pauses the game (task #122, E11.7a, accepted 09.11.); window mode switches without restart (E11.7b: already live through `settings.apply()`, check in the playtest) | B | E11.2 |
 | E11.8 | input hints follow the last used device; gamepad hot-plug | B | E11.2 |
-| E11.9 | loading indicator at start and reload, no freeze > 1 s | B | E11.2 |
+| E11.9 | loading indicator at start and reload, no freeze > 1 s — task #152 (after #124); UX Q4 R-only-reload fix #151 | B | E11.2 |
 | E11.10 | CHANGELOG.md (SemVer, entry `0.1.0-prealpha`) — task #40 | A | – |
 | E11.11 | ~~SECURITY.md~~ — #41 closed: covered by the organization default in swarvex-ai/.github | – | – |
 | E11.12 | ~~bug issue form~~ — #42 closed: moved to v1 (backlog); generic form from swarvex-ai/.github until then | – | – |
