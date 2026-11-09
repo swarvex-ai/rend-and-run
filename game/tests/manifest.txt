@@ -156,4 +156,5 @@ headless voice_bus_test
 headless robot_voice_bus_test
 headless robot_voice_subtitle_test
 headless escape_events_test
+headless focus_pause_test
 window rend_death_review
