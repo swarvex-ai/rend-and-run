@@ -1,6 +1,8 @@
 # Status
 
 **09.11. abends (Lead):** neVs hat am 09.11. die Gate-Dokumente UX-Spezifikation (16), Story-Gerüst (18) und Art Bible (19) freigegeben. Offen bei neVs: Comic-Stil (13), Comic-Drehbuch (14), Tod und Splitter (15), Sound Bible (17), Warnzeiten Rolle 1 (20). Backlog war leer (1 aktiver Agent, #124 läuft); neu geschnitten: #150 (E11.6a Credits-Bildschirm), #151 (UX Q4: R nur Nachladen), #152 (E11.9 Ladeanzeige, nach #124), #153 (E11.6b Credits auf der Endkarte, nach #150 und #152). Gamepad-Belegungen (Waffenplätze, zurück, Hilfe) und Eingabe-Glyphen (E11.8) bleiben für den nächsten Schnitt; Intro-Comic, Audio-Assets und Tell-Anhebung (E7) warten auf die offenen Antworten von neVs.
+
+**09.11. nachts (Lead):** Einreichungen #152 (Task 150, Credits-Bildschirm) und #153 (Task 151, R nur Nachladen) sind grün (107 headless + 23 hook), aber eigene Einreichungen: warten auf Peer-Review, ich darf sie nicht annehmen. Nach dem Merge: `credits_menu_test` und `reload_key_test` in manifest.txt eintragen. Die fünf offenen Nachrichten (13, 14, 15, 17, 20) sind Fragen an neVs; nichts zu tun, bis er antwortet.
 - Ruling: Credits-Texte stehen in `game/data/credits_data.gd` (Englisch), nicht in `ui_texts.gd`, damit sie nicht mit #124 (serielle Werte-Umstellung) kollidieren — Kosten bei Irrtum: ein Verschiebe-Schritt später.
 
 ## 05.11.2026 (Lead, Dauerbetrieb nach LEAD.md 2.4)
