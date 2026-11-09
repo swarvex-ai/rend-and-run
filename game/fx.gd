@@ -1,6 +1,8 @@
 extends Node
 ## FX — Autoload: Hit-Stop, Screenshake, Blood, Blut-Pfützen, Sound. Das Metzel-Öl.
 
+const UI_TEXT = preload("res://data/ui_texts.gd")
+
 var shake := 0.0
 var shake_dir := Vector3(1, 0.35, 0)   # V85: Hauptrichtung des Traumas (x dominant)
 ## Accessibility switches from the Options screen; default on until settings say otherwise.
@@ -211,7 +213,7 @@ func dash_flash(pos: Vector3, direction := Vector3.RIGHT) -> void:
 
 func attack_warning(pos: Vector3, low: bool, heavy: bool) -> void:
 	var label := Label3D.new()
-	label.text = "TIEF" if low else "SCHWER" if heavy else "!"
+	label.text = UI_TEXT.t("attack_warning_low") if low else UI_TEXT.t("attack_warning_heavy") if heavy else "!"
 	label.font_size = 48
 	label.pixel_size = 0.007
 	label.modulate = Color(1,0.28,0.18) if heavy else Color(1,0.8,0.25)

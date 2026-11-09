@@ -18,7 +18,7 @@ extends Node3D
 ##       direction im Bildschirmraum (x=+1 rechts, y=+1 hoch); wird auf 8
 ##       Himmelsrichtungen gerastert (industriell saubere Pfeile).
 ##       (1,1) = hoch-rechts (West-Anflug), (1,0) = rechts (Ost-Landung).
-##       label: Schildtext, Default "WARTUNGSSTEG".
+##       label: Schildtext, Default UI_TEXT.t("wayfinding_maintenance_walkway").
 ##   set_route_open(open: bool)
 ##       false = bernsteinfarbene Umleitung (Default),
 ##       true  = gedaempftes Cyan "freigegeben".
@@ -28,11 +28,12 @@ extends Node3D
 ## Geometrie 1.10 m breit (< 1.2 m), 2 Materialien pro Instanz wiederverwendet,
 ## kein _process/_physics_process, kein Blinken.
 
+const UI_TEXT = preload("res://data/ui_texts.gd")
 const AMBER := Color(0.86, 0.58, 0.18)        # Umleitung (bernstein)
 const CYAN_DIM := Color(0.42, 0.68, 0.70)     # freigegeben (gedaempftes Cyan)
 const PLATE_COLOR := Color(0.09, 0.11, 0.14)  # dunkle Traegerplatte
 
-var _label_text := "WARTUNGSSTEG"
+var _label_text := UI_TEXT.t("wayfinding_maintenance_walkway")
 var _direction := Vector2(1, 1)
 var _route_open := false
 var _built := false

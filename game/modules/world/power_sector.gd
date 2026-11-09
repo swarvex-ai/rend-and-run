@@ -61,7 +61,7 @@ func _process(delta:float):
 		if not "maintenance_guard" in defeated:
 			var guard=route.main._make_enemy(24.8,3,null,"scattergun");guard.encounter_id="maintenance_guard";guard.hp=5;guard.speed=2.4;guard.territory_min_x=18
 			guard.get_node("VisualPivot").scale*=1.13
-			guard.get_node("RoleLabel").text="WARTUNGSWACHE";guard.get_node("RoleLabel").font_size=18;guard.get_node("RoleLabel").pixel_size=.004
+			guard.get_node("RoleLabel").text=UI_TEXT.t("power_maintenance_guard");guard.get_node("RoleLabel").font_size=18;guard.get_node("RoleLabel").pixel_size=.004
 			var armor_material=guard._body_mesh.get_active_material(0).duplicate()
 			armor_material.albedo_color=Color(.32,.42,.5);guard._body_mesh.set_surface_override_material(0,armor_material)
 			guard.defeated.connect(_guard_defeated);actors.append(guard)

@@ -56,7 +56,7 @@ func _draw() -> void:
 		var bar := Rect2(origin + Vector2(16, HEIGHT - 12), Vector2(WIDTH - 32, 4))
 		draw_rect(bar, Color(CYAN, 0.2))
 		draw_rect(Rect2(bar.position, Vector2(bar.size.x * gun.reload_progress(), bar.size.y)), CYAN)
-		draw_string(font, origin + Vector2(WIDTH - 120, 24), "NACHLADEN", HORIZONTAL_ALIGNMENT_LEFT, -1, 13, CYAN)
+		draw_string(font, origin + Vector2(WIDTH - 120, 24), UI_TEXT.t("ammo_hud_reloading"), HORIZONTAL_ALIGNMENT_LEFT, -1, 13, CYAN)
 	elif gun.ammo == 0 and gun.reserve > 0:
 		draw_string(font, origin + Vector2(WIDTH - 120, 24), UI_TEXT.t("ammo_hud_reload"), HORIZONTAL_ALIGNMENT_LEFT, -1, 13, Color(RED, pulse))
 	elif gun.ammo < mag and gun.reserve > 0:

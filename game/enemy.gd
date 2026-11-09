@@ -170,7 +170,8 @@ func _ready() -> void:
 		speed=3.8
 	label.name = "RoleLabel"
 	label.visible = false  # design aid only; roles read from silhouette and weapon
-	label.text = ["RAIDER", "DUELLANT", "BRECHER", "IMPULSWACHE"][role]
+	var UI_TEXT = preload("res://data/ui_texts.gd")
+	label.text = [UI_TEXT.t("enemy_role_raider"), UI_TEXT.t("enemy_role_duelist"), UI_TEXT.t("enemy_role_brute"), UI_TEXT.t("enemy_role_pulse_guard")][role]
 	label.position.y = 2.15 if role == 2 else 1.9
 	label.font_size = 24
 	label.pixel_size = 0.006
