@@ -2,6 +2,7 @@ extends Node3D
 ## Maintenance sector behind the first sliding door: dark night shift with a guard and
 ## drones. (The power-routing puzzle that used to lock the door was removed on neVs'
 ## request, 2026-10-23: the door now opens as Rend approaches, see lab_route.gd.)
+const UI_TEXT = preload("res://data/ui_texts.gd")
 var route:Node3D
 var circuits:=0
 var defeated:Array=[]
@@ -80,9 +81,9 @@ func _defeated(id:String):
 	if route.save_error:
 		defeated.erase(id);route.shards=previous;route.equipment.shards=previous
 		if not id in pending_defeats:pending_defeats.append(id)
-		route._message("Bergung noch nicht gespeichert — erneuter Versuch folgt.",4,3)
+		route._message(UI_TEXT.t("power_salvage_retry"),4,3)
 	else:
-		pending_defeats.erase(id);route._message("+2 Splitter · Maschinenreste geborgen",2,1)
+		pending_defeats.erase(id);route._message(UI_TEXT.t("power_salvage_done"),2,1)
 func _exit_tree():
 	if is_instance_valid(maker):maker.free()
 	for actor in actors:

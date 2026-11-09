@@ -9,6 +9,7 @@ const RANGE := 9.0
 const CALL_RADIUS := 14.0
 const COOLDOWN := 8.0
 const PAN_LIMIT := 1.2
+const UI_TEXT = preload("res://data/ui_texts.gd")
 
 var _pan: Node3D
 var _tilt: Node3D
@@ -60,4 +61,4 @@ func _raise_alarm(player: Node3D) -> void:
 		if robot.has_method("provoke") and not robot._dead and robot.is_physics_processing() and absf(robot.global_position.x - player.global_position.x) < CALL_RADIUS:
 			robot.provoke()
 	var route := get_tree().get_first_node_in_group("robot_voice")
-	if route and route.route and route.route.has_method("_message"):route.route._message("KAMERA — Subjekt erfasst. Einheiten alarmiert.", 2.5, 1)
+	if route and route.route and route.route.has_method("_message"):route.route._message(UI_TEXT.t("camera_spotted"), 2.5, 1)

@@ -1,5 +1,6 @@
 extends CharacterBody3D
 const ARM_PREFIX := preload("res://modules/equipment/prefix_ledger.gd")
+const UI_TEXT = preload("res://data/ui_texts.gd")
 ## Spieler für Rend&Run — Laufen, Hüpfen mit Gewicht + Arm-Nahkampf (P04, hero_v05).
 ## Gamepad primär (Stick/D-Pad + Cross + Square), Tastatur (A/D, Pfeile, Space, J/X) gleichwertig.
 ## V10: Same cutting motion, shorter anticipation/recovery, mobile attacks and defense.
@@ -404,8 +405,8 @@ func slot_summary() -> String:
 	for n in [SLOT_FREE, SLOT_MELEE, SLOT_SIDEARM, SLOT_LONG]:
 		var label := ""
 		match n:
-			SLOT_FREE:label = "Hände"
-			SLOT_MELEE:label = ("Arm" if weapon_id == "robot_arm" else "Brecherarm") if has_slot(n) else "—"
+			SLOT_FREE:label = UI_TEXT.t("player_slot_hands")
+			SLOT_MELEE:label = (UI_TEXT.t("player_slot_arm") if weapon_id == "robot_arm" else UI_TEXT.t("player_slot_crusher_arm")) if has_slot(n) else "—"
 			_:
 				if holstered.has(n):
 					var drawn: bool = n == slot and is_instance_valid(gun)

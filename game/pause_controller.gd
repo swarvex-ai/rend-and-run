@@ -10,6 +10,7 @@ var _combat_lock:=false
 var _combat_lock_held:=false
 const GAME_ACTIONS:=["move_left","move_right","move_up","move_down","jump","attack","dash","dodge","crouch","guard","interact","restart"]
 const COMBAT_ACTIONS:=["attack","dodge"]
+const UI_TEXT = preload("res://data/ui_texts.gd")
 func _ready()->void:
 	process_mode=Node.PROCESS_MODE_ALWAYS
 	# Release the closing combat press before the player sees a fresh physics frame.
@@ -181,6 +182,6 @@ func _equipment_action(slot:String,id:String)->void:
 	if _leaving or not equipment_menu.visible:return
 	var route=get_parent().route
 	var ok:bool=route.apply_equipment_selection(slot,id)
-	var message:="Ausrüstung aktualisiert." if ok else "Diese Auswahl ist gerade nicht möglich."
-	if ok and route.save_error:message="Speichern fehlgeschlagen. Auswahl gilt nur für diese Sitzung."
+	var message:=UI_TEXT.t("pause_equipment_updated") if ok else UI_TEXT.t("pause_equipment_refused")
+	if ok and route.save_error:message=UI_TEXT.t("pause_equipment_save_failed")
 	equipment_menu.update_state(route.equipment_state(message))

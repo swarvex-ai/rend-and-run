@@ -1,5 +1,6 @@
 extends Node
 const SAVE_PATH:="user://rendrun_route_v12.json"
+const UI_TEXT = preload("res://data/ui_texts.gd")
 var menu:Control
 var options_menu:Control
 var notice:Label
@@ -40,7 +41,7 @@ func _refresh()->void:
 	menu.open_menu(exists)
 	if exists and not _valid_save():
 		menu.set_row_enabled("continue",false)
-		notice.text="Spielstand nicht lesbar. Eine neue Runde sichert die alte Datei als Rückfall."
+		notice.text=UI_TEXT.t("start_save_unreadable")
 func _open_options()->void:
 	menu.close_menu()
 	options_menu.open_screen()
@@ -54,9 +55,9 @@ func _new_run()->void:
 	if _starting:return
 	if FileAccess.file_exists(SAVE_PATH):
 		if DirAccess.copy_absolute(SAVE_PATH,SAVE_PATH+".previous")!=OK:
-			notice.text="Sicherung fehlgeschlagen. Der bisherige Spielstand bleibt erhalten.";return
+			notice.text=UI_TEXT.t("start_backup_failed");return
 	if preload("res://modules/persistence/atomic_json_writer.gd").write_json(SAVE_PATH,{"version":12,"economy_revision":1})!=OK:
-		notice.text="Neue Runde konnte nicht gespeichert werden.";return
+		notice.text=UI_TEXT.t("start_new_run_save_failed");return
 	_enter_game()
 func _enter_game()->void:
 	if _starting:return
@@ -66,4 +67,4 @@ func _enter_game()->void:
 	var error:=get_tree().change_scene_to_file("res://main.tscn")
 	if error!=OK:
 		_starting=false
-		if notice:notice.text="Spielwelt konnte nicht geladen werden."
+		if notice:notice.text=UI_TEXT.t("start_world_load_failed")

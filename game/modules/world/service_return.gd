@@ -1,4 +1,5 @@
 extends Node3D
+const UI_TEXT = preload("res://data/ui_texts.gd")
 const TOP := 5.0
 @export var lift_x := 56.0
 @export var return_start_x := 1.5
@@ -23,7 +24,7 @@ func _ready():
  var roof:=StaticBody3D.new();roof.name="ReturnCeiling"
  _slab(roof,Vector3(lift_x+1.2-return_start_x,.3,2.0));roof.position=Vector3((return_start_x+lift_x+1.2)*.5,7.15,0)
  for x in [return_start_x+1.5,lerpf(return_start_x,lift_x,.28),lerpf(return_start_x,lift_x,.54),lerpf(return_start_x,lift_x,.8),lift_x-2]:
-  var label:=Label3D.new();label.text="← RÜCKWEG / KALTSTART";label.position=Vector3(x,5.7,-1.1);label.font_size=26;label.pixel_size=.004;label.modulate=Color(.28,.65,.65);add_child(label)
+  var label:=Label3D.new();label.text=UI_TEXT.t("service_return_sign");label.position=Vector3(x,5.7,-1.1);label.font_size=26;label.pixel_size=.004;label.modulate=Color(.28,.65,.65);add_child(label)
 func _physics_process(delta:float):
  lift.position.y=move_toward(lift.position.y,target_y,delta*1.6)
 func _station(at:Vector3)->float:
@@ -34,11 +35,11 @@ func _station(at:Vector3)->float:
 func prompt(at:Vector3)->String:
  var station:=_station(at)
  if station<0:return ""
- if not unlocked:return "SERVICEAUFZUG — Sicherheitssperre"
- if absf(lift.position.y-target_y)>.02:return "SERVICEAUFZUG — fährt"
- if absf(station-lift.position.y)>.25:return "E / Y — Aufzug rufen"
- if absf(at.x-lift_x)>1.0:return "Auf die Liftplattform treten"
- return "E / Y — Aufzug abwärts" if station>2 else "E / Y — Rückweg zum Kaltstart"
+ if not unlocked:return UI_TEXT.t("service_lift_locked")
+ if absf(lift.position.y-target_y)>.02:return UI_TEXT.t("service_lift_moving")
+ if absf(station-lift.position.y)>.25:return UI_TEXT.t("service_lift_call")
+ if absf(at.x-lift_x)>1.0:return UI_TEXT.t("service_lift_step_on")
+ return UI_TEXT.t("service_lift_down") if station>2 else UI_TEXT.t("service_lift_return")
 func interact(at:Vector3)->bool:
  var station:=_station(at)
  if not unlocked or station<0 or absf(lift.position.y-target_y)>.02:return false
