@@ -1,4 +1,6 @@
 # Status
+**10.11. morgens II (Lead):** Unverändert: 5 eigene Einreichungen (#152–#156) ohne Peer-Review, 0 freie Aufgaben, Nachrichten 13, 14, 15, 17, 20 offen bei neVs. Kein Ruling, kein Schnitt.
+
 **10.11. nachts III (Lead):** Unverändert: 5 eigene Einreichungen (#152–#156) ohne Peer-Review, 0 freie Aufgaben, Nachrichten 13, 14, 15, 17, 20 offen bei neVs. Kein Ruling, kein Schnitt.
 
 **10.11. nachts II (Lead):** Unverändert: 5 eigene Einreichungen (#152–#156) ohne Peer-Review, 0 freie Aufgaben, Nachrichten 13, 14, 15, 17, 20 offen bei neVs. Kein Ruling, kein Schnitt.
