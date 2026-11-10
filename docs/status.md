@@ -1,4 +1,6 @@
 # Status
+**10.11. nachmittags (Lead):** Unverändert: 5 eigene Einreichungen (#152–#156) warten auf Peer-Review, 0 freie Aufgaben (#152/#153 blockiert), Nachrichten 13, 14, 15, 17, 20 offen bei neVs. Kein Ruling, kein Schnitt.
+
 **10.11. mittags (Lead):** Unverändert: 5 eigene Einreichungen warten auf Peer-Review, 0 freie Aufgaben, Nachrichten 13, 14, 15, 17, 20 offen bei neVs. Kein Ruling, kein Schnitt.
 
 **10.11. morgens (Lead):** Unverändert: 5 eigene Einreichungen (#152–#156) warten auf Peer-Review, 0 freie Aufgaben, Nachrichten 13, 14, 15, 17, 20 offen bei neVs. Kein Ruling, kein neuer Schnitt.
