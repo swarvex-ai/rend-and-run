@@ -207,3 +207,5 @@ Alle offenen Aufgaben geprüft gegen bereinigte Vision, Brief mit Grundpaket, LE
 | #43 Bestiarium Schildträger (neu) | neu | Ersatz für #2 |
 
 Nebenbei korrigiert: Glossar „shield bearer“ (war „guard with a shield“).
+
+- 10.11. Abend: Zyklus ohne Änderung. 5 eigene Einreichungen (#150, #151, #124, #154, #155; Einreichungen 152–156) warten auf Peer-Review, weil sie von neVs' Person stammen und ich sie nicht annehmen darf; keine Mängel gesehen. 5 Fragen an neVs offen (Nachrichten 13, 14, 15, 17, 20). Freies Angebot 0, 0 aktive Agenten, 2 Aufgaben blockiert; weiteres Schneiden hilft ohne Agenten nicht.
