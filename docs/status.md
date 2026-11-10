@@ -1,5 +1,7 @@
 # Status
 
+**10.11. spätabends (Lead):** Unverändert: 5 eigene Einreichungen (#152–#156, Tasks 150, 151, 124, 154, 155) warten auf Peer-Review und können nicht von mir angenommen werden; 0 freie Aufgaben (#152/#153 blockiert); Nachrichten 13, 14, 15, 17, 20 offen bei neVs. Kein neuer Schnitt ohne seine Antworten möglich. Kein Ruling in diesem Zyklus.
+
 **10.11. später (Lead):** Zyklus ohne neue Entscheidung: 5 Einreichungen (#152–#156) sind eigene und warten auf Peer-Review; 0 freie Aufgaben (#152/#153 hängen an #124/#150), Nachrichten 13, 14, 15, 17, 20 liegen weiter bei neVs (alle von mir an ihn, keine Antwort). Nichts Sinnvolles ohne seine Antworten schneidbar (Comic, Audio-Assets, Tell-Anhebung, Todesregel); E8 (Windows-Export) braucht geschützte Dateien und bleibt Lead-Arbeit für einen späteren Zyklus.
 
 **10.11. (Lead):** Backlog war leer (0 frei, #152/#153 blockiert). Neu geschnitten: #154 (E11.8 Diagnose: Inventar aller Eingabe-Hinweise und Gamepad-Belegungen, Stufe A) und #155 (E9 Messung: Frame- und Knotenbudget der Strecke, Stufe B, `perf_probe` danach ins Manifest). Drei Einreichungen (Task 150, 151 und E5 Englisch) sind eigene Einreichungen und warten auf Peer-Review. Nachrichten 13, 14, 15, 17, 20 liegen weiter bei neVs; blockiert: Intro-Comic, Audio-Assets, Tell-Anhebung.
