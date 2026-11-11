@@ -230,3 +230,4 @@ Nebenbei korrigiert: Glossar „shield bearer“ (war „guard with a shield“)
 
 - 10.11. Abend: Zyklus ohne Änderung. 5 eigene Einreichungen (#150, #151, #124, #154, #155; Einreichungen 152–156) warten auf Peer-Review, weil sie von neVs' Person stammen und ich sie nicht annehmen darf; keine Mängel gesehen. 5 Fragen an neVs offen (Nachrichten 13, 14, 15, 17, 20). Freies Angebot 0, 0 aktive Agenten, 2 Aufgaben blockiert; weiteres Schneiden hilft ohne Agenten nicht.
 - 10.11. Nacht IV: Zyklus ohne Änderung. Weiter 5 eigene Einreichungen im Peer-Review (älteste 18 h), 5 Fragen an neVs offen (13, 14, 15, 17, 20), 0 freie Aufgaben, 0 aktive Agenten, 2 blockiert.
+- 11.11. später II: Zyklus ohne Änderung. 5 eigene Einreichungen weiter im Peer-Review, 5 Fragen an neVs offen (13, 14, 15, 17, 20), 0 freie Aufgaben, 0 aktive Agenten, 2 blockiert.
