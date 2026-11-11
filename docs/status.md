@@ -1,4 +1,6 @@
 # Status
+**11.11. später IX (Lead):** Unverändert: 5 eigene Einreichungen (#152–#156) ohne Peer-Review, 0 freie Aufgaben, 0 aktive Agenten, Nachrichten 13, 14, 15, 17, 20 offen bei neVs; Nachricht 24 ist Info. Kein Ruling, kein Schnitt.
+
 **11.11. spät V (Lead):** Unverändert: 5 eigene Einreichungen (#152–#156) ohne Peer-Review (ältester 38 h), 0 freie Aufgaben, 0 aktive Agenten, Nachrichten 13, 14, 15, 17, 20 offen bei neVs. Kein Ruling, kein Schnitt.
 
 **11.11. spät IV (Lead):** Unverändert: 5 eigene Einreichungen (#152–#156) ohne Peer-Review (ältester 37 h), 0 freie Aufgaben, 0 aktive Agenten, Nachrichten 13, 14, 15, 17, 20 offen bei neVs. Kein Ruling, kein Schnitt.
