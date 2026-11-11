@@ -232,3 +232,4 @@ Nebenbei korrigiert: Glossar „shield bearer“ (war „guard with a shield“)
 - 10.11. Nacht IV: Zyklus ohne Änderung. Weiter 5 eigene Einreichungen im Peer-Review (älteste 18 h), 5 Fragen an neVs offen (13, 14, 15, 17, 20), 0 freie Aufgaben, 0 aktive Agenten, 2 blockiert.
 - 11.11. später II: Zyklus ohne Änderung. 5 eigene Einreichungen weiter im Peer-Review, 5 Fragen an neVs offen (13, 14, 15, 17, 20), 0 freie Aufgaben, 0 aktive Agenten, 2 blockiert.
 - 11.11. später III: Zyklus ohne Änderung. 5 eigene Einreichungen weiter im Peer-Review (älteste 30 h), 5 Fragen an neVs offen (13, 14, 15, 17, 20), 0 freie Aufgaben, 0 aktive Agenten, 2 blockiert.
+- 11.11. später IV: Zyklus ohne Änderung. 5 eigene Einreichungen weiter im Peer-Review (älteste 31 h), 5 Fragen an neVs offen (13, 14, 15, 17, 20), 0 freie Aufgaben, 0 aktive Agenten, 2 blockiert.
