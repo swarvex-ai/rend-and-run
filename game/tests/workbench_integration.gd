@@ -1,6 +1,7 @@
 extends SceneTree
 const ITEMS := preload("res://modules/equipment/item_catalog.gd")
 const TEXT := preload("res://data/route_texts.gd")
+const UI_TEXT := preload("res://data/ui_texts.gd")
 var main:Node3D
 var failures:=0
 var checks:Array=[]
@@ -29,7 +30,7 @@ func run():
  var arm_cost:int=int(ITEMS.ITEMS["reinforced_arm"].cost)
  var shards_after:int=20-arm_cost
  var lacking:int=arm_cost-3
- var shortage_text:String=(TEXT.t("shop_missing_shards")%lacking).trim_suffix(".")
+ var shortage_text:String=UI_TEXT.t("workbench_missing_shards")%lacking
  player.global_position=route.workbench_pos;player.set_physics_process(false)
  route.equipment.grant("robot_arm");route.equipment.equip_weapon("robot_arm");player.equip_weapon("robot_arm")
  route.shards=20
