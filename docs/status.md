@@ -1,5 +1,7 @@
 # Status
 
+**12.11. früh XX (Lead):** Review-Fragen für #155/#156 gesetzt (Peer-Review wartet). Neu geschnitten aus der Eingabehinweis-Diagnose (#154): #214 (Glyph-Lookup-Modul) und #215 (Device-Tracker), unabhängig, beide Level B. Nachrichten 13, 14, 15, 17, 20 weiter offen bei neVs. Danach: Platzhalter-Umstellung der Texte (nach #124, #214, #215).
+
 **12.11. früh XIX (Lead):** Unverändert: 5 eigene Einreichungen (#152–#156) ohne Peer-Review (ältester 70 h), 0 freie Aufgaben, 0 aktive Agenten, Nachrichten 13, 14, 15, 17, 20 offen bei neVs; 24 ist Info. Kein Ruling, kein Schnitt.
 
 **12.11. früh XVIII (Lead):** Unverändert: 5 eigene Einreichungen (#152–#156) ohne Peer-Review (ältester 68 h), 0 freie Aufgaben, 0 aktive Agenten, Nachrichten 13, 14, 15, 17, 20 offen bei neVs; 24 ist Info. Kein Ruling, kein Schnitt.
