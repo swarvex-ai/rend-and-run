@@ -1,5 +1,7 @@
 # Status
 
+**12.11. früh XXVIII (Lead):** #240 (Task 216, route_texts EN) angenommen. #243 weiter nicht ablehnbar (in_progress). #217 frei (einzige Aufgabe), #152/#153 warten auf #124. Nachrichten 13, 14, 15, 17, 20 offen bei neVs; kein Schnitt ohne seine Antworten.
+
 **12.11. früh XXVI (Lead):** #244 (Task 150, Credits-Screen) angenommen; nach dem Merge `headless credits_menu_test` in manifest.txt eintragen. #243 (Task 124, eigene Einreichung, doppelt zu #240) ließ sich nicht ablehnen (Plattform: State submitted); ablehnen, sobald möglich. #240 (Task 216) war rot wegen workbench_integration (auf main behoben, 5088ab1), braucht Neu-Prüfung. 0 freie Aufgaben; Nachrichten 13, 14, 15, 17, 20 offen bei neVs, 24 Info.
 
 **12.11. früh XXIV (Lead):** #236 abgelehnt (überholt, steckt in #217). #238 (Credits, 4 Review-Fragen gesetzt) wartet auf Peer-Review; nach Merge `headless credits_menu_test` in manifest.txt eintragen. #239 (Task 217) war rot wegen `workbench_integration` (Test las den Text aus route_texts statt aus der UI-Tabelle) — Ruling: Test selbst repariert (Level D, Commit 5088ab1, grün), #239 braucht nach Neu-Prüfung ggf. Rebase. Findings 18–20 offen, 22 (veraltete Kommentare) klein. Nachrichten 13, 14, 15, 17, 20 offen bei neVs.
