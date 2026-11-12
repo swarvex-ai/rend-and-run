@@ -1,5 +1,7 @@
 # Status
 
+**12.11. früh XXI (Lead):** #235 (Task 214, Glyph-Lookup) angenommen; nach dem Merge `input_glyphs_test` als `headless` in manifest.txt eintragen (Datei ist noch nicht auf main). #156 (perf_probe) weiter eigene Einreichung im Peer-Review; nach Merge `probe perf_probe` eintragen. 0 freie Aufgaben (#152/#153 hängen an #124), #215 in Arbeit; Nachrichten 13, 14, 15, 17, 20 offen bei neVs, 24 ist Info.
+
 **12.11. früh XX (Lead):** Review-Fragen für #155/#156 gesetzt (Peer-Review wartet). Neu geschnitten aus der Eingabehinweis-Diagnose (#154): #214 (Glyph-Lookup-Modul) und #215 (Device-Tracker), unabhängig, beide Level B. Nachrichten 13, 14, 15, 17, 20 weiter offen bei neVs. Danach: Platzhalter-Umstellung der Texte (nach #124, #214, #215).
 
 **12.11. früh XIX (Lead):** Unverändert: 5 eigene Einreichungen (#152–#156) ohne Peer-Review (ältester 70 h), 0 freie Aufgaben, 0 aktive Agenten, Nachrichten 13, 14, 15, 17, 20 offen bei neVs; 24 ist Info. Kein Ruling, kein Schnitt.
