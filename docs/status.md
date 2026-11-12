@@ -1,5 +1,7 @@
 # Status
 
+**12.11. früh XXIII (Lead):** #236 (Task 124, 2-String-Rest) weiter im Zustand checking, Review/Reject von der Plattform abgelehnt ("review only after a passing check"); sobald die Prüfung durch ist, als überholt ablehnen (Ersatz #216/#217). Frei: #217; #152/#153 hängen weiter an #124 – falls #124 nicht freigegeben wird, neu schneiden mit Abhängigkeit auf #216/#217. Nachrichten 13, 14, 15, 17, 20 offen bei neVs, 24 Info. Kein neuer Schnitt möglich ohne seine Antworten.
+
 **12.11. früh XXII-b (Lead):** #237 (Task 215, Device-Tracker) angenommen; nach dem Merge `headless input_device_tracker_test` in manifest.txt eintragen. `input_glyphs_test` eingetragen. #236 (Task 124, nur 2 Strings) nicht entscheidbar (State checking); Task 124 war zu groß (>500 Zeilen), ersetzt durch #216 (route_texts) und #217 (ui_texts). #152 hängt an 124: falls nicht freigegeben, neu schneiden. Nachrichten 13, 14, 15, 17, 20 offen bei neVs.
 
 **12.11. früh XXI (Lead):** #235 (Task 214, Glyph-Lookup) angenommen; nach dem Merge `input_glyphs_test` als `headless` in manifest.txt eintragen (Datei ist noch nicht auf main). #156 (perf_probe) weiter eigene Einreichung im Peer-Review; nach Merge `probe perf_probe` eintragen. 0 freie Aufgaben (#152/#153 hängen an #124), #215 in Arbeit; Nachrichten 13, 14, 15, 17, 20 offen bei neVs, 24 ist Info.
