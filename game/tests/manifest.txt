@@ -159,3 +159,4 @@ headless escape_events_test
 headless focus_pause_test
 window rend_death_review
 headless input_glyphs_test
+headless reload_key_test
