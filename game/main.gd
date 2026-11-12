@@ -109,8 +109,6 @@ func _process(delta: float) -> void:
 	if FX.shake > 0.0:
 		var s := FX.shake * FX.shake * 0.35
 		cam.position += Vector3(randf_range(-s, s), randf_range(-s, s), 0)
-	if Input.is_action_just_pressed("restart"):
-		pause_controller.request_restart()
 	if player.global_position.y < -8.0 and not player._dying:
 		_on_player_died()
 
