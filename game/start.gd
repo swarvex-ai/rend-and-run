@@ -1,6 +1,7 @@
 extends Node
 const SAVE_PATH:="user://rendrun_route_v12.json"
 const UI_TEXT = preload("res://data/ui_texts.gd")
+const LoadingIndicator = preload("res://modules/ui/loading_indicator.gd")
 var menu:Control
 var options_menu:Control
 var credits_menu:Control
@@ -72,6 +73,9 @@ func _new_run()->void:
 func _enter_game()->void:
 	if _starting:return
 	_starting=true
+	LoadingIndicator.show_on(self)
+	await get_tree().process_frame
+	await get_tree().process_frame
 	for action in preload("res://pause_controller.gd").GAME_ACTIONS:
 		if InputMap.has_action(action):Input.action_release(action)
 	var error:=get_tree().change_scene_to_file("res://main.tscn")

@@ -76,6 +76,7 @@ const TEXTS := {
 	"item_salvage_shield_description": "Improvised protection. Sustained defense can be broken.",
 	"item_salvage_shield_summary": "Block and parry at the right moment",
 	"item_unknown": "Unknown item",
+	"loading": "LOADING",
 	"loot_servo_label": "%d SERVO",
 	"loot_shards_label": "%d SHARDS",
 	"overseer_braced": "BRACED",

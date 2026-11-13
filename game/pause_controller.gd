@@ -11,22 +11,24 @@ var _combat_lock_held:=false
 const GAME_ACTIONS:=["move_left","move_right","move_up","move_down","jump","attack","dash","dodge","crouch","guard","interact","restart"]
 const COMBAT_ACTIONS:=["attack","dodge"]
 const UI_TEXT = preload("res://data/ui_texts.gd")
+const LoadingIndicator = preload("res://modules/ui/loading_indicator.gd")
+var _layer:CanvasLayer
 func _ready()->void:
 	process_mode=Node.PROCESS_MODE_ALWAYS
 	# Release the closing combat press before the player sees a fresh physics frame.
 	process_physics_priority=-10
-	var layer:=CanvasLayer.new();layer.layer=20;add_child(layer)
-	menu=preload("res://modules/ui/pause_menu.gd").new();layer.add_child(menu)
-	shop=preload("res://modules/ui/workbench_menu.gd").new();layer.add_child(shop)
-	equipment_menu=preload("res://modules/ui/equipment_menu.gd").new();layer.add_child(equipment_menu)
+	_layer=CanvasLayer.new();_layer.layer=20;add_child(_layer)
+	menu=preload("res://modules/ui/pause_menu.gd").new();_layer.add_child(menu)
+	shop=preload("res://modules/ui/workbench_menu.gd").new();_layer.add_child(shop)
+	equipment_menu=preload("res://modules/ui/equipment_menu.gd").new();_layer.add_child(equipment_menu)
 	equipment_menu.close_requested.connect(resume)
 	equipment_menu.selection_requested.connect(_equipment_action)
 	shop.close_requested.connect(resume)
 	shop.action_requested.connect(_shop_action)
-	summary=preload("res://modules/ui/sector_complete.gd").new();layer.add_child(summary)
+	summary=preload("res://modules/ui/sector_complete.gd").new();_layer.add_child(summary)
 	summary.explore_requested.connect(resume)
 	summary.title_requested.connect(return_title)
-	options_menu=preload("res://modules/ui/options_menu.gd").new();layer.add_child(options_menu)
+	options_menu=preload("res://modules/ui/options_menu.gd").new();_layer.add_child(options_menu)
 	options_menu.back_requested.connect(_close_options)
 	menu.resume_requested.connect(resume)
 	menu.options_requested.connect(open_options)
@@ -134,6 +136,9 @@ func restart()->void:
 	_leaving=true
 	_release_inputs();get_tree().paused=false
 	Engine.time_scale=1.0
+	LoadingIndicator.show_on(_layer if _layer else self)
+	await get_tree().process_frame
+	await get_tree().process_frame
 	get_tree().reload_current_scene()
 func quit_game()->void:
 	if _leaving:return
