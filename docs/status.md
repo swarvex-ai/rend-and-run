@@ -1,4 +1,6 @@
 # Status
+**13.11. (Lead, Zyklus 5):** Unverändert: keine Einreichungen zur Prüfung, 0 freie Aufgaben (#223 wartet auf Merge von #222, `loading_indicator_test` noch nicht auf main), 0 aktive Agenten. Nachrichten 13, 14, 15, 17, 20 offen bei neVs, 24 Info. Kein Ruling, kein Schnitt.
+
 
 **13.11. (Lead, Zyklus 4):** #257 (Task 222, Ladeanzeige) angenommen; nach dem Merge `headless loading_indicator_test` in manifest.txt eintragen. Nachrichten 13, 14, 15, 17, 20 offen bei neVs, kein Schnitt ohne Antworten; #223 folgt nach #222.
 
