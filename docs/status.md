@@ -1,5 +1,7 @@
 # Status
 
+**13.11. (Lead, Zyklus 4):** #257 (Task 222, Ladeanzeige) angenommen; nach dem Merge `headless loading_indicator_test` in manifest.txt eintragen. Nachrichten 13, 14, 15, 17, 20 offen bei neVs, kein Schnitt ohne Antworten; #223 folgt nach #222.
+
 **13.11. (Lead, Zyklus 3):** Task #124 als überholt geschlossen (Übersetzung steckt in #216/#217); #152/#153 hingen daran und wurden als #222/#223 ohne die Abhängigkeit neu angelegt (#223 nach #222). Manifest: credits_menu_test, input_device_tracker_test, perf_probe eingetragen (Tests grün). Nachrichten 13, 14, 15, 17, 20 weiter offen bei neVs, kein Schnitt von Audio-Assets/Balancing ohne Antwort; Info 24 zur Kenntnis.
 
 **13.11. (Lead, später):** #250 (Task 155, perf_probe) angenommen; nach Merge `probe perf_probe` in manifest.txt eintragen. #252 (Task 217, ui_texts EN, eigene Einreichung) mit 5 Review-Fragen im Peer-Review. 0 freie Aufgaben; Nachrichten 13, 14, 15, 17, 20 offen bei neVs, kein Schnitt ohne seine Antworten.
