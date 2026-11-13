@@ -163,3 +163,4 @@ headless reload_key_test
 headless credits_menu_test
 headless input_device_tracker_test
 probe perf_probe
+headless loading_indicator_test
