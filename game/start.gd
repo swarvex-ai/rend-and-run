@@ -3,6 +3,7 @@ const SAVE_PATH:="user://rendrun_route_v12.json"
 const UI_TEXT = preload("res://data/ui_texts.gd")
 var menu:Control
 var options_menu:Control
+var credits_menu:Control
 var notice:Label
 var _starting:=false
 var _has_save:=false
@@ -18,6 +19,7 @@ func _ready()->void:
 	background.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT);layer.add_child(background)
 	menu=preload("res://modules/ui/start_menu.gd").new();layer.add_child(menu)
 	options_menu=preload("res://modules/ui/options_menu.gd").new();layer.add_child(options_menu)
+	credits_menu=preload("res://modules/ui/credits_menu.gd").new();layer.add_child(credits_menu)
 	notice=Label.new();notice.set_anchors_and_offsets_preset(Control.PRESET_CENTER_BOTTOM)
 	notice.offset_left=-400;notice.offset_right=400;notice.offset_top=-70;notice.offset_bottom=-20
 	notice.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER;notice.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
@@ -27,6 +29,8 @@ func _ready()->void:
 	menu.quit_requested.connect(FX.quit_game)
 	menu.options_requested.connect(_open_options)
 	options_menu.back_requested.connect(_close_options)
+	menu.credits_requested.connect(_open_credits)
+	credits_menu.back_requested.connect(_close_credits)
 	_refresh()
 	if OS.get_environment("V29_TEST")=="1" and not get_tree().root.has_meta("start_test_started"):
 		get_tree().root.set_meta("start_test_started",true)
@@ -48,6 +52,12 @@ func _open_options()->void:
 func _close_options()->void:
 	await options_menu.close_screen()
 	menu.open_menu(_has_save,"options")
+func _open_credits()->void:
+	menu.close_menu()
+	credits_menu.open_screen()
+func _close_credits()->void:
+	await credits_menu.close_screen()
+	menu.open_menu(_has_save,"credits")
 func _continue_game()->void:
 	if not _valid_save():_refresh();return
 	_enter_game()
