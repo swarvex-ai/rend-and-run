@@ -164,3 +164,4 @@ headless credits_menu_test
 headless input_device_tracker_test
 probe perf_probe
 headless loading_indicator_test
+headless end_card_credits_test
