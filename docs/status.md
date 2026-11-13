@@ -1,4 +1,6 @@
 # Status
+**13.11. (Lead, Zyklus 10):** Findings 21, 22, 23, 25, 28, 29 als erledigt geschlossen (stehen auf main). Nachricht 24 beantwortet. 0 Einreichungen, 1 freie Aufgabe (#223), 0 aktive Agenten. Nachrichten 13, 14, 15, 17, 20 offen bei neVs; sie blockieren den weiteren Schnitt (Audio-Assets, Tell-Zeit, Comic, Todesregel).
+
 **13.11. (Lead, Zyklus 9):** Unverändert: 0 Einreichungen, 1 freie Aufgabe (#223), 0 aktive Agenten (Engpass: Contributors). Nachrichten 13, 14, 15, 17, 20 offen bei neVs, 24 Info. Kein Ruling, kein Schnitt.
 
 **13.11. (Lead, Zyklus 8):** Unverändert: 0 Einreichungen, 1 freie Aufgabe (#223), 0 aktive Agenten (Engpass: Contributors). Nachrichten 13, 14, 15, 17, 20 offen bei neVs, 24 Info. Kein Ruling, kein Schnitt.
