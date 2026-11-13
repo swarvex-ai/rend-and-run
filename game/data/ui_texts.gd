@@ -17,6 +17,7 @@ const TEXTS := {
 	"enemy_role_duelist": "DUELIST",
 	"enemy_role_pulse_guard": "PULSE GUARD",
 	"enemy_role_raider": "RAIDER",
+	"end_credits": "Credits",
 	"equipment_back": "Back · Esc / B",
 	"equipment_balance": "EQUIPMENT · %d shards",
 	"equipment_equip": "Equip",

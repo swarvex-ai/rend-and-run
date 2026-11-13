@@ -11,11 +11,15 @@ extends Control
 ##   guards_defeated:int, guards_total:int, shards:int,
 ##   weapon_name:String, armor_name:String, save_ok:bool
 ##
-## API: show_summary(state: Dictionary) / close_summary().
+## API: show_summary(state: Dictionary) / close_summary() / focus_summary(id).
 ## process_mode fest ALWAYS; initialet versteckt; Fullrect anchors+offsets;
 ## Backdrop blockt Klicks; kein _process; keine externen Ressourcen.
+##
+## E11.6b: the Credits row sits between explore and title and only emits
+## credits_requested; focus_summary(id) hands the card back after a side screen.
 
 signal explore_requested
+signal credits_requested
 signal title_requested
 
 const UI_TEXT = preload("res://data/ui_texts.gd")
@@ -36,6 +40,7 @@ var _val_weapon: Label
 var _val_armor: Label
 var _save_label: Label
 var _btn_explore: Button
+var _btn_credits: Button
 var _btn_title: Button
 var _btn_back: Button
 var _btn_leave: Button
@@ -87,33 +92,35 @@ func _init() -> void:
 
 	var col := VBoxContainer.new()
 	col.name = "Column"
-	col.add_theme_constant_override("separation", 8)
+	col.add_theme_constant_override("separation", 4)
 	panel.add_child(col)
 
 	col.add_child(_mk_label("TitleLabel", UI_TEXT.t("sector_complete_title"), 34, COL_TEXT, HORIZONTAL_ALIGNMENT_CENTER))
 	col.add_child(_mk_label("SectorLabel", UI_TEXT.t("sector_complete_sector"), 18, COL_CYAN, HORIZONTAL_ALIGNMENT_CENTER))
-	col.add_child(_mk_spacer(6))
+	col.add_child(_mk_spacer(4))
 
 	_main_box = VBoxContainer.new()
 	_main_box.name = "MainBox"
-	_main_box.add_theme_constant_override("separation", 8)
+	_main_box.add_theme_constant_override("separation", 4)
 	col.add_child(_main_box)
 	_val_guards = _mk_value_row(_main_box, "guards", UI_TEXT.t("sector_complete_row_guards"), "0 / 0")
 	_val_shards = _mk_value_row(_main_box, "shards", UI_TEXT.t("sector_complete_row_shards"), "0")
 	_val_weapon = _mk_value_row(_main_box, "weapon", UI_TEXT.t("sector_complete_row_weapon"), "—")
 	_val_armor = _mk_value_row(_main_box, "armor", UI_TEXT.t("sector_complete_row_armor"), "—")
-	col.add_child(_mk_spacer(4))
+	col.add_child(_mk_spacer(2))
 	_save_label = _mk_label("SaveStatus", "", 18, COL_OK, HORIZONTAL_ALIGNMENT_LEFT)
 	col.add_child(_save_label)
-	col.add_child(_mk_spacer(6))
+	col.add_child(_mk_spacer(4))
 	_btn_explore = _mk_button("BtnExplore", UI_TEXT.t("sector_complete_explore"))
+	_btn_credits = _mk_button("BtnCredits", UI_TEXT.t("end_credits"))
 	_btn_title = _mk_button("BtnTitle", UI_TEXT.t("sector_complete_to_title"))
 	_main_box.add_child(_btn_explore)
+	_main_box.add_child(_btn_credits)
 	_main_box.add_child(_btn_title)
 
 	_confirm_box = VBoxContainer.new()
 	_confirm_box.name = "ConfirmBox"
-	_confirm_box.add_theme_constant_override("separation", 8)
+	_confirm_box.add_theme_constant_override("separation", 4)
 	_confirm_box.visible = false
 	col.add_child(_confirm_box)
 	_confirm_box.add_child(_mk_label("ConfirmLabel",
@@ -125,6 +132,7 @@ func _init() -> void:
 	_confirm_box.add_child(_btn_leave)
 
 	_btn_explore.pressed.connect(_on_explore)
+	_btn_credits.pressed.connect(_on_credits)
 	_btn_title.pressed.connect(_on_title)
 	_btn_back.pressed.connect(_on_back)
 	_btn_leave.pressed.connect(_on_leave)
@@ -155,6 +163,16 @@ func close_summary() -> void:
 	visible = false
 
 
+## Shows the card again after a side screen (E11.6b): id "credits" focuses the
+## Credits row, anything else focuses the first row.
+func focus_summary(id := "") -> void:
+	_show_main()
+	visible = true
+	var btn: Button = _btn_credits if id == "credits" else _btn_explore
+	if btn.is_inside_tree():
+		btn.grab_focus()
+
+
 func _show_main() -> void:
 	_main_box.visible = true
 	_confirm_box.visible = false
@@ -163,6 +181,10 @@ func _show_main() -> void:
 func _on_explore() -> void:
 	# immer sicheres Signal — auch im Fehlerfall bleibt die Sitzung spielbar
 	explore_requested.emit()
+
+
+func _on_credits() -> void:
+	credits_requested.emit()
 
 
 func _on_title() -> void:

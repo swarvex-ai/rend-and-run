@@ -4,6 +4,7 @@ var summary:Control
 var shop:Control
 var equipment_menu:Control
 var options_menu:Control
+var credits_menu:Control
 var _leaving:=false
 var _resume_pending:=false
 var _combat_lock:=false
@@ -28,6 +29,7 @@ func _ready()->void:
 	summary=preload("res://modules/ui/sector_complete.gd").new();_layer.add_child(summary)
 	summary.explore_requested.connect(resume)
 	summary.title_requested.connect(return_title)
+	summary.credits_requested.connect(_open_credits)
 	options_menu=preload("res://modules/ui/options_menu.gd").new();_layer.add_child(options_menu)
 	options_menu.back_requested.connect(_close_options)
 	menu.resume_requested.connect(resume)
@@ -159,6 +161,22 @@ func open_options()->void:
 func _close_options()->void:
 	await options_menu.close_screen()
 	if not _leaving and not _resume_pending and get_tree().paused:menu.open_menu()
+
+## E11.6b — Credits from the end card: the card steps back, the tree stays paused.
+func _open_credits()->void:
+	if _leaving or _resume_pending:return
+	summary.close_summary()
+	if credits_menu==null:
+		credits_menu=preload("res://modules/ui/credits_menu.gd").new()
+		credits_menu.back_requested.connect(_close_credits)
+		_layer.add_child(credits_menu)
+	get_tree().paused=true
+	credits_menu.open_screen()
+
+func _close_credits()->void:
+	await credits_menu.close_screen()
+	if _leaving or _resume_pending or not get_tree().paused:return
+	summary.focus_summary("credits")
 
 func return_title()->void:
 	if _leaving:return
