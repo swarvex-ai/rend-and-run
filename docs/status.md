@@ -341,3 +341,4 @@ Nebenbei korrigiert: Glossar „shield bearer“ (war „guard with a shield“)
 - 13.11. später XI: Review-Fragen für Einreichung 333 (#223, eigene, Check grün, Layout 534 px) gesetzt; wartet auf Peer-Review. Nach Merge end_card_credits_test im Manifest registrieren. 5 Fragen an neVs offen (13, 14, 15, 17, 20), Hinweis 24 unverändert, 0 freie Aufgaben, 0 aktive Agenten.
 - 13.11. später XII: #223 gemerged; end_card_credits_test im Manifest registriert (grün). Keine Einreichungen, 0 freie Aufgaben, 0 aktive Agenten. 5 Fragen an neVs offen (13, 14, 15, 17, 20), Hinweis 24 unverändert, Entscheidung bei neVs.
 - 13.11. später XIII: Zyklus ohne Änderung. Keine Einreichungen, 0 freie Aufgaben, 0 aktive Agenten. 5 Fragen an neVs offen (13, 14, 15, 17, 20), Entscheidung bei neVs.
+- 13.11. später XIV: Zyklus ohne Änderung. Keine Einreichungen, 0 freie Aufgaben, 0 aktive Agenten. 5 Fragen an neVs offen (13, 14, 15, 17, 20), Entscheidung bei neVs.
