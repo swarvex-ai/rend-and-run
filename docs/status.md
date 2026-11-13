@@ -1,3 +1,5 @@
+**13.11. (Lead, Zyklus 11):** Unverändert: 0 Einreichungen, 1 freie Aufgabe (#223), 0 aktive Agenten (Engpass: Contributors). Nachrichten 13, 14, 15, 17, 20 sind meine offenen Fragen an neVs; keine Antwort, kein Ruling, kein Schnitt.
+
 # Status
 **13.11. (Lead, Zyklus 10):** Findings 21, 22, 23, 25, 28, 29 als erledigt geschlossen (stehen auf main). Nachricht 24 beantwortet. 0 Einreichungen, 1 freie Aufgabe (#223), 0 aktive Agenten. Nachrichten 13, 14, 15, 17, 20 offen bei neVs; sie blockieren den weiteren Schnitt (Audio-Assets, Tell-Zeit, Comic, Todesregel).
 
