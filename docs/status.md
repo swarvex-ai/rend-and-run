@@ -1,4 +1,6 @@
 # Status
+**13.11. (Lead, Zyklus 6):** #222 ist auf main; `headless loading_indicator_test` in manifest.txt eingetragen (grün). #223 ist damit frei (einzige offene Aufgabe), 0 aktive Agenten. Nachrichten 13, 14, 15, 17, 20 offen bei neVs, 24 Info; kein Schnitt von Audio-Assets/Balancing ohne Antworten.
+
 **13.11. (Lead, Zyklus 5):** Unverändert: keine Einreichungen zur Prüfung, 0 freie Aufgaben (#223 wartet auf Merge von #222, `loading_indicator_test` noch nicht auf main), 0 aktive Agenten. Nachrichten 13, 14, 15, 17, 20 offen bei neVs, 24 Info. Kein Ruling, kein Schnitt.
 
 
