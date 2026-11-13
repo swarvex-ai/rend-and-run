@@ -2,6 +2,8 @@ extends SceneTree
 # H66 Layout-Probe — echte Control-Geometrie nach Container-Layout bei
 # 640x360 und 960x540. SceneTree-Modus: kein get_tree(); await vor Messung.
 
+const TEXT = preload("res://data/route_texts.gd")
+
 var checks := 0
 var failures := 0
 
@@ -32,6 +34,17 @@ func _mouse_leaks(n: Node) -> int:
 func _rect(n: Node) -> Rect2:
 	return (n as Control).get_global_rect()
 
+# Longest route text whose key starts with prefix (format strings skipped).
+func _longest_text(prefix: String) -> String:
+	var best := ""
+	for k: String in TEXT.keys():
+		if not k.begins_with(prefix):
+			continue
+		var v: String = TEXT.t(k)
+		if "%" not in v and v.length() > best.length():
+			best = v
+	return best
+
 func _initialize() -> void:
 	call_deferred("_run_all")
 
@@ -39,8 +52,9 @@ func _run_all() -> void:
 	await process_frame
 	var hud_script: GDScript = load("res://modules/ui/combat_hud.gd")
 
-	var longest := "Speichern fehlgeschlagen — Kontrollpunkt nur für diese Sitzung aktiv. Erneut E / Y versuchen."
-	var toast := "N-LAB Abschnitt 7 — Wartungslauf: 3 Wachen gemeldet"
+	var longest: String = TEXT.t("msg_checkpoint_save_failed")
+	var toast := _longest_text("msg_")
+	var prompt_probe := _longest_text("prompt_")
 
 	for size_v in [Vector2i(640, 360), Vector2i(960, 540), Vector2i(1280,720)]:
 		var sz: Vector2i = size_v
@@ -89,7 +103,7 @@ func _run_all() -> void:
 		var pr: Label = hud.find_child("PromptLabel", true, false) as Label
 		_chk(pr != null, tag + ": prompt_exists")
 		if pr != null:
-			pr.text = "E / Y — Wartungstür entriegeln"
+			pr.text = prompt_probe
 			pr.visible = true
 			await process_frame
 			var r_pr := _rect(pr)
