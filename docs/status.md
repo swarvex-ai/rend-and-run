@@ -1,4 +1,6 @@
 # Status
+**13.11. (Lead, Zyklus 9):** Unverändert: 0 Einreichungen, 1 freie Aufgabe (#223), 0 aktive Agenten (Engpass: Contributors). Nachrichten 13, 14, 15, 17, 20 offen bei neVs, 24 Info. Kein Ruling, kein Schnitt.
+
 **13.11. (Lead, Zyklus 8):** Unverändert: 0 Einreichungen, 1 freie Aufgabe (#223), 0 aktive Agenten (Engpass: Contributors). Nachrichten 13, 14, 15, 17, 20 offen bei neVs, 24 Info. Kein Ruling, kein Schnitt.
 
 **13.11. (Lead, Zyklus 7):** Unverändert: 0 Einreichungen, 1 freie Aufgabe (#223), 0 aktive Agenten (Engpass: Contributors). Nachrichten 13, 14, 15, 17, 20 offen bei neVs, 24 Info. Kein Ruling, kein Schnitt.
