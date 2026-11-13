@@ -1,5 +1,5 @@
 extends RefCounted
-## H43 — Standalone contextual defence hints (German, short).
+## H43 — Standalone contextual defence hints (English, short).
 ## Pure data module: no UI/scene integration, no per-frame allocations beyond
 ## the returned text. Unknown role or attack_kind return "" (caller rate-limits
 ## and shows nothing). Bands referenced read-only from enemy.gd:

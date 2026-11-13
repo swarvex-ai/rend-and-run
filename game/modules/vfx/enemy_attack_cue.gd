@@ -1,6 +1,6 @@
 extends Node3D
 ## H44 — Standalone directional attack cue (visual replacement for the
-## floating "!/TIEF/SCHWER" Label3D in fx.gd attack_warning).
+## floating "!/LOW/HEAVY" Label3D in fx.gd attack_warning).
 ## Attach as child of an enemy (or place at its origin). Pure local mesh
 ## geometry: no lights, no physics, no external textures, no text.
 ##
