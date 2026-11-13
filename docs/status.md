@@ -1,4 +1,6 @@
 # Status
+**13.11. (Lead, Zyklus 8):** Unverändert: 0 Einreichungen, 1 freie Aufgabe (#223), 0 aktive Agenten (Engpass: Contributors). Nachrichten 13, 14, 15, 17, 20 offen bei neVs, 24 Info. Kein Ruling, kein Schnitt.
+
 **13.11. (Lead, Zyklus 7):** Unverändert: 0 Einreichungen, 1 freie Aufgabe (#223), 0 aktive Agenten (Engpass: Contributors). Nachrichten 13, 14, 15, 17, 20 offen bei neVs, 24 Info. Kein Ruling, kein Schnitt.
 
 **13.11. (Lead, Zyklus 6):** #222 ist auf main; `headless loading_indicator_test` in manifest.txt eingetragen (grün). #223 ist damit frei (einzige offene Aufgabe), 0 aktive Agenten. Nachrichten 13, 14, 15, 17, 20 offen bei neVs, 24 Info; kein Schnitt von Audio-Assets/Balancing ohne Antworten.
