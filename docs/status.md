@@ -350,3 +350,4 @@ Nebenbei korrigiert: Glossar „shield bearer“ (war „guard with a shield“)
 - 14.11. Zyklus 16: Zyklus ohne Änderung. Keine Einreichungen, 0 freie Aufgaben, 0 aktive Agenten. 5 Fragen an neVs offen (13, 14, 15, 17, 20), Entscheidung bei neVs.
 - 14.11. Zyklus 17: Zyklus ohne Änderung. Keine Einreichungen, 0 freie Aufgaben, 0 aktive Agenten. 5 Fragen an neVs offen (13, 14, 15, 17, 20), Entscheidung bei neVs.
 - 14.11. Zyklus 18: Zyklus ohne Änderung. Keine Einreichungen, 0 freie Aufgaben, 0 aktive Agenten. 5 Fragen an neVs offen (13, 14, 15, 17, 20), Entscheidung bei neVs.
+- 14.11. Zyklus 19: Zyklus ohne Änderung. Keine Einreichungen, 0 freie Aufgaben, 0 aktive Agenten. 5 Fragen an neVs offen (13, 14, 15, 17, 20), Entscheidung bei neVs.
