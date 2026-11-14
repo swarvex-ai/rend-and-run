@@ -19,7 +19,7 @@ One term per thing. Use these terms literally in code, tasks and summaries. Code
 | **gun** (`gun`) | firearm dropped by robots: pistol, smg, scattergun, energy_rifle |
 | **mod** | gun upgrade bought at the weapon bench (laser, extmag, quickload, piercer) |
 | **weapon bench** (`GUN_BENCH_POS`) | station where mods are bought with shards |
-| **shards** (`shards`) | currency (German UI today: „Splitter“); dropped at death, recoverable once (Hollow Knight model) |
+| **shards** (`shards`) | currency (German UI today: „Splitter“); kept on death, no drop penalty (decision 0006, 14.11.2026) |
 | **checkpoint** | save and respawn point |
 | **alarm** | factory-wide alert: sirens, announcements, reinforcements |
 | **announcement** (`announce`) | factory PA voice line; robot voice lines are `say` |

@@ -2,7 +2,8 @@ extends SceneTree
 const MISSION := preload("res://modules/world/notstrom_layout.gd")
 const UI_TEXT = preload("res://data/ui_texts.gd")
 # Base enemy role timings, enemy.gd:1145-1149 at base commit (role 0..3: windup, recovery).
-const ROLE_TIMINGS := [[.44,.40],[.40,.32],[.64,.62],[.44,.40]]
+# Role 1 windup .40 -> .43 (decision 0008, neVs 14.11.2026): every attack warns >= 0.5 s.
+const ROLE_TIMINGS := [[.44,.40],[.43,.32],[.64,.62],[.44,.40]]
 var failures := 0
 var checks: Array = []
 var main: Node3D

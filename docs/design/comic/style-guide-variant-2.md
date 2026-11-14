@@ -1,6 +1,6 @@
-# Comic style guide — variant 2
+# Comic style guide (adopted: variant 2, decision 0003)
 
-This guide fixes one look for every Rend&Run comic panel: an eight-colour closed palette, flat two-tone shading, heavy dark contours and separate lettering at 1920×1080. It covers the six-panel intro and later in-game inserts so different contributors produce one continuous comic.
+This guide fixes one look for every Rend&Run comic panel: an eight-colour closed palette, flat two-tone shading, heavy dark contours and separate lettering at 1920×1080. It covers the five-panel intro and later in-game inserts so different contributors produce one continuous comic.
 
 ## Mood in three words
 
@@ -38,7 +38,7 @@ Pixels at 1920×1080; at 1280×720 multiply by 0.667.
 
 ## Panel format
 
-- One panel per file: 1920×1080, 16:9, sRGB 8-bit PNG, no bleed; intro max 6.
+- One panel per file: 1920×1080, 16:9, sRGB 8-bit PNG, no bleed; intro max 5.
 - Safe margin 96 px all sides; faces, hands, captions and SFX stay inside, background may cross.
 - Max text area per panel: all caption and SFX boxes ≤25% (518,400 px²); one block ≤900×260 px; max three captions plus one SFX.
 - Review assembly: 24 px `#11151E` gutter, no frame or shadow.
@@ -99,10 +99,12 @@ Glossary silhouettes: guard (light humanoid, narrow waist, rounded shoulder caps
 | Deliver art plates and lettering separately. | Bake captions, SFX or any text into the image. |
 | Use original silhouettes and generic lab markings. | Use third-party characters, logos or product designs. |
 
-## Open questions for neVs
+## Rulings on the open questions (14.11.2026, neVs: take the lead's recommendations)
 
-1. **Rend's blood in the intro:** how explicit is the first injury? Recommendation: one 40 px `#992D3C` streak where he is knocked down, no spray or pool.
-2. **Narration voice:** first-person past tense or neutral third person? Recommendation: first-person past tense, max 18 words per caption.
-3. **Robot speech:** balloons or machine labels only? Recommendation: machine labels and PA captions only, no robot speech balloons.
-4. **Panel shape:** strict 16:9 or occasional taller frames? Recommendation: strict full-frame 16:9 for all six panels.
-5. **SFX frequency:** one per panel or only the heaviest impacts? Recommendation: only the two heaviest impacts, in `#F2B05E`.
+1. **Blood in the intro:** none. The chosen script (variant 1) shows only Rend's cracked glasses. The 40 px `#992D3C` streak stays the limit for later inserts where Rend is hurt.
+2. **Narration voice:** neutral third person, present or past tense as the script writes it, max 18 words per caption. Variant 1's captions are third person, so the script wins over the first-person recommendation. Rend is silent in the intro: no balloons for him.
+3. **Robot speech:** machine labels and PA captions only, no robot speech balloons. The facility PA line of panel 5 is a caption in a machine-label box.
+4. **Panel shape:** strict full-frame 16:9 for all five panels.
+5. **SFX:** only the two heaviest impacts (intro: panels 3 and 4), in `#F2B05E`.
+6. **Red in panel 2:** the red screens are the alarm glyph, the one other use of `#992D3C` in this guide; show it as a flat alarm glyph on dark monitors, no red wash over the whole panel.
+7. **Check list:** adopt the per-panel production check of variant 1 (Rend at 100 %, zero baked text pixels, flat palette areas only, readable in grayscale) on top of "Production rules" above.

@@ -27,8 +27,9 @@ Assets: 3D-Modelle aus KI-Generatoren (Meshy o. ä.) von neVs angeliefert, Herme
 **Hollow-Knight-Modell** (nicht Roguelike):
 - Welt bleibt dauerhaft bestehen; Erkundungsfortschritt geht nicht verloren.
 - **Kontrollpunkte:** Speichern, Schnellreise, Heilung/Upgrade-Kiosk.
-- Tod = Verlust der laufenden Sammelwährung an der Todesstelle, einmalig
-  zurückholbar (Hollow-Knight-Muster); Ausrüstung/Fähigkeiten bleiben.
+- Tod = kein Verlust: Rend behält Splitter und alles Gesammelte (Entscheidung
+  neVs 14.11.2026, `docs/decisions/0006-death-keeps-shards.md`; früher geplant:
+  Hollow-Knight-Dropstrafe, nach den Playtests neu zu entscheiden); Ausrüstung/Fähigkeiten bleiben.
 - Gegner respawnen außerhalb des Bildschirms; einmal erledigte Boss-/
   Schlüsselgegner bleiben tot.
 
@@ -55,5 +56,5 @@ kein Permadeath.
 ## Mechanik-Log (Hermes pflegt, neVs nickt ab)
 | Mechanik | Karte | Status | Notiz |
 |---|---|---|---|
-| Sammelwährung „Splitter" | P01/P39 | Arbeitstitel | Produktionsname für die Todeswährung aus §4; Kiosk am Kontrollpunkt. |
+| Sammelwährung „Splitter" | P01/P39 | Arbeitstitel | Produktionsname für die Sammelwährung aus §4 (bleibt beim Tod erhalten); Kiosk am Kontrollpunkt. |
 | Kernschleife + 10-Min-Strecke | P01 | konkretisiert | Beat-Tabelle R0–R6 und Must/Should/Later in `docs/scope-first-route.md`; Meilenstein, kein lineares Remake des GDD. |

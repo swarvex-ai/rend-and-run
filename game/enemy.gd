@@ -1145,7 +1145,7 @@ func _strike_depth() -> float:
 	return STRIKE_DEPTH
 
 func _windup_duration() -> float:
-	return 0.85 if _ranged_attack else 0.64 if role==2 else 0.40 if role==1 else 0.44
+	return 0.85 if _ranged_attack else 0.64 if role==2 else 0.43 if role==1 else 0.44
 
 func _recovery_duration() -> float:
 	return 1.1 if _ranged_attack else 0.62 if role==2 else 0.32 if role==1 else 0.40

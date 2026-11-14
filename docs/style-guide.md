@@ -2,7 +2,7 @@
 
 **Smooth. Industrial. Tense.** Rend&Run looks like a clean, expensive humanoid factory that has quietly turned hostile: smooth modern surfaces, warm copper wear and cold petrol shadows. Everything is built for clear silhouettes and readable danger at speed: a fight must parse in under a second.
 
-This is a gate document: no image, 3D, animation or UI asset task ships before neVs approves it. Menu look: variant 2 with two additions from variant 1 (decision 0002), `docs/design/menus/style-guide-variant-2.md`. Comic look: two variants in `docs/design/comic/style-guide-variant-1.md` and `style-guide-variant-2.md`; the choice is open (decision 0003, neVs).
+This is a gate document: no image, 3D, animation or UI asset task ships before neVs approves it. Menu look: variant 2 with two additions from variant 1 (decision 0002), `docs/design/menus/style-guide-variant-2.md`. Comic look: variant 2, `docs/design/comic/style-guide-variant-2.md` (decision 0003, five panels).
 
 ## Look
 
