@@ -362,3 +362,4 @@ Nebenbei korrigiert: Glossar „shield bearer“ (war „guard with a shield“)
 - #381 melee windup sounds (own submission, task 334): review points set (limits, provenance, scope, distinguishability); waits for peer review. Findings 53-55 open (windups shorter than priority-1 tells, seeded() reproducibility, no python3 in sandbox).
 - #382 intro panel 1 art, variant 1: sent back (rework): baked-in side bars, mullions, hand prop hidden, no cel shadows, PROVENANCE/render script missing from patch.
 - Ruling: commit the two untracked .gd.uid files (combat_mix) with the repo. Cost if wrong: none.
+- 14.11. Zyklus 22: #334 (Windup-Sounds) gemerged. Einreichung 379 (#330 Comic-Player, eigene, Check grün, 1 Peer-Approval) wartet auf Plattform-Annahme; danach comic_player_test im Manifest registrieren. Arbeitsbaum zeigt vier windup-.wav als geändert (LFS-Pointer/Import-Artefakte, nicht committet). 5 Fragen an neVs offen (13, 14, 15, 17, 20), 0 aktive Agenten.
