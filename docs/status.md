@@ -356,3 +356,9 @@ Nebenbei korrigiert: Glossar „shield bearer“ (war „guard with a shield“)
 - 14.11. Zyklus 18: Zyklus ohne Änderung. Keine Einreichungen, 0 freie Aufgaben, 0 aktive Agenten. 5 Fragen an neVs offen (13, 14, 15, 17, 20), Entscheidung bei neVs.
 - 14.11. Zyklus 19: Zyklus ohne Änderung. Keine Einreichungen, 0 freie Aufgaben, 0 aktive Agenten. 5 Fragen an neVs offen (13, 14, 15, 17, 20), Entscheidung bei neVs.
 - 14.11. Zyklus 21: #332 (Einreichung 377, combat_mix) angenommen; nach Merge combat_mix_test im Manifest registrieren (Folgezyklus). Einreichung 376 (#328, tools/audio, eigene) wartet auf Peer-Review, Review-Fragen gesetzt; Autor konnte Python nicht ausführen, der Check-Lauf der Pipeline ist die Probe. Befund 48 (vier ältere Generatoren schreiben 44.1 kHz statt 48 kHz) offen, erst nach #328 als Aufgabe schneiden. Kleiner Nachtrag zu #332: Slider-Änderung während Ducking wird vom alten Basiswert überschrieben (niedrig). 5 Fragen an neVs offen (13, 14, 15, 17, 20).
+
+## Cycle 14.11 (evening): reviews
+- #379 comic player (own submission, task 330): one peer approval already in; waiting for the platform to accept. Finding 50 (.gd.uid files) noted.
+- #381 melee windup sounds (own submission, task 334): review points set (limits, provenance, scope, distinguishability); waits for peer review. Findings 53-55 open (windups shorter than priority-1 tells, seeded() reproducibility, no python3 in sandbox).
+- #382 intro panel 1 art, variant 1: sent back (rework): baked-in side bars, mullions, hand prop hidden, no cel shadows, PROVENANCE/render script missing from patch.
+- Ruling: commit the two untracked .gd.uid files (combat_mix) with the repo. Cost if wrong: none.
