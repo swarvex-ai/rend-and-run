@@ -12,6 +12,8 @@ var subtitles_enabled := true
 var _players: Array = []
 var _sfx := {}
 var audio_events: Dictionary = {}
+var _combat_mix: Node
+var _warned_missing_p1: Dictionary = {}
 
 ## [t_bb2ba447] Abnahme-Zaehler: zaehlt NUR tatsaechlich ausgeloesste Effekte,
 ## damit der Harness Feedback (Hitstop/Blut/Pfuetze) maschinell belegen kann.
@@ -20,6 +22,9 @@ var _quitting := false
 
 func _ready() -> void:
 	call_deferred("_load_settings")
+	_combat_mix = load("res://modules/audio/combat_mix.gd").new()
+	_combat_mix.name = "CombatMix"
+	add_child(_combat_mix)
 	get_tree().set_auto_accept_quit(false)  # closing the window goes through quit_game()
 	for i in 10:
 		var p := AudioStreamPlayer.new()
@@ -110,6 +115,38 @@ func play(sfx_name: String, pitch := 1.0, vol_db := -2.0) -> void:
 			p.volume_db = vol_db
 			p.play()
 			audio_events[sfx_name] = int(audio_events.get(sfx_name,0))+1
+			return
+
+func play_priority1(sfx_name: String, music_db: float = -8.0, ambience_db: float = -6.0, vol_db: float = -2.0) -> void:
+	var stream: AudioStream = null
+	if _sfx.has(sfx_name):
+		stream = _sfx[sfx_name]
+	else:
+		var path := "res://audio/combat/%s.wav" % sfx_name
+		if ResourceLoader.exists(path):
+			stream = load(path)
+			_sfx[sfx_name] = stream
+		else:
+			if not _warned_missing_p1.has(sfx_name):
+				_warned_missing_p1[sfx_name] = true
+				push_warning("audio/combat/%s.wav not found" % sfx_name)
+			return
+
+	for p in _players:
+		if not p.playing:
+			p.bus = "Combat"
+			p.stream = stream
+			p.pitch_scale = 1.0
+			p.volume_db = vol_db
+			p.play()
+			audio_events[sfx_name] = int(audio_events.get(sfx_name, 0)) + 1
+			if _combat_mix != null:
+				var length: float = stream.get_length() if stream != null else 0.0
+				var token: int = _combat_mix.begin_priority1(music_db, ambience_db)
+				if length > 0.0:
+					get_tree().create_timer(length, false).timeout.connect(func(): _combat_mix.end_priority1(token))
+				else:
+					_combat_mix.end_priority1(token)
 			return
 
 ## One voice line from a variant group; never the same take twice in a row.
