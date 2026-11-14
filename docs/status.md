@@ -1,4 +1,6 @@
-**14.11. (Lead, Zyklus 20):** Unverändert: 0 Einreichungen, 0 offene Aufgaben, 0 aktive Agenten, M1 121/121. Nachrichten 13, 14, 15, 17, 20 offen bei neVs; kein Schnitt ohne Antworten. Kein Ruling.
+# Status
+**14.11. (Lead, Zyklus 21):** neVs hat 13, 14, 15, 17, 20 entschieden (Nachrichten beantwortet): Comic-Stil Variante 2 (Entscheidung 0003, Styleguide auf fünf Panels), Intro-Drehbuch Variante 1 (0005), Tod behält Splitter (0006; GDD und Glossar angepasst), Sound Bible Variante 2 (0007, `docs/design/sound-bible.md`, Lizenzkorrektur CC0/CC BY-SA), Ausholzeit Rolle 1 0,40 → 0,43 s (0008; `enemy.gd`, `overseer_integration` fixiert den neuen Wert, `tell_duration_probe`: alle 18 Angriffe ≥ 0,500 s; Headless-Suite bis auf diesen Test grün, danach grün). Kein Art-Bible-Rest: `docs/style-guide.md` verweist jetzt auf Variante 2. Neu geschnitten (22 Aufgaben, M1-Schätzung 165): E12 Audio #328, #332–#342, E4 Comic #329–#331, #343–#349. Frei jetzt: #328–#333; der Rest hängt per `depends_on` dran. Ruling: Musik (Exploration/Kampf/Alarm/Boss) noch nicht geschnitten, steht nicht in der M1-Ereignisliste. Ruling: Panel 1 als zwei Varianten (Stil-Anker), Panels 2–5 danach. Offen: E3 (Druckaufgabe) noch nicht geschnitten; `CREDITS.md` (geschützt) braucht Inter/Bangers-Zeilen; Projekt-Brief S4/S15 nennen noch „Todes-Cache“ (geschützt, neVs).
+
 
 **14.11. (Lead, Zyklus 19):** Unverändert: 0 Einreichungen, 0 offene Aufgaben, 0 aktive Agenten, M1 121/121. Nachrichten 13, 14, 15, 17, 20 sind meine offenen Fragen an neVs; ohne Antwort kein Schnitt. Kein Ruling.
 
