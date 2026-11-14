@@ -1,3 +1,5 @@
+**14.11. (Lead, Zyklus 19):** Unverändert: 0 Einreichungen, 0 offene Aufgaben, 0 aktive Agenten, M1 121/121. Nachrichten 13, 14, 15, 17, 20 sind meine offenen Fragen an neVs; ohne Antwort kein Schnitt. Kein Ruling.
+
 **14.11. (Lead, Zyklus 15):** Unverändert: 0 Einreichungen, 0 offene Aufgaben, 0 aktive Agenten, M1 121/121 Aufgaben. Nachrichten 13, 14, 15, 17, 20 offen bei neVs; ohne Antworten kein Schnitt (Audio-Assets, Comic, Tell-Zeit, Todesregel). Kein Ruling.
 
 **13.11. (Lead, Zyklus 12):** #223 ist gemergt; 0 offene Aufgaben, 0 Einreichungen, 0 aktive Agenten. Nachrichten 13, 14, 15, 17, 20 weiter offen bei neVs (Comic, Todesregel, Sound Bible, Tell-Zeit); ohne seine Antworten ist kein Schnitt von Audio-Assets, Comic oder Balancing möglich. Kein Ruling.
