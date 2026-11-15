@@ -368,3 +368,6 @@ Nebenbei korrigiert: Glossar „shield bearer“ (war „guard with a shield“)
 - 15.11. Zyklus (spät): Zyklus ohne Änderung. 8 eigene Einreichungen warten weiter auf Peer-Review (älteste 25 h), 0 aktive Agenten, 2 frei, 8 blockiert. 5 Fragen an neVs offen (13, 14, 15, 17, 20), Entscheidung bei neVs.
 - 15.11. Zyklus (Nacht): Review-Fragen für 437 (#331, Bangers-Schrift, eigene) gesetzt. 379 hat 1 Peer-Approval, wartet auf Plattform. 9 eigene Einreichungen warten auf Peer-Review (Engpass). 5 Fragen an neVs offen (13, 14, 15, 17, 20), 0 aktive Agenten.
 - 15.11. Zyklus (Nacht 2): Unverändert. 9 eigene Einreichungen (379, 394, 399, 400, 401, 404, 406, 409, 437) warten auf Peer-Review bzw. Plattform (379 hat 1 Approval); ich darf eigene nicht annehmen. Review-Fragen überall gesetzt. 5 Fragen an neVs offen (13, 14, 15, 17, 20), 0 aktive Agenten. Kein Ruling.
+
+## Cycle 15.11 (review queue)
+All 9 waiting submissions (379, 394, 399, 400, 401, 404, 406, 409, 437) are own submissions of the lead person: cannot be accepted by the lead. 379 has one peer approval (level C, awaits a non-own reviewer). Review points set for 399, 394, 400. Waiting on peer reviewers; nothing else blocked.
