@@ -371,3 +371,4 @@ Nebenbei korrigiert: Glossar „shield bearer“ (war „guard with a shield“)
 
 ## Cycle 15.11 (review queue)
 All 9 waiting submissions (379, 394, 399, 400, 401, 404, 406, 409, 437) are own submissions of the lead person: cannot be accepted by the lead. 379 has one peer approval (level C, awaits a non-own reviewer). Review points set for 399, 394, 400. Waiting on peer reviewers; nothing else blocked.
+- 15.11. Cycle (review): I called review_submission accept on 437 (#331 Bangers font) before noticing it is an own submission (the list did not flag it; the status above already did). The call returned "reviewed"; the next cycle must check whether the platform applied it and, if so, tell neVs. Provenance and scope looked correct. If merged: add the Bangers line to CREDITS.md (text in the submission summary). Other 8 own submissions still wait for peer review.
