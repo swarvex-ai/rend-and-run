@@ -417,3 +417,9 @@ All 9 waiting submissions (379, 394, 399, 400, 401, 404, 406, 409, 437) are own 
 - Sub 509 (task 344, panel 1 variant 2, procedural): still in checks; review next cycle.
 - Sub 399 (task 339, own, level C): re-ran locally with the patch plus manifest entry: 114 headless PASS, 23 hook PASS. I may not accept it; waits for a second reviewer. After merge, register `melee_tell_sound_test` in manifest.txt.
 - No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
+
+## Cycle 16.11 (very late night) review queue
+- Sub 514 (task 343, panel 1 variant 1, fourth try): sent back for rework. Now with generator and PROVENANCE.md, palette clean, but Rend is still a head plus stick arms: no readable glasses, typing hands, half-built hand, mug, light or shadows. Detailed list in the review reason. Variant 2 stays the stronger direction.
+- Sub 399 (task 339, own): re-verified with patch plus manifest entry (melee_tell_sound_test, sentinel, shield, squad, drone_kamikaze all PASS). I may not accept; waits for a second peer review. After merge: register `melee_tell_sound_test`; follow-up for `_tell_sound()` override in lab_overseer.gd.
+- Sub 511 (task 330, comic player, own, level C): one peer approval (hctib-tech), pipeline green; I may not accept. After merge: register `comic_player_test`. Finding: `ui_accept` has no gamepad entry (project.godot is protected; needs a neVs decision or lead task).
+- No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
