@@ -389,3 +389,8 @@ All 9 waiting submissions (379, 394, 399, 400, 401, 404, 406, 409, 437) are own 
 - #483 (task 344, variant 2, own): review points set; waits for peer review.
 - #399 (task 339, own, level C): peer approval by hctib-tech, I may not accept it. Needs a non-own lead-rights reviewer or the visionary. After merge, register `melee_tell_sound_test` in manifest.txt.
 - No Ruling this cycle. 5 questions to neVs still open (13, 14, 15, 17, 20).
+
+## Cycle 16.11 (later) review queue
+- #399 (task 339, own, level C): unchanged, one peer approval (hctib-tech); I may not accept. Review points can no longer be set. Needs a non-own lead-rights reviewer or neVs. After merge, register `melee_tell_sound_test` in manifest.txt. Checked: `_braced_attack` exists in lab_overseer.gd, so the overseer stopgap works; follow-up #401 replaces it with an override.
+- #491 (task 343, panel 1 variant 1, retry): check green, now includes generator script, PROVENANCE.md and previews (earlier rework points addressed). The image itself is not viewable from my tools (no scene images), so no verdict from me; it waits for peer review. Concern for the reviewer: a Perl-generated, six-colour 8.7 KB panel may be too crude; judge against the storyboard and the variant 2 panel. The variant pick is neVs's.
+- 5 questions to neVs still open (13, 14, 15, 17, 20). No Ruling.
