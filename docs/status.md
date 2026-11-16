@@ -383,3 +383,9 @@ All 9 waiting submissions (379, 394, 399, 400, 401, 404, 406, 409, 437) are own 
 - #399 (task 339, own, level C): peer review approved by hctib-tech; I may not accept it. Needs another person with lead rights or the visionary to accept.
 - #480 (task 335, own, level A): still checking; goes to peer review afterwards.
 - #481 (task 343, comic panel 1, variant 1/2): check green. The patch was truncated in my view and the image could not be inspected, so no verdict. It waits for peer review. The pick between variants 1 and 2 is neVs's.
+
+## Cycle 16.11 review queue
+- #481 (task 343, panel 1 variant 1): peer review (marco8154) requested changes: no generator source/PROVENANCE.md in the diff, PNG not via LFS, no preview. Sent back for rework with those points.
+- #483 (task 344, variant 2, own): review points set; waits for peer review.
+- #399 (task 339, own, level C): peer approval by hctib-tech, I may not accept it. Needs a non-own lead-rights reviewer or the visionary. After merge, register `melee_tell_sound_test` in manifest.txt.
+- No Ruling this cycle. 5 questions to neVs still open (13, 14, 15, 17, 20).
