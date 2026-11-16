@@ -72,7 +72,7 @@ Rend is a nerd who works in AI research; one day humanoids storm his lab, knock 
 
 ### M1
 
-1. **Intro comic:** a night in Rend's AI lab, the humanoid raid, the knock-down and his awakening on the factory floor; at most six panels and sixty seconds, unskippable on the first start (vision: Comic).
+1. **Intro comic:** a night in Rend's AI lab, the humanoid raid, the knock-down and his awakening on the factory floor; five panels and 48 seconds, unskippable on the first start (vision: Comic).
 2. **Wake-up:** Rend rises among assembly lines, finds a torn-off humanoid arm as his first weapon and faces the first guard (vision: Waffen und Ausrüstung).
 3. **Arrival:** the wake-up room teaches movement, taking a weapon from the world and fighting back (brief: S13).
 4. **Maintenance:** a service sector with a shortcut door and a power section; the PA announces a lockdown (brief: S8).
