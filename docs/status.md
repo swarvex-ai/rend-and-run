@@ -405,3 +405,9 @@ All 9 waiting submissions (379, 394, 399, 400, 401, 404, 406, 409, 437) are own 
 - Sub 506 (comic panel 1, variant 1): rejected, crude box art, Rend not recognisable. Variant 2 (sub 505) is clearly the better direction; it is my own person's submission, so it goes to peer review (review points set); neVs picks the style anchor.
 - Sub 502 (overseer sound batch): own submission, review points set, waits for peer review.
 - Sub 399 (melee windup tells, task 339): own submission, one peer approve (hctib-tech), waits for a second review. Note: stopgap `_braced_attack` check in enemy.gd for the overseer; follow-up: override `_tell_sound()` in lab_overseer.gd (outside that task's paths).
+
+## Cycle 16.11 (night) review queue
+- Sub 508 (task 343, panel 1 variant 1, again): sent back for rework. Palette is clean (6 of 8 colours) but Rend is not recognisable (no visible glasses or face), hands and the half-built hand are blocks, no outlines on the figure, and the diff holds only the PNG (no PROVENANCE.md or generator). Variant 2 stays the stronger direction; neVs picks the anchor.
+- Sub 507 (task 336, drone sounds, own): review points set; waits for peer review.
+- Sub 399 (task 339, own, level C): unchanged, one peer approval (hctib-tech), I may not accept. After merge, register `melee_tell_sound_test` in manifest.txt.
+- No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
