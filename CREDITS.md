@@ -15,6 +15,7 @@
 | Godot 4.7 engine reference for agents (`.agents/skills/godot-4-7/`), from [Claude Code Game Studios](https://github.com/Donchitos/Claude-Code-Game-Studios) via swarvex | MIT, Copyright (c) 2026 Donchitos |
 | [Inter](https://github.com/rsms/inter) 4.1 (InterVariable.ttf), menu font for titles and rows | SIL OFL 1.1; provenance in `asset_library/fonts/PROVENANCE.md` |
 | [JetBrains Mono](https://github.com/JetBrains/JetBrainsMono) 2.304 (Regular TTF), menu font for values | SIL OFL 1.1; provenance in `asset_library/fonts/PROVENANCE.md` |
+| [Bangers](https://fonts.google.com/specimen/Bangers) (Regular TTF), comic sound-effect lettering | SIL OFL 1.1; provenance in `asset_library/fonts/bangers/PROVENANCE.md` |
 
 ## Asset sources
 | Source | What | Status |
