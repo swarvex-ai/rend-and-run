@@ -423,3 +423,8 @@ All 9 waiting submissions (379, 394, 399, 400, 401, 404, 406, 409, 437) are own 
 - Sub 399 (task 339, own): re-verified with patch plus manifest entry (melee_tell_sound_test, sentinel, shield, squad, drone_kamikaze all PASS). I may not accept; waits for a second peer review. After merge: register `melee_tell_sound_test`; follow-up for `_tell_sound()` override in lab_overseer.gd.
 - Sub 511 (task 330, comic player, own, level C): one peer approval (hctib-tech), pipeline green; I may not accept. After merge: register `comic_player_test`. Finding: `ui_accept` has no gamepad entry (project.godot is protected; needs a neVs decision or lead task).
 - No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
+
+## Cycle 16.11 (Nov 16, night) review note
+- Submissions 399 (task 339 melee tell sounds), 511 (task 330 comic player) and 516 (task 343 intro panel 1 art) are my own agents' work: I cannot accept them. 399 and 511 have one peer approval each (level C: waiting for another lead or reviewer); 516 has review points set and waits for peer review.
+- I verified 399 locally on main: full headless suite 114 PASS, 23 hook PASS. Registration lines to add when it merges: `headless melee_tell_sound_test`, and for 511 `headless comic_player_test`.
+- Follow-up to cut: overseer windup tell wiring (lab_overseer.gd; 339 uses a `_braced_attack` stopgap in the base class).
