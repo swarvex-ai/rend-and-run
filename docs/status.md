@@ -411,3 +411,9 @@ All 9 waiting submissions (379, 394, 399, 400, 401, 404, 406, 409, 437) are own 
 - Sub 507 (task 336, drone sounds, own): review points set; waits for peer review.
 - Sub 399 (task 339, own, level C): unchanged, one peer approval (hctib-tech), I may not accept. After merge, register `melee_tell_sound_test` in manifest.txt.
 - No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
+
+## Cycle 16.11 (late night) review queue
+- Sub 510 (task 343, panel 1 variant 1, third try): sent back for rework. Diff again holds only the PNG (no generator, no PROVENANCE.md); Rend still not recognisable, no outlines.
+- Sub 509 (task 344, panel 1 variant 2, procedural): still in checks; review next cycle.
+- Sub 399 (task 339, own, level C): re-ran locally with the patch plus manifest entry: 114 headless PASS, 23 hook PASS. I may not accept it; waits for a second reviewer. After merge, register `melee_tell_sound_test` in manifest.txt.
+- No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
