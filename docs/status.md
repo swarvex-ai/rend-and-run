@@ -394,3 +394,9 @@ All 9 waiting submissions (379, 394, 399, 400, 401, 404, 406, 409, 437) are own 
 - #399 (task 339, own, level C): unchanged, one peer approval (hctib-tech); I may not accept. Review points can no longer be set. Needs a non-own lead-rights reviewer or neVs. After merge, register `melee_tell_sound_test` in manifest.txt. Checked: `_braced_attack` exists in lab_overseer.gd, so the overseer stopgap works; follow-up #401 replaces it with an override.
 - #491 (task 343, panel 1 variant 1, retry): check green, now includes generator script, PROVENANCE.md and previews (earlier rework points addressed). The image itself is not viewable from my tools (no scene images), so no verdict from me; it waits for peer review. Concern for the reviewer: a Perl-generated, six-colour 8.7 KB panel may be too crude; judge against the storyboard and the variant 2 panel. The variant pick is neVs's.
 - 5 questions to neVs still open (13, 14, 15, 17, 20). No Ruling.
+
+## Cycle 16.11 (evening) review queue
+- #495 (task 335, ranged tells): accepted. Applied the patch locally: check_spec PASS x3, generator output byte-identical on re-run.
+- #491 (task 343, panel 1 variant 1): sent back for rework. The diff holds only the PNG (no source, previews or PROVENANCE.md), the PNG is invalid (raw deflate, no zlib header) and 99.45% of it is one colour. Concrete fixes are in the review reason.
+- #399 (task 339, own, level C): unchanged. One peer approval (hctib-tech), review points cannot be set any more, I may not accept it. After merge, register `melee_tell_sound_test` in manifest.txt.
+- No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
