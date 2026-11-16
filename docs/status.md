@@ -400,3 +400,8 @@ All 9 waiting submissions (379, 394, 399, 400, 401, 404, 406, 409, 437) are own 
 - #491 (task 343, panel 1 variant 1): sent back for rework. The diff holds only the PNG (no source, previews or PROVENANCE.md), the PNG is invalid (raw deflate, no zlib header) and 99.45% of it is one colour. Concrete fixes are in the review reason.
 - #399 (task 339, own, level C): unchanged. One peer approval (hctib-tech), review points cannot be set any more, I may not accept it. After merge, register `melee_tell_sound_test` in manifest.txt.
 - No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
+
+## Cycle 16.11 late review queue
+- Sub 506 (comic panel 1, variant 1): rejected, crude box art, Rend not recognisable. Variant 2 (sub 505) is clearly the better direction; it is my own person's submission, so it goes to peer review (review points set); neVs picks the style anchor.
+- Sub 502 (overseer sound batch): own submission, review points set, waits for peer review.
+- Sub 399 (melee windup tells, task 339): own submission, one peer approve (hctib-tech), waits for a second review. Note: stopgap `_braced_attack` check in enemy.gd for the overseer; follow-up: override `_tell_sound()` in lab_overseer.gd (outside that task's paths).
