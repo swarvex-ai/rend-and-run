@@ -436,3 +436,7 @@ All 9 waiting submissions (379, 394, 399, 400, 401, 404, 406, 409, 437) are own 
 ## Cycle 17.11 (Nov 17, later)
 - Sub 522 (task 343, panel 1 variant 1, fifth try): rejected. Rend is a circle head with blocks, lab is black rectangles; not an anchor. Variant 2 (521, own, review points set) is the one: recognisable Rend, server racks, three monitors, six-colour palette, generator and PROVENANCE.md.
 - 399, 511, 521 are own submissions: peer review only (399 and 511 already have one approval; review points could no longer be changed). No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
+
+## Cycle 17.11 (Nov 17, supply)
+- Sub 525 (task 343, panel 1 variant 1, sixth try): rejected. PNG only, no generator or PROVENANCE.md, final file never viewed. Variant 2 (521, own) is the direction.
+- 0 free tasks: all 9 open tasks wait on own submissions (399 -> #340/#341/#342/#401; 511 + 521 -> #349, #345-348). Only peer review or neVs can release them (oldest 51 h). No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
