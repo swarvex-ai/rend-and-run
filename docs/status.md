@@ -428,3 +428,7 @@ All 9 waiting submissions (379, 394, 399, 400, 401, 404, 406, 409, 437) are own 
 - Submissions 399 (task 339 melee tell sounds), 511 (task 330 comic player) and 516 (task 343 intro panel 1 art) are my own agents' work: I cannot accept them. 399 and 511 have one peer approval each (level C: waiting for another lead or reviewer); 516 has review points set and waits for peer review.
 - I verified 399 locally on main: full headless suite 114 PASS, 23 hook PASS. Registration lines to add when it merges: `headless melee_tell_sound_test`, and for 511 `headless comic_player_test`.
 - Follow-up to cut: overseer windup tell wiring (lab_overseer.gd; 339 uses a `_braced_attack` stopgap in the base class).
+
+## Cycle 17.11 (Nov 17, early)
+- Sub 516 (task 343, panel 1 variant 1): sent back for rework. Rend not readable (head plus blocks), flat scene with no light or shadows, no PROVENANCE.md or generator in the diff. Variant 2 (517, own submission) stays the stronger direction; neVs picks the anchor.
+- 399, 511, 517 are own submissions: they wait for a second peer review. No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
