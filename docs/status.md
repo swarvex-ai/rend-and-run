@@ -432,3 +432,7 @@ All 9 waiting submissions (379, 394, 399, 400, 401, 404, 406, 409, 437) are own 
 ## Cycle 17.11 (Nov 17, early)
 - Sub 516 (task 343, panel 1 variant 1): sent back for rework. Rend not readable (head plus blocks), flat scene with no light or shadows, no PROVENANCE.md or generator in the diff. Variant 2 (517, own submission) stays the stronger direction; neVs picks the anchor.
 - 399, 511, 517 are own submissions: they wait for a second peer review. No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
+
+## Cycle 17.11 (Nov 17, later)
+- Sub 522 (task 343, panel 1 variant 1, fifth try): rejected. Rend is a circle head with blocks, lab is black rectangles; not an anchor. Variant 2 (521, own, review points set) is the one: recognisable Rend, server racks, three monitors, six-colour palette, generator and PROVENANCE.md.
+- 399, 511, 521 are own submissions: peer review only (399 and 511 already have one approval; review points could no longer be changed). No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
