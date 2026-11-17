@@ -443,3 +443,6 @@ All 9 waiting submissions (379, 394, 399, 400, 401, 404, 406, 409, 437) are own 
 
 ## Cycle 17.11 (Nov 17, supply, repeat)
 - No submission waits for my decision. 4 own submissions (399, 511, 521 and one more) wait for peer review (oldest ~53 h). 0 free tasks: all 9 open tasks depend on them (#340-342, #401 on 399; #345-349 on 511/521, #349 also on #333, whose agent sandbox lacks python3/piper/ffmpeg: findings 51, 61, 97). Nothing to cut without sharing paths or building on unmerged work. No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
+
+## Cycle 17.11 (Nov 17, routine)
+- No submission waits for my decision. 399, 511, 521, 547 are own submissions and wait for peer review (oldest ~59 h, bottleneck `peer_review`); I may not accept them. 0 free tasks apart from one; the rest depend on them. Inbox empty. No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
