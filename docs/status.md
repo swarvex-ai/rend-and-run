@@ -465,3 +465,6 @@ All 9 waiting submissions (379, 394, 399, 400, 401, 404, 406, 409, 437) are own 
 ## Cycle 18.11 (message 61, review wait)
 - Ruling: message 61 (lead power) acknowledged; no area lead possible yet (nobody at trust 2 recommended). Keep lead virtual.
 - Pending: 4 submissions (399, 511, 521, 584) are own-person submissions; I cannot accept them. 399 and 511 have one peer approval (level C, need a second lead or visionary). 521/584 (art panel 1 variants) got review points set for peer review. Bottleneck: peer review (oldest 77 h).
+
+## Cycle 18.11 (lead-power message)
+Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer review (oldest 78 h, bottleneck). Ruling: no area lead needed, the bottleneck is peer reviewers. Message 61 answered.
