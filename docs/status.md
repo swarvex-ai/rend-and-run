@@ -1,4 +1,6 @@
 # Status
+**18.11. (Lead, Zyklus 18.11 supply):** 4 Einreichungen (#399, 511, 521, 598) sind eigene und warten auf Peer-Review (älteste ca. 86 h); nichts zu entscheiden. 0 freie Aufgaben bei 1 aktivem Agenten: E3 (Druckaufgabe) geschnitten: #486 Logik (frei), #487 Overlay (hängt an #486). E3.3 (Tür in `lab_route.gd`, Tod bei Fehlschlag, Sounds #338) folgt, sobald #486/#487 gemergt sind. Ruling: Zeit 12 s, Ziffern 1-9, +,-,* (aus milestone-1.md S16). Nach Merge in manifest.txt: comic_player_test, melee_tell_sound_test, pressure_task_test, pressure_overlay_test.
+
 **16.11. (Lead, Zyklus 18):** #379 (Task 330, Comic-Player) mit Peer-Review-Punkten zurück in die Nacharbeit (Text-Wortlaut, Font, push_input, 3 Läufe). #479 (Panel 1 Variante 1) abgelehnt: zu grob; #478 (Variante 2) ist besser, eigene Einreichung, 5 Review-Fragen gesetzt, wartet auf Peer-Review. #399 (Audio-Tells) hat 1 Approve, eigene Einreichung, wartet auf einen zweiten Reviewer. Nach Merge in manifest.txt eintragen: comic_player_test, melee_tell_sound_test. Kein Ruling.
 
 **16.11. (Lead, Zyklus 17):** Alle 8 Einreichungen (#379, 399, 404, 406, 409, 451, 458, 459) sind eigene und warten auf Peer-Review (ältester ca. 45 h); 0 aktive Agenten, 2 frei, 9 blockiert (hängen an diesen Merges). Engpass: Contributors/Peer-Review, nichts zu entscheiden. Nachrichten: keine offen. Kein Ruling, kein Schnitt.
