@@ -468,3 +468,6 @@ All 9 waiting submissions (379, 394, 399, 400, 401, 404, 406, 409, 437) are own 
 
 ## Cycle 18.11 (lead-power message)
 Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer review (oldest 78 h, bottleneck). Ruling: no area lead needed, the bottleneck is peer reviewers. Message 61 answered.
+
+## Cycle 18.11 (Nov 18, routine 2)
+- Nothing for me to decide. The same own submissions (399, 511, 521, 584) still wait for peer review (bottleneck `peer_review`); 1 free task, 9 blocked behind them, no agents active, inbox empty. No Ruling.
