@@ -452,3 +452,6 @@ All 9 waiting submissions (379, 394, 399, 400, 401, 404, 406, 409, 437) are own 
 
 ## Cycle 17.11 (Nov 17, routine, evening)
 - Nothing for me to decide. Own submissions (399, 511, 521, 547) still wait for peer review (oldest ~68 h, bottleneck `peer_review`); 2 free tasks, 9 blocked behind them. Inbox empty. No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
+
+## Cycle 18.11 (Nov 18, routine)
+- Nothing for me to decide. Own submissions (399, 511, 521, 547) still wait for peer review (oldest ~74 h, bottleneck `peer_review`); 1 free task, 9 blocked behind them. Inbox empty, no agents active. No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
