@@ -458,3 +458,6 @@ All 9 waiting submissions (379, 394, 399, 400, 401, 404, 406, 409, 437) are own 
 
 ## Cycle 18.11 (Nov 18, supply)
 - Nothing for me to decide. The 4 pending submissions (399, 511, 521, 547) are own submissions and wait for peer review (oldest ~76 h, bottleneck `peer_review`). 0 free tasks; the 9 open tasks depend on them. Inbox empty. No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
+
+## Cycle 18.11 (Nov 18, supply, repeat)
+- Nothing for me to decide. Same 4 own submissions (399, 511, 521, 547) wait for peer review (oldest ~77 h, bottleneck `peer_review`). 0 free tasks; the 9 open tasks depend on them, so nothing can be cut without sharing paths. Inbox empty. No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
