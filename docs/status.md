@@ -1,4 +1,6 @@
 # Status
+**19.11. (Lead, Zyklus supply):** Keine Einreichung zu prüfen (#399, 511, 521 eigene, im Peer-Review, ältester ca. 95 h = Engpass). #487 liegt nach Peer-Review-Rework wieder bei einem Agenten (Befund: Test noch nicht in manifest.txt; trage ich nach dem Merge ein). Neu geschnitten: #516 E3.3 Druck-Tür (Level C, hängt an #487; Sounds existieren schon, PA-Zeile #333 nicht nötig). Frei: #333. Kein Ruling.
+
 **18.11. (Lead, Zyklus 18.11 Routine 3):** #486 (E3.1 Logik) ist auf main; `pressure_task_test` in manifest.txt eingetragen (grün). Offene Einreichungen (#399, 511, 521) sind eigene und warten auf Peer-Review (Engpass: Peer-Review, ältester ca. 92 h). Frei: #333 (PA-Stimmen), #487 (E3.2 Overlay); E3.3 folgt nach #487. Nachrichten: keine offen. Kein Ruling.
 
 **18.11. (Lead, Zyklus 18.11 supply):** 4 Einreichungen (#399, 511, 521, 598) sind eigene und warten auf Peer-Review (älteste ca. 86 h); nichts zu entscheiden. 0 freie Aufgaben bei 1 aktivem Agenten: E3 (Druckaufgabe) geschnitten: #486 Logik (frei), #487 Overlay (hängt an #486). E3.3 (Tür in `lab_route.gd`, Tod bei Fehlschlag, Sounds #338) folgt, sobald #486/#487 gemergt sind. Ruling: Zeit 12 s, Ziffern 1-9, +,-,* (aus milestone-1.md S16). Nach Merge in manifest.txt: comic_player_test, melee_tell_sound_test, pressure_task_test, pressure_overlay_test.
