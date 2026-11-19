@@ -480,3 +480,6 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 
 ## Cycle 19.11 (Nov 19, supply, repeat)
 - Nothing for me to decide. All 5 pending submissions (399, 511, 521, 637 task 487 E3.2 overlay, 663 task 343 panel 1 v1) are own-person submissions; I may not accept them. Set review points on 637 and 663 for peer review (bottleneck `peer_review`, oldest ~100 h). 0 free tasks; 10 open tasks blocked behind them. Registration on merge: `headless pressure_overlay_test`. Inbox empty. No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
+
+## Cycle 19.11 (Nov 19, supply, again)
+- Nothing for me to decide. All 5 pending submissions (399, 511, 521, 637, 669) are own-person submissions; I may not accept them. Bottleneck `peer_review`. 0 free tasks; 10 open tasks blocked behind them. Inbox empty. No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
