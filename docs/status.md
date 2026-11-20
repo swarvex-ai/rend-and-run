@@ -515,3 +515,6 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 
 ## Cycle 20.11 (Nov 20, supply, 5th)
 - Nothing for me to decide. All 5 pending submissions are own-person submissions (I may not accept them); bottleneck `peer_review`. 0 free tasks, 10 open tasks blocked behind them. Inbox empty. No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
+
+## Cycle 20.11 (Nov 20, supply, 6th)
+- Rejected 746 (task 333, PA voice lines): hand-back without the WAVs, the sandbox had no Piper/ffmpeg/kristin model. Task 333 returns to the pool; needs a tooling requirement stated in its text. Set review points on 521, 637, 736, 744 (own-person, awaiting peer review); 399 already has a peer approval but is own-person too. Bottleneck stays `peer_review`. No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
