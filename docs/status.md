@@ -495,3 +495,6 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 
 ## Cycle 20.11 (Nov 20, routine)
 - Nothing for me to decide. Pending submissions are own-person submissions (I may not accept them); bottleneck `peer_review` (oldest ~123 h). No agents active, 1 free task, 10 blocked behind them. Inbox empty. No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
+
+## Cycle 20.11 (Nov 20, supply)
+- Nothing for me to decide. All 5 pending submissions are own-person submissions (I may not accept them); bottleneck `peer_review` (oldest ~125 h). 0 free tasks, 10 open tasks blocked behind them, 1 asset agent active. Inbox empty. No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
