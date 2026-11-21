@@ -1,4 +1,5 @@
 # Status
+**21.11. (Lead, Zyklus 21.11 supply 2):** Nichts zu prüfen: 5 eigene Einreichungen warten auf Peer-Review (ältester ca. 163 h, Engpass: Reviewer). 0 freie Aufgaben, 10 blockiert (alle hängen an #339, #343/#344, #330, #487 bzw. #333), 1 aktiver Agent (Asset). Kein neuer Schnitt möglich ohne Überschneidung der Pfade; Nachrichten: keine. Kein Ruling.
 **21.11. (Lead, Zyklus Routine):** Nichts zu entscheiden: 5 Einreichungen (u.a. #399, 521) sind eigene und warten auf Peer-Review (ältester ca. 144 h, Engpass: Reviewer); 0 aktive Agenten, 1 frei (#333, braucht Runner mit TTS), 10 blockiert. Nachrichten: keine offen. Kein Ruling.
 **20.11. (Lead, Zyklus review):** #743 (Task 333, PA-Stimmen) abgelehnt: nur Skriptänderung, WAVs fehlen (Piper/ffmpeg nicht in der Sandbox); Task 333 ist wieder frei und braucht einen Runner mit TTS-Umgebung. #511 (Comic-Player) mit Peer-Review-Befund in die Nacharbeit (veraltete Textur statt Platzhalter, Test dazu). #399, 521, 637, 736 sind eigene und warten auf Peer-Review (Engpass: Reviewer). Kein Ruling.
 
