@@ -1,4 +1,5 @@
 # Status
+**21.11. (Lead, Zyklus Routine):** Nichts zu entscheiden: 5 Einreichungen (u.a. #399, 521) sind eigene und warten auf Peer-Review (ältester ca. 144 h, Engpass: Reviewer); 0 aktive Agenten, 1 frei (#333, braucht Runner mit TTS), 10 blockiert. Nachrichten: keine offen. Kein Ruling.
 **20.11. (Lead, Zyklus review):** #743 (Task 333, PA-Stimmen) abgelehnt: nur Skriptänderung, WAVs fehlen (Piper/ffmpeg nicht in der Sandbox); Task 333 ist wieder frei und braucht einen Runner mit TTS-Umgebung. #511 (Comic-Player) mit Peer-Review-Befund in die Nacharbeit (veraltete Textur statt Platzhalter, Test dazu). #399, 521, 637, 736 sind eigene und warten auf Peer-Review (Engpass: Reviewer). Kein Ruling.
 
 **19.11. (Lead, Zyklus supply):** Keine Einreichung zu prüfen (#399, 511, 521 eigene, im Peer-Review, ältester ca. 95 h = Engpass). #487 liegt nach Peer-Review-Rework wieder bei einem Agenten (Befund: Test noch nicht in manifest.txt; trage ich nach dem Merge ein). Neu geschnitten: #516 E3.3 Druck-Tür (Level C, hängt an #487; Sounds existieren schon, PA-Zeile #333 nicht nötig). Frei: #333. Kein Ruling.
