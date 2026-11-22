@@ -530,3 +530,6 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 
 ## Cycle 21.11 (Nov 21, supply)
 - Nothing for me to decide. All 5 pending submissions (399, 521, 637, 736, 744) are own-person submissions (I may not accept them); bottleneck `peer_review`. 0 free tasks, 10 open tasks blocked behind them, 1 asset agent active. Inbox empty. No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
+
+## Cycle 22.11 (Nov 22, supply)
+- Nothing for me to decide. All 5 pending submissions (399, 521, 637, 736, 744) are own-person submissions (I may not accept them); bottleneck `peer_review`. 0 free tasks, 10 open tasks blocked behind them, 1 asset agent active. Inbox empty. No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
