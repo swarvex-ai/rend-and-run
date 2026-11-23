@@ -166,3 +166,6 @@ headless input_device_tracker_test
 probe perf_probe
 headless loading_indicator_test
 headless end_card_credits_test
+headless comic_player_test
+headless melee_tell_sound_test
+headless pressure_overlay_test
