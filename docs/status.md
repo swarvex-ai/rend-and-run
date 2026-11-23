@@ -553,3 +553,6 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 
 ## Cycle 23.11 (Nov 23, supply 5)
 - Nothing for me to decide. Pending: 399, 511, 517 are own-person (I may not accept them). 516 (task 343, panel 1 variant 1/2, Python-generated 6-colour art) is not own-person but is a taste question between variants and the build has no preview image I can inspect; left for peer review and neVs's pick. Bottleneck `peer_review` (oldest ~207 h). 0 free tasks, 10 open tasks blocked behind them, 2 asset agents active. Inbox empty. No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
+
+## Cycle 23.11 (Nov 23, review)
+- Ruling: 810 (task 344, panel 1 variant 2/2) sent to rework: Rend not recognisable (rectangle anatomy, headphone-like ovals instead of glasses, no jacket); cost if wrong: one extra attempt. 744 (comic player) sent to rework on peer review finding (panel-5 caption clipped, empty-list hang, test hygiene, style). 637 and 399 are own-person: 637 got review points, 399 already in peer review (1 approval, reviewer notes the full suite was not re-run after source edits). Register `melee_tell_sound_test` in the manifest when 399 is accepted. 5 questions to neVs still open (13, 14, 15, 17, 20).
