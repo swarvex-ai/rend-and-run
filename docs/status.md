@@ -576,3 +576,6 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 ## Cycle 23.11 review 6
 - Accepted #816 (task 330, comic player). Register `comic_player_test` in manifest.txt after merge.
 - Own submissions #399 (melee_tell_sound_test to register once merged; peer approve exists), #637 (pressure_overlay_test; review points set) wait for peer review. #815 (comic panel 1 art) still checking.
+
+## Cycle 23.11 review 7
+- Nothing accepted. 399 (task 339, one peer approval) and 637 (task 487, review points set) are own-person: not mine to accept; register `melee_tell_sound_test` / `pressure_overlay_test` in the manifest on merge. 819 (task 344, panel 1 v2) is not own-person, but I cannot view the PNG (binary patch, no scene images); left for peer review and neVs's pick between variants. No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
