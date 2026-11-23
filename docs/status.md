@@ -559,3 +559,8 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 
 ## Cycle 23.11 (Nov 23, review 2)
 - Ruling: 812 (task 344, panel 1 variant 2/2, second attempt) sent to rework: Rend now recognisable, but nose block over right lens, stray white bars beside glasses/desk, hands floating below the desk; cost if wrong: one more attempt. 399, 637, 811 are own-person (not mine to accept). Bottleneck `peer_review`. 5 questions to neVs still open (13, 14, 15, 17, 20).
+
+## Cycle 23.11 review 3
+- #813 (task 344, panel 1 v2): rework (no source script, art never viewed).
+- #637 (task 487) review points set, awaiting peer review; needs manifest entry `pressure_overlay_test` on merge.
+- #399 (task 339) own submission, one peer approval; awaiting more review; needs manifest entry `melee_tell_sound_test`.
