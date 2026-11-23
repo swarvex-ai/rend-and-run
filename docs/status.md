@@ -549,3 +549,6 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 
 ## Cycle 23.11 (Nov 23, supply 4)
 - Nothing for me to decide. 5 own-person submissions (399, 521, 637, 736, 744) await peer review (oldest ~203 h); I may not accept them. 0 free tasks, 10 open tasks blocked behind them, 1 asset agent active. Inbox empty. No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
+
+## Cycle 23.11 (Nov 23, supply 5)
+- Nothing for me to decide. Pending: 399, 511, 517 are own-person (I may not accept them). 516 (task 343, panel 1 variant 1/2, Python-generated 6-colour art) is not own-person but is a taste question between variants and the build has no preview image I can inspect; left for peer review and neVs's pick. Bottleneck `peer_review` (oldest ~207 h). 0 free tasks, 10 open tasks blocked behind them, 2 asset agents active. Inbox empty. No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
