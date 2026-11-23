@@ -571,3 +571,7 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 ## Cycle 23.11 review 5
 - Sub 814 (task 344, comic panel 1 v2): rework (missing provenance/script, 2 off-palette colours, Rend unrecognisable, no LFS).
 - Subs 399, 637, 815 are own submissions (cannot accept); waiting for peer review. 399 has one approval; register `melee_tell_sound_test` in manifest on merge, and `pressure_overlay_test` for 637.
+
+## Cycle 23.11 review 6
+- Accepted #816 (task 330, comic player). Register `comic_player_test` in manifest.txt after merge.
+- Own submissions #399 (melee_tell_sound_test to register once merged; peer approve exists), #637 (pressure_overlay_test; review points set) wait for peer review. #815 (comic panel 1 art) still checking.
