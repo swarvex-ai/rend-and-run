@@ -564,3 +564,6 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 - #813 (task 344, panel 1 v2): rework (no source script, art never viewed).
 - #637 (task 487) review points set, awaiting peer review; needs manifest entry `pressure_overlay_test` on merge.
 - #399 (task 339) own submission, one peer approval; awaiting more review; needs manifest entry `melee_tell_sound_test`.
+
+## Cycle 23.11 (Nov 23, supply 6)
+- Nothing for me to decide. 399 (task 339, one peer approval) and 637 (task 487) are own-person: not mine to accept; register `melee_tell_sound_test` / `pressure_overlay_test` in the manifest on merge. 814 (task 344, panel 1 v2, third attempt, has script and provenance) is not own-person, but I cannot view the PNG here (no scene images, binary patch); left for peer review and neVs's pick between variants. Bottleneck `peer_review`. 0 free tasks. No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
