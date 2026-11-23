@@ -556,3 +556,6 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 
 ## Cycle 23.11 (Nov 23, review)
 - Ruling: 810 (task 344, panel 1 variant 2/2) sent to rework: Rend not recognisable (rectangle anatomy, headphone-like ovals instead of glasses, no jacket); cost if wrong: one extra attempt. 744 (comic player) sent to rework on peer review finding (panel-5 caption clipped, empty-list hang, test hygiene, style). 637 and 399 are own-person: 637 got review points, 399 already in peer review (1 approval, reviewer notes the full suite was not re-run after source edits). Register `melee_tell_sound_test` in the manifest when 399 is accepted. 5 questions to neVs still open (13, 14, 15, 17, 20).
+
+## Cycle 23.11 (Nov 23, review 2)
+- Ruling: 812 (task 344, panel 1 variant 2/2, second attempt) sent to rework: Rend now recognisable, but nose block over right lens, stray white bars beside glasses/desk, hands floating below the desk; cost if wrong: one more attempt. 399, 637, 811 are own-person (not mine to accept). Bottleneck `peer_review`. 5 questions to neVs still open (13, 14, 15, 17, 20).
