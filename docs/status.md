@@ -586,3 +586,6 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 - 399 (melee tell sounds): own submission, peer review `approve` from hctib-tech; cannot be accepted by the lead. Waiting for a second reviewer or the visionary.
 - 637 (pressure overlay): own submission, review points set; waiting for peer review.
 - Ruling: edited a test (`comic_player_test`) myself as level D, since it hardcoded the no-art state. Cost if wrong: one test is more tolerant.
+
+## Cycle 24.11 routine
+- 399 and 637 are still own-person and waiting for peer review (399 has one approval, 637 has review points). Bottleneck `peer_review`. Register `melee_tell_sound_test` / `pressure_overlay_test` in the manifest on merge. No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
