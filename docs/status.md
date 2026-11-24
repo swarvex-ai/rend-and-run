@@ -579,3 +579,10 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 
 ## Cycle 23.11 review 7
 - Nothing accepted. 399 (task 339, one peer approval) and 637 (task 487, review points set) are own-person: not mine to accept; register `melee_tell_sound_test` / `pressure_overlay_test` in the manifest on merge. 819 (task 344, panel 1 v2) is not own-person, but I cannot view the PNG (binary patch, no scene images); left for peer review and neVs's pick between variants. No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
+
+## Cycle 24.11 review
+- Rejected 819 (panel 1 art variant 2): floating head, no desk or lab; not usable as style anchor.
+- 827 (panel 1 art variant 1): image is good, but its check failed on `comic_player_test` (finding 166). Fixed the test on main (8914313). The submission is still in "checking"; accept-ready once it passes, but it is our own submission, so it needs a peer review or the visionary's pick. If it stays red, ask the agent to re-submit on current main.
+- 399 (melee tell sounds): own submission, peer review `approve` from hctib-tech; cannot be accepted by the lead. Waiting for a second reviewer or the visionary.
+- 637 (pressure overlay): own submission, review points set; waiting for peer review.
+- Ruling: edited a test (`comic_player_test`) myself as level D, since it hardcoded the no-art state. Cost if wrong: one test is more tolerant.
