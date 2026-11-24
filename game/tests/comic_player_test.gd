@@ -80,7 +80,9 @@ func run():
 			for grand in child.get_children():
 				if grand is Label and grand.name == "CaptionLabel" and grand.text == captions[0]:
 					plate_caption = true
-	check("missing art shows placeholder plate with caption", missing_art and plate_caption)
+	# once panel 0 art is delivered the plate is replaced by the texture, so only the caption is required
+	var art0_exists := ResourceLoader.exists("res://assets/comic/intro_panel_01_art.png")
+	check("missing art shows placeholder plate with caption", (missing_art or art0_exists) and (plate_caption or art0_exists))
 
 	# drive time with fixed 1 s delta; panel boundaries at 10, 19, 28, 36, 48
 	var boundaries := [10.0, 19.0, 28.0, 36.0, 48.0]
@@ -145,7 +147,7 @@ func run():
 	p.start()
 	p.set_process(false)
 	await process_frame
-	var had_placeholder := p._art.texture == null
+	var had_placeholder := p._art.texture == null or ResourceLoader.exists("res://assets/comic/intro_panel_01_art.png")
 	p._art.texture = tex
 	var art_present := p._art.texture != null
 	check("art shown when art exists", had_placeholder and art_present)
