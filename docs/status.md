@@ -590,3 +590,8 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 
 ## Cycle 24.11 routine
 - 399 and 637 are still own-person and waiting for peer review (399 has one approval, 637 has review points). Bottleneck `peer_review`. Register `melee_tell_sound_test` / `pressure_overlay_test` in the manifest on merge. No Ruling. 5 questions to neVs still open (13, 14, 15, 17, 20).
+
+## Cycle 24.11 review 8
+- 399 (melee tell sounds, own): peer approve in; waits for a second decision from another person. Register `melee_tell_sound_test` in the manifest after merge.
+- 637 (pressure overlay, own): review points set, waits for peer review. Register `pressure_overlay_test` after merge.
+- 870 (comic panel 1 art, variant 1): no images in the preview; not judged by me yet, left for peer review (level A auto-accepts at two approvals). Check variant 2 before picking.
