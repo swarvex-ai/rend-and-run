@@ -648,3 +648,7 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 - Accepted 939 (zones.md, provisional until neVs confirms zone names).
 - Own submissions 399 (has 1 peer approve), 637, 918, 922 wait for peer review; review points set on 637/918/922.
 - To do after merge: register melee_tell_sound_test and pressure_overlay_test in game/tests/manifest.txt.
+
+## Cycle 25.11 review 9
+- Reworked 940 (panel 1 variant 1, third attempt): near copy of the panel already on main; asked for a distinct composition. Consider closing the variant if it fails again (variant 2 is merged).
+- Own submissions 399, 637, 918, 922, 941 wait for peer review; nothing else to decide. Manifest registrations still pending (melee_tell_sound_test, pressure_overlay_test). No Ruling.
