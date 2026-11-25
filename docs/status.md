@@ -610,3 +610,7 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 ## Cycle 25.11 inbox
 - Ruling: submissions 399 (task 339) and 637 (task 487) are own submissions; waiting on peer review (399 has one approval, level C needs lead-side decision by another lead/area lead; 637 got review points). Tests melee_tell_sound_test and pressure_overlay_test to be registered in manifest.txt after merge.
 - Message 104 (more lead power): noted; consider opening an area lead position for audio/ux.
+
+## Cycle 25.11 review 2
+- Sent 919 (comic panel 3 art) back for rework: block-rectangle style does not match panel 1, Rend not recognisable (no glasses/jacket/chair), sky instead of lab corridor, door-wrench and glass beats missing, identical robot columns. Left 918 (panel 4, state submitted) until its checks finish.
+- 399 and 637 unchanged (own, waiting for peer review). No Ruling.
