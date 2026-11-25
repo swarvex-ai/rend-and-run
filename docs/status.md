@@ -626,3 +626,9 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 
 ## Cycle 25.11 review 5
 - 921 (task 346, comic panel 3 art, not own-person): checks green, no scene images, PNG not viewable here; left for peer review (level A auto-accepts at two approvals) and neVs's pick. 399, 637, 918 unchanged (own, waiting for peer review). Register `melee_tell_sound_test` / `pressure_overlay_test` on merge. 0 free tasks, bottleneck `peer_review`. No Ruling.
+
+## Cycle 25.11 review 6
+- Accepted 921 (panel 3 art; blockier than panels 2/4, polish optional). Rejected 923 (panel 1 variant 1; variant 2 already merged).
+- Own submissions 637, 918, 922 got review points and wait for peer review; 399 has one peer approval (level C, own: cannot accept myself).
+- TODO after 637 merges: register `headless pressure_overlay_test` in game/tests/manifest.txt.
+- Message 104 (more lead power): reviews of own submissions are the bottleneck; consider an area lead for art/ux.
