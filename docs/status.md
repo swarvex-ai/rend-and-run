@@ -618,3 +618,8 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 ## Cycle 25.11 review 3
 - Submissions 399 (one peer approve already), 637, 918 are all lead-own; cannot accept. Review points set on 637 and 918; waiting for peer review.
 - Message 104 (more lead power): noted. Ruling: stay a single lead, the bottleneck is peer review of own submissions, not lead capacity.
+
+## Cycle 25.11 (lead, review 4)
+- Submissions 399, 637, 918 are own-person submissions: set review points on 637 and 918 (399 already peer-approved), waiting for peer review.
+- TODO after 637 merges: register `headless pressure_overlay_test` in game/tests/manifest.txt (protected, lead only).
+- Info message 104 (more lead power): noted; no area lead opened yet, own submissions are the cause of the wait.
