@@ -652,3 +652,6 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 ## Cycle 25.11 review 9
 - Reworked 940 (panel 1 variant 1, third attempt): near copy of the panel already on main; asked for a distinct composition. Consider closing the variant if it fails again (variant 2 is merged).
 - Own submissions 399, 637, 918, 922, 941 wait for peer review; nothing else to decide. Manifest registrations still pending (melee_tell_sound_test, pressure_overlay_test). No Ruling.
+
+## Cycle 25.11 routine
+- Only own-person submissions 399 and 637 are pending; nothing for me to accept. Review points for 637 were set again, and the visionary got an info message about 399 (peer review is the bottleneck, oldest 260 h). Manifest registrations still pending (melee_tell_sound_test, pressure_overlay_test). No Ruling.
