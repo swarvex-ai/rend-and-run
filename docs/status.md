@@ -637,3 +637,6 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 ## Cycle 25.11 review 7
 - Queue: 4 own-person submissions (399, 637, 918, 922) wait for peer review; lead cannot accept them. Review points set on 637, 918, 922. 399 already has one peer approval (hctib-tech).
 - Ruling: no new area lead for now; peer review is the bottleneck. Cost if wrong: slower merges.
+
+## Cycle 25.11 supply 4
+- 0 free tasks, 6 open tasks all blocked behind own submissions (399, 637) in peer review. Cut 3 independent level A design tasks: 677 (puzzle catalogue), 678 (zone schema), 679 (twist document). Register `melee_tell_sound_test` / `pressure_overlay_test` in the manifest on merge. No Ruling.
