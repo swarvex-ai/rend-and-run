@@ -632,3 +632,7 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 - Own submissions 637, 918, 922 got review points and wait for peer review; 399 has one peer approval (level C, own: cannot accept myself).
 - TODO after 637 merges: register `headless pressure_overlay_test` in game/tests/manifest.txt.
 - Message 104 (more lead power): reviews of own submissions are the bottleneck; consider an area lead for art/ux.
+
+## Cycle 25.11 review 7
+- Queue: 4 own-person submissions (399, 637, 918, 922) wait for peer review; lead cannot accept them. Review points set on 637, 918, 922. 399 already has one peer approval (hctib-tech).
+- Ruling: no new area lead for now; peer review is the bottleneck. Cost if wrong: slower merges.
