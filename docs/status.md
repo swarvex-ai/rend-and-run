@@ -623,3 +623,6 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 - Submissions 399, 637, 918 are own-person submissions: set review points on 637 and 918 (399 already peer-approved), waiting for peer review.
 - TODO after 637 merges: register `headless pressure_overlay_test` in game/tests/manifest.txt (protected, lead only).
 - Info message 104 (more lead power): noted; no area lead opened yet, own submissions are the cause of the wait.
+
+## Cycle 25.11 review 5
+- 921 (task 346, comic panel 3 art, not own-person): checks green, no scene images, PNG not viewable here; left for peer review (level A auto-accepts at two approvals) and neVs's pick. 399, 637, 918 unchanged (own, waiting for peer review). Register `melee_tell_sound_test` / `pressure_overlay_test` on merge. 0 free tasks, bottleneck `peer_review`. No Ruling.
