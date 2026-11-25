@@ -643,3 +643,8 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 
 ## Cycle 25.11 supply 5
 - All 6 pending submissions (399, 637, 918, 922, 936, 938) are own-person; nothing for me to decide. Cut task 680 (credits scroll, from finding 19). Free: 679, 680. Register `melee_tell_sound_test` / `pressure_overlay_test` on merge. No Ruling.
+
+## Cycle 25.11 review 8
+- Accepted 939 (zones.md, provisional until neVs confirms zone names).
+- Own submissions 399 (has 1 peer approve), 637, 918, 922 wait for peer review; review points set on 637/918/922.
+- To do after merge: register melee_tell_sound_test and pressure_overlay_test in game/tests/manifest.txt.
