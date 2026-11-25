@@ -602,3 +602,7 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 - 399 (melee tell sounds, own): peer approve in; waits for a second decision from another person. Register `melee_tell_sound_test` in the manifest after merge.
 - 637 (pressure overlay, own): review points set, waits for peer review. Register `pressure_overlay_test` after merge.
 - 870 (comic panel 1 art, variant 1): no images in the preview; not judged by me yet, left for peer review (level A auto-accepts at two approvals). Check variant 2 before picking.
+
+## Cycle 25.11 review
+- Accepted 916 (comic panel 2 art, variant 2): viewed the PNG; palette-only, red only as flat alarm glyphs, readable. No Ruling.
+- 399 and 637 (own): still waiting for peer review (399 has one approve; 637 review points set). Register `melee_tell_sound_test` / `pressure_overlay_test` in the manifest after merge.
