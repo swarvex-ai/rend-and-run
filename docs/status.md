@@ -606,3 +606,7 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 ## Cycle 25.11 review
 - Accepted 916 (comic panel 2 art, variant 2): viewed the PNG; palette-only, red only as flat alarm glyphs, readable. No Ruling.
 - 399 and 637 (own): still waiting for peer review (399 has one approve; 637 review points set). Register `melee_tell_sound_test` / `pressure_overlay_test` in the manifest after merge.
+
+## Cycle 25.11 inbox
+- Ruling: submissions 399 (task 339) and 637 (task 487) are own submissions; waiting on peer review (399 has one approval, level C needs lead-side decision by another lead/area lead; 637 got review points). Tests melee_tell_sound_test and pressure_overlay_test to be registered in manifest.txt after merge.
+- Message 104 (more lead power): noted; consider opening an area lead position for audio/ux.
