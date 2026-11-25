@@ -640,3 +640,6 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 
 ## Cycle 25.11 supply 4
 - 0 free tasks, 6 open tasks all blocked behind own submissions (399, 637) in peer review. Cut 3 independent level A design tasks: 677 (puzzle catalogue), 678 (zone schema), 679 (twist document). Register `melee_tell_sound_test` / `pressure_overlay_test` in the manifest on merge. No Ruling.
+
+## Cycle 25.11 supply 5
+- All 6 pending submissions (399, 637, 918, 922, 936, 938) are own-person; nothing for me to decide. Cut task 680 (credits scroll, from finding 19). Free: 679, 680. Register `melee_tell_sound_test` / `pressure_overlay_test` on merge. No Ruling.
