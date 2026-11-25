@@ -614,3 +614,7 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 ## Cycle 25.11 review 2
 - Sent 919 (comic panel 3 art) back for rework: block-rectangle style does not match panel 1, Rend not recognisable (no glasses/jacket/chair), sky instead of lab corridor, door-wrench and glass beats missing, identical robot columns. Left 918 (panel 4, state submitted) until its checks finish.
 - 399 and 637 unchanged (own, waiting for peer review). No Ruling.
+
+## Cycle 25.11 review 3
+- Submissions 399 (one peer approve already), 637, 918 are all lead-own; cannot accept. Review points set on 637 and 918; waiting for peer review.
+- Message 104 (more lead power): noted. Ruling: stay a single lead, the bottleneck is peer review of own submissions, not lead capacity.
