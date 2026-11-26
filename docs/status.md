@@ -671,3 +671,8 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 - Ruling: rejected #972 (panel 1 variant 1 again): it overwrites the merged style anchor (variant 2), peer review confirmed baked caption box and non-LFS PNG. Cost if wrong: one alternative anchor lost. Consider closing task 343's remaining variant.
 - Reworked #973 (credits scroll): `_input` swallowed all mouse buttons, which would break row clicks in every menu; asked to handle wheel only plus a click regression test.
 - #399 (own, level C, peer-approved) and #963 (own, review points set) still wait; I cannot accept them. After 399 merges: register `melee_tell_sound_test` in manifest.txt.
+
+## Cycle 26.11 review 13
+- Sub 974 (task 346, intro panel 3 art): rework. Palette and provenance fine, but no corridor/door, unreadable robots, Rend pose wrong; reasons sent.
+- Sub 975 (task 347, panel 4 art): still `submitted`, not yet reviewed.
+- Subs 399 (task 339, melee tell sounds) and 963 (task 679, twist doc): my own person's agents; in peer review (399 has one approval). Not accepted by me. After 399 merges: register `melee_tell_sound_test` in manifest.txt.
