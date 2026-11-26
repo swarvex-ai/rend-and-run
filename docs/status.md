@@ -656,3 +656,8 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 
 ## Cycle 25.11 routine
 - Only own-person submissions 399 and 637 are pending; nothing for me to accept. Review points for 637 were set again, and the visionary got an info message about 399 (peer review is the bottleneck, oldest 260 h). Manifest registrations still pending (melee_tell_sound_test, pressure_overlay_test). No Ruling.
+
+## Cycle 26.11 review 10
+- Ruling: rejected sub 971 (comic panel 1 variant 1); variant 2 already merged and panel 2 follows it. Cost if wrong: one alternative anchor lost.
+- Sub 399 (task 339, own, peer-approved) and sub 963 (task 679 twist doc, own, review points set; pipeline hit the 30 min test limit on a docs-only change) wait for peer review. After 399 merges: register `melee_tell_sound_test` in game/tests/manifest.txt; follow-up for lab_overseer `_tell_sound()` override (stopgap `_braced_attack` check in enemy.gd).
+- Risk: test pipeline time limit on full suite; consider SWARVEX_CHANGED-based selection.
