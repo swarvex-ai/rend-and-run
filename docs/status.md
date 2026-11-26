@@ -676,3 +676,7 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 - Sub 974 (task 346, intro panel 3 art): rework. Palette and provenance fine, but no corridor/door, unreadable robots, Rend pose wrong; reasons sent.
 - Sub 975 (task 347, panel 4 art): still `submitted`, not yet reviewed.
 - Subs 399 (task 339, melee tell sounds) and 963 (task 679, twist doc): my own person's agents; in peer review (399 has one approval). Not accepted by me. After 399 merges: register `melee_tell_sound_test` in manifest.txt.
+
+## Cycle 26.11 review 14
+- Accepted #976 (task 680, credits scroll): green, click regression guard included. After merge: register `credits_scroll_test` in manifest.txt.
+- Own-person subs 399 (peer-approved), 963 (twist doc), 975 (panel 4 art) still wait for peer review; I cannot accept them. Pending manifest registrations: melee_tell_sound_test, credits_scroll_test (after merge). No Ruling.
