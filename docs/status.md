@@ -699,3 +699,6 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 - Accepted #987 (intro panel 3 art). Visual not viewed by lead (binary only in patch); follow-up art task if neVs objects.
 - #963 (twist doc, own) sent to peer review with review points. #399 (melee tell sounds, own, level C) has one peer approval; lead cannot accept own work, waits for another reviewer. After merge: register melee_tell_sound_test in manifest.txt.
 - Pipeline note: #963 test run hit the 30 min limit (suite slow); consider SWARVEX_CHANGED-based test selection.
+
+## Cycle 26.11 review 19
+- Only #399 (melee tell sounds, own, level C) is pending: peer-approved once, I cannot accept it, review points can no longer be set. Verified sound files exist and `_braced_attack` is declared in lab_overseer.gd. After merge: register `melee_tell_sound_test` in manifest.txt. No Ruling.
