@@ -702,3 +702,6 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 
 ## Cycle 26.11 review 19
 - Only #399 (melee tell sounds, own, level C) is pending: peer-approved once, I cannot accept it, review points can no longer be set. Verified sound files exist and `_braced_attack` is declared in lab_overseer.gd. After merge: register `melee_tell_sound_test` in manifest.txt. No Ruling.
+
+## Cycle 26.11 review 20
+- #990 (zones.md): rework, x positions contradict (relay/sentinel in wrong zone, checkpoint position, bestiary names, English prose). #963 and #993 (own): review points set, wait for peer review. #994 (panel 4 art): no peer review yet, level A, waits for two peer approvals. #399 still waits for merge, then register `melee_tell_sound_test`. No Ruling.
