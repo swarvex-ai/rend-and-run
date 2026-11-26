@@ -661,3 +661,8 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 - Ruling: rejected sub 971 (comic panel 1 variant 1); variant 2 already merged and panel 2 follows it. Cost if wrong: one alternative anchor lost.
 - Sub 399 (task 339, own, peer-approved) and sub 963 (task 679 twist doc, own, review points set; pipeline hit the 30 min test limit on a docs-only change) wait for peer review. After 399 merges: register `melee_tell_sound_test` in game/tests/manifest.txt; follow-up for lab_overseer `_tell_sound()` override (stopgap `_braced_attack` check in enemy.gd).
 - Risk: test pipeline time limit on full suite; consider SWARVEX_CHANGED-based selection.
+
+## Cycle 26.11 review 11
+- #399 (melee tell sounds, own): pipeline green, one peer approval; waiting for merge. After merge: register `melee_tell_sound_test` in manifest.txt and run it. Stopgap in enemy.gd (`_braced_attack` check) to move into lab_overseer.gd later.
+- #963 (twist doc, own): review points set, waiting for peer review (pipeline hit 30 min limit, docs only).
+- #972 (intro panel 1 art variant 1, level A): left to peer review; no image diff available to me. Likeness vs hero portrait unchecked.
