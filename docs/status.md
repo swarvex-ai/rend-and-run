@@ -711,3 +711,9 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 - Accepted #995 (zones.md, task 678). Rework #994 (comic panel 4 art: no readable head/hand; needs a model with image input).
 - Own submissions #399 (melee tell sounds, one peer approval, waits for a second approval or a lead-side decision by another reviewer) and #963 (twist.md, review points set) wait for peer review. I cannot accept them.
 - Risk: the test pipeline hit its 30 min limit on #963 (suite takes too long); use SWARVEX_CHANGED to run only touched tests.
+
+## Cycle 26.11 review 23
+- Sub 998 (task 347, panel 4 art): rework. The hand does not grip the jacket, Rend floats, the frame is letterboxed, and the lights-out beat is missing. Details are in the review reason.
+- Sub 399 (task 339, own, melee tell sounds): peer approval received. Waiting for the merge. After the merge, register `melee_tell_sound_test` in `game/tests/manifest.txt` (headless). Finding: the overseer tell is a stopgap (`_braced_attack` check in `enemy.gd`); a follow-up task should override `_tell_sound()` in `lab_overseer.gd`.
+- Sub 963 (task 679, own, twist doc): docs only. The pipeline timed out at 30 min (a test-suite speed problem, not the content). Review points set; waiting for a peer review.
+- Risk: the pipeline test run is hitting the 30 min limit. Consider making it run only changed files (SWARVEX_CHANGED).
