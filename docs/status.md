@@ -690,3 +690,7 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 - 981 (zones.md): rework, file must be English (text.en). 978 (panel 3 art): rework per peer review (silhouettes, glass, Rend pose, panel 1 consistency).
 - 963 (twist.md, own): review points set; its check run hit the 30 min pipeline limit (infra, not the file). 399 (melee tell sounds, own): peer approved; once merged, register `melee_tell_sound_test` in manifest.txt.
 - 977 still checking, 979 submitted; not yet reviewable.
+
+## Cycle 26.11 review 17
+- Sub 984 (task 346, panel 3 art): rework again; robots are identical slabs, Rend/chair unreadable, composition empty, not at panel 1 quality. Concrete list sent.
+- Own-person subs 399 (peer-approved, waits for merge; then register `melee_tell_sound_test`), 963 (twist doc), 985 (panel 1 variant 1, finding 199 about renderer output path) wait for peer review. No Ruling.
