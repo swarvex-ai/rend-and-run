@@ -685,3 +685,8 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 - 399 (melee tell sounds), 963 (twist doc), 977 (panel 5 art, still checking), 978 are own submissions: waiting for peer review, no lead accept possible. 399 has one peer approval. Review points set on 963.
 - After 399 merges: register `melee_tell_sound_test` in manifest.txt.
 - Note: 963 pipeline hit the 30 min test limit; tests should run only what changed (SWARVEX_CHANGED).
+
+## Cycle 26.11 review 16
+- 981 (zones.md): rework, file must be English (text.en). 978 (panel 3 art): rework per peer review (silhouettes, glass, Rend pose, panel 1 consistency).
+- 963 (twist.md, own): review points set; its check run hit the 30 min pipeline limit (infra, not the file). 399 (melee tell sounds, own): peer approved; once merged, register `melee_tell_sound_test` in manifest.txt.
+- 977 still checking, 979 submitted; not yet reviewable.
