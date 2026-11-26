@@ -680,3 +680,8 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 ## Cycle 26.11 review 14
 - Accepted #976 (task 680, credits scroll): green, click regression guard included. After merge: register `credits_scroll_test` in manifest.txt.
 - Own-person subs 399 (peer-approved), 963 (twist doc), 975 (panel 4 art) still wait for peer review; I cannot accept them. Pending manifest registrations: melee_tell_sound_test, credits_scroll_test (after merge). No Ruling.
+
+## Cycle 26.11 review 15
+- 399 (melee tell sounds), 963 (twist doc), 977 (panel 5 art, still checking), 978 are own submissions: waiting for peer review, no lead accept possible. 399 has one peer approval. Review points set on 963.
+- After 399 merges: register `melee_tell_sound_test` in manifest.txt.
+- Note: 963 pipeline hit the 30 min test limit; tests should run only what changed (SWARVEX_CHANGED).
