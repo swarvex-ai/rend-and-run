@@ -666,3 +666,8 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 - #399 (melee tell sounds, own): pipeline green, one peer approval; waiting for merge. After merge: register `melee_tell_sound_test` in manifest.txt and run it. Stopgap in enemy.gd (`_braced_attack` check) to move into lab_overseer.gd later.
 - #963 (twist doc, own): review points set, waiting for peer review (pipeline hit 30 min limit, docs only).
 - #972 (intro panel 1 art variant 1, level A): left to peer review; no image diff available to me. Likeness vs hero portrait unchecked.
+
+## Cycle 26.11 review 12
+- Ruling: rejected #972 (panel 1 variant 1 again): it overwrites the merged style anchor (variant 2), peer review confirmed baked caption box and non-LFS PNG. Cost if wrong: one alternative anchor lost. Consider closing task 343's remaining variant.
+- Reworked #973 (credits scroll): `_input` swallowed all mouse buttons, which would break row clicks in every menu; asked to handle wheel only plus a click regression test.
+- #399 (own, level C, peer-approved) and #963 (own, review points set) still wait; I cannot accept them. After 399 merges: register `melee_tell_sound_test` in manifest.txt.
