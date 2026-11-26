@@ -1,4 +1,5 @@
 extends Control
+class_name MenuScreen
 ## MenuScreen: the base every Rend&Run menu screen extends (reference: options_menu.gd).
 ## Look, motion and sound follow docs/design/menus/style-guide-variant-2.md and
 ## docs/decisions/0002-menu-style-guide.md. Sizes are at the 1920×1080 reference.
@@ -51,6 +52,11 @@ const FONT_AXIS_WEIGHT := 0x77676874
 const SCREEN_IN := 0.18
 const SCREEN_OUT := 0.14
 const FOCUS_MOVE := 0.11
+# Scroll (style guide "Credits": wheel / right stick scroll a tall list; Back pinned at the end).
+const PANEL_MAX_HEIGHT := 1000.0   # panel height cap; beyond it the row list scrolls
+const SCROLL_STEP := 240.0         # pixels scrolled per wheel tick or stick nudge
+const STICK_DEADZONE := 0.45       # right stick deflection that starts a scroll
+const STICK_RELEASE := 0.25        # below this, the stick is at rest again
 # Sound (style guide "Sound"); menu_back.wav is a planned asset, block.wav stands in.
 const SND_FOCUS := preload("res://audio/radio_chirp.wav")
 const SND_CONFIRM := preload("res://audio/block.wav")
@@ -78,6 +84,13 @@ var _last_focus_sound_ms := -1000
 var _font_title: Font
 var _font_item: Font
 var _font_value: Font
+var _scroll: ScrollContainer
+var _heading: Label
+var _rule: ColorRect
+var _scroll_offset: float = 0.0
+var _scroll_max: float = 0.0
+var _scroll_h: float = 0.0
+var _right_y_at_rest: bool = true
 
 func _init() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -96,8 +109,12 @@ func _init() -> void:
 	var column := VBoxContainer.new();column.add_theme_constant_override("separation", 24);_panel.add_child(column)
 	var heading := Label.new();heading.name = "Title";heading.add_theme_font_size_override("font_size", TITLE_SIZE)
 	heading.add_theme_color_override("font_color", COL_TEXT);column.add_child(heading)
+	_heading = heading
 	var rule := ColorRect.new();rule.color = COL_COPPER;rule.custom_minimum_size = Vector2(0, 2);column.add_child(rule)
-	_list = VBoxContainer.new();_list.name = "Rows";_list.add_theme_constant_override("separation", ROW_GAP);column.add_child(_list)
+	_rule = rule
+	_scroll = ScrollContainer.new();_scroll.name = "Scroll";_scroll.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_scroll.custom_minimum_size.x = PANEL_WIDTH;column.add_child(_scroll)
+	_list = VBoxContainer.new();_list.name = "Rows";_list.add_theme_constant_override("separation", ROW_GAP);_scroll.add_child(_list)
 	_marker = ColorRect.new();_marker.name = "FocusMarker";_marker.color = COL_FOCUS
 	_marker.size = MARKER_SIZE;_marker.mouse_filter = Control.MOUSE_FILTER_IGNORE;_marker.visible = false
 	add_child(_marker)
@@ -108,7 +125,7 @@ func _init() -> void:
 	_list.sort_children.connect(_sync_marker)
 
 func _ready() -> void:
-	(_panel.get_child(0).get_child(0) as Label).text = title
+	if _heading:_heading.text = title
 
 ## Override to add rows. Called once, before the first open.
 func _build() -> void:
@@ -157,7 +174,9 @@ func handle_action(action: String) -> bool:
 		"ui_up", "ui_down":
 			var next := _next_enabled(focus_index, -1 if action == "ui_up" else 1)
 			if next != focus_index:
-				focus_index = next;_show_focus(true);_play_focus()
+				focus_index = next
+				_scroll_to_reveal(next)
+				_show_focus(true);_play_focus()
 			return true
 		"ui_left", "ui_right":
 			return _adjust(rows[focus_index], -1 if action == "ui_left" else 1)
@@ -194,7 +213,7 @@ func show_rows(focus_id := "") -> void:
 
 func set_title(text: String) -> void:
 	title = text
-	(_panel.get_child(0).get_child(0) as Label).text = text
+	if _heading:_heading.text = text
 
 ## Enables or disables a row; a disabled row is dimmed and skipped by focus.
 func set_row_enabled(id: String, enabled: bool) -> void:
@@ -217,6 +236,17 @@ func _input(event: InputEvent) -> void:
 	for action in ["ui_up", "ui_down", "ui_left", "ui_right", "ui_accept", "ui_cancel"]:
 		if event.is_action_pressed(action, true) and handle_action(action):
 			get_viewport().set_input_as_handled();return
+	if event is InputEventMouseButton:
+		if event.pressed and event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			scroll_rows(-SCROLL_STEP);get_viewport().set_input_as_handled();return
+		if event.pressed and event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			scroll_rows(SCROLL_STEP);get_viewport().set_input_as_handled();return
+	if event is InputEventJoypadMotion and event.axis == JOY_AXIS_RIGHT_Y:
+		var value := absf(event.axis_value)
+		if value > STICK_DEADZONE and _right_y_at_rest:
+			scroll_rows(SCROLL_STEP if event.axis_value > 0.0 else -SCROLL_STEP)
+			_right_y_at_rest = false;get_viewport().set_input_as_handled();return
+		if value < STICK_RELEASE:_right_y_at_rest = true
 
 func _add_row(id: String, kind: String, text: String, value: Variant, options: Array, enabled: bool) -> void:
 	var row_node := Button.new();row_node.name = "Row_" + id
@@ -337,10 +367,49 @@ func _marker_target() -> Vector2:
 func _panel_rest_y() -> float:
 	return maxf(0.0, (size.y - _panel.size.y) / 2.0)
 
-## Centres the panel on the screen; its height follows the rows.
+## Centres the panel on the screen; its height follows the rows, capped at PANEL_MAX_HEIGHT.
+## Beyond the cap the row list scrolls inside a fixed scroll area.
 func _center_panel() -> void:
 	_panel.reset_size()
+	var list_h := _list.size.y
+	var header_h := _heading.size.y + _rule.size.y + 48.0
+	var content_h := header_h + list_h + 2.0 * PANEL_PADDING
+	var panel_h := minf(content_h, PANEL_MAX_HEIGHT)
+	_panel.size = Vector2(_panel.size.x, panel_h)
 	_panel.position = Vector2(maxf(0.0, (size.x - _panel.size.x) / 2.0), _panel_rest_y())
+	var scroll_h := panel_h - 2.0 * PANEL_PADDING - header_h
+	_scroll_h = maxf(0.0, scroll_h)
+	_scroll.custom_minimum_size = Vector2(0.0, _scroll_h)
+	_scroll_max = maxf(0.0, list_h - _scroll_h)
+	_scroll_offset = clampf(_scroll_offset, 0.0, _scroll_max)
+	_apply_scroll()
+
+## Scrolls the row container by `delta` pixels, clamped to the valid range. A no-op when
+## nothing overflows the panel. Called by wheel, right stick and tests directly.
+func scroll_rows(delta: float) -> void:
+	if not visible or _scroll_max <= 0.0:return
+	_scroll_offset = clampf(_scroll_offset + delta, 0.0, _scroll_max)
+	_apply_scroll()
+
+## Applies the current scroll offset to the scroll container and keeps the focus marker on
+## its row (the rows translate with the scroll).
+func _apply_scroll() -> void:
+	if _scroll == null:return
+	_scroll.scroll_vertical = _scroll_offset
+	_sync_marker()
+
+## Scrolls so the row at `index` stays inside the visible list area (scroll following focus).
+func _scroll_to_reveal(index: int) -> void:
+	if _scroll_max <= 0.0:return
+	var step := ROW_HEIGHT + ROW_GAP
+	var top := index * step
+	var bottom := top + ROW_HEIGHT
+	var target := _scroll_offset
+	if bottom > _scroll_offset + _scroll_h:
+		target = bottom - _scroll_h
+	elif top < _scroll_offset:
+		target = top
+	scroll_rows(target - _scroll_offset)
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_RESIZED and _panel and (_tween == null or not _tween.is_running()):
