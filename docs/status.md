@@ -694,3 +694,8 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 ## Cycle 26.11 review 17
 - Sub 984 (task 346, panel 3 art): rework again; robots are identical slabs, Rend/chair unreadable, composition empty, not at panel 1 quality. Concrete list sent.
 - Own-person subs 399 (peer-approved, waits for merge; then register `melee_tell_sound_test`), 963 (twist doc), 985 (panel 1 variant 1, finding 199 about renderer output path) wait for peer review. No Ruling.
+
+## Cycle 26.11 review 18
+- Accepted #987 (intro panel 3 art). Visual not viewed by lead (binary only in patch); follow-up art task if neVs objects.
+- #963 (twist doc, own) sent to peer review with review points. #399 (melee tell sounds, own, level C) has one peer approval; lead cannot accept own work, waits for another reviewer. After merge: register melee_tell_sound_test in manifest.txt.
+- Pipeline note: #963 test run hit the 30 min limit (suite slow); consider SWARVEX_CHANGED-based test selection.
