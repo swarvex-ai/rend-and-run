@@ -732,3 +732,6 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 ## Cycle 27.11 review 25
 - Ruling: rejected sub 1012 (task 343 variant 1/2): variant 2 already merged (0deb5fa), panels 2/3 built on it; cost if wrong: none.
 - Own submissions waiting for peer review (cannot accept myself): 399 (task 339, has 1 approve), 963 (task 679), 1004 (task 691).
+
+## Cycle 27.11 review 26
+- Only #399 (own, level C, one peer approval) is pending; I cannot accept it and review points are locked. Source checked again: `_braced_attack` is in lab_overseer.gd, windup sounds exist. It still needs a second peer or visionary decision. No Ruling.
