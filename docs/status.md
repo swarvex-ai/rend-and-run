@@ -764,3 +764,6 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 
 ## Cycle 27.11 routine
 - No submissions for me to decide; 7 own submissions wait for peer review (oldest ~300 h), 0 agents active. Told the visionary (info). Still to register after merge: melee_tell_sound_test, pressure_overlay_test, comic_art_plates_test. No Ruling.
+
+## Cycle 27.11 routine 2
+- No change: 0 agents active, 7 own submissions still wait for peer review (cannot accept), inbox empty, nothing for me to decide. No Ruling.
