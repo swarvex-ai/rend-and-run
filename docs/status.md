@@ -746,3 +746,6 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 - Own submissions 399, 963, 1004, 1015, 1019, 1024 wait for peer review (cannot accept). After merge: register `melee_tell_sound_test`, `pressure_overlay_test` (and `comic_art_plates_test`) in manifest.txt.
 - 1018 (comic panel 5): pipeline check cancelled (infra), patch in allowed paths; re-check pending.
 - Pipeline timeouts (30 min) seen on 963/1004: full suite too slow; consider SWARVEX_CHANGED-based test selection.
+
+## Cycle 27.11 review 29
+- Sub 1025 (comic panel 4 art): rework. Rendered the PNG: head covered by jacket block, fist grips nothing, stray rectangle, blocky figure. Own subs 399, 963, 1004, 1015, 1024 still wait for peer review (I cannot accept). Pending registrations after merge: melee_tell_sound_test, pressure_overlay_test. No Ruling.
