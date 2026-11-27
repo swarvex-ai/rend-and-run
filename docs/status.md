@@ -728,3 +728,7 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 - Subs 963 (twist doc), 1004 (comic plates test), 399 (melee tell sounds, level C): my own, waiting for peer review (963 and 1004 have review points; 399 already has one approval from hctib-tech but is level C, so it needs a peer or visionary decision).
 - On merge of 399 and 1004: register `melee_tell_sound_test` and `comic_art_plates_test` in `game/tests/manifest.txt`.
 - Finding to follow up: `_tell_sound()` overseer stopgap in enemy.gd (`"_braced_attack" in self`); make a task to override in lab_overseer.gd.
+
+## Cycle 27.11 review 25
+- Ruling: rejected sub 1012 (task 343 variant 1/2): variant 2 already merged (0deb5fa), panels 2/3 built on it; cost if wrong: none.
+- Own submissions waiting for peer review (cannot accept myself): 399 (task 339, has 1 approve), 963 (task 679), 1004 (task 691).
