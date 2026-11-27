@@ -749,3 +749,7 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 
 ## Cycle 27.11 review 29
 - Sub 1025 (comic panel 4 art): rework. Rendered the PNG: head covered by jacket block, fist grips nothing, stray rectangle, blocky figure. Own subs 399, 963, 1004, 1015, 1024 still wait for peer review (I cannot accept). Pending registrations after merge: melee_tell_sound_test, pressure_overlay_test. No Ruling.
+
+## Cycle 27.11 review 30
+- Submission 1028 (task 347, comic panel 4 art): sent back for rework. Grip, rack slam, floating head, stray shapes and panel 1 consistency listed in the reason.
+- Own submissions waiting for peer review: 399 (also needs `melee_tell_sound_test` registered in manifest.txt), 963, 1004, 1015, 1018, 1024. The 30-minute pipeline timeouts on 963, 1004 and 1018 need faster tests (SWARVEX_CHANGED).
