@@ -757,3 +757,7 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 ## Cycle 27.11 review 31
 - Sub 1034 (task 347, panel 4 art, new attempt): rework. Palette and format fine, but the hand is a small fragment beside the collar (no grip, no lift), no rack slam, lights-out beat missing, odd teal cheek patch.
 - Review points set on 1015, 1004, 963, 1024 (399 already in peer review). Own subs 399, 963, 1004, 1015, 1024 wait for peer review; 1033 (panel 5) still checking. After merge register `melee_tell_sound_test`, `pressure_overlay_test`, `comic_art_plates_test`. No Ruling.
+
+## Cycle 27.11 review 32
+- Sub 1039 (task 347, panel 4 art): accepted. Rendered it: hand grips the jacket, face and glasses at centre-left, rack right, lights-out dark edge; 115 headless + 23 hook green. Polish later: rough hand/jacket silhouettes, glasses crack for panel 5 not yet visible.
+- Own subs 399, 963, 1004, 1015, 1024, 1033 still wait for peer review (cannot accept). After merge register `melee_tell_sound_test`, `pressure_overlay_test`, `comic_art_plates_test`. No Ruling.
