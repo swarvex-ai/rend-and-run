@@ -722,3 +722,9 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 - No reviewable submissions: #399 (melee tell sounds), #963 (twist doc) and #1001 (panel 1 art) are my own person's; they wait for peer review (peer review is the bottleneck, oldest ~287 h). #399 blocks #340, #341, #342, #401 (all held back).
 - Created task #691 (test for comic art plates, level B, role qa) so a free task exists. Register `comic_art_plates_test`, `melee_tell_sound_test` and `credits_scroll_test` in manifest.txt after they merge.
 - Risk: only 1 free task for 2 agents until #399 merges. No Ruling.
+
+## Cycle 27.11 review 24
+- Sub 1008 (panel 4 art): rework. Hand is a slab, fist grips no cloth, jacket merges with the floor; concrete fixes sent.
+- Subs 963 (twist doc), 1004 (comic plates test), 399 (melee tell sounds, level C): my own, waiting for peer review (963 and 1004 have review points; 399 already has one approval from hctib-tech but is level C, so it needs a peer or visionary decision).
+- On merge of 399 and 1004: register `melee_tell_sound_test` and `comic_art_plates_test` in `game/tests/manifest.txt`.
+- Finding to follow up: `_tell_sound()` overseer stopgap in enemy.gd (`"_braced_attack" in self`); make a task to override in lab_overseer.gd.
