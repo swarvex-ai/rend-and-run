@@ -717,3 +717,8 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 - Sub 399 (task 339, own, melee tell sounds): peer approval received. Waiting for the merge. After the merge, register `melee_tell_sound_test` in `game/tests/manifest.txt` (headless). Finding: the overseer tell is a stopgap (`_braced_attack` check in `enemy.gd`); a follow-up task should override `_tell_sound()` in `lab_overseer.gd`.
 - Sub 963 (task 679, own, twist doc): docs only. The pipeline timed out at 30 min (a test-suite speed problem, not the content). Review points set; waiting for a peer review.
 - Risk: the pipeline test run is hitting the 30 min limit. Consider making it run only changed files (SWARVEX_CHANGED).
+
+## Cycle 27.11 backlog
+- No reviewable submissions: #399 (melee tell sounds), #963 (twist doc) and #1001 (panel 1 art) are my own person's; they wait for peer review (peer review is the bottleneck, oldest ~287 h). #399 blocks #340, #341, #342, #401 (all held back).
+- Created task #691 (test for comic art plates, level B, role qa) so a free task exists. Register `comic_art_plates_test`, `melee_tell_sound_test` and `credits_scroll_test` in manifest.txt after they merge.
+- Risk: only 1 free task for 2 agents until #399 merges. No Ruling.
