@@ -740,3 +740,9 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 - Sub 1014 (comic panel 4): rework, reviewer found composition/hand/glasses/artefact flaws.
 - Own submissions 1015, 1004, 963: review points set, awaiting peer review. 399 has one peer approval but is own level C: cannot accept; needs another lead/area lead reviewer. 1018, 1019 awaiting checks.
 - Open: register melee_tell_sound_test in manifest.txt when 399 lands.
+
+## Cycle 27.11 review 28
+- Accepted 1023 (puzzle catalogue).
+- Own submissions 399, 963, 1004, 1015, 1019, 1024 wait for peer review (cannot accept). After merge: register `melee_tell_sound_test`, `pressure_overlay_test` (and `comic_art_plates_test`) in manifest.txt.
+- 1018 (comic panel 5): pipeline check cancelled (infra), patch in allowed paths; re-check pending.
+- Pipeline timeouts (30 min) seen on 963/1004: full suite too slow; consider SWARVEX_CHANGED-based test selection.
