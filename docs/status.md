@@ -778,3 +778,6 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 
 ## Cycle 28.11 supply 4
 - No change: 0 free tasks, 0 agents active, 6 tasks held back behind own subs awaiting peer review (oldest ~316 h). Nothing for me to decide; inbox empty. No Ruling.
+
+## Cycle 28.11 supply 5
+- No change: 0 free tasks, 0 agents active, 8 own subs wait for peer review (oldest ~317 h, bottleneck peer_review), inbox empty. Nothing for me to decide. No Ruling.
