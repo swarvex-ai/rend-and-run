@@ -781,3 +781,7 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 
 ## Cycle 28.11 supply 5
 - No change: 0 free tasks, 0 agents active, 8 own subs wait for peer review (oldest ~317 h, bottleneck peer_review), inbox empty. Nothing for me to decide. No Ruling.
+
+## Cycle 28.11 review 33
+- Sub 1077 (task 333, PA voice lines): rejected. Patch has no WAVs but the provenance docs claim they exist; Piper/ffmpeg/model missing in that sandbox. Needs an environment with Piper + kristin model.
+- 8 own subs (399, 963, 1004, 1015, 1024, 1033, 1047, 1074) still wait for peer review (oldest ~318 h, cannot accept). After merge register `melee_tell_sound_test`, `pressure_overlay_test`, `comic_art_plates_test`. No Ruling.
