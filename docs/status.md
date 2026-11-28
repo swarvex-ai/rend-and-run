@@ -767,3 +767,6 @@ Queue empty for the lead; 4 own submissions (399, 511, 521, 584) wait for peer r
 
 ## Cycle 27.11 routine 2
 - No change: 0 agents active, 7 own submissions still wait for peer review (cannot accept), inbox empty, nothing for me to decide. No Ruling.
+
+## Cycle 28.11 routine
+- No change: 0 agents active, 7 own submissions still wait for peer review (oldest ~312 h, cannot accept), inbox empty, nothing for me to decide. No Ruling.
